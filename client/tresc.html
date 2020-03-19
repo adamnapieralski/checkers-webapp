@@ -5,25 +5,38 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <title>Warcaby</title>
-		<script src="{{ STATIC_URL }}angular.min.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }}my_modules.js" data-cover></script>
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles.css" />
+		<title>Warcaby</title>
 
-    </head>
+		<link rel="stylesheet" href="{{ STATIC_URL }}styles.css" />
+
+
+		<script src="{{ STATIC_URL }}angular.min.js"></script>
+		<script src="{{ STATIC_URL }}bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="{{ STATIC_URL }}chessboardjs-1.0.0/js/chessboard-1.0.0.js"></script>
+
+		<!-- <script src="{{ STATIC_URL }}angular.min.js"></script> -->
+		<script type="text/javascript" src="{{ STATIC_URL }}my_modules.js" data-cover></script>
+
+
+		<!-- <link rel="stylesheet" type="text/css" href="bower_components/chessboard-js/css/chessboard.min.css" /> -->
+
+
+	</head>
+
 
     <body>
-
-	<div id="contenta" class="container" ng-controller="codeController">
-		<!-- view about -->
-		<div class="header"><b>Warcaby</b></div>
-		<div class="usage"></div>
-			  Podaj id pionka: <input type="text" id="pawn_id">
-			  <button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
-		  <div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
-
-
-	</div>
+		<div id="contenta" class="container" ng-controller="codeController">
+			<!-- view about -->
+			<div class="header"><b>Warcaby</b></div>
+			<div class="usage"></div>
+				  Podaj id pionka: <input type="text" id="pawn_id">
+				  <button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
+			  <div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
+		</div>
+	<div id="board" style="width: 400px"></div>
+    <script>
+        var board = Chessboard('board', 'start');
+    </script>
 
     </body>
 </html>
