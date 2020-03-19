@@ -1,0 +1,111 @@
+Sample application using PostgreSQL, Python ( django ), C++ (boost) + Java Script(AngularJS)
+
+SETTING DEVELOPMENT ENVIRONMENT FOR UBUNTU
+-------------------------------------------------- -----------
+
+1) sudo apt-get install postgresql g++ python-dev python-pip scons lighttpd nodejs nodejs-legacy npm git
+2) create database
+
+$ sudo -u postgres createuser --no-superuser --createdb --no-createrole mydb
+$ sudo -u postgres createdb -O mydb mydb
+$ sudo -u postgres psql -c "alter user mydb with encrypted password 'mydb';"
+
+test connection to the database: psql mydb -U mydb
+If failed with error: "psql: FATAL:  Peer authentication failed for user "mydb"" you should e.g. edit /etc/postgresql/9.1/main/pg_hba.conf and
+in line "local all all peer" change 'peer' to 'md5'. Restert server #/etc/init.d/postgresql restart
+
+3) install python packages
+pip install -r pip_dev.requirements
+
+4) install bower
+
+sudo npm install -g bower
+
+
+5) download and unzip www.boost.org, then 'bootstrap.sh', then './b2'
+6) copy the subdirectory 'boost' to '/usr/local/include', copy all the files from the 'stage/lib' to '/usr/local/lib'
+
+7) install javascript packages
+
+cd client
+bower install
+
+
+SETTING DEVELOPMENT ENVIRONMENT FOR DEBIAN "wheezy"
+-------------------------------------------------- -----------
+
+
+1) sudo apt-get install postgresql g++ python-dev python-pip scons lighttpd git
+2) You need also packages: nodejs nodejs-legacy npm
+	There are not included in current main repository, so you need add testing repository:
+	Edit /etc/apt/sources.list and add repository:
+		deb http://ftp.de.debian.org/debian sid main to /etc/apt/sources.list
+	Update database
+		sudo apt-get update
+	And install them
+		sudo apt-get install nodejs nodejs-legacy npm 
+	Of course it is possible to download them manually too.
+	The rest the same as for ubuntu:
+2) create database
+
+$ sudo -u postgres createuser --no-superuser --createdb --no-createrole mydb
+$ sudo -u postgres createdb -O mydb mydb
+$ sudo -u postgres psql -c "alter user mydb with encrypted password 'mydb';"
+
+test connection to the database: psql mydb -U mydb
+(password mydb)
+If failed with error: "psql: FATAL:  Peer authentication failed for user "mydb"" you should e.g. edit /etc/postgresql/9.1/main/pg_hba.conf and
+in line "local all all peer" change 'peer' to 'md5'. Restert server #/etc/init.d/postgresql restart
+
+3) install python packages
+sudo pip install -r pip_dev.requirements
+	When Error: You need to install postgresql-server-dev-X.Y for building a server-side extension or libpq-dev for building a client-side application.
+	you will need to install additional package:
+	sudo apt-get install libpq-dev
+
+
+4) install bower
+npm install -g bower
+
+5) download and unzip www.boost.org, then 'bootstrap.sh', then './b2'
+6) copy the subdirectory 'boost' to '/usr/local/include', copy all the files from the 'stage/lib' to '/usr/local/lib'
+
+
+7) install javascript packages
+
+cd client
+bower install
+
+SETTING DEVELOPMENT ENVIRONMENT FOR WINDOWS (XP, 7) 
+-------------------------------------------------- -----------
+
+1) install PostgreSQL
+2) install the Microsoft Visual Studio
+3) install Python 2.7 (for example, in the default path C:\Python27\) , add the path where you installed Python to Path.
+4) open new terminal and run: python --version (should be 2.7), if command failed, add C:\Python27\;C:\Python27\Scripts to the PATH
+5) install pip: download get-pip.py, e.g.  https://raw.github.com/pypa/pip/master/contrib/get-pip.py, then run 'python get-pip.py'
+6) pip install scons
+7) pip install -r pip_dev_win.requirements
+8) install psycopg package: http://www.stickpeople.com/projects/python/win-psycopg/
+9) download and unzip http://www.boost.org, then run in a terminal window of Visual Studio the 'bootstrap', then 'bjam.exe - build -type = complete' .
+10) 'bjam.exe --build-type=complete install' (copies headers and libraries  to C:/boost)
+11) install lighttpd (www.lighttpd.net or http://en.wlmp-project.net/), add C:\Program Files\LightTPD to PATH
+12) install node.js - TODO ADD DESCRIPTION
+13) install npm - TODO ADD DESCRIPTION
+14) install bower - TODO ADD DESCRIPTION
+15) create database, user, password
+16) install javascript packages
+
+cd client
+bower install
+
+
+COMPILATION
+----------
+compilation under Linux:
+
+scons
+
+compilation under Windows (compilation should be run in a terminal window Visual Studio):
+
+scons

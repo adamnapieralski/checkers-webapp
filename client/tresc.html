@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html ng-app="Checkers">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <title>Warcaby</title>
+		<script src="{{ STATIC_URL }}angular.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}my_modules.js" data-cover></script>
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles.css" />
+
+    </head>
+
+    <body>
+
+	<div id="contenta" class="container" ng-controller="codeController">
+		<!-- view about -->
+		<div class="header"><b>Warcaby</b></div>
+		<div class="usage"></div>
+			  Podaj id pionka: <input type="text" id="pawn_id">
+			  <button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
+		  <div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
+
+
+	</div>
+
+    </body>
+</html>

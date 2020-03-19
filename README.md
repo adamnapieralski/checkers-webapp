@@ -1,2 +1,2 @@
 # checkers-webapp
-Project for university course
+Project for university Advanced Programming course.

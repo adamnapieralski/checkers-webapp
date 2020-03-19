@@ -1,0 +1,23 @@
+# -*- mode: Python; -*- scons script
+
+import os, platform, re, shutil
+
+Import('env')
+
+
+out_dir = '../build_web/'
+
+#install web
+app_src = '../web'
+for root, dirs, files in os.walk(app_src):
+   p = os.path.relpath(root, app_src) #relative path
+   for name in files:
+      filename = os.path.join(root, name)
+      inst_file = env.Install(out_dir + p, filename)
+      if re.match('.*\.py$', filename):
+         pyc = env.File( str(filename) + 'c' )
+         env.SideEffect( pyc, inst_file)
+
+
+env.Clean('.',out_dir)
+
