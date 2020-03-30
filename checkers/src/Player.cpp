@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Player.hpp"
 
 bool Player::isWhite() {    return isWhite_;    }
 

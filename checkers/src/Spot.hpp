@@ -1,9 +1,9 @@
-#ifndef Spot_h
-#define Spot_h
+#ifndef SPOT_HPP
+#define SPOT_HPP
 
 #include <string>
 #include <array>
-#include "Piece.h"
+#include "Piece.hpp"
 
 class Piece;
 
@@ -33,4 +33,4 @@ private:
     Piece* piece_;
 };
 
-#endif
+#endif  // SPOT_HPP

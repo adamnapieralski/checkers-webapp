@@ -1,11 +1,11 @@
-#ifndef Board_h
-#define Board_h
+#ifndef BOARD_HPP
+#define BOARD_HPP
 
 #include <array>
 #include <vector>
 
-#include "Spot.h"
-#include "Player.h"
+#include "Spot.hpp"
+#include "Player.hpp"
 
 class Board {
 public:
@@ -20,4 +20,4 @@ private:
     std::vector<std::vector<Spot>> spots_;
 };
 
-#endif
+#endif  // BOARD_HPP

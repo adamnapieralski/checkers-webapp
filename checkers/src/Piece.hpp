@@ -1,8 +1,8 @@
-#ifndef Piece_h
-#define Piece_h
+#ifndef PIECE_HPP
+#define PIECE_HPP
 
 #include <string>
-#include "Spot.h"
+#include "Spot.hpp"
 
 class Spot;
 
@@ -19,4 +19,4 @@ private:
 
 };
 
-#endif
+#endif  // PIECE_HPP

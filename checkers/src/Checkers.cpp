@@ -1,4 +1,4 @@
-#include "Checkers.h"
+#include "Checkers.hpp"
 
 Checkers::Checkers(bool isUserWhite) {
 	userPlayer_.setIsWhite(isUserWhite);

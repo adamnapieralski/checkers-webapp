@@ -1,4 +1,4 @@
-#include "Piece.h"
+#include "Piece.hpp"
 
 Piece::Piece(int x, int y, bool isWhite) {
     x_ = x;

@@ -1,4 +1,4 @@
-#include "Spot.h"
+#include "Spot.hpp"
 
 Spot::Spot(int x, int y) {
     if (isPositionValid(x, y)) {

@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "Pawn.h"
-#include "Checkers.h"
-#include "Player.h"
-#include "Board.h"
+#include "Pawn.hpp"
+#include "Checkers.hpp"
+#include "Player.hpp"
+#include "Board.hpp"
 
 int main() {
-    Checkers ch = Checkers();
+    Checkers ch = Checkers(true);
 
     Player user = Player();
     user.setIsWhite(true);

@@ -14,7 +14,7 @@ CPPFLAGS := -g -std=c++17 -I$(IDIR) -Wall -Wextra -pedantic $(ALLFLAGS)
 
 
 source_files := $(filter-out src/CheckersPy.cpp, $(wildcard src/*.cpp))
-header_files := $(wildcard src/*.h)
+header_files := $(wildcard src/*.hpp)
 output_files := $(patsubst src/%.cpp, build/%.o, $(source_files))
 
 .PHONY: all run clean

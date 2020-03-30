@@ -1,9 +1,9 @@
-#ifndef Player_h
-#define Player_h
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
 #include <vector>
 
-#include "Piece.h"
+#include "Piece.hpp"
 
 class Player {
 public:
@@ -18,4 +18,4 @@ private:
     bool isWhite_;
 };
 
-#endif
+#endif  // PLAYER_HPP

@@ -1,5 +1,5 @@
-#include "Board.h"
-#include "Pawn.h"
+#include "Board.hpp"
+#include "Pawn.hpp"
 
 Board::Board() {
     for (int i = 0; i < sizeY_; ++i) {

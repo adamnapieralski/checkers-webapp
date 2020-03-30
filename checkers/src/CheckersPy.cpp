@@ -1,5 +1,5 @@
 #include <boost/python.hpp>
-#include "Checkers.h"
+#include "Checkers.hpp"
 
 using namespace boost::python;
 

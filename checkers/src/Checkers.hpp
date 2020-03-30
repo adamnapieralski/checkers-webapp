@@ -1,16 +1,16 @@
 /**
- * @file Checkers.h
+ * @file Checkers.hpp
  * 
  * @brief Class managing whole checkers game.
  */
 
-#ifndef Checkers_h
-#define Checkers_h
+#ifndef CHECKERS_HPP
+#define CHECKERS_HPP
 
 #include <iostream>
 
-#include "Player.h"
-#include "Board.h"
+#include "Player.hpp"
+#include "Board.hpp"
 
 class Checkers {
 public:
@@ -22,4 +22,4 @@ private:
 	Board board_;
 };
 
-#endif
+#endif	// CHECKERS_HPP
