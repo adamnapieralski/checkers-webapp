@@ -13,12 +13,13 @@
 #include "Board.h"
 
 class Checkers {
-private:
-	Player userPlayer, compPlayer;
-	Board board;
-
 public:
-	std::string findTile(std::string id); // temp test method 
+	Checkers(bool isUserWhite);
+	std::string findTile(std::string id); // temp test method
+
+private:
+	Player userPlayer_, compPlayer_;
+	Board board_;
 };
 
 #endif

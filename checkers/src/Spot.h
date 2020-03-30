@@ -2,22 +2,35 @@
 #define Spot_h
 
 #include <string>
+#include <array>
 #include "Piece.h"
 
+class Piece;
+
 class Spot {
-private:
-    int x, y;
-    std::string name; // e.g. e4, f6
-
-    Piece piece;
-
 public:
+    Spot();
     Spot(int x, int y);
-    Spot(std::string name);
-    Spot(int x, int y, Piece& piece);
 
+    int getX();
+    int getY();
+    // Spot(std::string name);
+    // Spot(int x, int y, Piece& piece);
+    std::string cvtPositionToName(int x, int y);
+    bool isPositionValid(int x, int y);
+    bool isDark();
     bool isFree();
-    Piece& getPiece();
+
+    void setPiece(Piece *piece);
+
+    // Piece* getPiece();
+
+private:
+    int x_, y_;
+    std::string name_; // e.g. e4, f6
+    bool isDark_;
+
+    Piece* piece_;
 };
 
 #endif

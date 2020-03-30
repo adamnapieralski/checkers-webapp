@@ -2,14 +2,20 @@
 #define Piece_h
 
 #include <string>
+#include "Spot.h"
 
-enum Color {WHITE, BLACK};
+class Spot;
 
 class Piece {
 public:
+    Piece(int x, int y, bool isWhite);
+    Piece(Spot &spot, bool isWhite);
+
+    bool isWhite();
 
 private:
-    Color color;
+    int x_, y_;
+    bool isWhite_;
 
 };
 

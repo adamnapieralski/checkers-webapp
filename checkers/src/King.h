@@ -4,7 +4,8 @@
 #include "Piece.h"
 
 class King : public Piece {
-
+    using Piece::Piece;
+    
 };
 
 #endif
