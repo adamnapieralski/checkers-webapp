@@ -5,7 +5,7 @@ Board::Board() {
     for (int i = 0; i < sizeY_; ++i) {
         std::vector<Spot> row;
         for (int j = 0; j < sizeX_; ++j) {
-            row.push_back(Spot(j, i));
+            row.push_back(Spot(Position(j, i)));
         }
         spots_.push_back(row);
     }

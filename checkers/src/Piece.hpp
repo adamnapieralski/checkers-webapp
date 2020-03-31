@@ -2,8 +2,10 @@
 #define PIECE_HPP
 
 #include <string>
+
+#include "Position.hpp"
 #include "Spot.hpp"
-#include "Board.hpp"
+
 
 class Spot;
 
@@ -12,7 +14,8 @@ class Piece {
 public:
     Piece(Position pos, bool isWhite);
     Piece(Spot &spot, bool isWhite);
-
+    virtual ~Piece() {};
+    
     bool isWhite();
 
     virtual std::ostream& print(std::ostream& os) = 0;

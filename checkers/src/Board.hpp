@@ -8,10 +8,6 @@
 #include "Spot.hpp"
 #include "Player.hpp"
 
-struct Position {
-    int x, y;
-};
-
 class Board {
 public:
     Board();

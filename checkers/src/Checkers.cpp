@@ -11,7 +11,8 @@ Checkers::Checkers(bool isUserWhite) {
 }
 
 std::string Checkers::findTile(std::string id){
-	std::string result = "e5";
+	std::string result = id;
+	result = "e5";
 
 	return result;
 }

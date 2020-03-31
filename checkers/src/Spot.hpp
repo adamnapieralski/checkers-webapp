@@ -6,7 +6,6 @@
 #include <iostream>
 
 #include "Piece.hpp"
-#include "Board.hpp"
 
 class Piece;
 
