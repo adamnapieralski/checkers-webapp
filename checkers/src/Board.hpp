@@ -3,6 +3,7 @@
 
 #include <array>
 #include <vector>
+#include <iostream>
 
 #include "Spot.hpp"
 #include "Player.hpp"
@@ -11,6 +12,8 @@ class Board {
 public:
     Board();
     void initialize(Player &user, Player &computer);
+
+    friend std::ostream& operator<<(std::ostream& os, const Board& b);
 
     // std::string getFEN();
 

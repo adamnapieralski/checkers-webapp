@@ -3,6 +3,8 @@
 
 #include <string>
 #include <array>
+#include <iostream>
+
 #include "Piece.hpp"
 
 class Piece;
@@ -22,6 +24,8 @@ public:
     bool isFree();
 
     void setPiece(Piece *piece);
+
+    friend std::ostream& operator<<(std::ostream& os, const Spot& s);
 
     // Piece* getPiece();
 

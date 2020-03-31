@@ -1,4 +1,6 @@
 #include "Piece.hpp"
+#include "Pawn.hpp"
+#include "King.hpp"
 
 Piece::Piece(int x, int y, bool isWhite) {
     x_ = x;

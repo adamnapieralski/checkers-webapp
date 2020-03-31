@@ -8,14 +8,18 @@
 int main() {
     Checkers ch = Checkers(true);
 
+    bool isPlayerWhite = true;
+
     Player user = Player();
-    user.setIsWhite(true);
+    user.setIsWhite(isPlayerWhite);
     Player computer = Player();
-    computer.setIsWhite(false);
+    computer.setIsWhite(!isPlayerWhite);
 
     Board board = Board();
 
     board.initialize(user, computer);
+
+    std::cout << board;
 
     std::cout << ch.findTile("s") << std::endl;
 

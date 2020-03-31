@@ -6,6 +6,7 @@
 class King : public Piece {
     using Piece::Piece;
     
+    std::ostream& print(std::ostream&);
 };
 
 #endif  // KING_HPP

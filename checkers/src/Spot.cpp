@@ -34,4 +34,10 @@ std::string Spot::cvtPositionToName(int x, int y) {
     return letters[x] + std::to_string(y);
 }
 
+std::ostream& operator<<(std::ostream& os, const Spot& s) {
+    if (s.piece_) s.piece_->print(os);
+    else os << "_";
+    return os;
+}
+
 

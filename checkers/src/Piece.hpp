@@ -13,9 +13,14 @@ public:
 
     bool isWhite();
 
+    virtual std::ostream& print(std::ostream& os) = 0;
+
+
 private:
     int x_, y_;
     bool isWhite_;
+
+
 
 };
 

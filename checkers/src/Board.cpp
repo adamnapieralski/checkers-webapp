@@ -32,3 +32,13 @@ void Board::initialize(Player &user, Player &computer) {
         }
     }
 }
+
+std::ostream& operator<<(std::ostream& os, const Board& b) {
+    for (auto row = b.spots_.rbegin(); row != b.spots_.rend(); ++row) {
+        for (auto spot = row->begin(); spot != row->end(); ++spot) {
+            std::cout << *spot << " ";
+        }
+        std::cout << std::endl;
+    }
+    return os;
+}

@@ -6,6 +6,8 @@
 class Pawn : public Piece {
     using Piece::Piece;
 
+    std::ostream& print(std::ostream&) override;
+
 };
 
 #endif  // PAWN_HPP
