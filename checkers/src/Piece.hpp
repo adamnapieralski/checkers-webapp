@@ -3,12 +3,14 @@
 
 #include <string>
 #include "Spot.hpp"
+#include "Board.hpp"
 
 class Spot;
 
+// to resolve: class Piece has virtual funcs and accessible non-virtual destructor
 class Piece {
 public:
-    Piece(int x, int y, bool isWhite);
+    Piece(Position pos, bool isWhite);
     Piece(Spot &spot, bool isWhite);
 
     bool isWhite();
@@ -17,7 +19,7 @@ public:
 
 
 private:
-    int x_, y_;
+    Position pos_;
     bool isWhite_;
 
 

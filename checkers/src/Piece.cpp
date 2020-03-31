@@ -2,15 +2,13 @@
 #include "Pawn.hpp"
 #include "King.hpp"
 
-Piece::Piece(int x, int y, bool isWhite) {
-    x_ = x;
-    y_ = y;
+Piece::Piece(Position pos, bool isWhite) {
+    pos_ = pos;
     isWhite_ = isWhite;
 }
 
 Piece::Piece(Spot &spot, bool isWhite) {
-    x_ = spot.getX();
-    y_ = spot.getY();
+    pos_ = spot.getPosition();
     isWhite_ = isWhite;
     spot.setPiece(this);
 }

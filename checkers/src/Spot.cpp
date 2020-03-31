@@ -1,22 +1,19 @@
 #include "Spot.hpp"
 
-Spot::Spot(int x, int y) {
-    if (isPositionValid(x, y)) {
-        x_ = x;
-        y_ = y;
-        isDark_ = (x + y + 1) % 2;
-        name_ = cvtPositionToName(x, y);
+Spot::Spot(Position pos) {
+    if (isPositionValid(pos)) {
+        pos_ = pos;
+        isDark_ = (pos.x + pos.y + 1) % 2;
+        name_ = cvtPositionToName(pos);
         piece_ = nullptr;
     }
-
+    // else maybe throw excptn
 }
 
-int Spot::getX() {  return x_;  }
+Position Spot::getPosition() {  return pos_;    }
 
-int Spot::getY() {  return y_;  }
-
-bool Spot::isPositionValid(int x, int y) {
-    if (x >= 0 && x <= 8 && y >=0 && y <=8) return true;
+bool Spot::isPositionValid(Position pos) {
+    if (pos.x >= 0 && pos.x <= 8 && pos.y >=0 && pos.y <=8) return true;
     else return false;
 }
 
@@ -29,9 +26,9 @@ bool Spot::isFree() {
 
 void Spot::setPiece(Piece *piece) { piece_ = piece; }
 
-std::string Spot::cvtPositionToName(int x, int y) {
+std::string Spot::cvtPositionToName(Position pos) {
     std::array<std::string, 8> letters {"a", "b", "c", "d", "e", "f", "g", "h"};
-    return letters[x] + std::to_string(y);
+    return letters[pos.x] + std::to_string(pos.y); // to resolve: [pos.x]
 }
 
 std::ostream& operator<<(std::ostream& os, const Spot& s) {
