@@ -1,2 +1,4 @@
 build_web/
 client/chessboardjs-1.0.0/img/chesspieces/wikipedia/checkerspieces/
+.vscode/
+checkers/build/
