@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include <vector>
+#include <memory>
 
 #include "Piece.hpp"
 

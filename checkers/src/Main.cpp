@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Pawn.hpp"
+#include "Piece.hpp"
 #include "Checkers.hpp"
 #include "Player.hpp"
 #include "Board.hpp"
@@ -18,6 +19,12 @@ int main() {
     Board board = Board();
 
     board.initialize(user, computer);
+    
+    Pawn* p1 = new Pawn(board.getSpotOnPosition(Position(1, 3)), false);
+    Pawn* p2 = dynamic_cast<Pawn*>(board.getSpotOnPosition(Position(2, 2)).getPiece());
+    std::cout << p2->canCapture(*p1) << std::endl;
+    std::cout << p1->canCapture(*p2) << std::endl;
+
 
     std::cout << board;
 
