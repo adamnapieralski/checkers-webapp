@@ -5,7 +5,8 @@
 
 class King : public Piece {
     using Piece::Piece;
-    
+
+public:
     std::ostream& print(std::ostream&);
 };
 

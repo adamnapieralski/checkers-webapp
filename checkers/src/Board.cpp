@@ -5,7 +5,7 @@ Board::Board() {
     for (int i = 0; i < sizeY_; ++i) {
         std::vector<Spot> row;
         for (int j = 0; j < sizeX_; ++j) {
-            row.push_back(Spot(Position(j, i)));
+            row.push_back(Spot(Position(j, i), this));
         }
         spots_.push_back(row);
     }
@@ -31,6 +31,18 @@ void Board::initialize(Player &user, Player &computer) {
             }
         }
     }
+
+}
+
+Spot& Board::getSpotOnPosition(Position pos) {
+    return spots_[pos.y][pos.x];
+}
+
+bool Board::isMoveValid(Position origin, Position dest) {
+    if (getSpotOnPosition(origin).isDark() || !getSpotOnPosition(dest).isDark()) return false;
+    if (getSpotOnPosition(origin).isFree() || !getSpotOnPosition(dest).isFree()) return false;
+    
+    return false;
 }
 
 std::ostream& operator<<(std::ostream& os, const Board& b) {

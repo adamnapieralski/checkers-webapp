@@ -1,16 +1,22 @@
 #include "Spot.hpp"
+#include "Board.hpp"
 
-Spot::Spot(Position pos) {
+Spot::Spot(Position pos, Board* board) {
     if (isPositionValid(pos)) {
         pos_ = pos;
         isDark_ = (pos.x + pos.y + 1) % 2;
         name_ = cvtPositionToName(pos);
         piece_ = nullptr;
+        board_ = board;
     }
     // else maybe throw excptn
 }
 
 Position Spot::getPosition() {  return pos_;    }
+
+Board* Spot::getBoard() {   return board_;  }
+
+Piece* Spot::getPiece() {   return piece_;  }
 
 bool Spot::isPositionValid(Position pos) {
     if (pos.x >= 0 && pos.x <= 8 && pos.y >=0 && pos.y <=8) return true;

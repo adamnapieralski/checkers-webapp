@@ -8,13 +8,16 @@
 #include "Piece.hpp"
 
 class Piece;
+class Board;
 
 class Spot {
 public:
-    Spot();
-    Spot(Position pos);
+    // Spot(Board* board);
+    Spot(Position pos, Board* board);
 
     Position getPosition();
+    Board* getBoard();
+    Piece* getPiece();
     // Spot(std::string name);
     // Spot(int x, int y, Piece& piece);
     std::string cvtPositionToName(Position pos);
@@ -33,7 +36,7 @@ private:
     std::string name_; // e.g. e4, f6
     bool isDark_;
 
-
+    Board* board_;
     Piece* piece_;
 };
 
