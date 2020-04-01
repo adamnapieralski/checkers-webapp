@@ -21,12 +21,16 @@ Position Piece::getPosition() { return pos_;    }
 
 bool Piece::isOnSameDiagonal(Piece& piece) {
     int thisCoordSum = this->pos_.x + this->pos_.y;
-    int pieceCoordSum = piece.pos_.x + piece.pos_.y;
-
+    int pieceCoordSum = piece.getPosition().x + piece.getPosition().y;
+    
     // on \ diagonal
     if (thisCoordSum == pieceCoordSum) return true;
+    
+    int thisCoordDiff = std::abs(this->pos_.x - this->pos_.y);
+    int pieceCoordDiff = std::abs(piece.getPosition().x - piece.getPosition().y);
+
     // on / diagonal
-    if ((this->pos_.x - piece.pos_.x) * 2 + piece.pos_.x == this->pos_.x) return true;
+    if (thisCoordDiff == pieceCoordDiff) return true;
 
     return false;
 }
@@ -34,7 +38,7 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 int Piece::radiusDistance(Piece& piece) {
     if (!this->isOnSameDiagonal(piece)) return -1;
 
-    return std::abs(this->pos_.x - piece.pos_.x);
+    return std::abs(this->pos_.x - piece.getPosition().x);
 }
 
 // std::vector<Piece> Piece::piecesAbleToCapture() {

@@ -7,16 +7,16 @@
 #include "Board.hpp"
 
 int main() {
-    Checkers ch = Checkers(true);
+    //Checkers ch = Checkers(true);
 
     bool isPlayerWhite = true;
 
-    Player user = Player();
-    user.setIsWhite(isPlayerWhite);
-    Player computer = Player();
-    computer.setIsWhite(!isPlayerWhite);
-
     Board board = Board();
+
+    Player user = Player(&board);
+    user.setIsWhite(isPlayerWhite);
+    Player computer = Player(&board);
+    computer.setIsWhite(!isPlayerWhite);
 
     board.initialize(user, computer);
     
@@ -26,9 +26,11 @@ int main() {
     std::cout << p1->canCapture(*p2) << std::endl;
 
 
+    //user.movePiece( user.getPlayerPiece, Position(2,4) ); //nie dziala :( 
+
     std::cout << board;
 
-    std::cout << ch.findTile("s") << std::endl;
+    //std::cout << ch.findTile("s") << std::endl;
 
     return 0;
 }

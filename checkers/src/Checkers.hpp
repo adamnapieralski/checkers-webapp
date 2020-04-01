@@ -9,8 +9,8 @@
 
 #include <iostream>
 
-#include "Player.hpp"
 #include "Board.hpp"
+#include "Player.hpp"
 
 class Checkers {
 public:
@@ -18,8 +18,8 @@ public:
 	std::string findTile(std::string id); // temp test method
 
 private:
-	Player userPlayer_, compPlayer_;
-	Board board_;
+	//Player userPlayer_, compPlayer_;
+	//Board board_;
 };
 
 #endif	// CHECKERS_HPP
