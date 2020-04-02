@@ -12,12 +12,13 @@ class Board {
 public:
     Board();
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
+    std::array<std::array<PieceName,8>,8> getBoard();
+    void placePiece(Position pos, PieceName piece);
+    void movePiece(Position posStart, Position posEnd); 
 
 
 private:
     std::array<std::array<PieceName,8>,8> board_ ;
-    int sizeX_ = 8;
-    int sizeY_ = 8;
 };
 
 class Piece;

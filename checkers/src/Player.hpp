@@ -10,13 +10,15 @@
 class Player {
 public:
 
+    Player(Board* board, bool isWhite){board_ = board; isWhite_ = isWhite;};
     Player(){};
     bool isWhite();
-    void setIsWhite(bool isWhite);
     void setHasTurn(bool hasTurn);
+    void initializePieces();
 
 private:
     std::vector<Piece*> pieces_;
+    Board* board_;
     bool hasTurn_;
     bool isWhite_;
 };

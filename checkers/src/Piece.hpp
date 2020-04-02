@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Position.hpp"
+#include "Board.hpp"
 
 class Spot;
 
@@ -12,7 +13,7 @@ class Spot;
 class Piece {
 public:
     // Piece(Position pos, bool isWhite, Board* board);
-    Piece(bool isWhite, Position pos);
+    Piece(bool isWhite, Position pos, Board& board);
     virtual ~Piece() {};
 
     bool isWhite();

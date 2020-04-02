@@ -18,7 +18,7 @@ public:
 	std::string findTile(std::string id); // temp test method
 
 private:
-	Player userPlayer_, compPlayer_;
+	//Player userPlayer_, compPlayer_;
 	Board board_;
 };
 
