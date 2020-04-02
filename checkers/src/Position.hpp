@@ -1,3 +1,8 @@
+#ifndef POSITION_HPP
+#define POSITION_HPP
+
+#include <iostream>
+
 struct Position {
     int x, y;
     Position() : x(0), y(0) {};
@@ -8,3 +13,22 @@ struct Position {
         else return false;
     }
 };
+
+
+enum PieceName {
+    Empty, WhiteKing, WhitePawn, BlackKing, BlackPawn
+};
+
+inline std::ostream& operator<<(std::ostream& os, const PieceName& p){
+    switch (p){
+        case Empty : os << "_"; break;
+        case WhiteKing : os << "wK"; break ;
+        case WhitePawn : os << "w"; break;
+        case BlackKing : os << "bK"; break ;
+        case BlackPawn : os << "b"; break ;
+        default : os << " "; break ;
+    }
+    return os;
+}
+
+#endif // POSITION_HPP

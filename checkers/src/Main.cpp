@@ -1,34 +1,30 @@
 #include <iostream>
 
-#include "Pawn.hpp"
-#include "Piece.hpp"
-#include "Checkers.hpp"
-#include "Player.hpp"
+//#include "Pawn.hpp"
+//#include "Piece.hpp"
+//#include "Checkers.hpp"
+//#include "Player.hpp"
 #include "Board.hpp"
 
 int main() {
-    Checkers ch = Checkers(true);
 
-    bool isPlayerWhite = true;
+    //Checkers ch = Checkers(true);
+
+    Board board = Board();
+    std::cout << "Drukuje tablice" << std::endl;
+    std::cout << board << std::endl;
+
+    /*bool isPlayerWhite = true;
+
+    Board board = Board();
 
     Player user = Player();
     user.setIsWhite(isPlayerWhite);
     Player computer = Player();
-    computer.setIsWhite(!isPlayerWhite);
-
-    Board board = Board();
-
-    board.initialize(user, computer);
+    computer.setIsWhite(!isPlayerWhite);*/
     
-    Pawn* p1 = new Pawn(board.getSpotOnPosition(Position(1, 3)), false);
-    Pawn* p2 = dynamic_cast<Pawn*>(board.getSpotOnPosition(Position(2, 2)).getPiece());
-    std::cout << p2->canCapture(*p1) << std::endl;
-    std::cout << p1->canCapture(*p2) << std::endl;
 
-
-    std::cout << board;
-
-    std::cout << ch.findTile("s") << std::endl;
+    //std::cout << ch.findTile("s") << std::endl;
 
     return 0;
 }

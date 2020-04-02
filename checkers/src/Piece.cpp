@@ -8,18 +8,17 @@
 //     isWhite_ = isWhite;
 // }
 
-Piece::Piece(Spot &spot, bool isWhite) {
-    spot_ = &spot;
-    pos_ = spot.getPosition();
+Piece::Piece(bool isWhite, Position pos) {
+
     isWhite_ = isWhite;
-    spot.setPiece(this);
+    pos_ = pos;
 }
 
 bool Piece::isWhite() { return isWhite_;    }
 
 Position Piece::getPosition() { return pos_;    }
 
-bool Piece::isOnSameDiagonal(Piece& piece) {
+/*bool Piece::isOnSameDiagonal(Piece& piece) {
     int thisCoordSum = this->pos_.x + this->pos_.y;
     int pieceCoordSum = piece.pos_.x + piece.pos_.y;
 
@@ -35,7 +34,7 @@ int Piece::radiusDistance(Piece& piece) {
     if (!this->isOnSameDiagonal(piece)) return -1;
 
     return std::abs(this->pos_.x - piece.pos_.x);
-}
+}*/
 
 // std::vector<Piece> Piece::piecesAbleToCapture() {
 

@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "Position.hpp"
-#include "Spot.hpp"
 
 class Spot;
 
@@ -13,30 +12,25 @@ class Spot;
 class Piece {
 public:
     // Piece(Position pos, bool isWhite, Board* board);
-    Piece(Spot &spot, bool isWhite);
+    Piece(bool isWhite, Position pos);
     virtual ~Piece() {};
 
     bool isWhite();
     
     Position getPosition();
 
-    bool isOnSameDiagonal(Piece& piece);
-    int radiusDistance(Piece& piece);
+    //bool isOnSameDiagonal(Piece& piece);
+    //int radiusDistance(Piece& piece);
 
-    virtual bool canCapture(Piece& piece) = 0;
+    //virtual bool canCapture(Piece& piece) = 0;
     
 
     virtual std::ostream& print(std::ostream& os) = 0;
 
-protected:
-    Spot* spot_;
 
 private:
     Position pos_;
     bool isWhite_;
-
-
-
 
 };
 

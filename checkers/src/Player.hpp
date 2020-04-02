@@ -5,12 +5,14 @@
 #include <memory>
 
 #include "Piece.hpp"
+#include "Board.hpp"
 
 class Player {
 public:
+
+    Player(){};
     bool isWhite();
     void setIsWhite(bool isWhite);
-    void addPiece(Piece* piece);
     void setHasTurn(bool hasTurn);
 
 private:
