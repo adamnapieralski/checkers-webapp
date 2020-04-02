@@ -1,7 +1,7 @@
 #include "Pawn.hpp"
 #include "Board.hpp"
 
-/*bool Pawn::canCapture(Piece& piece) {
+bool Pawn::canCapture(Piece& piece, Board &board) {
     if (this->isWhite() == piece.isWhite()) return false;
     int dist = this->radiusDistance(piece);
     if (dist != 1) return false;
@@ -10,11 +10,12 @@
     int newY = this->getPosition().y + (piece.getPosition().y - this->getPosition().y) * 2;
 
     Position newPos(newX, newY);
+    return true;
     if (!newPos.isPositionValid()) return false;
-    if (spot_->getBoard()->getSpotOnPosition(newPos).isFree()) return true;
+    if (board.getBoard()[newX][newY] == Empty) return true;
     else return false;
 
-}*/
+}
 
 
 std::ostream& Pawn::print(std::ostream& os){

@@ -9,6 +9,7 @@ class Pawn : public Piece {
 public:
 
     std::ostream& print(std::ostream&) override;
+    bool canCapture(Piece& piece,  Board &board) override;
 
 };
 

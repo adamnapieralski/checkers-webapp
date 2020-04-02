@@ -20,10 +20,10 @@ public:
     
     Position getPosition();
 
-    //bool isOnSameDiagonal(Piece& piece);
-    //int radiusDistance(Piece& piece);
+    bool isOnSameDiagonal(Piece& piece);
+    int radiusDistance(Piece& piece);
 
-    //virtual bool canCapture(Piece& piece) = 0;
+    virtual bool canCapture(Piece& piece,  Board &board) = 0;
     
 
     virtual std::ostream& print(std::ostream& os) = 0;

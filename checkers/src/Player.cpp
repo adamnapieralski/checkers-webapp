@@ -9,11 +9,11 @@ void Player::initializePieces(){
 
         }
     }*/
-    if (isWhite_){
+    if (!isWhite_){
         for(int i = 0; i < 3; ++i){
             for(int j = 0; j < 8; ++j){
-                if( (i + j + 1) % 2 ){
-                    Pawn* pawn = new Pawn(isWhite_, Position(i,j), *board_);
+                if( (i + j) % 2 ){
+                    pieces_.push_back( new Pawn(isWhite_, Position(i,j), *board_) );
                 }
             }
         }
@@ -21,8 +21,8 @@ void Player::initializePieces(){
     else {
         for(int i = 7; i > 4; --i){
             for(int j = 0; j < 8; ++j){
-                if( (i + j + 1) % 2 ){
-                    Pawn* pawn = new Pawn(isWhite_, Position(i,j), *board_);
+                if( (i + j) % 2 ){
+                   pieces_.push_back (new Pawn(isWhite_, Position(i,j), *board_) );
                 }
             }
         }

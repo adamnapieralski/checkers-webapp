@@ -23,16 +23,6 @@ int main() {
     computer.initializePieces();
 
     std::cout << board << std::endl;
-
-
-    /*bool isPlayerWhite = true;
-
-    Board board = Board();
-
-    Player user = Player();
-    user.setIsWhite(isPlayerWhite);
-    Player computer = Player();
-    computer.setIsWhite(!isPlayerWhite);*/
     
 
     //std::cout << ch.findTile("s") << std::endl;
