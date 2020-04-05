@@ -8,11 +8,13 @@
 //     isWhite_ = isWhite;
 // }
 
-Piece::Piece(Spot &spot, bool isWhite) {
-    spot_ = &spot;
-    pos_ = spot.getPosition();
+Piece::Piece(bool isWhite, Position pos, Board& board) {
+
     isWhite_ = isWhite;
-    spot.setPiece(this);
+    pos_ = pos;
+    if(isWhite)
+        board.placePiece(pos_, WhitePawn);
+    else board.placePiece(pos_, BlackPawn);
 }
 
 bool Piece::isWhite() { return isWhite_;    }
@@ -30,6 +32,7 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 
     return false;
 }
+
 
 int Piece::radiusDistance(Piece& piece) {
     if (!this->isOnSameDiagonal(piece)) return -1;

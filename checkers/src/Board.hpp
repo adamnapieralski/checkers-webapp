@@ -5,27 +5,20 @@
 #include <vector>
 #include <iostream>
 
-#include "Spot.hpp"
-#include "Player.hpp"
+#include "Position.hpp"
 
 
 class Board {
 public:
     Board();
-    void initialize(Player &user, Player &computer);
-
-    bool isMoveValid(Position origin, Position dest);
-
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
+    std::array<std::array<PieceName,8>,8> getBoard();
+    void placePiece(Position pos, PieceName piece);
+    void movePiece(Position posStart, Position posEnd); 
 
-    Spot& getSpotOnPosition(Position pos);
-
-    // std::string getFEN();
 
 private:
-    int sizeX_ = 8;
-    int sizeY_ = 8;
-    std::vector<std::vector<Spot>> spots_;
+    std::array<std::array<PieceName,8>,8> board_ ;
 };
 
 class Piece;

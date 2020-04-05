@@ -1,9 +1,33 @@
 #include "Player.hpp"
+#include "Pawn.hpp"
 
 bool Player::isWhite() {    return isWhite_;    }
 
-void Player::setIsWhite(bool isWhite) { isWhite_ = isWhite; }
+void Player::initializePieces(){
+    /*for(auto i = board_.getBoard.begin(); i =! board_.getBoard.begin() + 3; ++i){
+        for(auto j = (*i).begin(); j =! (*i).end(); ++j ){
 
-void Player::addPiece(Piece* piece) {   pieces_.push_back(piece);   }
+        }
+    }*/
+    if (!isWhite_){
+        for(int i = 0; i < 3; ++i){
+            for(int j = 0; j < 8; ++j){
+                if( (i + j) % 2 ){
+                    pieces_.push_back( new Pawn(isWhite_, Position(i,j), *board_) );
+                }
+            }
+        }
+    }
+    else {
+        for(int i = 7; i > 4; --i){
+            for(int j = 0; j < 8; ++j){
+                if( (i + j) % 2 ){
+                   pieces_.push_back (new Pawn(isWhite_, Position(i,j), *board_) );
+                }
+            }
+        }
+    }
 
-void Player::setHasTurn(bool hasTurn) { hasTurn_ = hasTurn; }
+}
+
+//napisac desktruktor zwalniajacy te pionki
