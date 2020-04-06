@@ -1,3 +1,4 @@
+#include <map>
 #include "Board.hpp"
 
 Board::Board(){
@@ -37,4 +38,31 @@ void Board::placePiece(Position pos, PieceName piece){
     if(board_[pos.x][pos.y] == Empty){
         board_[pos.x][pos.y] = piece;
     }
+}
+
+std::string Board::getFEN() {
+    std::map<enum PieceName, char>  pcs = {
+        { Empty, 'e' }, { WhitePawn , 'p' }, { WhiteKing, 'k' }, { BlackPawn, 'P' }, { BlackKing, 'K' }
+    };
+    std::string fen = "";
+    for (int row = 7; row >=0; --row) {
+        for (int col = 0; col < 8; ++col) {
+            fen += pcs[board_[row][col]];
+        }
+        fen += '/';
+    }
+    fen.pop_back();
+    int eCount = 0;
+    for (int i = 0; i < fen.length(); ++i) {
+        if (fen[i] == 'e') {
+            eCount++;
+        }
+        else if (eCount > 0) {
+            fen = fen.replace(i - eCount, eCount, std::to_string(eCount));
+            i -= eCount + 1;
+            eCount = 0;
+        }
+    }
+    return fen;
+
 }
