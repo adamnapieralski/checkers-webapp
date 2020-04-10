@@ -16,6 +16,8 @@ public:
     void placePiece(Position pos, PieceName piece);
     void movePiece(Position posStart, Position posEnd); 
 
+    std::string getFEN();
+
 
 private:
     std::array<std::array<PieceName,8>,8> board_ ;

@@ -24,6 +24,7 @@ int main() {
 
     std::cout << board << std::endl;
     
+    std::cout << board.getFEN() << std::endl;
 
     //std::cout << ch.findTile("s") << std::endl;
 
