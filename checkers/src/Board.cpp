@@ -21,7 +21,7 @@ Board::Board(){
 
 std::ostream& operator<<(std::ostream& os, const Board& b)
 {
-    for(auto i = b.board_.begin(); i != b.board_.end(); ++i ){
+    for(auto i = b.board_.rbegin(); i != b.board_.rend(); ++i ){
         for(auto j = i->begin(); j != i->end(); ++j ){
             std::cout << *j << " ";
         }
@@ -53,7 +53,8 @@ std::string Board::getFEN() {
     }
     fen.pop_back();
     int eCount = 0;
-    for (int i = 0; i < fen.length(); ++i) {
+    int i;
+    for (i = 0; i < fen.length(); ++i) {
         if (fen[i] == 'e') {
             eCount++;
         }
@@ -63,6 +64,7 @@ std::string Board::getFEN() {
             eCount = 0;
         }
     }
+    if (eCount > 0) fen = fen.replace(i - eCount, eCount, std::to_string(eCount));
     return fen;
 
 }

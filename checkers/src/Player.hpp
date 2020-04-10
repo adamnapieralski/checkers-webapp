@@ -10,7 +10,7 @@
 class Player {
 public:
 
-    Player(Board* board, bool isWhite){board_ = board; isWhite_ = isWhite;};
+    Player(Board* board, bool isWhite, bool isUser);
     Player(){};
     bool isWhite();
     void setHasTurn(bool hasTurn);
@@ -21,6 +21,7 @@ private:
     Board* board_;
     bool hasTurn_;
     bool isWhite_;
+    bool isUser_;
 };
 
 #endif  // PLAYER_HPP
