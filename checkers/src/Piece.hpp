@@ -21,7 +21,8 @@ public:
     Position getPosition();
 
     bool isOnSameDiagonal(Piece& piece);
-    int radiusDistance(Piece& piece);
+    // int radiusDistance(Piece& piece);
+    Position positionDistance(Piece& piece);
 
     virtual bool canCapture(Piece& piece,  Board &board) = 0;
     

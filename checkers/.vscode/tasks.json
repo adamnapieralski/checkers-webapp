@@ -31,6 +31,7 @@
                 "cwd": "${workspaceRoot}"
             },
             "problemMatcher": [],
+            "group": "test",
         },
     ]
 }

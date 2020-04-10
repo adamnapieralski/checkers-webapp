@@ -3,18 +3,17 @@
 
 bool Pawn::canCapture(Piece& piece, Board &board) {
     if (this->isWhite() == piece.isWhite()) return false;
-    int dist = this->radiusDistance(piece);
-    if (dist != 1) return false;
 
-    int newX = this->getPosition().x + (piece.getPosition().x - this->getPosition().x) * 2;
-    int newY = this->getPosition().y + (piece.getPosition().y - this->getPosition().y) * 2;
+    Position diff = positionDistance(piece);
+    if (abs(diff.x) != 1 || abs(diff.y) != 1) return false;
 
+    int newX = piece.getPosition().x + diff.x;
+    int newY = piece.getPosition().y + diff.y;
     Position newPos(newX, newY);
-    return true;
+
     if (!newPos.isPositionValid()) return false;
     if (board.getBoard()[newX][newY] == Empty) return true;
     else return false;
-
 }
 
 

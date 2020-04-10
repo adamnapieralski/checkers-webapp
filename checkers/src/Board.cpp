@@ -12,8 +12,8 @@ Board::Board(){
     { { WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty } },
     } };*/
     for(auto i = board_.begin(); i != board_.end(); ++i ){
-        for(auto j = (*i).begin(); j != (*i).end(); ++j ){
-            (*j) = Empty;
+        for(auto j = i->begin(); j != i->end(); ++j ){
+            *j = Empty;
         }
     }
 }
@@ -21,7 +21,7 @@ Board::Board(){
 std::ostream& operator<<(std::ostream& os, const Board& b)
 {
     for(auto i = b.board_.begin(); i != b.board_.end(); ++i ){
-        for(auto j = (*i).begin(); j != (*i).end(); ++j ){
+        for(auto j = i->begin(); j != i->end(); ++j ){
             std::cout << *j << " ";
         }
         std::cout << std::endl;

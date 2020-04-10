@@ -8,6 +8,7 @@ class King : public Piece {
 
 public:
     std::ostream& print(std::ostream&);
+    bool canCapture(Piece& piece,  Board &board) override;
 };
 
 #endif  // KING_HPP
