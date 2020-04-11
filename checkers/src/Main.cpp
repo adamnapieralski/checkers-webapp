@@ -13,13 +13,17 @@ int main() {
     Board board = Board();
     std::cout << "Drukuje tablice" << std::endl;
     std::cout << board << std::endl;
+    std::cout << board.getFEN() << std::endl;
 
-    Player user = Player(&board, true);
+
+    Player user = Player(&board, true, true);
     user.initializePieces();
 
     std::cout << board << std::endl;
+    std::cout << board.getFEN() << std::endl;
 
-    Player computer = Player(&board, false);
+
+    Player computer = Player(&board, false, false);
     computer.initializePieces();
 
     std::cout << board << std::endl;
