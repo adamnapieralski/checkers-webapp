@@ -14,7 +14,8 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
     std::array<std::array<PieceName,8>,8> getBoard();
     void placePiece(Position pos, PieceName piece);
-    void movePiece(Position posStart, Position posEnd); 
+    void movePiece(Position posStart, Position posEnd);
+    PieceName getPieceName(Position pos);
 
     std::string getFEN();
 

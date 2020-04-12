@@ -7,10 +7,10 @@ class Pawn : public Piece {
     using Piece::Piece;
     
 public:
-
-    std::ostream& print(std::ostream&) override;
+    std::vector<Move> getValidMoves(Board& board) override;
     bool canCapture(Piece& piece,  Board &board) override;
 
+    std::ostream& print(std::ostream&) override;
 };
 
 #endif  // PAWN_HPP

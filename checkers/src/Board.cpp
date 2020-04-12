@@ -40,6 +40,10 @@ void Board::placePiece(Position pos, PieceName piece){
     }
 }
 
+PieceName Board::getPieceName(Position pos) {
+    return board_[pos.x][pos.y];
+}
+
 std::string Board::getFEN() {
     std::map<enum PieceName, char>  pcs = {
         { Empty, 'e' }, { WhitePawn , 'p' }, { WhiteKing, 'k' }, { BlackPawn, 'P' }, { BlackKing, 'K' }

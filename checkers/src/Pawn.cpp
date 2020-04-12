@@ -1,6 +1,10 @@
 #include "Pawn.hpp"
 #include "Board.hpp"
 
+std::vector<Move> Pawn::getValidMoves(Board& board) {
+    return std::vector<Move>();
+}
+
 bool Pawn::canCapture(Piece& piece, Board &board) {
     if (this->isWhite() == piece.isWhite()) return false;
 

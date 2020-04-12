@@ -43,3 +43,18 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 Position Piece::positionDistance(Piece& piece) {
     return Position(piece.getPosition().x - getPosition().x, piece.getPosition().y - getPosition().y);
 }
+
+bool Piece::isSameColor(PieceName pn) {
+    if (isWhite_ && (pn == WhitePawn || pn == WhiteKing)
+        || !isWhite_ && (pn == BlackPawn || pn == BlackKing))
+        return true;
+    else return false;
+}
+
+bool Piece::isDiffColor(PieceName pn) {
+    if (isWhite_ && (pn == BlackPawn || pn == BlackKing)
+        || isWhite_ && (pn == WhitePawn || pn == WhiteKing))
+        return true;
+    else return false;
+}
+
