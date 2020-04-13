@@ -7,7 +7,7 @@ King::King(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
         board.placePiece(pos, BlackKing);
 }
 
-std::vector<Move> King::getValidMoves(Board& board) {
+std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
     Position startPos = getPosition();
     std::vector<std::vector<Position>> newPosDir(4, std::vector<Position>{});
     std::vector<Move> moves;
@@ -46,21 +46,32 @@ std::vector<Move> King::getValidMoves(Board& board) {
             if (captured[i].first) {
                 for (auto& pos : newPosDir[i]) {
                     Move m(startPos, pos, captured[i].second);
-
-                    // moves.push_back(Move(startPos, pos, captured[i].second));
+                    auto tempBoard = board;
+                    tempBoard.makeMove(m);
+                    King k(pos, isWhite(), tempBoard);
+                    auto nextMoves = k.getValidMoves(tempBoard, true);
+                    if (nextMoves.empty()) {
+                        moves.push_back(m);
+                    }
+                    else {
+                        for (auto& nm : nextMoves) {
+                            auto merged = m.merge(nm);
+                            moves.push_back(merged);
+                            // moves.push_back(m.merge(nm));
+                        }
+                    }
                 }
             }
         }
     }
-    else {
+    else if (!mustCapture) {
         for (auto& dir : newPosDir) {
             for (auto& pos : dir) {
                 moves.push_back(Move(startPos, pos));
             }
         }
     }
-
-    return moves; // temp
+    return moves;
 }
 
 bool King::canCapture(Piece& piece, Board &board) {

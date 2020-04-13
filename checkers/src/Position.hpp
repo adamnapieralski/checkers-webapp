@@ -9,7 +9,7 @@ struct Position {
     Position(int setX, int setY) : x(setX), y(setY) {};
 
     bool isPositionValid() {
-        if (x >= 0 && x <= 8 && y >=0 && y <=8) return true;
+        if (x >= 0 && x <= 7 && y >=0 && y <= 7) return true;
         else return false;
     }
 

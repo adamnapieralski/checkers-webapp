@@ -34,6 +34,10 @@ std::array<std::array<PieceName,8>,8> Board::getBoard(){
     return board_;
 }
 
+void Board::clearPosition(Position pos) {
+    board_[pos.y][pos.x] = Empty;
+}
+
 void Board::placePiece(Position pos, PieceName piece){
     if(board_[pos.y][pos.x] == Empty){
         board_[pos.y][pos.x] = piece;

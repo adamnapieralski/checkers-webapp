@@ -8,7 +8,7 @@ Pawn::Pawn(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
         board.placePiece(pos, BlackPawn);
 }
 
-std::vector<Move> Pawn::getValidMoves(Board& board) {
+std::vector<Move> Pawn::getValidMoves(Board& board, bool mustCapture) {
     return std::vector<Move>();
 }
 

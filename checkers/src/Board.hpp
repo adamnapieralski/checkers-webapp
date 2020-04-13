@@ -13,6 +13,7 @@ class Board {
 public:
     Board();
     std::array<std::array<PieceName,8>,8> getBoard();
+    void clearPosition(Position pos);
     void placePiece(Position pos, PieceName piece);
     void movePiece(Position posStart, Position posEnd);
     PieceName getPieceName(Position pos);

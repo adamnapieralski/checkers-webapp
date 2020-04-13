@@ -14,7 +14,7 @@ Move Move::merge(Move& next) {
 
     for (auto& mv : std::vector<Move>{*this, next}) {
         if (mv.stepMoves_.empty()) {
-            merged.stepMoves_.push_back(*this);
+            merged.stepMoves_.push_back(mv);
         }
         else {
             for (auto& m : mv.stepMoves_) {

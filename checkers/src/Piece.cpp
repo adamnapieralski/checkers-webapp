@@ -49,7 +49,7 @@ bool Piece::isSameColor(PieceName pn) {
 
 bool Piece::isDiffColor(PieceName pn) {
     if (isWhite_ && (pn == BlackPawn || pn == BlackKing)
-        || isWhite_ && (pn == WhitePawn || pn == WhiteKing))
+        || !isWhite_ && (pn == WhitePawn || pn == WhiteKing))
         return true;
     else return false;
 }
