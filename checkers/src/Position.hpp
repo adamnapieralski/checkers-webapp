@@ -12,6 +12,16 @@ struct Position {
         if (x >= 0 && x <= 8 && y >=0 && y <=8) return true;
         else return false;
     }
+
+    bool operator==(Position &p) {
+        if (x == p.x && y == p.y) return true;
+        else return false;
+    }
+
+    bool operator!=(Position &p) {
+        if (x != p.x || y != p.y) return true;
+        else return false;
+    }
 };
 
 
