@@ -1,5 +1,12 @@
 #include "King.hpp"
 
+King::King(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
+    if (isWhite)
+        board.placePiece(pos, WhiteKing);
+    else
+        board.placePiece(pos, BlackKing);
+}
+
 std::vector<Move> King::getValidMoves(Board& board) {
     Position startPos = getPosition();
     std::vector<std::vector<Position>> newPosDir(4, std::vector<Position>{});
@@ -37,9 +44,11 @@ std::vector<Move> King::getValidMoves(Board& board) {
     if (canCapture) {
         for (int i = 0; i < captured.size(); ++i) {
             if (captured[i].first) {
-                for (auto& pos : newPosDir[i])
+                for (auto& pos : newPosDir[i]) {
                     Move m(startPos, pos, captured[i].second);
+
                     // moves.push_back(Move(startPos, pos, captured[i].second));
+                }
             }
         }
     }

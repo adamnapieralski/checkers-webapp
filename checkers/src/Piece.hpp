@@ -14,7 +14,7 @@ class Spot;
 class Piece {
 public:
     // Piece(Position pos, bool isWhite, Board* board);
-    Piece(bool isWhite, Position pos, Board& board);
+    Piece(Position pos, bool isWhite);
     virtual ~Piece() {};
 
     bool isWhite();

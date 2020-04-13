@@ -8,13 +8,9 @@
 //     isWhite_ = isWhite;
 // }
 
-Piece::Piece(bool isWhite, Position pos, Board& board) {
-
+Piece::Piece(Position pos, bool isWhite) {
     isWhite_ = isWhite;
     pos_ = pos;
-    if(isWhite)
-        board.placePiece(pos_, WhitePawn);
-    else board.placePiece(pos_, BlackPawn);
 }
 
 bool Piece::isWhite() { return isWhite_;    }

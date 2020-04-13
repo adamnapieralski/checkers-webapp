@@ -7,6 +7,8 @@ class Pawn : public Piece {
     using Piece::Piece;
     
 public:
+    Pawn(Position pos, bool isWhite, Board& board);
+    
     std::vector<Move> getValidMoves(Board& board) override;
     bool canCapture(Piece& piece,  Board &board) override;
 

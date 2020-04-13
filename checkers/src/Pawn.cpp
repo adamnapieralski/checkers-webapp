@@ -1,6 +1,13 @@
 #include "Pawn.hpp"
 #include "Board.hpp"
 
+Pawn::Pawn(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
+    if (isWhite)
+        board.placePiece(pos, WhitePawn);
+    else
+        board.placePiece(pos, BlackPawn);
+}
+
 std::vector<Move> Pawn::getValidMoves(Board& board) {
     return std::vector<Move>();
 }
