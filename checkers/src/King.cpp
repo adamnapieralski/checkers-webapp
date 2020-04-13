@@ -8,24 +8,28 @@ King::King(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
 }
 
 std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
-    Position startPos = getPosition();
-    std::vector<std::vector<Position>> newPosDir(4, std::vector<Position>{});
     std::vector<Move> moves;
-    int r[4] = {1, 1, -1, -1};
-    int c[4] = {1, -1, -1, 1};
+
+    Position startPos = getPosition();
+
+    std::vector<std::vector<Position>> newPosDiag(4, std::vector<Position>{});
     std::vector<std::pair<bool, Position>> captured(4, std::pair<bool, Position>(false, Position()));
+    
     bool canCapture = false;
+    int dy[4] = {1, 1, -1, -1};
+    int dx[4] = {1, -1, -1, 1};
+
     // populate with all valid diagonal positions
     for (int i = 0; i < 4; ++i) {
         bool metOpponent = false;
-        Position p(startPos.x + c[i], startPos.y + r[i]);
+        Position p(startPos.x + dx[i], startPos.y + dy[i]);
         while (p.isPositionValid()) {
             PieceName pn = board.getPieceName(p);
             if (isSameColor(pn))  break;
             if (metOpponent && pn == Empty && !captured[i].first) {
                 canCapture = true;
                 captured[i].first = true;
-                newPosDir[i].clear();
+                newPosDiag[i].clear();
             }
             if (isDiffColor(pn)) {
                 if (metOpponent) break;
@@ -35,29 +39,28 @@ std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
                 }
             }
             else {
-                newPosDir[i].push_back(p);
+                newPosDiag[i].push_back(p);
             }
-            p.x += c[i];
-            p.y += r[i];
+            p.x += dx[i];
+            p.y += dy[i];
         }
     }
     if (canCapture) {
         for (int i = 0; i < captured.size(); ++i) {
             if (captured[i].first) {
-                for (auto& pos : newPosDir[i]) {
+                for (auto& pos : newPosDiag[i]) {
                     Move m(startPos, pos, captured[i].second);
                     auto tempBoard = board;
                     tempBoard.makeMove(m);
                     King k(pos, isWhite(), tempBoard);
+
                     auto nextMoves = k.getValidMoves(tempBoard, true);
                     if (nextMoves.empty()) {
                         moves.push_back(m);
                     }
                     else {
                         for (auto& nm : nextMoves) {
-                            auto merged = m.merge(nm);
-                            moves.push_back(merged);
-                            // moves.push_back(m.merge(nm));
+                            moves.push_back(m.merge(nm));
                         }
                     }
                 }
@@ -65,8 +68,8 @@ std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
         }
     }
     else if (!mustCapture) {
-        for (auto& dir : newPosDir) {
-            for (auto& pos : dir) {
+        for (auto& dg : newPosDiag) {
+            for (auto& pos : dg) {
                 moves.push_back(Move(startPos, pos));
             }
         }
