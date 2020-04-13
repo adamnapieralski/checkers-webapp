@@ -12,10 +12,15 @@ public:
 
     Move merge(Move& next);
 
+    Position getStartPosition() const;
+    Position getEndPosition() const;
+    std::vector<Position> getCapturedPositions() const;
+    std::vector<Move> getStepMoves() const;
+
 private:
-    Position startPos, endPos;
-    std::vector<Position> capturedPos;
-    std::vector<Move> stepMoves;
+    Position startPos_, endPos_;
+    std::vector<Position> capturedPos_;
+    std::vector<Move> stepMoves_;
 };
 
 #endif  // MOVE_HPP

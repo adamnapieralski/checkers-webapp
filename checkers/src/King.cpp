@@ -38,7 +38,8 @@ std::vector<Move> King::getValidMoves(Board& board) {
         for (int i = 0; i < captured.size(); ++i) {
             if (captured[i].first) {
                 for (auto& pos : newPosDir[i])
-                    moves.push_back(Move(startPos, pos, captured[i].second));
+                    Move m(startPos, pos, captured[i].second);
+                    // moves.push_back(Move(startPos, pos, captured[i].second));
             }
         }
     }
@@ -49,6 +50,7 @@ std::vector<Move> King::getValidMoves(Board& board) {
             }
         }
     }
+
     return moves; // temp
 }
 

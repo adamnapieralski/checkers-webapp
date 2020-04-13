@@ -32,5 +32,12 @@ int main() {
 
     //std::cout << ch.findTile("s") << std::endl;
 
+    Move m1(Position(1, 1), Position(3, 3), Position(2, 2));
+    Move m2(Position(3, 3), Position(1, 5), Position(2, 4));
+    auto m3 = m1.merge(m2);
+    auto b2 = board;
+    b2.makeMove(m3);
+    std::cout << b2 << std::endl;
+
     return 0;
 }
