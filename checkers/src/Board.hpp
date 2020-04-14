@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "Position.hpp"
+#include "Move.hpp"
 
 
 class Board {
@@ -15,6 +16,7 @@ public:
     std::array<std::array<PieceName,8>,8> getBoard();
     void placePiece(Position pos, PieceName piece);
     void movePiece(Position posStart, Position posEnd); 
+    void makeMove(Move & move);
 
     std::string getFEN();
 

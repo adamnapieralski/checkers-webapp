@@ -37,7 +37,7 @@ void Pawn::canCapture(std::vector<Move> &moves, Board board, Move current) {
         }
     }
 
-    if(countMoves = 0){
+    if(countMoves == 0){
         moves.push_back(current);
     }
 
@@ -65,6 +65,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
     canCapture(moves, board, move);
 
     if (moves.size() == 1 && moves[0] == move){
+        moves.pop_back();
         if (this->isWhite() ) {
             if(board.getBoard()[pos_.x + 1][pos_.y + 1] == Empty){
                 moves.push_back(Move(pos_,Position(pos_.x + 1, pos_.y +1)));
@@ -74,19 +75,16 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
             }
         }
         else {
-            if(board.getBoard()[pos_.x - 1][pos_.y - 1] == Empty){
+            if(board.getBoard()[pos_.x - 1][pos_.y + 1] == Empty){
                 moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y -1)));
             }
-            if(board.getBoard()[pos_.x - 1][pos_.y + 1] == Empty){
+            if(board.getBoard()[pos_.x - 1][pos_.y - 1] == Empty){
                 moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y +1)));
             }
         }
 
     }
 
-    if (moves.size() == 1 && moves[0] == move){
-        moves.pop_back();
-    }
     return moves;
 
     //TODO: nulle, czy dziala ok? sprawdza poza plansza -> do zmiany, drukowanie ruchow, testy

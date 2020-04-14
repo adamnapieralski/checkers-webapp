@@ -36,6 +36,9 @@ std::vector<Move> Player::getValidMoves(Board &board){
         valid_moves.push_back((*i)->getValidMoves);
     }*/
     std::vector<Move> move;
+    std::cout << pieces_[9]->getPosition().x << "," << pieces_[9]->getPosition().y << std::endl;
     move = (pieces_[9])->getValidMoves(board);
+
+    return move;
 }
 //napisac desktruktor zwalniajacy te pionki

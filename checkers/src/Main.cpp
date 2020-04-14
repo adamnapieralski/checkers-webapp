@@ -22,8 +22,6 @@ int main() {
     std::cout << board << std::endl;
     std::cout << board.getFEN() << std::endl;
 
-    user.getValidMoves(board);
-
 
     Player computer = Player(&board, false, false);
     computer.initializePieces();
@@ -31,6 +29,13 @@ int main() {
     std::cout << board << std::endl;
     
     std::cout << board.getFEN() << std::endl;
+
+
+    std::vector<Move> valid_moves;
+    valid_moves = user.getValidMoves(board);
+    if(valid_moves.size() != 0 )
+        board.makeMove(valid_moves[1]);
+    std::cout << board << std::endl;
 
     //std::cout << ch.findTile("s") << std::endl;
 

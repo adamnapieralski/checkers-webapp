@@ -66,5 +66,16 @@ std::string Board::getFEN() {
     }
     if (eCount > 0) fen = fen.replace(i - eCount, eCount, std::to_string(eCount));
     return fen;
+}
 
+void Board::makeMove(Move &move){
+
+    auto st = move.startPos;
+    auto pc = board_[st.y][st.x];
+    board_[st.y][st.x] = Empty;
+    for (auto& c : move.capturedPos) {
+        board_[c.y][c.x] = Empty;
+    }
+    auto en = move.endPos;
+    board_[en.y][en.x] = pc;
 }
