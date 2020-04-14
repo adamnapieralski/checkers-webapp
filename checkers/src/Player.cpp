@@ -30,4 +30,12 @@ void Player::initializePieces(){
     }
 }
 
+std::vector<Move> Player::getValidMoves(Board &board){
+    /*std::vector<std::vector<Move>> valid_moves;
+    for (auto i = pieces_.begin(); i != pieces_.end(); i++){
+        valid_moves.push_back((*i)->getValidMoves);
+    }*/
+    std::vector<Move> move;
+    move = (pieces_[9])->getValidMoves(board);
+}
 //napisac desktruktor zwalniajacy te pionki

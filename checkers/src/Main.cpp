@@ -22,6 +22,8 @@ int main() {
     std::cout << board << std::endl;
     std::cout << board.getFEN() << std::endl;
 
+    user.getValidMoves(board);
+
 
     Player computer = Player(&board, false, false);
     computer.initializePieces();

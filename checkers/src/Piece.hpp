@@ -25,9 +25,9 @@ public:
     // int radiusDistance(Piece& piece);
     Position positionDistance(Position pos);
 
-    virtual bool canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
-    virtual std::vector<Move> getValidMoves(Board &board) = 0;
+    virtual void canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
     virtual std::ostream& print(std::ostream& os) = 0;
+    virtual std::vector<Move> getValidMoves(Board &board) = 0;
 
 protected:
     Position pos_;

@@ -1,6 +1,6 @@
 #include "King.hpp"
 
-bool King::canCapture(std::vector<Move> &moves, Board board, Move current){
+void King::canCapture(std::vector<Move> &moves, Board board, Move current){
     /*if (this->isWhite() == piece.isWhite()) return false;
     // if not on same diagonal
     if (isOnSameDiagonal(piece)) return false;
@@ -22,6 +22,8 @@ bool King::canCapture(std::vector<Move> &moves, Board board, Move current){
     if (board.getBoard()[newX][newY] == Empty) return true;
     else return false;*/
 }
+
+std::vector<Move> King::getValidMoves(Board &board){};
 
 
 std::ostream& King::print(std::ostream& os){

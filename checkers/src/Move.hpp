@@ -10,6 +10,9 @@ public:
     Move(){};
     Move(Position, Position);
     Move(Position, Position, Position);
+
+    void addStepMove(Move tmp);
+    bool operator==(const Move& move) const;
     
     Position startPos, endPos;
     std::vector<Position> capturedPos;
