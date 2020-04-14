@@ -24,10 +24,11 @@ public:
     bool isOnSameDiagonal(Piece& piece);
     // int radiusDistance(Piece& piece);
     Position positionDistance(Position pos);
+    void changePosition(Position pos);
 
     virtual void canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
     virtual std::ostream& print(std::ostream& os) = 0;
-    virtual std::vector<Move> getValidMoves(Board &board) = 0;
+    virtual std::vector<Move> getValidMoves(Board &board, bool &mustCapture) = 0;
 
 protected:
     Position pos_;

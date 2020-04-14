@@ -23,7 +23,7 @@ void King::canCapture(std::vector<Move> &moves, Board board, Move current){
     else return false;*/
 }
 
-std::vector<Move> King::getValidMoves(Board &board){};
+std::vector<Move> King::getValidMoves(Board &board, bool &mustCapture){};
 
 
 std::ostream& King::print(std::ostream& os){

@@ -7,7 +7,7 @@ Move::Move(Position s, Position e, Position c) : startPos(s), endPos(e) {
 }
 
 void Move::addStepMove(Move tmp){
-    if(&startPos == nullptr){
+    if(!startPos.x){
         startPos = tmp.startPos;
     }
     endPos = tmp.endPos;

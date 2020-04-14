@@ -43,3 +43,7 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 Position Piece::positionDistance(Position pos) {
     return Position(pos.x - getPosition().x, pos.y - getPosition().y);
 }
+
+void Piece::changePosition(Position pos){
+    pos_ = pos;
+}

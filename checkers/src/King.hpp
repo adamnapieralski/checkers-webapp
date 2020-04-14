@@ -9,7 +9,7 @@ class King : public Piece {
 public:
     std::ostream& print(std::ostream&);
     void canCapture(std::vector<Move> &moves, Board board, Move current) override;
-    std::vector<Move> getValidMoves(Board &board) override;
+    std::vector<Move> getValidMoves(Board &board, bool &mustCapture) override;
 };
 
 #endif  // KING_HPP
