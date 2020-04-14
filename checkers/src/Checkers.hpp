@@ -23,10 +23,11 @@ struct GameState {
 class Checkers {
 public:
 	Checkers(bool isUserWhite);
-	std::string findTile(std::string id); // temp test method
 
-	GameState processUserMove(std::string org, std::string dest) {}
-	GameState processComputerMove() {}
+	static std::string findTile(std::string id); // temp test method
+
+	GameState processUserMove(std::string org, std::string dest) {	return GameState();	}
+	GameState processComputerMove() {	return GameState();	}
 
 private:
 	//Player userPlayer_, compPlayer_;
