@@ -9,7 +9,8 @@ class Pawn : public Piece {
 public:
 
     std::ostream& print(std::ostream&) override;
-    bool canCapture(Piece& piece,  Board &board) override;
+    bool canCapture(std::vector<Move> &moves, Board board, Move) override;
+    std::vector<Move> getValidMoves(Board &board) override;
 
 };
 

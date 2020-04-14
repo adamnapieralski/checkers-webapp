@@ -1,7 +1,7 @@
 #include "King.hpp"
 
-bool King::canCapture(Piece& piece, Board &board) {
-    if (this->isWhite() == piece.isWhite()) return false;
+bool King::canCapture(std::vector<Move> &moves, Board board, Move current){
+    /*if (this->isWhite() == piece.isWhite()) return false;
     // if not on same diagonal
     if (isOnSameDiagonal(piece)) return false;
 
@@ -20,7 +20,7 @@ bool King::canCapture(Piece& piece, Board &board) {
 
     if (!newPos.isPositionValid()) return false;
     if (board.getBoard()[newX][newY] == Empty) return true;
-    else return false;
+    else return false;*/
 }
 
 

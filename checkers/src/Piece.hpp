@@ -6,6 +6,7 @@
 
 #include "Position.hpp"
 #include "Board.hpp"
+#include "Move.hpp"
 
 class Spot;
 
@@ -22,16 +23,16 @@ public:
 
     bool isOnSameDiagonal(Piece& piece);
     // int radiusDistance(Piece& piece);
-    Position positionDistance(Piece& piece);
+    Position positionDistance(Position pos);
 
-    virtual bool canCapture(Piece& piece,  Board &board) = 0;
-    
-
+    virtual bool canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
+    virtual std::vector<Move> getValidMoves(Board &board) = 0;
     virtual std::ostream& print(std::ostream& os) = 0;
 
+protected:
+    Position pos_;
 
 private:
-    Position pos_;
     bool isWhite_;
 
 };

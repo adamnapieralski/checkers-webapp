@@ -7,7 +7,9 @@
 
 class Move {
 public:
+    Move(){};
     Move(Position, Position);
+    Move(Position, Position, Position);
     
     Position startPos, endPos;
     std::vector<Position> capturedPos;
