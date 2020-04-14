@@ -71,11 +71,11 @@ std::string Board::getFEN() {
 void Board::makeMove(Move &move){
 
     auto st = move.startPos;
-    auto pc = board_[st.y][st.x];
-    board_[st.y][st.x] = Empty;
+    auto pc = board_[st.x][st.y];
+    board_[st.x][st.y] = Empty;
     for (auto& c : move.capturedPos) {
-        board_[c.y][c.x] = Empty;
+        board_[c.x][c.y] = Empty;
     }
     auto en = move.endPos;
-    board_[en.y][en.x] = pc;
+    board_[en.x][en.y] = pc;
 }

@@ -76,10 +76,10 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
         }
         else {
             if(board.getBoard()[pos_.x - 1][pos_.y + 1] == Empty){
-                moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y -1)));
+                moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y +1)));
             }
             if(board.getBoard()[pos_.x - 1][pos_.y - 1] == Empty){
-                moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y +1)));
+                moves.push_back(Move(pos_,Position(pos_.x - 1, pos_.y -1)));
             }
         }
 

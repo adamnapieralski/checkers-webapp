@@ -16,6 +16,7 @@ public:
     void setHasTurn(bool hasTurn);
     void initializePieces();
     std::vector<Move> getValidMoves(Board &board);
+    void printPlayer();
 
 private:
     std::vector<Piece*> pieces_;
