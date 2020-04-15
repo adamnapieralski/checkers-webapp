@@ -34,10 +34,34 @@ std::array<std::array<PieceName,8>,8> Board::getBoard(){
     return board_;
 }
 
+void Board::clearPosition(Position pos) {
+    board_[pos.y][pos.x] = Empty;
+}
+
 void Board::placePiece(Position pos, PieceName piece){
-    if(board_[pos.x][pos.y] == Empty){
-        board_[pos.x][pos.y] = piece;
+    if(board_[pos.y][pos.x] == Empty){
+        board_[pos.y][pos.x] = piece;
     }
+}
+
+PieceName Board::getPieceName(Position pos) {
+    return board_[pos.y][pos.x];
+}
+
+void Board::makeMove(const Move& m) {
+    auto st = m.getStartPosition();
+    auto pc = board_[st.y][st.x];
+    board_[st.y][st.x] = Empty;
+    for (auto& c : m.getCapturedPositions()) {
+        board_[c.y][c.x] = Empty;
+    }
+    auto en = m.getEndPosition();
+    board_[en.y][en.x] = pc;
+}
+
+Board& Board::operator=(Board other) {
+    swap(*this, other);
+    return *this;
 }
 
 std::string Board::getFEN() {
@@ -78,4 +102,8 @@ void Board::makeMove(Move &move){
     }
     auto en = move.endPos;
     board_[en.x][en.y] = pc;
+}
+
+void swap(Board& b1, Board& b2) {
+    std::swap(b1.board_, b2.board_);
 }

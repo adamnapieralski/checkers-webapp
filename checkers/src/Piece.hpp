@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Position.hpp"
+#include "Move.hpp"
 #include "Board.hpp"
 #include "Move.hpp"
 
@@ -14,7 +15,7 @@ class Spot;
 class Piece {
 public:
     // Piece(Position pos, bool isWhite, Board* board);
-    Piece(bool isWhite, Position pos, Board& board);
+    Piece(Position pos, bool isWhite);
     virtual ~Piece() {};
 
     bool isWhite();
@@ -26,9 +27,13 @@ public:
     Position positionDistance(Position pos);
     void changePosition(Position pos);
 
+    bool isSameColor(PieceName pn);
+    bool isDiffColor(PieceName pn);
+    
+    virtual std::vector<Move> getValidMoves(Board& board, bool mustCapture=false) = 0;
     virtual void canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
+  
     virtual std::ostream& print(std::ostream& os) = 0;
-    virtual std::vector<Move> getValidMoves(Board &board, bool &mustCapture) = 0;
 
 protected:
     Position pos_;

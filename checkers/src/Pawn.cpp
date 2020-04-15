@@ -54,21 +54,6 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
     if(countMoves == 0){
         moves.push_back(current);
     }
-
-    /*if (this->isWhite() == piece.isWhite()) return false;
-
-    Position diff = positionDistance(piece);
-    if (abs(diff.x) != 1 || abs(diff.y) != 1) return false;
-
-    int newX = piece.getPosition().x + diff.x;
-    int newY = piece.getPosition().y + diff.y;
-    Position newPos(newX, newY);
-
-    if (!newPos.isPositionValid()) return false;
-    if (board.getBoard()[newX][newY] == Empty) return true;
-    else return false;*/
-
-
 }
 
 std::vector<Move> Pawn::getValidMoves(Board &board, bool &mustCapture) {

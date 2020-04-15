@@ -8,13 +8,9 @@
 //     isWhite_ = isWhite;
 // }
 
-Piece::Piece(bool isWhite, Position pos, Board& board) {
-
+Piece::Piece(Position pos, bool isWhite) {
     isWhite_ = isWhite;
     pos_ = pos;
-    if(isWhite)
-        board.placePiece(pos_, WhitePawn);
-    else board.placePiece(pos_, BlackPawn);
 }
 
 bool Piece::isWhite() { return isWhite_;    }
@@ -40,10 +36,25 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 //     return std::abs(this->pos_.x - piece.pos_.x);
 // }
 
+
 Position Piece::positionDistance(Position pos) {
     return Position(pos.x - getPosition().x, pos.y - getPosition().y);
 }
 
 void Piece::changePosition(Position pos){
     pos_ = pos;
+}
+
+bool Piece::isSameColor(PieceName pn) {
+    if (isWhite_ && (pn == WhitePawn || pn == WhiteKing)
+        || !isWhite_ && (pn == BlackPawn || pn == BlackKing))
+        return true;
+    else return false;
+}
+
+bool Piece::isDiffColor(PieceName pn) {
+    if (isWhite_ && (pn == BlackPawn || pn == BlackKing)
+        || !isWhite_ && (pn == WhitePawn || pn == WhiteKing))
+        return true;
+    else return false;
 }
