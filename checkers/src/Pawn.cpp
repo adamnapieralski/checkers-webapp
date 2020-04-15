@@ -58,7 +58,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
             for(int i = 0 ; i < 2 ; ++i){
                 Position nP(getPosition().x + d[i], getPosition().y + 1);
                 if(board.getPieceName(nP) == Empty){
-                    moves.push_back(Move(pos_, nP));
+                    moves.push_back(Move(getPosition(), nP));
                 }
             }
         }
@@ -66,7 +66,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
             for(int i = 0 ; i < 2 ; ++i){
                 Position nP(getPosition().x + d[i], getPosition().y - 1);
                 if(board.getPieceName(nP) == Empty){
-                    moves.push_back(Move(pos_, nP));
+                    moves.push_back(Move(getPosition(), nP));
                 }
             }
         }
