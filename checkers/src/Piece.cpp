@@ -8,12 +8,12 @@
 //     isWhite_ = isWhite;
 // }
 
-Piece::Piece(Position pos, bool isWhite) {
-    isWhite_ = isWhite;
-    pos_ = pos;
-}
+Piece::Piece(Position pos, bool isWhite, bool isUser) :
+    pos_(pos), isWhite_(isWhite), isUser_(isUser) {}
 
 bool Piece::isWhite() { return isWhite_;    }
+
+bool Piece::isUser() {  return isUser_; }
 
 Position Piece::getPosition() { return pos_;    }
 

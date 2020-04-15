@@ -7,18 +7,25 @@ Move::Move(Position s, Position e, Position c) : startPos_(s), endPos_(e) {
 }
 
 void Move::addStepMove(Move tmp){
-    if(!startPos.x){
-        startPos = tmp.startPos;
+    if(!startPos_.x){
+        startPos_ = tmp.startPos_;
     }
-    endPos = tmp.endPos;
-    stepMoves.push_back(tmp);
-    capturedPos.push_back(tmp.capturedPos[0]);
+    endPos_ = tmp.endPos_;
+    stepMoves_.push_back(tmp);
+    capturedPos_.push_back(tmp.capturedPos_[0]);
 }
 
-bool Move::operator==(const Move& move) const{
-        if (move.startPos == startPos && move.endPos == endPos && move.stepMoves == stepMoves ) return true;
-        return false;
-    }
+bool Move::isInitial() {
+    Move initial;
+    if (*this == initial) return true;
+    else return false;
+}
+
+bool Move::operator==(const Move& move) const {
+    if (move.startPos_ == startPos_ && move.endPos_ == endPos_ &&
+        move.stepMoves_ == stepMoves_ && move.capturedPos_ == capturedPos_) return true;
+    return false;
+}
 
 
 Move Move::merge(Move& next) {
