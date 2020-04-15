@@ -26,8 +26,6 @@ public:
     friend void swap(Board& b1, Board& b2);
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
 
-
-
 private:
     std::array<std::array<PieceName,8>,8> board_ ;
 };

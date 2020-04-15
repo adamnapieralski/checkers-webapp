@@ -97,8 +97,10 @@ bool King::canCapture(Piece& piece, Board &board) {
 
     if (!newPos.isPositionValid()) return false;
     if (board.getBoard()[newX][newY] == Empty) return true;
-    else return false;
+    else return false;*/
 }
+
+std::vector<Move> King::getValidMoves(Board &board, bool &mustCapture){};
 
 
 std::ostream& King::print(std::ostream& os){

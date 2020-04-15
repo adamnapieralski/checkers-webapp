@@ -9,7 +9,7 @@ class King : public Piece {
 public:
     King(Position pos, bool isWhite, Board& board);
     std::vector<Move> getValidMoves(Board& board, bool mustCapture=false) override;
-    bool canCapture(Piece& piece,  Board &board) override;
+    void canCapture(std::vector<Move> &moves, Board board, Move current) override;
 
     std::ostream& print(std::ostream&);
 };

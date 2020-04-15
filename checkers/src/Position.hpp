@@ -24,6 +24,11 @@ struct Position {
     }
 };
 
+inline bool operator==( const Position &a, const Position &b ){
+    if (a.x == b.x && a.y == b.y) return true;
+    return false;
+}
+
 
 enum PieceName {
     Empty, WhiteKing, WhitePawn, BlackKing, BlackPawn

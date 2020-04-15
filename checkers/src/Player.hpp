@@ -15,6 +15,9 @@ public:
     bool isWhite();
     void setHasTurn(bool hasTurn);
     void initializePieces();
+    std::vector<Move> getValidMoves(Board &board, int index);
+    void printPlayer();
+    void movePiece(Board &board, int index, Move move);
 
 private:
     std::vector<Piece*> pieces_;

@@ -7,9 +7,13 @@
 
 class Move {
 public:
-    Move(Position s, Position e);
-    Move(Position s, Position e, Position c);
+    Move(){};
+    Move(Position, Position);
+    Move(Position, Position, Position);
 
+    void addStepMove(Move tmp);
+    bool operator==(const Move& move) const;
+    
     Move merge(Move& next);
 
     Position getStartPosition() const;
@@ -21,6 +25,7 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
+
 };
 
 #endif  // MOVE_HPP

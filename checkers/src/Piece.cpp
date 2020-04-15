@@ -36,8 +36,13 @@ bool Piece::isOnSameDiagonal(Piece& piece) {
 //     return std::abs(this->pos_.x - piece.pos_.x);
 // }
 
-Position Piece::positionDistance(Piece& piece) {
-    return Position(piece.getPosition().x - getPosition().x, piece.getPosition().y - getPosition().y);
+
+Position Piece::positionDistance(Position pos) {
+    return Position(pos.x - getPosition().x, pos.y - getPosition().y);
+}
+
+void Piece::changePosition(Position pos){
+    pos_ = pos;
 }
 
 bool Piece::isSameColor(PieceName pn) {
@@ -53,4 +58,3 @@ bool Piece::isDiffColor(PieceName pn) {
         return true;
     else return false;
 }
-
