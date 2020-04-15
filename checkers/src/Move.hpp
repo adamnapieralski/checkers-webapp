@@ -7,11 +7,20 @@
 
 class Move {
 public:
-    Move(Position, Position);
-    
-    Position startPos, endPos;
-    std::vector<Position> capturedPos;
-    std::vector<Move> stepMoves;
+    Move(Position s, Position e);
+    Move(Position s, Position e, Position c);
+
+    Move merge(Move& next);
+
+    Position getStartPosition() const;
+    Position getEndPosition() const;
+    std::vector<Position> getCapturedPositions() const;
+    std::vector<Move> getStepMoves() const;
+
+private:
+    Position startPos_, endPos_;
+    std::vector<Position> capturedPos_;
+    std::vector<Move> stepMoves_;
 };
 
 #endif  // MOVE_HPP

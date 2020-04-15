@@ -1,6 +1,17 @@
 #include "Pawn.hpp"
 #include "Board.hpp"
 
+Pawn::Pawn(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
+    if (isWhite)
+        board.placePiece(pos, WhitePawn);
+    else
+        board.placePiece(pos, BlackPawn);
+}
+
+std::vector<Move> Pawn::getValidMoves(Board& board, bool mustCapture) {
+    return std::vector<Move>();
+}
+
 bool Pawn::canCapture(Piece& piece, Board &board) {
     if (this->isWhite() == piece.isWhite()) return false;
 

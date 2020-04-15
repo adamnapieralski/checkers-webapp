@@ -7,8 +7,11 @@ class King : public Piece {
     using Piece::Piece;
 
 public:
-    std::ostream& print(std::ostream&);
+    King(Position pos, bool isWhite, Board& board);
+    std::vector<Move> getValidMoves(Board& board, bool mustCapture=false) override;
     bool canCapture(Piece& piece,  Board &board) override;
+
+    std::ostream& print(std::ostream&);
 };
 
 #endif  // KING_HPP
