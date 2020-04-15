@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html ng-app="Checkers">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>Warcaby</title>
+
+		<link rel="stylesheet" href="{{ STATIC_URL }}styles.css" />
+
+
+		<script src="{{ STATIC_URL }}angular.min.js"></script>
+		<script src="{{ STATIC_URL }}bower_components/jquery/dist/jquery.min.js"></script>
+
+		<!-- <script src="{{ STATIC_URL }}angular.min.js"></script> -->
+
+		<!-- <link rel="stylesheet" type="text/css" href="bower_components/chessboard-js/css/chessboard.min.css" /> -->
+
+
+	</head>
+    <body>
+		<center><br><br><br>
+			<button type="button" href="/play" id="button_id">GRAJ</button><br>
+		</center>
+	<br>
+    </body>
+</html>

@@ -16,6 +16,12 @@ import checkerspy.views
 def index(request):
     """for working server"""
     return render_to_response('tresc.html', {}, context_instance=RequestContext(request))
+    
+def entry(request):
+    return render_to_response('entry.html', {}, context_instance=RequestContext(request))
+    
+def play(request):
+    return render_to_response('tresc.html', {}, context_instance=RequestContext(request))
 
 def ajax(request, module, function):
     """dispatch ajax requests"""
