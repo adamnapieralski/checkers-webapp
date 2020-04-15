@@ -7,11 +7,11 @@ class Pawn : public Piece {
     using Piece::Piece;
     
 public:
-    Pawn(Position pos, bool isWhite, Board& board);
+    Pawn(Position pos, bool isWhite, bool isUser, Board& board);
 
     void getCaptureMoves(std::vector<Move> &moves, Board board, Move current);
     void canCapture(std::vector<Move> &moves, Board board, Move current) override;
-    std::vector<Move> getValidMoves(Board& board, bool mustCaputer=false) override;
+    std::vector<Move> getValidMoves(Board& board, bool mustCapture=false) override;
 
     std::ostream& print(std::ostream&) override;
 };

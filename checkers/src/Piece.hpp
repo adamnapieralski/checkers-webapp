@@ -15,10 +15,11 @@ class Spot;
 class Piece {
 public:
     // Piece(Position pos, bool isWhite, Board* board);
-    Piece(Position pos, bool isWhite);
+    Piece(Position pos, bool isWhite, bool isUser);
     virtual ~Piece() {};
 
     bool isWhite();
+    bool isUser();
     
     Position getPosition();
 
@@ -40,7 +41,7 @@ protected:
 
 private:
     bool isWhite_;
-
+    bool isUser_;
 };
 
 #endif  // PIECE_HPP

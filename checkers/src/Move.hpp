@@ -12,14 +12,15 @@ public:
     Move(Position, Position, Position);
 
     void addStepMove(Move tmp);
-    bool operator==(const Move& move) const;
-    
+    bool isInitial();
     Move merge(Move& next);
 
     Position getStartPosition() const;
     Position getEndPosition() const;
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
+
+    bool operator==(const Move& move) const;
 
 private:
     Position startPos_, endPos_;

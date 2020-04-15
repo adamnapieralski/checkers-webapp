@@ -1,6 +1,6 @@
 #include "King.hpp"
 
-King::King(Position pos, bool isWhite, Board& board) : Piece(pos, isWhite) {
+King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
     if (isWhite)
         board.placePiece(pos, WhiteKing);
     else
@@ -23,7 +23,7 @@ std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
     for (int i = 0; i < 4; ++i) {
         bool metOpponent = false;
         Position p(startPos.x + dx[i], startPos.y + dy[i]);
-        while (p.isPositionValid()) {
+        while (p.isValid()) {
             PieceName pn = board.getPieceName(p);
             if (isSameColor(pn))  break;
             if (metOpponent && pn == Empty && !captured[i].first) {
@@ -52,7 +52,7 @@ std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
                     Move m(startPos, pos, captured[i].second);
                     auto tempBoard = board;
                     tempBoard.makeMove(m);
-                    King k(pos, isWhite(), tempBoard);
+                    King k(pos, isWhite(), isUser(), tempBoard);
 
                     auto nextMoves = k.getValidMoves(tempBoard, true);
                     if (nextMoves.empty()) {
@@ -77,30 +77,31 @@ std::vector<Move> King::getValidMoves(Board& board, bool mustCapture) {
     return moves;
 }
 
-bool King::canCapture(Piece& piece, Board &board) {
-    if (this->isWhite() == piece.isWhite()) return false;
-    // if not on same diagonal
-    if (isOnSameDiagonal(piece)) return false;
+void King::canCapture(std::vector<Move> &moves, Board board, Move current) {};
 
-    Position diff = positionDistance(piece);
-    Position thisPos = this->getPosition(), piecePos = piece.getPosition();
 
-    int stepX = diff.x / abs(diff.x), stepY = diff.y / abs(diff.y);
-    for (int i = 1; i < abs(diff.x); ++i) {
-        if (board.getBoard()[thisPos.x + i * stepX][thisPos.y + i * stepY] != Empty)
-            return false;
-    }
+// bool King::canCapture(Piece& piece, Board &board) {
+//     if (this->isWhite() == piece.isWhite()) return false;
+//     // if not on same diagonal
+//     if (isOnSameDiagonal(piece)) return false;
 
-    int newX = piecePos.x + stepX;
-    int newY = piecePos.y + stepY;
-    Position newPos(newX, newY);
+//     Position diff = positionDistance(piece);
+//     Position thisPos = this->getPosition(), piecePos = piece.getPosition();
 
-    if (!newPos.isPositionValid()) return false;
-    if (board.getBoard()[newX][newY] == Empty) return true;
-    else return false;*/
-}
+//     int stepX = diff.x / abs(diff.x), stepY = diff.y / abs(diff.y);
+//     for (int i = 1; i < abs(diff.x); ++i) {
+//         if (board.getBoard()[thisPos.x + i * stepX][thisPos.y + i * stepY] != Empty)
+//             return false;
+//     }
 
-std::vector<Move> King::getValidMoves(Board &board, bool &mustCapture){};
+//     int newX = piecePos.x + stepX;
+//     int newY = piecePos.y + stepY;
+//     Position newPos(newX, newY);
+
+//     if (!newPos.isValid()) return false;
+//     if (board.getBoard()[newX][newY] == Empty) return true;
+//     else return false;
+// }
 
 
 std::ostream& King::print(std::ostream& os){

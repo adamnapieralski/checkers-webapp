@@ -8,8 +8,13 @@ struct Position {
     Position() : x(0), y(0) {};
     Position(int setX, int setY) : x(setX), y(setY) {};
 
-    bool isPositionValid() {
+    bool isValid() {
         if (x >= 0 && x <= 7 && y >=0 && y <= 7) return true;
+        else return false;
+    }
+
+    bool isLastRow(bool isUser) {
+        if (isUser && y == 7 || !isUser && y == 0) return true;
         else return false;
     }
 
@@ -37,9 +42,9 @@ enum PieceName {
 inline std::ostream& operator<<(std::ostream& os, const PieceName& p){
     switch (p){
         case Empty : os << "_"; break;
-        case WhiteKing : os << "wK"; break ;
+        case WhiteKing : os << "K"; break ;
         case WhitePawn : os << "w"; break;
-        case BlackKing : os << "bK"; break ;
+        case BlackKing : os << "B"; break ;
         case BlackPawn : os << "b"; break ;
         default : os << " "; break ;
     }

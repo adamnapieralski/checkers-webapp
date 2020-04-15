@@ -13,7 +13,7 @@ void Player::initializePieces(){
         for (int i = 0; i < 3; ++i){
             for(int j = 0; j < 8; ++j) {
                 if ((i + j) % 2 == 0) {
-                    pieces_.push_back(new Pawn(Position(j, i), isWhite_, *board_));
+                    pieces_.push_back(new Pawn(Position(j, i), isWhite_, isUser_, *board_));
                 }
             }
         }
@@ -23,7 +23,7 @@ void Player::initializePieces(){
         for (int i = 7; i > 4; --i){
             for (int j = 0; j < 8; ++j){
                 if ((i + j) % 2 == 0){
-                   pieces_.push_back(new Pawn(Position(j, i), isWhite_, *board_));
+                   pieces_.push_back(new Pawn(Position(j, i), isWhite_, isUser_, *board_));
                 }
             }
         }
@@ -64,7 +64,7 @@ void Player::printPlayer(){
 }
 
 void Player::movePiece(Board &board, int index, Move move){
-    pieces_[index]->changePosition(move.endPos);
+    pieces_[index]->changePosition(move.getEndPosition());
     board.makeMove(move);
 }
 //napisac desktruktor zwalniajacy te pionki

@@ -92,17 +92,17 @@ std::string Board::getFEN() {
     return fen;
 }
 
-void Board::makeMove(Move &move){
+// void Board::makeMove(const Move &move){
 
-    auto st = move.startPos;
-    auto pc = board_[st.x][st.y];
-    board_[st.x][st.y] = Empty;
-    for (auto& c : move.capturedPos) {
-        board_[c.x][c.y] = Empty;
-    }
-    auto en = move.endPos;
-    board_[en.x][en.y] = pc;
-}
+//     auto st = move.startPos;
+//     auto pc = board_[st.x][st.y];
+//     board_[st.x][st.y] = Empty;
+//     for (auto& c : move.capturedPos) {
+//         board_[c.x][c.y] = Empty;
+//     }
+//     auto en = move.endPos;
+//     board_[en.x][en.y] = pc;
+// }
 
 void swap(Board& b1, Board& b2) {
     std::swap(b1.board_, b2.board_);
