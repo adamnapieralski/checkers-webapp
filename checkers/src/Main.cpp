@@ -9,9 +9,6 @@
 #include "Pawn.hpp"
 
 int main() {
-
-    //Checkers ch = Checkers(true);
-
     Board board = Board();
     std::cout << "Drukuje tablice" << std::endl;
     std::cout << board << std::endl;
@@ -89,6 +86,19 @@ int main() {
     auto mv = k.getValidMoves(b2);
     b2.makeMove(mv[1]);
     std::cout << b2 << std::endl;
+
+
+    // test for pawn to king change
+    std::cout << "Test: Pawn to King change" << std::endl;
+    Board newBoard = Board();
+    auto pawnW1 = Pawn(Position(1, 5), true, true, newBoard);
+    auto kingB1 = King(Position(2, 6), false, false, newBoard);
+    auto pawnB1 = Pawn(Position(5, 5), false, false, newBoard);
+    std::cout << newBoard << std::endl;
+    auto mvs = pawnW1.getValidMoves(newBoard);
+    newBoard.makeMove(mvs[0]);
+    std::cout << newBoard << std::endl;
+    // TODO: change piece from pawn to king
 
     return 0;
 }
