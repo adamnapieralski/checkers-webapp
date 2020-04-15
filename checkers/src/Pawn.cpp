@@ -40,49 +40,9 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
                     p.getCaptureMoves(moves, board, current);
                 }
             }
-            // if (isWhite()){
-            //     if(board.getBoard()[pos.x][pos.y] == BlackPawn || board.getBoard()[pos.x][pos.y] == BlackKing ){
-            //         Position diff = positionDistance(pos);
-            //         Position newP = Position(pos.x + diff.x, pos.y + diff.y);
-            //         if (board.getBoard()[newP.x][newP.y] == Empty){
-            //             countMoves++;
-            //             Move tmp = Move(pos_, newP, pos);
-            //             current.addStepMove(tmp);
-            //             board.makeMove(tmp);
-            //             if(newP.x == 7) {
-            //                 //King k(isWhite(), newP, board);
-            //                 //std::vector<Move> king_move;
-            //                 //king_move = k.getValidMoves;
-            //                 //merge kazdy obiekt z king_move z current move i moves.push_back(kazdy ten nowy move);
-            //                 continue;
-            //             }
-            //             Pawn p(isWhite(), newP, board);
-            //             p.getCaptureMoves(moves, board, current);
-            //         }
-            //     }
-            // }
-            // else{
-            //     if(board.getBoard()[pos.x][pos.y] == WhitePawn || board.getBoard()[pos.x][pos.y] == WhiteKing ){
-            //         Position diff = positionDistance(pos);
-            //         Position newP = Position(pos.x + diff.x, pos.y + diff.y);
-            //         if (board.getBoard()[newP.x][newP.y] == Empty){
-            //             countMoves++;
-            //             Move tmp = Move(pos_, newP, pos);
-            //             current.addStepMove(tmp);
-            //             board.makeMove(tmp);
-            //             Pawn p(isWhite(), newP, board);
-            //             p.getCaptureMoves(moves, board, current);
-            //         }
-            //     }
-            // }
         }
         
     }
-
-    // if(countMoves == 0){
-    //     return false;
-    // }
-    // return true;
 }
 
 std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
@@ -112,11 +72,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
         }
         mustCapture = false;
     }
-
     return moves;
-
-    //TODO: nulle, czy dziala ok? sprawdza poza plansza -> do zmiany, drukowanie ruchow, testy, zamiana pionka na krolowa
-    
 }
 
 void Pawn::canCapture(std::vector<Move> &moves, Board board, Move current) {};
