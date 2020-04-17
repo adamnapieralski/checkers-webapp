@@ -5,23 +5,23 @@ import traceback
 #all modules should be imported here
 
 from django.shortcuts import render_to_response
-
 from django.template import RequestContext
-
 from django.http import HttpResponse
+from django.shortcuts import redirect
 
 import checkerspy
 import checkerspy.views
 
 def index(request):
     """for working server"""
-    return render_to_response('tresc.html', {}, context_instance=RequestContext(request))
+    # return render_to_response('game.html', {}, context_instance=RequestContext(request))
+    return redirect('/entry')
     
 def entry(request):
     return render_to_response('entry.html', {}, context_instance=RequestContext(request))
     
 def play(request):
-    return render_to_response('tresc.html', {}, context_instance=RequestContext(request))
+    return render_to_response('game.html', {}, context_instance=RequestContext(request))
 
 def ajax(request, module, function):
     """dispatch ajax requests"""
@@ -31,4 +31,4 @@ def ajax(request, module, function):
         data = json.dumps( fun(request.GET) )
         return django.http.HttpResponse(data, content_type='application/json')
     except:
-        return render_to_response('tresc.html', {}, context_instance=RequestContext(request))
+        return render_to_response('game.html', {}, context_instance=RequestContext(request))
