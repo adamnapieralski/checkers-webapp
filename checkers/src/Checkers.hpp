@@ -22,9 +22,14 @@ struct GameState {
 
 class Checkers {
 public:
-	Checkers(bool isUserWhite);
+	// Checkers();
+	// Checkers(bool isUserWhite);
+	
+	std::string findTile(std::string id); // temp test method
 
-	static std::string findTile(std::string id); // temp test method
+	void initialize(std::string userName, bool isUserWhite);
+	bool getIsUserWhite();
+	std::string getUserName();
 
 	GameState processUserMove(std::string org, std::string dest) {	return GameState();	}
 	GameState processComputerMove() {	return GameState();	}
@@ -32,6 +37,8 @@ public:
 private:
 	//Player userPlayer_, compPlayer_;
 	Board board_;
+	bool isUserWhite_;
+	std::string userName_;
 };
 
 #endif	// CHECKERS_HPP

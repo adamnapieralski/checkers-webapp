@@ -7,10 +7,12 @@ myAppControllers.controller('codeController',
 		function ($scope, srvInfo) {
 
 		$scope.viewTile = function(data) {
+			this.printUserName();
 			srvInfo.findTile(
 				function(data) {
 					// zwrocone z findTile z checkerspy/views.py
 					$scope.pawn_tile = data;
+					console.log(data);
 				});
 		};
 
@@ -20,9 +22,19 @@ myAppControllers.controller('codeController',
 				document.getElementById('userNameText').style.borderColor = 'red';
 			}
 			else {
+				srvInfo.initializeGame(function(data) {});
 				window.location = "/play";
 			}
 		};
+
+		$scope.printUserName = function(data) {
+			srvInfo.getUserName(
+				function(data) {
+					document.getElementById('userNameView').textContent = data.user_name;
+					document.getElementById('userColorView').textContent = data.user_color;
+				}
+			)
+		}
 }]);
 	
 
@@ -33,7 +45,22 @@ angular.module('myAppServices', [])
                  this.findTile = function(callback) {
 					 // wywoluje findTile z checkerspy/views.py
                      return $http.get('/ajax/checkerspy/findTile/?pawn_id='+document.getElementById('pawn_id').value).success(callback);
-                 };
+				 };
+				 this.initializeGame = function(callback) {
+					var colors = document.getElementsByName('userColors'); 
+					var user_color = "";
+					for(i = 0; i < colors.length; i++) { 
+						if(colors[i].checked) 
+							user_color = colors[i].value;
+					} 
+					return $http.get('/ajax/checkerspy/initialize/?user_name='
+					+ document.getElementById('userNameText').value + '&user_color='
+					+ user_color).success(callback); 
+				 };
+				 this.getUserName = function(callback) {
+					return $http.get('/ajax/checkerspy/get_user_data/').success(callback); 
+				 };
+
              });
 
 

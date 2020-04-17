@@ -1,11 +1,11 @@
 #include "Checkers.hpp"
 
-Checkers::Checkers(bool isUserWhite) {
-	//userPlayer_.setIsWhite(isUserWhite);
+// Checkers::Checkers(bool isUserWhite) {
+// 	//userPlayer_.setIsWhite(isUserWhite);
 
-	//compPlayer_.setIsWhite(!isUserWhite);
+// 	//compPlayer_.setIsWhite(!isUserWhite);
 
-}
+// }
 
 std::string Checkers::findTile(std::string id){
 	std::string result = id;
@@ -13,3 +13,13 @@ std::string Checkers::findTile(std::string id){
 
 	return result;
 }
+
+void Checkers::initialize(std::string userName, bool isUserWhite) {
+	isUserWhite_ = isUserWhite;
+	userName_ = userName;
+}
+
+bool Checkers::getIsUserWhite() { return isUserWhite_; }
+
+std::string Checkers::getUserName() { return userName_;	}
+
