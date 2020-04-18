@@ -29,6 +29,7 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
                     else current = current.merge(tmp);
                     board.makeMove(tmp);
                     if (newP.isLastRow(isUser())) {
+                        current.addChange(newP);
                         King k(newP, isWhite(), isUser(), board);
                         auto kingMoves = k.getValidMoves(board, true);
                         for (auto& km : kingMoves) {

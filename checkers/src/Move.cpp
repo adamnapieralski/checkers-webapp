@@ -6,14 +6,14 @@ Move::Move(Position s, Position e, Position c) : startPos_(s), endPos_(e) {
     capturedPos_.push_back(c);
 }
 
-void Move::addStepMove(Move tmp){
+/*void Move::addStepMove(Move tmp){
     if(!startPos_.x){
         startPos_ = tmp.startPos_;
     }
     endPos_ = tmp.endPos_;
     stepMoves_.push_back(tmp);
     capturedPos_.push_back(tmp.capturedPos_[0]);
-}
+}*/
 
 bool Move::isInitial() {
     Move initial;
@@ -49,6 +49,12 @@ Move Move::merge(Move& next) {
     }
     return merged;
 }
+
+void Move::addChange(Position pos){
+    changePos_ = pos;
+}
+
+Position Move::getChangedPosition() const { return changePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }
 

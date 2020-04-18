@@ -71,7 +71,7 @@ void Player::movePiece(Board &board, int index, Move move){
 
 Piece* Player::findPiece(Position pos){
     for (auto& piece : pieces_){
-        if (piece->getPosition == pos) return piece;
+        if (piece->getPosition() == pos) return piece;
         else return nullptr;
     }
 }
