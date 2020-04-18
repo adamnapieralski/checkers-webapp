@@ -70,7 +70,7 @@ void Player::erasePiece(Piece* piece){
                                             [&piece](Piece* p) {return p && p == piece ; }));
 }
 
-void Player::changePiece(Piece* &piece, Position pos){
+void Player::changePiece(Piece* piece, Position pos){
     piece ->changePosition(pos);
 }
 

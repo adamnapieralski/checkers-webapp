@@ -20,7 +20,7 @@ public:
     void movePiece(Board &board, Player &opponent, Move move);
     Piece* findPiece(Position pos);
     void erasePiece(Piece* piece);
-    void changePiece(Piece* &piece, Position pos);
+    void changePiece(Piece* piece, Position pos);
 
 private:
     std::vector<Piece*> pieces_;
