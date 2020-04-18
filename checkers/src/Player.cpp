@@ -68,3 +68,10 @@ void Player::movePiece(Board &board, int index, Move move){
     board.makeMove(move);
 }
 //napisac desktruktor zwalniajacy te pionki
+
+Piece* Player::findPiece(Position pos){
+    for (auto& piece : pieces_){
+        if (piece->getPosition == pos) return piece;
+        else return nullptr;
+    }
+}

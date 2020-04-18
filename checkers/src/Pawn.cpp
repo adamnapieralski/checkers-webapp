@@ -44,7 +44,7 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
         
     }
 
-    if (countMoves == 0){
+    if (countMoves == 0 && !current.isInitial()){
         moves.push_back(current);
     }
 }
@@ -56,7 +56,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
 
     getCaptureMoves(moves, board, move);
 
-    if (moves[0].isInitial()){
+    if (moves.empty()){
         int d[2] ={1, -1};
         if (isUser()) {
             for(int i = 0 ; i < 2 ; ++i){

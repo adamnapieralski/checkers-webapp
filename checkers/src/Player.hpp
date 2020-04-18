@@ -18,6 +18,7 @@ public:
     std::vector<Move> getValidMoves(Board &board, int index);
     void printPlayer();
     void movePiece(Board &board, int index, Move move);
+    Piece* findPiece(Position pos);
 
 private:
     std::vector<Piece*> pieces_;
