@@ -34,7 +34,7 @@ int main() {
     computer.printPlayer();
 
 
-    std::vector<Move> valid_moves;
+   /* std::vector<Move> valid_moves;
     std::vector<Move> valid_comp;
     valid_moves = user.getValidMoves(board, 10);
     if(valid_moves.size() != 0 ){
@@ -66,7 +66,7 @@ int main() {
     if(valid_moves.size() != 0 ){
         computer.movePiece(board,7,valid_moves[0]);
     }
-    std::cout << board << std::endl;
+    std::cout << board << std::endl;*/
 
 
     std::cout << "King test" << std::endl;
@@ -86,6 +86,25 @@ int main() {
     auto mv = k.getValidMoves(b2);
     b2.makeMove(mv[1]);
     std::cout << b2 << std::endl;
+
+    //Pawn test
+    std::cout << "Pawn test" << std::endl;
+    std::cout << initBoard << std::endl;
+    Move m4(Position(1, 1), Position(3, 3), Position(2, 2));
+    Move m5(Position(3, 3), Position(1, 5), Position(2, 4));
+    auto m6 = m4.merge(m5);
+    auto b3 = initBoard;
+    b3.makeMove(m6);
+    std::cout << b3 << std::endl;
+    Pawn l(Position(3, 3), false, false, b3);
+    Pawn m(Position(1, 1), true, true, b3);
+    b3.clearPosition(Position(5, 1));
+    b3.clearPosition(Position(0, 0));
+
+    std::cout << b3 << std::endl;
+    auto mve = l.getValidMoves(b3);
+    b3.makeMove(mve[0]);
+    std::cout << b3 << std::endl;
 
 
     // test for pawn to king change

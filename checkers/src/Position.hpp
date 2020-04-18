@@ -27,6 +27,7 @@ struct Position {
         if (x != p.x || y != p.y) return true;
         else return false;
     }
+
 };
 
 inline bool operator==( const Position &a, const Position &b ){

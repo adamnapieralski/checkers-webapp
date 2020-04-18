@@ -22,7 +22,7 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
         if (pos.isValid()) {
             if (isDiffColor(board.getPieceName(pos))) {
                 Position newP = Position(pos.x + dx[i], pos.y + dy[i]);
-                if (board.getPieceName(newP) == Empty) {
+                if (newP.isValid() && board.getPieceName(newP) == Empty) {
                     ++countMoves;
                     Move tmp = Move(getPosition(), newP, pos);
                     if (current.isInitial()) current = tmp;
@@ -43,6 +43,10 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
         }
         
     }
+
+    if (countMoves == 0){
+        moves.push_back(current);
+    }
 }
 
 std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
@@ -52,7 +56,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board, bool mustCapture) {
 
     getCaptureMoves(moves, board, move);
 
-    if (moves.empty()){
+    if (moves[0].isInitial()){
         int d[2] ={1, -1};
         if (isUser()) {
             for(int i = 0 ; i < 2 ; ++i){
