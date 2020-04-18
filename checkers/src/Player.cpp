@@ -1,5 +1,7 @@
 #include "Player.hpp"
 #include "Pawn.hpp"
+#include "King.hpp"
+#include <algorithm> 
 
 Player::Player(Board* board, bool isWhite, bool isUser) :
     board_(board), isWhite_(isWhite), isUser_(isUser) {}
@@ -50,7 +52,7 @@ std::vector<Move> Player::getValidMoves(Board &board, int index){
     
     */
     std::vector<Move> move;
-    std::cout << pieces_[index]->getPosition().x << "," << pieces_[index]->getPosition().y << std::endl;
+    //std::cout << pieces_[index]->getPosition().x << "," << pieces_[index]->getPosition().y << std::endl;
     bool mustCapture;
     move = (pieces_[index])->getValidMoves(board, mustCapture);
 
@@ -63,8 +65,27 @@ void Player::printPlayer(){
     }
 }
 
-void Player::movePiece(Board &board, int index, Move move){
-    pieces_[index]->changePosition(move.getEndPosition());
+void Player::erasePiece(Piece* piece){
+    pieces_.erase(std::remove_if(pieces_.begin(), pieces_.end(), 
+                                            [&piece](Piece* p) {return p && p == piece ; }));
+}
+
+void Player::changePiece(Piece* &piece, Position pos){
+    piece ->changePosition(pos);
+}
+
+void Player::movePiece(Board &board, Player &opponent, Move move){
+    Piece* tmp = findPiece( move.getStartPosition() );
+    if(!move.getChangedPosition().empty()){
+        erasePiece(tmp);
+        pieces_.push_back(new King(move.getStartPosition(), isUser_, isWhite_, board));
+        tmp = findPiece(move.getStartPosition());
+    }
+    changePiece(tmp , move.getEndPosition() );
+    if(!move.getCapturedPositions().empty())
+        for (auto& c : move.getCapturedPositions()) {
+            opponent.erasePiece(opponent.findPiece(c));
+        }
     board.makeMove(move);
 }
 //napisac desktruktor zwalniajacy te pionki
@@ -72,6 +93,6 @@ void Player::movePiece(Board &board, int index, Move move){
 Piece* Player::findPiece(Position pos){
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
-        else return nullptr;
     }
+    return nullptr;
 }

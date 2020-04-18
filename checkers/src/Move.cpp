@@ -51,10 +51,10 @@ Move Move::merge(Move& next) {
 }
 
 void Move::addChange(Position pos){
-    changePos_ = pos;
+    changePos_.push_back(pos);
 }
 
-Position Move::getChangedPosition() const { return changePos_ ; }
+std::vector<Position> Move::getChangedPosition() const { return changePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }
 

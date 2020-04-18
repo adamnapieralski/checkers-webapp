@@ -18,7 +18,7 @@ public:
 
     Position getStartPosition() const;
     Position getEndPosition() const;
-    Position getChangedPosition() const;
+    std::vector<Position> getChangedPosition() const;
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
 
@@ -28,7 +28,7 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
-    Position changePos_;
+    std::vector<Position> changePos_;
 
 };
 

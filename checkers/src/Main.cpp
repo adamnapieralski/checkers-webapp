@@ -29,34 +29,29 @@ int main() {
     
     auto initBoard = board;
 
-    user.printPlayer();
-    std::cout << std::endl << std::endl;
-    computer.printPlayer();
-
-
-   /* std::vector<Move> valid_moves;
+    std::vector<Move> valid_moves;
     std::vector<Move> valid_comp;
     valid_moves = user.getValidMoves(board, 10);
     if(valid_moves.size() != 0 ){
-        user.movePiece(board,10,valid_moves[1]);
+        user.movePiece(board,computer, valid_moves[0]);
     }
     std::cout << board << std::endl;
 
     valid_comp = computer.getValidMoves(board, 10);
     if(valid_comp.size() != 0 ){
-        computer.movePiece(board,10,valid_comp[1]);
+        computer.movePiece(board,user,valid_comp[0]);
     }
     std::cout << board << std::endl;
     
 
-    valid_moves = user.getValidMoves(board, 10);
-    std::cout << valid_moves.size() << std::endl;
-    if(valid_moves.size() != 0 ){
-        user.movePiece(board,10,valid_moves[0]);
+    valid_comp = computer.getValidMoves(board, 10);
+    std::cout << valid_comp.size() << std::endl;
+    if(valid_comp.size() != 0 ){
+        computer.movePiece(board,user,valid_comp[0]);
     }
     std::cout << board << std::endl;
     
-    Move tmp = Move(Position(2,2), Position(3,3));
+    /*Move tmp = Move(Position(2,2), Position(3,3));
     board.makeMove(tmp);
 
     std::cout << board << std::endl;
