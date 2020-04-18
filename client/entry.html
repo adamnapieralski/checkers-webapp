@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html ng-app="Checkers">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>Warcaby</title>
+
+		<link rel="stylesheet" href="{{ STATIC_URL }}styles.css" />
+		<script src="{{ STATIC_URL }}angular.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}checkers_modules.js" data-cover></script>
+
+		<link rel="icon" href="icon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
+
+	</head>
+    <body>
+		<div id="entry" class="container" ng-controller="codeController">
+			<center><br>
+				<input type="text" id="userNameText" placeholder="Nazwa gracza" maxlength="10">
+				<br>
+				<input type="radio" id="userColor1" name="userColors" value="white", checked>
+				<label for="userColor1">Białe</label>
+				<input type="radio" id="userColor2" name="userColors" value="black">
+				<label for="userColor1">Czarne</label>
+				<br>
+				<button type="button" onclick="angular.element(this).scope().loadGame()" id="button_id">GRAJ</button><br>
+			</center>
+		</div>
+	<br>
+    </body>
+</html>

@@ -15,7 +15,7 @@
 		<script src="{{ STATIC_URL }}chessboardjs-1.0.0/js/chessboard-1.0.0.js"></script>
 
 		<!-- <script src="{{ STATIC_URL }}angular.min.js"></script> -->
-		<script type="text/javascript" src="{{ STATIC_URL }}my_modules.js" data-cover></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}checkers_modules.js" data-cover></script>
 
 
 		<!-- <link rel="stylesheet" type="text/css" href="bower_components/chessboard-js/css/chessboard.min.css" /> -->
@@ -33,7 +33,20 @@
 			  <div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
 		</div>
 	<br>
-	<center><div id="board" style="width: 500px"></div></center>
+	<div class="row" ng-controller="codeController">
+		<div class="column left" >
+			Gracz info <br><br>
+			<span id="userNameView"></span><br>
+			<span id="userColorView"></span>
+		</div>
+		<div class="column middle">
+			<div id="board" style="width: 70%; margin: 0 auto"></div>
+		</div>
+		<div class="column right">
+			Komputer info
+		</div>
+
+	</div>
     <script>
 		var config = {
 			draggable: true,							//myszka
