@@ -32,6 +32,12 @@ void Player::initializePieces(){
     }
 }
 
+void Player::addPiece(bool isKing, Position pos, Board &board){
+    if(isKing)
+        pieces_.push_back(new King(pos, isWhite_, isUser_, *board_));
+    else pieces_.push_back(new Pawn(pos, isWhite_, isUser_, *board_));
+}
+
 std::vector<Move> Player::getValidMoves(Board &board, int index){
     /*std::vector<std::vector<Move>> valid_moves;
     std::vector<std::vector<Move>> only_capture;

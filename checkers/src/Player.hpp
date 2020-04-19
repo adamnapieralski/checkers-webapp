@@ -21,6 +21,7 @@ public:
     Piece* findPiece(Position pos);
     void erasePiece(Piece* piece);
     void changePiece(Piece* piece, Position pos);
+    void addPiece(bool isKing, Position pos, Board &board); //tylko do testow
 
 private:
     std::vector<Piece*> pieces_;
