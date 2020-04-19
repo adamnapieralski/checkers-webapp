@@ -9,7 +9,7 @@
 #include "Pawn.hpp"
 
 int main() {
-    Board board = Board();
+    /*Board board = Board();
     std::cout << "Drukuje tablice" << std::endl;
     std::cout << board << std::endl;
     std::cout << board.getFEN() << std::endl;
@@ -31,20 +31,20 @@ int main() {
 
     std::vector<Move> valid_moves;
     std::vector<Move> valid_comp;
-    valid_moves = user.getValidMoves(board, 10);
+    valid_moves = user.getValidMovePiece(board, 10);
     if(valid_moves.size() != 0 ){
         user.movePiece(board,computer, valid_moves[0]);
     }
     std::cout << board << std::endl;
 
-    valid_comp = computer.getValidMoves(board, 10);
+    valid_comp = computer.getValidMovePiece(board, 10);
     if(valid_comp.size() != 0 ){
         computer.movePiece(board,user,valid_comp[0]);
     }
     std::cout << board << std::endl;
     
 
-    valid_comp = computer.getValidMoves(board, 10);
+    valid_comp = computer.getValidMovePiece(board, 10);
     std::cout << valid_comp.size() << std::endl;
     if(valid_comp.size() != 0 ){
         computer.movePiece(board,user,valid_comp[0]);
@@ -61,7 +61,7 @@ int main() {
     if(valid_moves.size() != 0 ){
         computer.movePiece(board,7,valid_moves[0]);
     }
-    std::cout << board << std::endl;*/
+    std::cout << board << std::endl;
 
 
     std::cout << "King test" << std::endl;
@@ -80,9 +80,10 @@ int main() {
     std::cout << b2 << std::endl;
     auto mv = k.getValidMoves(b2);
     b2.makeMove(mv[1]);
-    std::cout << b2 << std::endl;
+    std::cout << b2 << std::endl;*/
 
     //Pawn test
+    /*
     std::cout << "Pawn test" << std::endl;
     std::cout << initBoard << std::endl;
     Move m4(Position(1, 1), Position(3, 3), Position(2, 2));
@@ -100,9 +101,10 @@ int main() {
     auto mve = l.getValidMoves(b3);
     b3.makeMove(mve[0]);
     std::cout << b3 << std::endl;
-
+    */
 
     // test for pawn to king change
+    /*
     std::cout << "Test: Pawn to King change" << std::endl;
     Board newBoard = Board();
     auto pawnW1 = Pawn(Position(1, 5), true, true, newBoard);
@@ -111,8 +113,26 @@ int main() {
     std::cout << newBoard << std::endl;
     auto mvs = pawnW1.getValidMoves(newBoard);
     newBoard.makeMove(mvs[0]);
-    std::cout << newBoard << std::endl;
+    std::cout << newBoard << std::endl;*/
     // TODO: change piece from pawn to king
+
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    Player computer = Player(&board, false, false);
+    user.addPiece(false, Position(1, 5),board);
+    computer.addPiece(true, Position(2,6), board);
+    computer.addPiece(false, Position(5,5), board);
+    std::cout << board << std::endl;
+    auto moves = user.getValidMovePiece(board, 0);
+
+    //BOOST_CHECK(moves.size() == 2);
+
+    user.movePiece(board, computer, moves[0]);
+    std::cout << board << std::endl;
+    std::vector<Piece*> newComp = computer.getPieces();
+    std::vector<Piece*> newUs = user.getPieces();
+
+
 
     return 0;
 }

@@ -15,13 +15,15 @@ public:
     bool isWhite();
     void setHasTurn(bool hasTurn);
     void initializePieces();
-    std::vector<Move> getValidMoves(Board &board, int index);
+    std::vector<Move> getValidMoves(Board &board);
+    std::vector<Move> getValidMovePiece(Board &board, int index);
     void printPlayer();
     void movePiece(Board &board, Player &opponent, Move move);
     Piece* findPiece(Position pos);
     void erasePiece(Piece* piece);
     void changePiece(Piece* piece, Position pos);
     void addPiece(bool isKing, Position pos, Board &board); //tylko do testow
+    std::vector<Piece*> getPieces(); //tylko do testow
 
 private:
     std::vector<Piece*> pieces_;

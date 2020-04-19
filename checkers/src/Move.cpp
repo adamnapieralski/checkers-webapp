@@ -47,6 +47,9 @@ Move Move::merge(Move& next) {
             merged.capturedPos_.push_back(c);
         }
     }
+    if(!changePos_.empty()){
+        merged.changePos_ = changePos_;
+    }
     return merged;
 }
 
