@@ -22,13 +22,14 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
         if (pos.isValid()) {
             if (isDiffColor(board.getPieceName(pos))) {
                 Position newP = Position(pos.x + dx[i], pos.y + dy[i]);
-                if (board.getPieceName(newP) == Empty) {
+                if (newP.isValid() && board.getPieceName(newP) == Empty) {
                     ++countMoves;
                     Move tmp = Move(getPosition(), newP, pos);
                     if (current.isInitial()) current = tmp;
                     else current = current.merge(tmp);
                     board.makeMove(tmp);
                     if (newP.isLastRow(isUser())) {
+                        current.addChange(newP);
                         King k(newP, isWhite(), isUser(), board);
                         auto kingMoves = k.getValidMoves(board, true);
                         for (auto& km : kingMoves) {
@@ -42,6 +43,10 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
             }
         }
         
+    }
+
+    if (countMoves == 0 && !current.isInitial()){
+        moves.push_back(current);
     }
 }
 

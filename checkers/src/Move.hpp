@@ -11,12 +11,14 @@ public:
     Move(Position, Position);
     Move(Position, Position, Position);
 
-    void addStepMove(Move tmp);
+    //void addStepMove(Move tmp);
+    void addChange(Position pos);
     bool isInitial();
     Move merge(Move& next);
 
     Position getStartPosition() const;
     Position getEndPosition() const;
+    std::vector<Position> getChangedPosition() const;
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
 
@@ -26,6 +28,7 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
+    std::vector<Position> changePos_;
 
 };
 

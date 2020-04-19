@@ -17,7 +17,10 @@ public:
     void initializePieces();
     std::vector<Move> getValidMoves(Board &board, int index);
     void printPlayer();
-    void movePiece(Board &board, int index, Move move);
+    void movePiece(Board &board, Player &opponent, Move move);
+    Piece* findPiece(Position pos);
+    void erasePiece(Piece* piece);
+    void changePiece(Piece* piece, Position pos);
 
 private:
     std::vector<Piece*> pieces_;

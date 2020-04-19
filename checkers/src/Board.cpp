@@ -39,9 +39,7 @@ void Board::clearPosition(Position pos) {
 }
 
 void Board::placePiece(Position pos, PieceName piece){
-    if(board_[pos.y][pos.x] == Empty){
-        board_[pos.y][pos.x] = piece;
-    }
+    board_[pos.y][pos.x] = piece;
 }
 
 PieceName Board::getPieceName(Position pos) {
