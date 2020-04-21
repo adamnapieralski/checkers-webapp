@@ -8,7 +8,6 @@
 #include "Position.hpp"
 #include "Move.hpp"
 
-
 class Board {
 public:
     Board();
@@ -29,7 +28,5 @@ public:
 private:
     std::array<std::array<PieceName,8>,8> board_ ;
 };
-
-class Piece;
 
 #endif  // BOARD_HPP
