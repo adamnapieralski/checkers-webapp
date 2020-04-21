@@ -2,7 +2,7 @@
 
 import os, platform, shutil
 
-Import('env')
+Import('env', 'test_val')
 
 def copyLibBuilder( target, source, env):
    '''kopiuje biblioteke'''
@@ -39,3 +39,13 @@ if(platform.system() == "Linux"):
 elif(platform.system() == "Windows"):
    target = '../build_web/checkerspy/checkers.pyd'
 env.Command(target, cpplib, copyLibBuilder )
+
+# build tests
+SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
+
+# run tests
+if int(test_val):
+    print('scons: Running unit tests ...')
+    os.system('./build/test')
+    print('scons: done running tests.')
+    

@@ -1,2 +1,0 @@
-env = Environment()
-env.Program(target = 'Main', source = ["Main.cpp", "Checkers.cpp", "Board.cpp", "King.cpp", "Pawn.cpp", "Piece.cpp", "Player.cpp", "Spot.cpp"])

@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
 }
 
 
-BOOST_AUTO_TEST_CASE( pawn ) //check King
+BOOST_AUTO_TEST_CASE( king ) //check King
 {   
 
     Board board = Board();

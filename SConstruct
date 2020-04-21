@@ -17,6 +17,7 @@ Export('WEB_SRV_PREFIX WEB_SRV_HOST WEB_SRV_PORT WEB_CLIENT_HOST WEB_CLIENT_PORT
 vars = Variables('custom.py')
 
 env = Environment(variables=vars)
+test_val = ARGUMENTS.get('test', 0)
 
-SConscript(['checkers/SConscript', 'web/SConscript'], exports=['env'] )
+SConscript(['checkers/SConscript', 'web/SConscript'], exports=['env', 'test_val'] )
 
