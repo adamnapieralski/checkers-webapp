@@ -66,8 +66,7 @@ std::vector<Move> Player::getValidMoves(Board &board){
 std::vector<Move> Player::getValidMovePiece(Board &board, int index){
     std::vector<Move> move;
     //std::cout << pieces_[index]->getPosition().x << "," << pieces_[index]->getPosition().y << std::endl;
-    bool mustCapture;
-    move = (pieces_[index])->getValidMoves(board, mustCapture);
+    move = (pieces_[index])->getValidMoves(board);
 
     return move;
 }
