@@ -7,9 +7,6 @@
 #include "Position.hpp"
 #include "Move.hpp"
 #include "Board.hpp"
-#include "Move.hpp"
-
-class Spot;
 
 // to resolve: class Piece has virtual funcs and accessible non-virtual destructor
 class Piece {
@@ -31,9 +28,8 @@ public:
     bool isSameColor(PieceName pn);
     bool isDiffColor(PieceName pn);
     
-    virtual std::vector<Move> getValidMoves(Board& board, bool mustCapture=false) = 0;
-    virtual void canCapture(std::vector<Move> &moves, Board board, Move current) = 0;
-  
+    virtual std::vector<Move> getValidMoves(Board& board) = 0;
+    virtual void getCaptureMoves(std::vector<Move> &moves, Board board, Move current) = 0;
     virtual std::ostream& print(std::ostream& os) = 0;
 
 protected:

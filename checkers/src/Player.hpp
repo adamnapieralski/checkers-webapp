@@ -16,8 +16,8 @@ public:
     void setHasTurn(bool hasTurn);
     void initializePieces();
     std::vector<Move> getValidMoves(Board &board);
-    std::vector<Move> getValidMovePiece(Board &board, int index);
-    void printPlayer();
+    std::vector<Move> getValidMovePiece(Board &board, int index); // do testów
+    void printPlayer(); // testy
     void movePiece(Board &board, Player &opponent, Move move);
     Piece* findPiece(Position pos);
     void erasePiece(Piece* piece);
