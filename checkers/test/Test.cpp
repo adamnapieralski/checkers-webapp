@@ -1,5 +1,5 @@
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE Suites
+#define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
 
 #include "../src/Player.hpp"
@@ -124,6 +124,23 @@ BOOST_AUTO_TEST_CASE( move_merge )
     BOOST_CHECK( merge4.getStartPosition() == Position(0, 2) && merge4.getEndPosition() == Position(6, 4) );
     BOOST_CHECK( merge4.getStepMoves().size() == 3 );
     
+}
+
+BOOST_AUTO_TEST_CASE( board_fen )
+{
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    Player computer = Player(&board, false, false);
+    user.initializePieces();
+    computer.initializePieces();
+    BOOST_CHECK( board.getFEN() == "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1" );
+
+    board.placePiece(Position(0, 0), WhiteKing);
+    board.placePiece(Position(4, 4), BlackKing);
+    board.placePiece(Position(2, 6), WhiteKing);
+    board.placePiece(Position(7, 7), BlackKing);
+    board.placePiece(Position(5, 3), WhiteKing);
+    BOOST_CHECK( board.getFEN() == "1P1P1P1K/P1k1P1P1/1P1P1P1P/4K3/5k2/p1p1p1p1/1p1p1p1p/k1p1p1p1" );
 }
 
 
