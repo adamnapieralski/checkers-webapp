@@ -46,15 +46,15 @@ void Piece::changePosition(Position pos){
 }
 
 bool Piece::isSameColor(PieceName pn) {
-    if (isWhite_ && (pn == WhitePawn || pn == WhiteKing)
-        || !isWhite_ && (pn == BlackPawn || pn == BlackKing))
+    if (isWhite_ && (pn == WHITE_PAWN || pn == WHITE_KING)
+        || !isWhite_ && (pn == BLACK_PAWN || pn == BLACK_KING))
         return true;
     else return false;
 }
 
 bool Piece::isDiffColor(PieceName pn) {
-    if (isWhite_ && (pn == BlackPawn || pn == BlackKing)
-        || !isWhite_ && (pn == WhitePawn || pn == WhiteKing))
+    if (isWhite_ && (pn == BLACK_PAWN || pn == BLACK_KING)
+        || !isWhite_ && (pn == WHITE_PAWN || pn == WHITE_KING))
         return true;
     else return false;
 }

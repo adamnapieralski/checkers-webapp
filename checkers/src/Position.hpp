@@ -35,21 +35,4 @@ inline bool operator==( const Position &a, const Position &b ){
     return false;
 }
 
-
-enum PieceName {
-    Empty, WhiteKing, WhitePawn, BlackKing, BlackPawn
-};
-
-inline std::ostream& operator<<(std::ostream& os, const PieceName& p){
-    switch (p){
-        case Empty : os << "_"; break;
-        case WhiteKing : os << "K"; break ;
-        case WhitePawn : os << "w"; break;
-        case BlackKing : os << "B"; break ;
-        case BlackPawn : os << "b"; break ;
-        default : os << " "; break ;
-    }
-    return os;
-}
-
 #endif // POSITION_HPP

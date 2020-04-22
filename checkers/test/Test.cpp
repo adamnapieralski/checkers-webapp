@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE( changePawKing ) //change Pawn to King
     Position rPos(6,4);
 
     BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WhiteKing);
+    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
 
 }
 
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
     Position rPos(0,0);
 
     BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WhitePawn);
+    BOOST_CHECK(board.getPieceName(rPos) == WHITE_PAWN);
 
 }
 
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE( king ) //check King
     Position rPos(0,0);
 
     BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WhiteKing);
+    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
 
 }
 
@@ -135,29 +135,29 @@ BOOST_AUTO_TEST_CASE( board_fen )
     computer.initializePieces();
     BOOST_CHECK( board.getFEN() == "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1" );
 
-    board.placePiece(Position(0, 0), WhiteKing);
-    board.placePiece(Position(4, 4), BlackKing);
-    board.placePiece(Position(2, 6), WhiteKing);
-    board.placePiece(Position(7, 7), BlackKing);
-    board.placePiece(Position(5, 3), WhiteKing);
+    board.placePiece(Position(0, 0), WHITE_KING);
+    board.placePiece(Position(4, 4), BLACK_KING);
+    board.placePiece(Position(2, 6), WHITE_KING);
+    board.placePiece(Position(7, 7), BLACK_KING);
+    board.placePiece(Position(5, 3), WHITE_KING);
     BOOST_CHECK( board.getFEN() == "1P1P1P1K/P1k1P1P1/1P1P1P1P/4K3/5k2/p1p1p1p1/1p1p1p1p/k1p1p1p1" );
 }
 
 BOOST_AUTO_TEST_CASE( board_make_move )
 {
     Board board = Board();
-    board.placePiece(Position(1, 1), WhiteKing);
-    board.placePiece(Position(2, 2), BlackPawn);
-    board.placePiece(Position(4, 2), BlackPawn);
+    board.placePiece(Position(1, 1), WHITE_KING);
+    board.placePiece(Position(2, 2), BLACK_PAWN);
+    board.placePiece(Position(4, 2), BLACK_PAWN);
     Move m1(Position(1, 1), Position(3, 3), Position(2, 2));
     Move m2(Position(3, 3), Position(5, 1), Position(4, 2));
     auto mv = m1.merge(m2);
     board.makeMove(mv);
 
-    BOOST_CHECK( board.getPieceName(Position(1, 1)) == Empty );
-    BOOST_CHECK( board.getPieceName(Position(2, 2)) == Empty );
-    BOOST_CHECK( board.getPieceName(Position(4, 2)) == Empty );
-    BOOST_CHECK( board.getPieceName(Position(5, 1)) == WhiteKing );
+    BOOST_CHECK( board.getPieceName(Position(1, 1)) == EMPTY );
+    BOOST_CHECK( board.getPieceName(Position(2, 2)) == EMPTY );
+    BOOST_CHECK( board.getPieceName(Position(4, 2)) == EMPTY );
+    BOOST_CHECK( board.getPieceName(Position(5, 1)) == WHITE_KING );
 }
 
 
