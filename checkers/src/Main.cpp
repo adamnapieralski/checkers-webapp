@@ -38,6 +38,5 @@ int main() {
     //std::vector<Piece*> newComp = computer.getPieces();
     //std::vector<Piece*> newUs = user.getPieces();
 
-
     return 0;
 }

@@ -2,9 +2,9 @@
 
 King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
     if (isWhite)
-        board.placePiece(pos, WhiteKing);
+        board.placePiece(pos, WHITE_KING);
     else
-        board.placePiece(pos, BlackKing);
+        board.placePiece(pos, BLACK_KING);
 }
 
 void King::getCaptureMoves(std::vector<Move>& moves, Board board, Move current) {
@@ -24,7 +24,7 @@ void King::getCaptureMoves(std::vector<Move>& moves, Board board, Move current) 
         while (newPos.isValid()) {
             auto pn = board.getPieceName(newPos);
             if (isSameColor(pn) || (metOpponent && isDiffColor(pn))) break;
-            if (metOpponent && pn == Empty) {
+            if (metOpponent && pn == EMPTY) {
                 ++countMoves;
                 Move tmp(startPos, newPos, capPos);
 
@@ -67,7 +67,7 @@ std::vector<Move> King::getValidMoves(Board& board) {
 
         for (int i = 0; i < 4; ++i) {
             Position newPos(startPos.x + dx[i], startPos.y + dy[i]);
-            while (newPos.isValid() && board.getPieceName(newPos) == Empty) {
+            while (newPos.isValid() && board.getPieceName(newPos) == EMPTY) {
                 moves.push_back(Move(startPos, newPos));
                 newPos.x += dx[i];
                 newPos.y += dy[i];

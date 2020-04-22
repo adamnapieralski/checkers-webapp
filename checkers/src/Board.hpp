@@ -8,6 +8,10 @@
 #include "Position.hpp"
 #include "Move.hpp"
 
+enum PieceName {
+    EMPTY, WHITE_KING, WHITE_PAWN, BLACK_KING, BLACK_PAWN
+};
+
 class Board {
 public:
     Board();
@@ -24,6 +28,7 @@ public:
 
     friend void swap(Board& b1, Board& b2);
     friend std::ostream& operator<<(std::ostream& os, const Board& b);
+    friend std::ostream& operator<<(std::ostream& os, const PieceName& p);
 
 private:
     std::array<std::array<PieceName,8>,8> board_ ;
