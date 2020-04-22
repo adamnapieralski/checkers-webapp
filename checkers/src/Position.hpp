@@ -14,7 +14,7 @@ struct Position {
     }
 
     bool isLastRow(bool isUser) {
-        if (isUser && y == 7 || !isUser && y == 0) return true;
+        if ((isUser && y == 7) || (!isUser && y == 0)) return true;
         else return false;
     }
 
