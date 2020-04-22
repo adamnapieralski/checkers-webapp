@@ -1,8 +1,6 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE Suites
 #include <boost/test/unit_test.hpp>
-#include <boost/test/test_case_template.hpp>
-
 
 #include "../src/Player.hpp"
 #include "../src/Board.hpp"
@@ -70,7 +68,7 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
 }
 
 
-BOOST_AUTO_TEST_CASE( pawn ) //check King
+BOOST_AUTO_TEST_CASE( king ) //check King
 {   
 
     Board board = Board();
@@ -82,14 +80,14 @@ BOOST_AUTO_TEST_CASE( pawn ) //check King
     computer.addPiece(false, Position(5,3), board);
     auto moves = user.getValidMovePiece(board, 0);
 
-    BOOST_CHECK(moves.size() == 2);
+    BOOST_CHECK(moves.size() == 11);
 
-    user.movePiece(board, computer, moves[1]);
+    user.movePiece(board, computer, moves[0]);
 
     std::vector<Piece*> newComp = computer.getPieces();
     std::vector<Piece*> newUs = user.getPieces();
 
-    BOOST_CHECK(newComp.size() == 1 || newComp.size() == 2 );
+    BOOST_CHECK(newComp.size() == 1);
     BOOST_CHECK(newUs.size() == 1);
 
     Position rPos(0,0);
