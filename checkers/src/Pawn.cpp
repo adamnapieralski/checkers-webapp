@@ -6,9 +6,9 @@
 
 Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
     if (isWhite)
-        board.placePiece(pos, WhitePawn);
+        board.placePiece(pos, WHITE_PAWN);
     else
-        board.placePiece(pos, BlackPawn);
+        board.placePiece(pos, BLACK_PAWN);
 }
 
 void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) {
@@ -25,7 +25,7 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
         if (capPos.isValid()) {
             if (isDiffColor(board.getPieceName(capPos))) {
                 Position newPos = Position(capPos.x + dx[i], capPos.y + dy[i]);
-                if (newPos.isValid() && board.getPieceName(newPos) == Empty) {
+                if (newPos.isValid() && board.getPieceName(newPos) == EMPTY) {
                     ++countMoves;
                     Move tmp = Move(startPos, newPos, capPos);
 
@@ -65,7 +65,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
         if (isUser()) {
             for(int i = 0 ; i < 2 ; ++i){
                 Position nP(getPosition().x + d[i], getPosition().y + 1);
-                if(board.getPieceName(nP) == Empty){
+                if(board.getPieceName(nP) == EMPTY){
                     moves.push_back(Move(getPosition(), nP));
                 }
             }
@@ -73,7 +73,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
         else {
             for(int i = 0 ; i < 2 ; ++i){
                 Position nP(getPosition().x + d[i], getPosition().y - 1);
-                if(board.getPieceName(nP) == Empty){
+                if(board.getPieceName(nP) == EMPTY){
                     moves.push_back(Move(getPosition(), nP));
                 }
             }
