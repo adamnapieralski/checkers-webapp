@@ -143,5 +143,22 @@ BOOST_AUTO_TEST_CASE( board_fen )
     BOOST_CHECK( board.getFEN() == "1P1P1P1K/P1k1P1P1/1P1P1P1P/4K3/5k2/p1p1p1p1/1p1p1p1p/k1p1p1p1" );
 }
 
+BOOST_AUTO_TEST_CASE( board_make_move )
+{
+    Board board = Board();
+    board.placePiece(Position(1, 1), WhiteKing);
+    board.placePiece(Position(2, 2), BlackPawn);
+    board.placePiece(Position(4, 2), BlackPawn);
+    Move m1(Position(1, 1), Position(3, 3), Position(2, 2));
+    Move m2(Position(3, 3), Position(5, 1), Position(4, 2));
+    auto mv = m1.merge(m2);
+    board.makeMove(mv);
+
+    BOOST_CHECK( board.getPieceName(Position(1, 1)) == Empty );
+    BOOST_CHECK( board.getPieceName(Position(2, 2)) == Empty );
+    BOOST_CHECK( board.getPieceName(Position(4, 2)) == Empty );
+    BOOST_CHECK( board.getPieceName(Position(5, 1)) == WhiteKing );
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
