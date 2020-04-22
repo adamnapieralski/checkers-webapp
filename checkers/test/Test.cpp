@@ -70,7 +70,6 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
 
 BOOST_AUTO_TEST_CASE( king ) //check King
 {   
-
     Board board = Board();
     Player user = Player(&board, true, true);
     Player computer = Player(&board, false, false);
@@ -95,6 +94,36 @@ BOOST_AUTO_TEST_CASE( king ) //check King
     BOOST_CHECK(newUs[0]->getPosition() == rPos);
     BOOST_CHECK(board.getPieceName(rPos) == WhiteKing);
 
+}
+
+BOOST_AUTO_TEST_CASE( move_merge )
+{
+    // two simple
+    Move mSimp1(Position(0, 0), Position(1, 1));
+    Move mSimp2(Position(1, 1), Position(0, 2));
+    auto merge1 = mSimp1.merge(mSimp2);
+    
+    BOOST_CHECK( merge1.getStartPosition() == Position(0, 0) );
+    BOOST_CHECK( merge1.getEndPosition() == Position(0, 2) );
+    BOOST_CHECK( merge1.getStepMoves().size() == 2 );
+
+    BOOST_REQUIRE_THROW( mSimp2.merge(mSimp1), std::out_of_range );
+
+    // complex + simple
+    Move mComp1(Position(0, 2), Position(2, 4), Position(1, 3) );
+    auto merge2 = mSimp2.merge(mComp1);
+    BOOST_CHECK( merge2.getCapturedPositions().size() == 1 && merge2.getCapturedPositions()[0] == Position(1, 3) );
+    BOOST_CHECK( merge2.getStepMoves().size() == 2 );
+
+    // two complex
+    Move mComp2(Position(2, 4), Position(4, 2), Position(3, 3) );
+    auto merge3 = mComp1.merge(mComp2);
+    BOOST_CHECK( merge3.getCapturedPositions().size() == 2 );
+    Move mComp3(Position(4, 2), Position(6, 4), Position(5, 3));
+    auto merge4 = merge3.merge(mComp3);
+    BOOST_CHECK( merge4.getStartPosition() == Position(0, 2) && merge4.getEndPosition() == Position(6, 4) );
+    BOOST_CHECK( merge4.getStepMoves().size() == 3 );
+    
 }
 
 
