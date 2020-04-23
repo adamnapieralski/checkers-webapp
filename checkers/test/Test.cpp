@@ -280,6 +280,50 @@ BOOST_AUTO_TEST_CASE ( capture_moves_pawn ){
 
 }
 
+BOOST_AUTO_TEST_CASE ( capture_moves_king ){
+    //More complicated test
+    Board board = Board();
+
+    Pawn player_a_1( Position(1,1), true, true, board);
+    Pawn player_a_2( Position(3,3), true, true, board);
+    Pawn player_a_3( Position(5,3), true, true, board);
+
+    King player_b(Position(2,2), false, false, board);
+
+    std::vector<Move> moves_b = player_b.getCaptureMoves(board);
+
+    std::cout << moves_b.size() <<std::endl;
+    BOOST_REQUIRE(moves_b.size() == 11);
+    
+    Move move_b_0 = moves_b[0];
+
+    BOOST_CHECK( move_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_0.getEndPosition() == Position(0,0));
+    BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(3,3) && move_b_0.getCapturedPositions()[1] == Position(1,1) );
+    BOOST_CHECK( move_b_0.getStepMoves().size() == 2 );
+    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+
+    Move step_b_0 =  move_b_0.getStepMoves()[0];
+    BOOST_CHECK( step_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( step_b_0.getEndPosition() == Position(4,4));
+    BOOST_REQUIRE( step_b_0.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( step_b_0.getCapturedPositions()[0] == Position(3,3) );
+    BOOST_CHECK( step_b_0.getStepMoves().empty() );
+    BOOST_CHECK (step_b_0.getChangedPosition().empty());
+
+    Move move_b_1 = moves_b[8];
+
+    BOOST_CHECK( move_b_1.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_1.getEndPosition() == Position(5,5));
+    BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) &&  move_b_1.getCapturedPositions()[1] == Position(3,3));
+    BOOST_CHECK( move_b_1.getStepMoves().size() == 2);
+    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+
+
+}
+
 BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
     //More complicated test
     Board board = Board();
