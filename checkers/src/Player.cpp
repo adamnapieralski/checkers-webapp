@@ -42,31 +42,26 @@ std::vector<Piece*> Player::getPieces(){
     return pieces_;
 }
 
-std::vector<Move> Player::getValidMoves(Board &board){
-    /*std::vector<std::vector<Move>> valid_moves;
-    std::vector<std::vector<Move>> only_capture;
+std::vector<std::vector<Move>> Player::getValidMoves(Board &board){
+    std::vector<std::vector<Move>> valid_moves;
     std::vector<Move> tmp;
-    bool mustCapture;
-    bool ifOnlyCapture = false;
-    for (auto i = pieces_.begin(); i != pieces_.end(); i++){
-        tmp = (*i)->getValidMoves(board,mustCapture);
-        if(mustCapture){
-            only_capture.push(tmp);
-            ifOnlyCapture = true;
-        }
-        if(!ifOnlyCapture) valid_moves.push_back(tmp);
+    for (auto i = pieces_.begin(); i != pieces_.end(); ++i){
+        tmp = (*i) ->getCaptureMoves(board);
+        if(!tmp.empty()) valid_moves.push_back(tmp);
     }
-
-    if(ifOnlyCapture) return only_capture;
+    if(valid_moves.empty()){
+        for (auto i = pieces_.begin(); i != pieces_.end(); ++i){
+            tmp = (*i) -> getValidMoves(board);
+            if(!tmp.empty()) valid_moves.push_back(tmp);
+        }
+    }
     return valid_moves;
-    
-    */
 }
 
 std::vector<Move> Player::getValidMovePiece(Board &board, int index){
     std::vector<Move> move;
-    //std::cout << pieces_[index]->getPosition().x << "," << pieces_[index]->getPosition().y << std::endl;
-    move = (pieces_[index])->getValidMoves(board);
+    move = (pieces_[index])->getCaptureMoves(board);
+    if(move.empty()) (pieces_[index]) ->getValidMoves(board);
 
     return move;
 }

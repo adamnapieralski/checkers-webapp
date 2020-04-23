@@ -7,7 +7,7 @@ King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_KING);
 }
 
-void King::getCaptureMoves(std::vector<Move>& moves, Board board, Move current) {
+void King::captureMoves(std::vector<Move>& moves, Board board, Move current) {
     int dy[4] = {1, 1, -1, -1};
     int dx[4] = {1, -1, -1, 1};
 
@@ -33,7 +33,7 @@ void King::getCaptureMoves(std::vector<Move>& moves, Board board, Move current) 
 
                 board.makeMove(tmp);
                 King k(newPos, isWhite(), isUser(), board);
-                k.getCaptureMoves(moves, board, current);
+                k.captureMoves(moves, board, current);
                 current = tmpCurrent;
                 board = tmpBoard;
             }
@@ -53,27 +53,33 @@ void King::getCaptureMoves(std::vector<Move>& moves, Board board, Move current) 
     }
 }
 
-std::vector<Move> King::getValidMoves(Board& board) {
+std::vector<Move> King::getCaptureMoves(Board& board){
     std::vector<Move> moves;
 
     Move move;
+    captureMoves(moves, board, move);
 
-    getCaptureMoves(moves, board, move);
+    return moves;
 
-    if (moves.empty()) {
-        int dy[4] = {1, 1, -1, -1};
-        int dx[4] = {1, -1, -1, 1};
-        auto startPos = getPosition();
+}
 
-        for (int i = 0; i < 4; ++i) {
-            Position newPos(startPos.x + dx[i], startPos.y + dy[i]);
-            while (newPos.isValid() && board.getPieceName(newPos) == EMPTY) {
-                moves.push_back(Move(startPos, newPos));
-                newPos.x += dx[i];
-                newPos.y += dy[i];
-            }
+std::vector<Move> King::getValidMoves(Board& board) {
+
+    std::vector<Move> moves;
+
+    int dy[4] = {1, 1, -1, -1};
+    int dx[4] = {1, -1, -1, 1};
+    auto startPos = getPosition();
+
+    for (int i = 0; i < 4; ++i) {
+        Position newPos(startPos.x + dx[i], startPos.y + dy[i]);
+        while (newPos.isValid() && board.getPieceName(newPos) == EMPTY) {
+            moves.push_back(Move(startPos, newPos));
+            newPos.x += dx[i];
+            newPos.y += dy[i];
         }
     }
+
     return moves;
 }
 
