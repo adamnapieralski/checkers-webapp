@@ -30,7 +30,7 @@ bool Move::operator==(const Move& move) const {
 
 Move Move::merge(Move& next) {
     if (endPos_ != next.startPos_)
-        throw std::out_of_range("");
+        throw std::out_of_range("Start and end positions of moves to merge do not match.");
 
     Move merged(startPos_, next.endPos_);
 

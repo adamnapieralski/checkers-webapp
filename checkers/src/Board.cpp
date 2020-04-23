@@ -1,20 +1,22 @@
 #include <map>
 #include "Board.hpp"
 
+std::ostream& operator<<(std::ostream& os, const PieceName& p){
+    switch (p){
+        case EMPTY : os << "_"; break;
+        case WHITE_KING : os << "K"; break ;
+        case WHITE_PAWN : os << "w"; break;
+        case BLACK_KING : os << "B"; break ;
+        case BLACK_PAWN : os << "b"; break ;
+        default : os << " "; break ;
+    }
+    return os;
+}
+
 Board::Board(){
-    /* board_={ {
-    { { BlackPawn, Empty, BlackPawn, Empty, BlackPawn, Empty, BlackPawn, Empty } },
-    { { Empty, BlackPawn, Empty, BlackPawn, Empty,BlackPawn , Empty, BlackPawn } },
-    { { BlackPawn, Empty, BlackPawn, Empty, BlackPawn, Empty, BlackPawn, Empty } },
-    { { Empty, Empty, Empty, Empty, Empty, Empty, Empty,Empty } },
-    { { Empty, Empty, Empty, Empty, Empty, Empty, Empty,Empty } },
-    { { WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty } },
-    { { Empty, WhitePawn, Empty, WhitePawn, Empty, WhitePawn ,Empty, WhitePawn } },
-    { { WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty, WhitePawn, Empty } },
-    } };*/
     for(auto i = board_.begin(); i != board_.end(); ++i ){
         for(auto j = i->begin(); j != i->end(); ++j ){
-            *j = Empty;
+            *j = EMPTY;
         }
     }
 }
@@ -35,7 +37,7 @@ std::array<std::array<PieceName,8>,8> Board::getBoard(){
 }
 
 void Board::clearPosition(Position pos) {
-    board_[pos.y][pos.x] = Empty;
+    board_[pos.y][pos.x] = EMPTY;
 }
 
 void Board::placePiece(Position pos, PieceName piece){
@@ -49,9 +51,9 @@ PieceName Board::getPieceName(Position pos) {
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
     auto pc = board_[st.y][st.x];
-    board_[st.y][st.x] = Empty;
+    board_[st.y][st.x] = EMPTY;
     for (auto& c : m.getCapturedPositions()) {
-        board_[c.y][c.x] = Empty;
+        board_[c.y][c.x] = EMPTY;
     }
     auto en = m.getEndPosition();
     board_[en.y][en.x] = pc;
@@ -64,7 +66,7 @@ Board& Board::operator=(Board other) {
 
 std::string Board::getFEN() {
     std::map<enum PieceName, char>  pcs = {
-        { Empty, 'e' }, { WhitePawn , 'p' }, { WhiteKing, 'k' }, { BlackPawn, 'P' }, { BlackKing, 'K' }
+        { EMPTY, 'e' }, { WHITE_PAWN , 'p' }, { WHITE_KING, 'k' }, { BLACK_PAWN, 'P' }, { BLACK_KING, 'K' }
     };
     std::string fen = "";
     for (int row = 7; row >=0; --row) {
