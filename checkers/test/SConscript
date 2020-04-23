@@ -1,4 +1,4 @@
-import os, platform, copy
+import os, platform
 
 Import('env')
 env_test = env.Copy()
