@@ -161,4 +161,33 @@ BOOST_AUTO_TEST_CASE( board_make_move )
 }
 
 
+BOOST_AUTO_TEST_CASE( capture_moves_pawn_simple ){
+    //empty case
+    Board board = Board();
+    Pawn player_a(Position(1,5), true, true, board);
+    std::vector<Move> moves_a;
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.empty());
+
+    //simple case
+    Pawn player_b(Position(2,6), false, false, board);
+    std::vector<Move> moves_b;
+    moves_b = player_b.getCaptureMoves(board);
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.size() == 1);
+    BOOST_REQUIRE(moves_b.size() == 1);
+
+    Move move_a = moves_a[0];
+
+    BOOST_CHECK( move_a.getStartPosition() == Position(1,5) );
+    BOOST_CHECK( move_a.getEndPosition() == Position(3,7));
+    BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,6));
+    BOOST_CHECK( move_a.getStepMoves().empty());
+    BOOST_CHECK( move_a.getChangedPosition().empty());
+    
+}
+
 BOOST_AUTO_TEST_SUITE_END()
