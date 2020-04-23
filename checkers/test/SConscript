@@ -1,7 +1,8 @@
 import os, platform
 
 Import('env')
-env_test = env.Copy()
+env_test = env.Clone()
+
 if(platform.system() == "Linux"):
    env_test.Replace( LIBS = [ 'boost_unit_test_framework' ] )
 else:
