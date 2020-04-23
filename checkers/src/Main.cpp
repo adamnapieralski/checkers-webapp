@@ -33,7 +33,7 @@ int main() {
     auto moves = computer.getValidMovePiece(board, 0);
     // auto movesK = computer.getValidMovePiece(board, 1);
 
-    computer.movePiece(board, user, moves[4]);
+    computer.movePiece(board, user, moves[0]);
     std::cout << board << std::endl;
     //std::vector<Piece*> newComp = computer.getPieces();
     //std::vector<Piece*> newUs = user.getPieces();
