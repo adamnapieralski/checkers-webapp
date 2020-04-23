@@ -19,14 +19,15 @@ public:
     std::vector<Move> getValidMovePiece(Board &board, int index); // do testów
     void printPlayer(); // testy
     void movePiece(Board &board, Player &opponent, Move move);
-    Piece* findPiece(Position pos);
-    void erasePiece(Piece* piece);
-    void changePiece(Piece* piece, Position pos);
+    std::shared_ptr<Piece> findPiece(Position pos);
+    void erasePiece(std::shared_ptr<Piece> piece);
+    void changePiece(std::shared_ptr<Piece> piece, Position pos);
     void addPiece(bool isKing, Position pos, Board &board); //tylko do testow
-    std::vector<Piece*> getPieces(); //tylko do testow
+    std::vector<std::shared_ptr<Piece>> getPieces(); //tylko do testow
+    
 
 private:
-    std::vector<Piece*> pieces_;
+    std::vector<std::shared_ptr<Piece>> pieces_;
     Board* board_;
     bool hasTurn_;
     bool isWhite_;

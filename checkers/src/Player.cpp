@@ -6,7 +6,6 @@
 Player::Player(Board* board, bool isWhite, bool isUser) :
     board_(board), isWhite_(isWhite), isUser_(isUser) {}
 
-
 bool Player::isWhite() {    return isWhite_;    }
 
 void Player::initializePieces(){
@@ -15,7 +14,7 @@ void Player::initializePieces(){
         for (int i = 0; i < 3; ++i){
             for(int j = 0; j < 8; ++j) {
                 if ((i + j) % 2 == 0) {
-                    pieces_.push_back(new Pawn(Position(j, i), isWhite_, isUser_, *board_));
+                    pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, *board_));
                 }
             }
         }
@@ -25,7 +24,7 @@ void Player::initializePieces(){
         for (int i = 7; i > 4; --i){
             for (int j = 0; j < 8; ++j){
                 if ((i + j) % 2 == 0){
-                   pieces_.push_back(new Pawn(Position(j, i), isWhite_, isUser_, *board_));
+                    pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, *board_));
                 }
             }
         }
@@ -33,12 +32,11 @@ void Player::initializePieces(){
 }
 
 void Player::addPiece(bool isKing, Position pos, Board &board){
-    if(isKing)
-        pieces_.push_back(new King(pos, isWhite_, isUser_, *board_));
-    else pieces_.push_back(new Pawn(pos, isWhite_, isUser_, *board_));
+    if(isKing) pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser_, *board_));
+    else pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser_, *board_));
 }
 
-std::vector<Piece*> Player::getPieces(){
+std::vector<std::shared_ptr<Piece>> Player::getPieces(){
     return pieces_;
 }
 
@@ -77,20 +75,20 @@ void Player::printPlayer(){
     }
 }
 
-void Player::erasePiece(Piece* piece){
+void Player::erasePiece(std::shared_ptr<Piece> piece){
     pieces_.erase(std::remove_if(pieces_.begin(), pieces_.end(), 
-                                            [&piece](Piece* p) {return p && p == piece ; }));
+                                            [&piece](std::shared_ptr<Piece> p) {return p && p == piece ; }));
 }
 
-void Player::changePiece(Piece* piece, Position pos){
-    piece ->changePosition(pos);
+void Player::changePiece(std::shared_ptr<Piece> piece, Position pos){
+    piece->changePosition(pos);
 }
 
 void Player::movePiece(Board &board, Player &opponent, Move move){
-    Piece* tmp = findPiece( move.getStartPosition() );
+    auto tmp = findPiece(move.getStartPosition());
     if(!move.getChangedPosition().empty()){
         erasePiece(tmp);
-        pieces_.push_back(new King(move.getStartPosition(), isUser_, isWhite_, board));
+        pieces_.push_back(std::make_shared<King>(move.getStartPosition(), isUser_, isWhite_, board));
         tmp = findPiece(move.getStartPosition());
     }
     changePiece(tmp , move.getEndPosition() );
@@ -100,9 +98,8 @@ void Player::movePiece(Board &board, Player &opponent, Move move){
         }
     board.makeMove(move);
 }
-//napisac desktruktor zwalniajacy te pionki
 
-Piece* Player::findPiece(Position pos){
+std::shared_ptr<Piece> Player::findPiece(Position pos){
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
     }

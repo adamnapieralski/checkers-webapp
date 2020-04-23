@@ -25,8 +25,8 @@ BOOST_AUTO_TEST_CASE( changePawKing ) //change Pawn to King
     BOOST_CHECK(moves.size() == 2);
 
     user.movePiece(board, computer, moves[0]);
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 0);
     BOOST_CHECK(newUs.size() == 1);
@@ -54,8 +54,8 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
 
     user.movePiece(board, computer, moves[1]);
 
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 1 || newComp.size() == 2 );
     BOOST_CHECK(newUs.size() == 1);
@@ -83,8 +83,8 @@ BOOST_AUTO_TEST_CASE( king ) //check King
 
     user.movePiece(board, computer, moves[0]);
 
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 1);
     BOOST_CHECK(newUs.size() == 1);
