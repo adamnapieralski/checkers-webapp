@@ -71,7 +71,10 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y + 1);
             if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+                if (nP.isLastRow(isUser())) {
+                        moves.push_back(Move(getPosition(), nP, nP));
+                    }
+                else moves.push_back(Move(getPosition(), nP));
             }
         }
     }
@@ -79,7 +82,10 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y - 1);
             if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+                if (nP.isLastRow(isUser())) {
+                        moves.push_back(Move(getPosition(), nP, nP));
+                    }
+                else moves.push_back(Move(getPosition(), nP));
             }
         }
     }
