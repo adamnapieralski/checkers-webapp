@@ -29,7 +29,8 @@ public:
     bool isDiffColor(PieceName pn);
     
     virtual std::vector<Move> getValidMoves(Board& board) = 0;
-    virtual void getCaptureMoves(std::vector<Move> &moves, Board board, Move current) = 0;
+    virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) = 0;
+    virtual std::vector<Move> getCaptureMoves(Board& board) = 0;
     virtual std::ostream& print(std::ostream& os) = 0;
 
 protected:

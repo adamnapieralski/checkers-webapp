@@ -41,11 +41,11 @@ elif(platform.system() == "Windows"):
 env.Command(target, cpplib, copyLibBuilder )
 
 # build tests
-SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
+#SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
 
 # run tests
-if int(test_val):
-    print('scons: Running unit tests ...')
-    os.system('./build/test')
-    print('scons: done running tests.')
+#if int(test_val):
+#    print('scons: Running unit tests ...')
+#    os.system('./build/test')
+#    print('scons: done running tests.')
     

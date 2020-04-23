@@ -11,7 +11,7 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) {
+void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
 
@@ -35,13 +35,13 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
                     if (newPos.isLastRow(isUser())) {
                         current.addChange(newPos);
                         King k(newPos, isWhite(), isUser(), board);
-                        k.getCaptureMoves(moves, board, current);
+                        k.captureMoves(moves, board, current);
                         current = tmpCurrent;
                         board = tmpBoard;
                         continue;
                     }
                     Pawn p(newPos, isWhite(), isUser(), board);
-                    p.getCaptureMoves(moves, board, current);
+                    p.captureMoves(moves, board, current);
                     current = tmpCurrent;
                     board = tmpBoard;
                 }
@@ -53,32 +53,37 @@ void Pawn::getCaptureMoves(std::vector<Move> &moves, Board board, Move current) 
     }
 }
 
-std::vector<Move> Pawn::getValidMoves(Board &board) {
-
+std::vector<Move> Pawn::getCaptureMoves(Board &board){
     std::vector<Move> moves;
     Move move;
 
-    getCaptureMoves(moves, board, move);
+    captureMoves(moves, board, move);
 
-    if (moves.empty()){
-        int d[2] ={1, -1};
-        if (isUser()) {
-            for(int i = 0 ; i < 2 ; ++i){
-                Position nP(getPosition().x + d[i], getPosition().y + 1);
-                if(board.getPieceName(nP) == EMPTY){
-                    moves.push_back(Move(getPosition(), nP));
-                }
-            }
-        }
-        else {
-            for(int i = 0 ; i < 2 ; ++i){
-                Position nP(getPosition().x + d[i], getPosition().y - 1);
-                if(board.getPieceName(nP) == EMPTY){
-                    moves.push_back(Move(getPosition(), nP));
-                }
+    return moves;
+}
+
+std::vector<Move> Pawn::getValidMoves(Board &board) {
+
+    std::vector<Move> moves;
+
+    int d[2] ={1, -1};
+    if (isUser()) {
+        for(int i = 0 ; i < 2 ; ++i){
+            Position nP(getPosition().x + d[i], getPosition().y + 1);
+            if(board.getPieceName(nP) == EMPTY){
+                moves.push_back(Move(getPosition(), nP));
             }
         }
     }
+    else {
+        for(int i = 0 ; i < 2 ; ++i){
+            Position nP(getPosition().x + d[i], getPosition().y - 1);
+            if(board.getPieceName(nP) == EMPTY){
+                moves.push_back(Move(getPosition(), nP));
+            }
+        }
+    }
+
     return moves;
 }
 
