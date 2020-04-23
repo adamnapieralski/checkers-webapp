@@ -289,6 +289,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_king ){
     Pawn player_a_3( Position(5,3), true, true, board);
 
     King player_b(Position(2,2), false, false, board);
+    Pawn player_b_1(Position(3,1), false, false, board);
 
     std::vector<Move> moves_b = player_b.getCaptureMoves(board);
 
@@ -333,6 +334,7 @@ BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
     Pawn player_a_3( Position(5,3), true, true, board);
 
     Pawn player_b(Position(2,2), false, false, board);
+    Pawn player_b_1(Position(3,1), false, false, board);
 
     std::vector<Move> moves_b = player_b.getCaptureMoves(board);
 
@@ -360,5 +362,65 @@ BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
     BOOST_CHECK (move_b_0.getChangedPosition()[0] == Position(0,0));
 
 }
+
+BOOST_AUTO_TEST_CASE(no_capture_moves_pawn){
+    Board board = Board();
+    Pawn p1(Position(1,1), true, true, board);
+    Pawn p2(Position(0,0), true, true, board);
+    Pawn p3(Position(2,2), true, true, board);
+    Pawn p4(Position(7,1), false, false, board);
+
+    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+
+    BOOST_REQUIRE (moves_p1.size() == 1);
+    BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,1) );
+    BOOST_CHECK( moves_p1[0].getEndPosition() == Position(0,2));
+    BOOST_CHECK( moves_p1[0].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p1[0].getStepMoves().empty() );
+    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() );
+
+    std::vector<Move> moves_p2 = p2.getValidMoves(board);
+    BOOST_CHECK(moves_p2.empty());
+
+    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    BOOST_CHECK(moves_p3.size() == 2);
+
+    std::vector<Move> moves_p4 = p4.getValidMoves(board);
+    BOOST_REQUIRE(moves_p4.size() == 1);
+    BOOST_CHECK( moves_p4[0].getStartPosition() == Position(7,1) );
+    BOOST_CHECK( moves_p4[0].getEndPosition() == Position(6,0));
+    BOOST_CHECK( moves_p4[0].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p4[0].getStepMoves().empty() );
+    BOOST_REQUIRE( moves_p4[0].getChangedPosition().size() == 1 );
+    BOOST_CHECK( moves_p4[0].getChangedPosition()[0] == Position(6,0));
+
+
+}
+
+BOOST_AUTO_TEST_CASE(no_capture_moves_king){
+    /*Board board = Board();
+    Pawn p1(Position(1,1), true, true, board);
+    Pawn p2(Position(0,0), true, true, board);
+    Pawn p3(Position(0,2), true, true, board);
+
+    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+
+    BOOST_REQUIRE (moves_p1.size() == 1);
+    BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,1) );
+    BOOST_CHECK( moves_p1[0].getEndPosition() == Position(2,2));
+    BOOST_CHECK( moves_p1[1].getEndPosition() == Position(2,0));
+    BOOST_CHECK( moves_p1[2].getEndPosition() == Position(0,2));
+    BOOST_CHECK( moves_p1[0].getCapturedPositions().empty() && moves_p1[1].getCapturedPositions().empty() && 
+                                            moves_p1[2].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p1[0].getStepMoves().empty() && moves_p1[1].getStepMoves().empty() && 
+                                            moves_p1[2].getStepMoves().empty() );
+    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
+                                            moves_p1[2].getChangedPosition().empty() );
+
+    std::vector<Move> moves_p2 = p2.getValidMoves(board);
+    BOOST_CHECK(moves_p2.empty());*/
+
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
