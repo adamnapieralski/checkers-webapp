@@ -186,7 +186,57 @@ BOOST_AUTO_TEST_CASE( capture_moves_pawn_simple ){
     BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,6));
     BOOST_CHECK( move_a.getStepMoves().empty());
-    BOOST_CHECK( move_a.getChangedPosition().empty());
+    BOOST_REQUIRE( move_a.getChangedPosition().size() == 1 );
+    BOOST_CHECK (move_a.getChangedPosition()[0] == Position(3,7));
+
+    Move move_b = moves_b[0];
+
+    BOOST_CHECK( move_b.getStartPosition() == Position(2,6) );
+    BOOST_CHECK( move_b.getEndPosition() == Position(0,4));
+    BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,5));
+    BOOST_CHECK( move_b.getStepMoves().empty());
+    BOOST_CHECK( move_b.getChangedPosition().empty());
+
+    
+}
+
+BOOST_AUTO_TEST_CASE( capture_moves_king_simple ){
+    //empty case
+    Board board = Board();
+    King player_a(Position(1,4), true, true, board);
+    std::vector<Move> moves_a;
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.empty());
+
+    //simple case
+    King player_b(Position(2,5), false, false, board);
+    std::vector<Move> moves_b;
+    moves_b = player_b.getCaptureMoves(board);
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.size() == 2);
+    BOOST_REQUIRE(moves_b.size() == 1);
+
+    Move move_a = moves_a[1];
+
+    BOOST_CHECK( move_a.getStartPosition() == Position(1,4) );
+    BOOST_CHECK( move_a.getEndPosition() == Position(4,7));
+    BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,5));
+    BOOST_CHECK( move_a.getStepMoves().empty());
+    BOOST_CHECK( move_a.getChangedPosition().empty() );
+
+    Move move_b = moves_b[0];
+
+    BOOST_CHECK( move_b.getStartPosition() == Position(2,5) );
+    BOOST_CHECK( move_b.getEndPosition() == Position(0,3));
+    BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,4));
+    BOOST_CHECK( move_b.getStepMoves().empty());
+    BOOST_CHECK( move_b.getChangedPosition().empty());
+
     
 }
 
