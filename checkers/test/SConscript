@@ -1,11 +1,11 @@
-import os, platform
+import os, platform, copy
 
 Import('env')
-
+env_test = env.Copy()
 if(platform.system() == "Linux"):
-   env.Replace( LIBS = [ 'boost_unit_test_framework' ] )
+   env_test.Replace( LIBS = [ 'boost_unit_test_framework' ] )
 else:
    print platform.system() + " not supported"
    
 # build C++ test program
-test_build = env.Program(target = 'test', source = ['Test.cpp', '../src/Player.cpp', '../src/Board.cpp', '../src/Piece.cpp', '../src/Pawn.cpp', '../src/King.cpp', '../src/Move.cpp'])
+test_build = env_test.Program(target = 'test', source = ['Test.cpp', '../src/Player.cpp', '../src/Board.cpp', '../src/Piece.cpp', '../src/Pawn.cpp', '../src/King.cpp', '../src/Move.cpp'])
