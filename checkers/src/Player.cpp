@@ -23,7 +23,7 @@ void Player::initializePieces(Board &board){
     }
     // place in upper part for computer
     else {
-        for (int i = BOARD_SIZE - 1; i >= INIT_ROW; --i){
+        for (int i = BOARD_SIZE - 1; i > INIT_ROW + 1; --i){
             for (int j = 0; j < BOARD_SIZE; ++j){
                 if ((i + j) % 2 == 0){
                     pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, board));
@@ -61,7 +61,7 @@ std::vector<std::vector<Move>> Player::getValidMoves(Board &board) const{
 
 void Player::erasePiece(std::shared_ptr<Piece> piece){
     pieces_.erase(std::remove_if(pieces_.begin(), pieces_.end(), 
-                                            [&piece](std::shared_ptr<Piece> p) {return p && p == piece ; }));
+                                            [&piece](const std::shared_ptr<Piece> &p) {return p && p == piece ; }));
 }
 
 void Player::changePiece(std::shared_ptr<Piece> piece, Position pos){
@@ -75,14 +75,22 @@ void Player::addPiece(bool isKing, Position pos, Board &board){
 
 void Player::movePiece(Board &board, Player &opponent, Move move){
     auto start = move.getStartPosition();
-    auto tmp = findPiece(start);
+    //auto tmp = findPiece(start);
+    auto it = std::find_if(pieces_.begin(), pieces_.end(), 
+                    [&start](const std::shared_ptr<Piece> &p) {return p->getPosition() == start; });
+    if(it == pieces_.end()) throw std::out_of_range("Nie znaleziona pionka na podanej pozycji");
+
     if(!move.getChangedPosition().empty()){
-        erasePiece(tmp);
+        pieces_.erase(it); 
+        //erasePiece(tmp);
         addPiece(true,start,board);
-        tmp = findPiece(start);
-        if(!tmp) throw std::out_of_range("Nie znaleziona pionka na podanej pozycji");
+        it = std::find_if(pieces_.begin(), pieces_.end(), 
+                    [&start](const std::shared_ptr<Piece> &p) {return p->getPosition() == start; });
+        //tmp = findPiece(start);
+        if(it == pieces_.end()) throw std::out_of_range("Nie znaleziona pionka na podanej pozycji");
     }
-    changePiece(tmp , move.getEndPosition() );
+    (*it)->changePosition(move.getEndPosition());
+    //changePiece(tmp , move.getEndPosition() );
     if(!move.getCapturedPositions().empty())
         for (auto& c : move.getCapturedPositions()) {
             opponent.erasePiece(opponent.findPiece(c));
@@ -90,9 +98,13 @@ void Player::movePiece(Board &board, Player &opponent, Move move){
     board.makeMove(move);
 }
 
+
 std::shared_ptr<Piece> Player::findPiece(Position &pos) const{
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
     }
+
+    
+
     return nullptr;
 }
