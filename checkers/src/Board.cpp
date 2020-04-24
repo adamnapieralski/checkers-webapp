@@ -37,26 +37,42 @@ std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard(){
 }
 
 void Board::clearPosition(Position pos) {
-    board_[pos.y][pos.x] = EMPTY;
+    if (!pos.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = EMPTY;
 }
 
 void Board::placePiece(Position pos, PieceName piece){
-    board_[pos.y][pos.x] = piece;
+    if (!pos.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = piece;
 }
 
 PieceName Board::getPieceName(Position pos) {
-    return board_[pos.y][pos.x];
+    return board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)];
 }
 
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
-    auto pc = board_[st.y][st.x];
-    board_[st.y][st.x] = EMPTY;
+    if (!st.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    auto pc = board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)];
+    board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)] = EMPTY;
     for (auto& c : m.getCapturedPositions()) {
-        board_[c.y][c.x] = EMPTY;
+        board_[static_cast<size_t>(c.y)][static_cast<size_t>(c.x)] = EMPTY;
     }
     auto en = m.getEndPosition();
-    board_[en.y][en.x] = pc;
+    if (!en.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(en.y)][static_cast<size_t>(en.x)] = pc;
 }
 
 Board& Board::operator=(Board other) {

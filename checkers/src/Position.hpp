@@ -3,18 +3,20 @@
 
 #include <iostream>
 
+#define BOARD_SIZE 8
+
 struct Position {
     int x, y;
     Position() : x(0), y(0) {};
     Position(int setX, int setY) : x(setX), y(setY) {};
 
     bool isValid() {
-        if (x >= 0 && x <= 7 && y >=0 && y <= 7) return true;
+        if (x >= 0 && x < BOARD_SIZE && y >=0 && y < BOARD_SIZE) return true;
         else return false;
     }
 
     bool isLastRow(bool isUser) {
-        if ((isUser && y == 7) || (!isUser && y == 0)) return true;
+        if ((isUser && y == BOARD_SIZE - 1) || (!isUser && y == 0)) return true;
         else return false;
     }
 
