@@ -10,22 +10,22 @@ struct Position {
     Position() : x(0), y(0) {};
     Position(int setX, int setY) : x(setX), y(setY) {};
 
-    bool isValid() {
+    bool isValid() const {
         if (x >= 0 && x < BOARD_SIZE && y >=0 && y < BOARD_SIZE) return true;
         else return false;
     }
 
-    bool isLastRow(bool isUser) {
+    bool isLastRow(bool isUser) const {
         if ((isUser && y == BOARD_SIZE - 1) || (!isUser && y == 0)) return true;
         else return false;
     }
 
-    bool operator==(Position &p) {
+    bool operator==(Position &p) const {
         if (x == p.x && y == p.y) return true;
         else return false;
     }
 
-    bool operator!=(Position &p) {
+    bool operator!=(Position &p) const{
         if (x != p.x || y != p.y) return true;
         else return false;
     }

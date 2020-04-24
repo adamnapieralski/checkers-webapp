@@ -11,7 +11,7 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) {
+void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
 
@@ -53,7 +53,7 @@ void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) {
     }
 }
 
-std::vector<Move> Pawn::getCaptureMoves(Board &board){
+std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
     std::vector<Move> moves;
     Move move;
 
@@ -62,7 +62,7 @@ std::vector<Move> Pawn::getCaptureMoves(Board &board){
     return moves;
 }
 
-std::vector<Move> Pawn::getValidMoves(Board &board) {
+std::vector<Move> Pawn::getValidMoves(Board &board) const{
 
     std::vector<Move> moves;
 
@@ -95,7 +95,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
     return moves;
 }
 
-std::ostream& Pawn::print(std::ostream& os){
+std::ostream& Pawn::print(std::ostream& os) const{
     if (this->isWhite()) os << "w";
     else os << "b";
     return os;

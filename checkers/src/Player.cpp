@@ -3,16 +3,18 @@
 #include "King.hpp"
 #include <algorithm> 
 
+#define INIT_ROW 3
+
 Player::Player(bool isWhite, bool isUser) :
     isWhite_(isWhite), isUser_(isUser) {}
 
-bool Player::isWhite() {    return isWhite_;    }
+bool Player::isWhite() const {    return isWhite_;    }
 
 void Player::initializePieces(Board &board){
     // place in lower part for user
     if (isUser_) {
-        for (int i = 0; i < 3; ++i){
-            for(int j = 0; j < 8; ++j) {
+        for (int i = 0; i < INIT_ROW; ++i){
+            for(int j = 0; j < BOARD_SIZE; ++j) {
                 if ((i + j) % 2 == 0) {
                     pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, board));
                 }
@@ -21,8 +23,8 @@ void Player::initializePieces(Board &board){
     }
     // place in upper part for computer
     else {
-        for (int i = 7; i > 4; --i){
-            for (int j = 0; j < 8; ++j){
+        for (int i = BOARD_SIZE - 1; i >= INIT_ROW; --i){
+            for (int j = 0; j < BOARD_SIZE; ++j){
                 if ((i + j) % 2 == 0){
                     pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, board));
                 }
@@ -31,11 +33,11 @@ void Player::initializePieces(Board &board){
     }
 }
 
-std::vector<std::shared_ptr<Piece>> Player::getPieces(){
+std::vector<std::shared_ptr<Piece>> Player::getPieces() const{
     return pieces_;
 }
 
-std::vector<std::vector<Move>> Player::getValidMoves(Board &board){
+std::vector<std::vector<Move>> Player::getValidMoves(Board &board) const{
     std::vector<std::vector<Move>> valid_moves;
     std::vector<Move> tmp;
     for (auto i = pieces_.begin(); i != pieces_.end(); ++i){
@@ -51,19 +53,11 @@ std::vector<std::vector<Move>> Player::getValidMoves(Board &board){
     return valid_moves;
 }
 
-/*std::vector<Move> Player::getValidMovePiece(Board &board, int index){
-    std::vector<Move> move;
-    move = (pieces_[index])->getCaptureMoves(board);
-    if(move.empty()) (pieces_[index]) ->getValidMoves(board);
-
-    return move;
-}*/
-
-void Player::printPlayer(){
+/*void Player::printPlayer(){
     for (size_t i = 0; i < 12; i++){
         std::cout << pieces_[i]->getPosition().x << "," << pieces_[i]->getPosition().y << std::endl; 
     }
-}
+}*/
 
 void Player::erasePiece(std::shared_ptr<Piece> piece){
     pieces_.erase(std::remove_if(pieces_.begin(), pieces_.end(), 
@@ -80,11 +74,12 @@ void Player::addPiece(bool isKing, Position pos, Board &board){
 }
 
 void Player::movePiece(Board &board, Player &opponent, Move move){
-    auto tmp = findPiece(move.getStartPosition());
+    auto start = move.getStartPosition();
+    auto tmp = findPiece(start);
     if(!move.getChangedPosition().empty()){
         erasePiece(tmp);
-        addPiece(true,move.getStartPosition(),board);
-        tmp = findPiece(move.getStartPosition());
+        addPiece(true,start,board);
+        tmp = findPiece(start);
         if(!tmp) throw std::out_of_range("Nie znaleziona pionka na podanej pozycji");
     }
     changePiece(tmp , move.getEndPosition() );
@@ -95,7 +90,7 @@ void Player::movePiece(Board &board, Player &opponent, Move move){
     board.makeMove(move);
 }
 
-std::shared_ptr<Piece> Player::findPiece(Position pos){
+std::shared_ptr<Piece> Player::findPiece(Position &pos) const{
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
     }

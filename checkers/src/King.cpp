@@ -7,7 +7,7 @@ King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_KING);
 }
 
-void King::captureMoves(std::vector<Move>& moves, Board board, Move current) {
+void King::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dy[4] = {1, 1, -1, -1};
     int dx[4] = {1, -1, -1, 1};
 
@@ -53,7 +53,7 @@ void King::captureMoves(std::vector<Move>& moves, Board board, Move current) {
     }
 }
 
-std::vector<Move> King::getCaptureMoves(Board& board){
+std::vector<Move> King::getCaptureMoves(Board& board) const{
     std::vector<Move> moves;
 
     Move move;
@@ -63,7 +63,7 @@ std::vector<Move> King::getCaptureMoves(Board& board){
 
 }
 
-std::vector<Move> King::getValidMoves(Board& board) {
+std::vector<Move> King::getValidMoves(Board& board) const {
 
     std::vector<Move> moves;
 
@@ -83,7 +83,7 @@ std::vector<Move> King::getValidMoves(Board& board) {
     return moves;
 }
 
-std::ostream& King::print(std::ostream& os){
+std::ostream& King::print(std::ostream& os) const{
     if (this->isWhite()) os << "w";
     else os << "b";
     return os;

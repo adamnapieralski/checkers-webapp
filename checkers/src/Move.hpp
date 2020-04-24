@@ -13,8 +13,8 @@ public:
 
     //void addStepMove(Move tmp);
     void addChange(Position pos);
-    bool isInitial();
-    Move merge(Move& next);
+    bool isInitial() const;
+    Move merge(Move& next) const;
 
     Position getStartPosition() const;
     Position getEndPosition() const;
