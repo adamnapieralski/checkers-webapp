@@ -70,16 +70,24 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
     if (isUser()) {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y + 1);
-            if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+            if(nP.isValid() && board.getPieceName(nP) == EMPTY){
+                Move tmp = Move(getPosition(), nP);
+                if (nP.isLastRow(isUser())) {
+                       tmp.addChange(nP);
+                    }
+                moves.push_back(tmp);
             }
         }
     }
     else {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y - 1);
-            if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+            if(nP.isValid() && board.getPieceName(nP) == EMPTY){
+                Move tmp = Move(getPosition(), nP);
+                if (nP.isLastRow(isUser())) {
+                       tmp.addChange(nP);
+                    }
+                moves.push_back(tmp);
             }
         }
     }

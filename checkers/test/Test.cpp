@@ -25,8 +25,8 @@ BOOST_AUTO_TEST_CASE( changePawKing ) //change Pawn to King
     BOOST_CHECK(moves.size() == 2);
 
     user.movePiece(board, computer, moves[0]);
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 0);
     BOOST_CHECK(newUs.size() == 1);
@@ -54,8 +54,8 @@ BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
 
     user.movePiece(board, computer, moves[1]);
 
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 1 || newComp.size() == 2 );
     BOOST_CHECK(newUs.size() == 1);
@@ -83,8 +83,8 @@ BOOST_AUTO_TEST_CASE( king ) //check King
 
     user.movePiece(board, computer, moves[0]);
 
-    std::vector<Piece*> newComp = computer.getPieces();
-    std::vector<Piece*> newUs = user.getPieces();
+    auto newComp = computer.getPieces();
+    auto newUs = user.getPieces();
 
     BOOST_CHECK(newComp.size() == 1);
     BOOST_CHECK(newUs.size() == 1);
@@ -159,6 +159,359 @@ BOOST_AUTO_TEST_CASE( board_make_move )
     BOOST_CHECK( board.getPieceName(Position(4, 2)) == EMPTY );
     BOOST_CHECK( board.getPieceName(Position(5, 1)) == WHITE_KING );
 }
+
+
+BOOST_AUTO_TEST_CASE( capture_moves_pawn_simple ){
+    //empty case
+    Board board = Board();
+    Pawn player_a(Position(1,5), true, true, board);
+    std::vector<Move> moves_a;
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.empty());
+
+    //simple case
+    Pawn player_b(Position(2,6), false, false, board);
+    std::vector<Move> moves_b;
+    moves_b = player_b.getCaptureMoves(board);
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.size() == 1);
+    BOOST_REQUIRE(moves_b.size() == 1);
+
+    Move move_a = moves_a[0];
+
+    BOOST_CHECK( move_a.getStartPosition() == Position(1,5) );
+    BOOST_CHECK( move_a.getEndPosition() == Position(3,7));
+    BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,6));
+    BOOST_CHECK( move_a.getStepMoves().empty());
+    BOOST_REQUIRE( move_a.getChangedPosition().size() == 1 );
+    BOOST_CHECK (move_a.getChangedPosition()[0] == Position(3,7));
+
+    Move move_b = moves_b[0];
+
+    BOOST_CHECK( move_b.getStartPosition() == Position(2,6) );
+    BOOST_CHECK( move_b.getEndPosition() == Position(0,4));
+    BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,5));
+    BOOST_CHECK( move_b.getStepMoves().empty());
+    BOOST_CHECK( move_b.getChangedPosition().empty());
+
+    
+}
+
+BOOST_AUTO_TEST_CASE( capture_moves_king_simple ){
+    //empty case
+    Board board = Board();
+    King player_a(Position(1,4), true, true, board);
+    std::vector<Move> moves_a;
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.empty());
+
+    //simple case
+    King player_b(Position(2,5), false, false, board);
+    std::vector<Move> moves_b;
+    moves_b = player_b.getCaptureMoves(board);
+    moves_a = player_a.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_a.size() == 2);
+    BOOST_REQUIRE(moves_b.size() == 1);
+
+    Move move_a = moves_a[1];
+
+    BOOST_CHECK( move_a.getStartPosition() == Position(1,4) );
+    BOOST_CHECK( move_a.getEndPosition() == Position(4,7));
+    BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,5));
+    BOOST_CHECK( move_a.getStepMoves().empty());
+    BOOST_CHECK( move_a.getChangedPosition().empty() );
+
+    Move move_b = moves_b[0];
+
+    BOOST_CHECK( move_b.getStartPosition() == Position(2,5) );
+    BOOST_CHECK( move_b.getEndPosition() == Position(0,3));
+    BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,4));
+    BOOST_CHECK( move_b.getStepMoves().empty());
+    BOOST_CHECK( move_b.getChangedPosition().empty());
+
+    
+}
+
+BOOST_AUTO_TEST_CASE ( capture_moves_pawn ){
+    //More complicated test
+    Board board = Board();
+
+    Pawn player_a_1( Position(1,1), false, false, board);
+    Pawn player_a_2( Position(3,3), false, false, board);
+    Pawn player_a_3( Position(5,3), false, false, board);
+
+    Pawn player_b(Position(2,2), true, true, board);
+
+    std::vector<Move> moves_b = player_b.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_b.size() == 2);
+    
+    Move move_b_0 = moves_b[0];
+
+    BOOST_CHECK( move_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_0.getEndPosition() == Position(6,2));
+    BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(3,3) && move_b_0.getCapturedPositions()[1] == Position(5,3));
+    BOOST_CHECK( move_b_0.getStepMoves().size() == 2 );
+    BOOST_CHECK( move_b_0.getChangedPosition().empty());
+
+    Move move_b_1 = moves_b[1];
+
+    BOOST_CHECK( move_b_1.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_1.getEndPosition() == Position(0,0));
+    BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) );
+    BOOST_CHECK( move_b_1.getStepMoves().empty() );
+    BOOST_CHECK( move_b_1.getChangedPosition().empty());
+
+    std::vector<Move> moves_a_1 = player_a_1.getCaptureMoves(board);
+    std::vector<Move> moves_a_2 = player_a_2.getCaptureMoves(board);
+    std::vector<Move> moves_a_3 = player_a_3.getCaptureMoves(board);
+
+    BOOST_CHECK( moves_a_1.empty() && moves_a_2.empty() && moves_a_3.empty() );
+
+}
+
+BOOST_AUTO_TEST_CASE ( capture_moves_king ){
+    //More complicated test
+    Board board = Board();
+
+    Pawn player_a_1( Position(1,1), true, true, board);
+    Pawn player_a_2( Position(3,3), true, true, board);
+    Pawn player_a_3( Position(5,3), true, true, board);
+
+    King player_b(Position(2,2), false, false, board);
+    Pawn player_b_1(Position(3,1), false, false, board);
+
+    std::vector<Move> moves_b = player_b.getCaptureMoves(board);
+
+    std::cout << moves_b.size() <<std::endl;
+    BOOST_REQUIRE(moves_b.size() == 11);
+    
+    Move move_b_0 = moves_b[0];
+
+    BOOST_CHECK( move_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_0.getEndPosition() == Position(0,0));
+    BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(3,3) && move_b_0.getCapturedPositions()[1] == Position(1,1) );
+    BOOST_CHECK( move_b_0.getStepMoves().size() == 2 );
+    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+
+    Move step_b_0 =  move_b_0.getStepMoves()[0];
+    BOOST_CHECK( step_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( step_b_0.getEndPosition() == Position(4,4));
+    BOOST_REQUIRE( step_b_0.getCapturedPositions().size() == 1 );
+    BOOST_CHECK( step_b_0.getCapturedPositions()[0] == Position(3,3) );
+    BOOST_CHECK( step_b_0.getStepMoves().empty() );
+    BOOST_CHECK (step_b_0.getChangedPosition().empty());
+
+    Move move_b_1 = moves_b[8];
+
+    BOOST_CHECK( move_b_1.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_1.getEndPosition() == Position(5,5));
+    BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) &&  move_b_1.getCapturedPositions()[1] == Position(3,3));
+    BOOST_CHECK( move_b_1.getStepMoves().size() == 2);
+    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+
+
+}
+
+BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
+    //More complicated test
+    Board board = Board();
+
+    Pawn player_a_1( Position(1,1), true, true, board);
+    Pawn player_a_2( Position(3,3), true, true, board);
+    Pawn player_a_3( Position(5,3), true, true, board);
+
+    Pawn player_b(Position(2,2), false, false, board);
+    Pawn player_b_1(Position(3,1), false, false, board);
+
+    std::vector<Move> moves_b = player_b.getCaptureMoves(board);
+
+    BOOST_REQUIRE(moves_b.size() == 6);
+    
+    Move move_b_0 = moves_b[1];
+
+    BOOST_CHECK( move_b_0.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_0.getEndPosition() == Position(6,2));
+    BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 3 );
+    BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(1,1) && move_b_0.getCapturedPositions()[1] == Position(3,3) &&
+                                         move_b_0.getCapturedPositions()[2] == Position(5,3));
+    BOOST_CHECK( move_b_0.getStepMoves().size() == 3 );
+    BOOST_REQUIRE( move_b_0.getChangedPosition().size() == 1);
+    BOOST_CHECK (move_b_0.getChangedPosition()[0] == Position(0,0));
+
+    Move move_b_1 = moves_b[4];
+
+    BOOST_CHECK( move_b_1.getStartPosition() == Position(2,2) );
+    BOOST_CHECK( move_b_1.getEndPosition() == Position(6,6));
+    BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 2 );
+    BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) &&  move_b_1.getCapturedPositions()[1] == Position(3,3));
+    BOOST_CHECK( move_b_1.getStepMoves().size() == 2);
+    BOOST_REQUIRE( move_b_0.getChangedPosition().size() == 1);
+    BOOST_CHECK (move_b_0.getChangedPosition()[0] == Position(0,0));
+
+}
+
+BOOST_AUTO_TEST_CASE(no_capture_moves_pawn){
+    Board board = Board();
+    Pawn p1(Position(1,1), true, true, board);
+    Pawn p2(Position(0,0), true, true, board);
+    Pawn p3(Position(2,2), true, true, board);
+    Pawn p4(Position(7,1), false, false, board);
+
+    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+
+    BOOST_REQUIRE (moves_p1.size() == 1);
+    BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,1) );
+    BOOST_CHECK( moves_p1[0].getEndPosition() == Position(0,2));
+    BOOST_CHECK( moves_p1[0].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p1[0].getStepMoves().empty() );
+    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() );
+
+    std::vector<Move> moves_p2 = p2.getValidMoves(board);
+    BOOST_CHECK(moves_p2.empty());
+
+    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    BOOST_CHECK(moves_p3.size() == 2);
+
+    std::vector<Move> moves_p4 = p4.getValidMoves(board);
+    BOOST_REQUIRE(moves_p4.size() == 1);
+    BOOST_CHECK( moves_p4[0].getStartPosition() == Position(7,1) );
+    BOOST_CHECK( moves_p4[0].getEndPosition() == Position(6,0));
+    BOOST_CHECK( moves_p4[0].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p4[0].getStepMoves().empty() );
+    BOOST_REQUIRE( moves_p4[0].getChangedPosition().size() == 1 );
+    BOOST_CHECK( moves_p4[0].getChangedPosition()[0] == Position(6,0));
+
+
+}
+
+BOOST_AUTO_TEST_CASE(no_capture_moves_king){
+    Board board = Board();
+    King p1(Position(1,6), true, true, board);
+    Pawn p2(Position(4,3), true, true, board);
+    King p3(Position(7,0), true, true, board);
+
+    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+
+    BOOST_REQUIRE (moves_p1.size() == 5);
+    BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,6)  && moves_p1[1].getStartPosition() == Position(1,6) && moves_p1[2].getStartPosition() == Position(1,6)
+                                    && moves_p1[3].getStartPosition() == Position(1,6) && moves_p1[4].getStartPosition() == Position(1,6));
+    BOOST_CHECK( moves_p1[0].getEndPosition() == Position(2,7));
+    BOOST_CHECK( moves_p1[1].getEndPosition() == Position(0,7));
+    BOOST_CHECK( moves_p1[2].getEndPosition() == Position(0,5));
+    BOOST_CHECK( moves_p1[3].getEndPosition() == Position(2,5));
+    BOOST_CHECK( moves_p1[4].getEndPosition() == Position(3,4));
+    BOOST_CHECK( moves_p1[0].getCapturedPositions().empty() && moves_p1[1].getCapturedPositions().empty() && 
+                                            moves_p1[2].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p1[0].getStepMoves().empty() && moves_p1[1].getStepMoves().empty() && 
+                                            moves_p1[2].getStepMoves().empty() );
+    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
+                                            moves_p1[2].getChangedPosition().empty() );
+
+    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+
+    BOOST_REQUIRE (moves_p3.size() == 2);
+    BOOST_CHECK( moves_p3[0].getStartPosition() == Position(7,0)  && moves_p3[1].getStartPosition() == Position(7,0) );
+    BOOST_CHECK( moves_p3[0].getEndPosition() == Position(6,1));
+    BOOST_CHECK( moves_p3[1].getEndPosition() == Position(5,2));
+    BOOST_CHECK( moves_p3[0].getCapturedPositions().empty() && moves_p1[1].getCapturedPositions().empty() && 
+                                            moves_p1[2].getCapturedPositions().empty() );
+    BOOST_CHECK( moves_p3[0].getStepMoves().empty() && moves_p1[1].getStepMoves().empty() && 
+                                            moves_p1[2].getStepMoves().empty() );
+    BOOST_CHECK( moves_p3[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
+                                            moves_p1[2].getChangedPosition().empty() );
+
+
+}
+
+//Player
+
+BOOST_AUTO_TEST_CASE(initilizePieces){
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    user.initializePieces();
+
+    BOOST_REQUIRE(user.getPieces().size() == 12);
+    BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(0,0));
+    BOOST_CHECK(board.getPieceName(Position(0,0)) == WHITE_PAWN);
+
+    Player computer = Player(&board, false, false);
+    computer.initializePieces();
+    BOOST_REQUIRE(computer.getPieces().size() == 12);
+    BOOST_CHECK(computer.getPieces()[11]->getPosition() == Position(7,5));
+    BOOST_CHECK(board.getPieceName(Position(7,5)) == BLACK_PAWN);
+
+}
+
+BOOST_AUTO_TEST_CASE(getValidMoves){
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    user.addPiece(false, Position(1,1), board);
+    user.addPiece(false, Position(3,1), board);
+    user.addPiece(false, Position(5,1), board);
+    Player computer = Player(&board, false, false);
+    computer.addPiece(false, Position(2,2), board);
+    computer.addPiece(true, Position(4,4), board);
+
+    std::vector<std::vector<Move>> moves_user = user.getValidMoves(board);
+    std::vector<std::vector<Move>> moves_computer = computer.getValidMoves(board);
+
+    BOOST_REQUIRE(moves_user.size() == 2);
+    BOOST_CHECK(moves_user[0].size() == 1 && moves_user[1].size() == 1);
+    BOOST_REQUIRE(moves_computer.size() == 1);
+    BOOST_CHECK(moves_computer[0].size() == 3);
+
+    //empty and not capture case
+    Board board_2 = Board();
+    Player user_2 = Player(&board_2, true, true);
+    user_2.addPiece(false, Position(0,0), board_2);
+    Player computer_2 = Player(&board_2, false, false);
+    computer_2.addPiece(false, Position(1,1), board_2);
+    computer_2.addPiece(false, Position(2,2), board_2);
+
+    std::vector<std::vector<Move>> moves_user_2 = user_2.getValidMoves(board_2);
+    std::vector<std::vector<Move>> moves_computer_2 = computer_2.getValidMoves(board_2);
+
+    BOOST_REQUIRE(moves_user_2.empty());
+    BOOST_REQUIRE(moves_computer_2.size() == 2);
+    BOOST_CHECK(moves_computer_2[0].size() == 1 && moves_computer_2[1].size() == 1);
+}
+
+BOOST_AUTO_TEST_CASE(movePiece){
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    user.addPiece(false, Position(1,5), board);
+    Player computer = Player(&board, false, false);
+    computer.addPiece(false, Position(2,6), board);
+    computer.addPiece(false, Position(6,4), board);
+
+    std::vector<std::vector<Move>> moves_user = user.getValidMoves(board);
+    BOOST_REQUIRE(moves_user.size() == 1);
+    BOOST_REQUIRE(moves_user[0].size() == 1);
+
+    user.movePiece(board, computer, moves_user[0][0]);
+
+    BOOST_CHECK(computer.getPieces().empty());
+    BOOST_REQUIRE(user.getPieces().size() == 1);
+    BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(7,3));
+    BOOST_CHECK(board.getPieceName(Position(7,3)) == WHITE_KING);
+
+
+
+}
+
 
 
 BOOST_AUTO_TEST_SUITE_END()
