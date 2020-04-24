@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream& os, const Board& b)
     return os;
 }
 
-std::array<std::array<PieceName,8>,8> Board::getBoard(){
+std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard(){
     return board_;
 }
 
@@ -69,15 +69,15 @@ std::string Board::getFEN() {
         { EMPTY, 'e' }, { WHITE_PAWN , 'p' }, { WHITE_KING, 'k' }, { BLACK_PAWN, 'P' }, { BLACK_KING, 'K' }
     };
     std::string fen = "";
-    for (int row = 7; row >=0; --row) {
-        for (int col = 0; col < 8; ++col) {
-            fen += pcs[board_[row][col]];
+    for (size_t row = 0; row < BOARD_SIZE; ++row) {
+        for (size_t col = 0; col < BOARD_SIZE; ++col) {
+            fen += pcs[board_[BOARD_SIZE - 1 -row][col]];
         }
         fen += '/';
     }
     fen.pop_back();
-    int eCount = 0;
-    int i;
+    size_t eCount = 0;
+    size_t i;
     for (i = 0; i < fen.length(); ++i) {
         if (fen[i] == 'e') {
             eCount++;
