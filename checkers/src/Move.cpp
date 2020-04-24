@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy klasy Move, która przechowuje ruchy możliwe do wykonania
+ * 
+ * */
+
 #include "Move.hpp"
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}

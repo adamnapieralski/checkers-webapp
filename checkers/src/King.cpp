@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy King, która reprezentuje damkę w warcabach
+ * 
+ * */
+
 #include "King.hpp"
 
 King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {

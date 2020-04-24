@@ -4,6 +4,16 @@
 #include <vector>
 #include <memory>
 
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy Player, która reprezentuje Gracza
+ * 
+ * */
+
 #include "Piece.hpp"
 #include "Board.hpp"
 

@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy abstrakcyjnej Piece, która reprezntuje wszystkie figury warcabowe
+ * 
+ * */
+
 #ifndef PIECE_HPP
 #define PIECE_HPP
 

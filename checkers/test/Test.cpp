@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Testy jednostkowe
+ * 
+ * */
+
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
@@ -10,91 +20,6 @@
 
 BOOST_AUTO_TEST_SUITE(MovePiece)
 
-/*
-BOOST_AUTO_TEST_CASE( changePawKing ) //change Pawn to King
-{   
-
-    Board board = Board();
-    Player user = Player(true, true);
-    Player computer = Player(false, false);
-    user.addPiece(false, Position(1, 5),board);
-    computer.addPiece(true, Position(2,6), board);
-    computer.addPiece(false, Position(5,5), board);
-
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 2);
-
-    user.movePiece(board, computer, moves[0]);
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 0);
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(6,4);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
-
-}
-
-BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
-{   
-
-    Board board = Board();
-    Player user = Player(true, true);
-    Player computer = Player(false, false);
-    user.addPiece(false, Position(2, 2),board);
-    computer.addPiece(false, Position(3,3), board);
-    computer.addPiece(false, Position(1,1), board);
-    computer.addPiece(false, Position(5,3), board);
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 2);
-
-    user.movePiece(board, computer, moves[1]);
-
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 1 || newComp.size() == 2 );
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(0,0);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_PAWN);
-
-}*/
-
-/*
-BOOST_AUTO_TEST_CASE( king ) //check King
-{   
-    Board board = Board();
-    Player user = Player(true, true);
-    Player computer = Player(false, false);
-    user.addPiece(true, Position(2, 2),board);
-    computer.addPiece(false, Position(3,3), board);
-    computer.addPiece(false, Position(1,1), board);
-    computer.addPiece(false, Position(5,3), board);
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 11);
-
-    user.movePiece(board, computer, moves[0]);
-
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 1);
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(0,0);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
-}*/
 
 BOOST_AUTO_TEST_CASE( move_merge )
 {

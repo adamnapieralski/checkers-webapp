@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy struktury Position, która reprezntuje pozycje pionków na planszy
+ * 
+ * */
+
 #ifndef POSITION_HPP
 #define POSITION_HPP
 

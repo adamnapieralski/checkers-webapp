@@ -1,3 +1,14 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy Pawn, która reprezntuje pionka w warcabach
+ * 
+ * */
+
+
 #ifndef PAWN_HPP
 #define PAWN_HPP
 

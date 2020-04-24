@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy Board, która reprezentuje plansze do gry w Warcaby
+ * 
+ * */
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
