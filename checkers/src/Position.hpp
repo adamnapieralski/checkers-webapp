@@ -1,29 +1,41 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy struktury Position, która reprezntuje pozycje pionków na planszy
+ * 
+ * */
+
 #ifndef POSITION_HPP
 #define POSITION_HPP
 
 #include <iostream>
+
+#define BOARD_SIZE 8
 
 struct Position {
     int x, y;
     Position() : x(0), y(0) {};
     Position(int setX, int setY) : x(setX), y(setY) {};
 
-    bool isValid() {
-        if (x >= 0 && x <= 7 && y >=0 && y <= 7) return true;
+    bool isValid() const {
+        if (x >= 0 && x < BOARD_SIZE && y >=0 && y < BOARD_SIZE) return true;
         else return false;
     }
 
-    bool isLastRow(bool isUser) {
-        if ((isUser && y == 7) || (!isUser && y == 0)) return true;
+    bool isLastRow(bool isUser) const {
+        if ((isUser && y == BOARD_SIZE - 1) || (!isUser && y == 0)) return true;
         else return false;
     }
 
-    bool operator==(Position &p) {
+    bool operator==(Position &p) const {
         if (x == p.x && y == p.y) return true;
         else return false;
     }
 
-    bool operator!=(Position &p) {
+    bool operator!=(Position &p) const{
         if (x != p.x || y != p.y) return true;
         else return false;
     }

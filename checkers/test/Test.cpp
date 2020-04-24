@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Testy jednostkowe
+ * 
+ * */
+
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
@@ -10,91 +20,6 @@
 
 BOOST_AUTO_TEST_SUITE(MovePiece)
 
-BOOST_AUTO_TEST_CASE( changePawKing ) //change Pawn to King
-{   
-
-    Board board = Board();
-    Player user = Player(&board, true, true);
-    Player computer = Player(&board, false, false);
-    user.addPiece(false, Position(1, 5),board);
-    computer.addPiece(true, Position(2,6), board);
-    computer.addPiece(false, Position(5,5), board);
-
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 2);
-
-    user.movePiece(board, computer, moves[0]);
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 0);
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(6,4);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
-
-}
-
-BOOST_AUTO_TEST_CASE( pawn ) //check Pawn
-{   
-
-    Board board = Board();
-    Player user = Player(&board, true, true);
-    Player computer = Player(&board, false, false);
-    user.addPiece(false, Position(2, 2),board);
-    computer.addPiece(false, Position(3,3), board);
-    computer.addPiece(false, Position(1,1), board);
-    computer.addPiece(false, Position(5,3), board);
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 2);
-
-    user.movePiece(board, computer, moves[1]);
-
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 1 || newComp.size() == 2 );
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(0,0);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_PAWN);
-
-}
-
-
-BOOST_AUTO_TEST_CASE( king ) //check King
-{   
-    Board board = Board();
-    Player user = Player(&board, true, true);
-    Player computer = Player(&board, false, false);
-    user.addPiece(true, Position(2, 2),board);
-    computer.addPiece(false, Position(3,3), board);
-    computer.addPiece(false, Position(1,1), board);
-    computer.addPiece(false, Position(5,3), board);
-    auto moves = user.getValidMovePiece(board, 0);
-
-    BOOST_CHECK(moves.size() == 11);
-
-    user.movePiece(board, computer, moves[0]);
-
-    auto newComp = computer.getPieces();
-    auto newUs = user.getPieces();
-
-    BOOST_CHECK(newComp.size() == 1);
-    BOOST_CHECK(newUs.size() == 1);
-
-    Position rPos(0,0);
-
-    BOOST_CHECK(newUs[0]->getPosition() == rPos);
-    BOOST_CHECK(board.getPieceName(rPos) == WHITE_KING);
-
-}
 
 BOOST_AUTO_TEST_CASE( move_merge )
 {
@@ -129,10 +54,10 @@ BOOST_AUTO_TEST_CASE( move_merge )
 BOOST_AUTO_TEST_CASE( board_fen )
 {
     Board board = Board();
-    Player user = Player(&board, true, true);
-    Player computer = Player(&board, false, false);
-    user.initializePieces();
-    computer.initializePieces();
+    Player user = Player(true, true);
+    Player computer = Player(false, false);
+    user.initializePieces(board);
+    computer.initializePieces(board);
     BOOST_CHECK( board.getFEN() == "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1" );
 
     board.placePiece(Position(0, 0), WHITE_KING);
@@ -293,7 +218,6 @@ BOOST_AUTO_TEST_CASE ( capture_moves_king ){
 
     std::vector<Move> moves_b = player_b.getCaptureMoves(board);
 
-    std::cout << moves_b.size() <<std::endl;
     BOOST_REQUIRE(moves_b.size() == 11);
     
     Move move_b_0 = moves_b[0];
@@ -440,15 +364,15 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
 
 BOOST_AUTO_TEST_CASE(initilizePieces){
     Board board = Board();
-    Player user = Player(&board, true, true);
-    user.initializePieces();
+    Player user = Player(true, true);
+    user.initializePieces(board);
 
     BOOST_REQUIRE(user.getPieces().size() == 12);
     BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(0,0));
     BOOST_CHECK(board.getPieceName(Position(0,0)) == WHITE_PAWN);
 
-    Player computer = Player(&board, false, false);
-    computer.initializePieces();
+    Player computer = Player(false, false);
+    computer.initializePieces(board);
     BOOST_REQUIRE(computer.getPieces().size() == 12);
     BOOST_CHECK(computer.getPieces()[11]->getPosition() == Position(7,5));
     BOOST_CHECK(board.getPieceName(Position(7,5)) == BLACK_PAWN);
@@ -457,11 +381,11 @@ BOOST_AUTO_TEST_CASE(initilizePieces){
 
 BOOST_AUTO_TEST_CASE(getValidMoves){
     Board board = Board();
-    Player user = Player(&board, true, true);
+    Player user = Player(true, true);
     user.addPiece(false, Position(1,1), board);
     user.addPiece(false, Position(3,1), board);
     user.addPiece(false, Position(5,1), board);
-    Player computer = Player(&board, false, false);
+    Player computer = Player(false, false);
     computer.addPiece(false, Position(2,2), board);
     computer.addPiece(true, Position(4,4), board);
 
@@ -475,9 +399,9 @@ BOOST_AUTO_TEST_CASE(getValidMoves){
 
     //empty and not capture case
     Board board_2 = Board();
-    Player user_2 = Player(&board_2, true, true);
+    Player user_2 = Player(true, true);
     user_2.addPiece(false, Position(0,0), board_2);
-    Player computer_2 = Player(&board_2, false, false);
+    Player computer_2 = Player(false, false);
     computer_2.addPiece(false, Position(1,1), board_2);
     computer_2.addPiece(false, Position(2,2), board_2);
 
@@ -491,9 +415,9 @@ BOOST_AUTO_TEST_CASE(getValidMoves){
 
 BOOST_AUTO_TEST_CASE(movePiece){
     Board board = Board();
-    Player user = Player(&board, true, true);
+    Player user = Player(true, true);
     user.addPiece(false, Position(1,5), board);
-    Player computer = Player(&board, false, false);
+    Player computer = Player(false, false);
     computer.addPiece(false, Position(2,6), board);
     computer.addPiece(false, Position(6,4), board);
 
@@ -507,8 +431,6 @@ BOOST_AUTO_TEST_CASE(movePiece){
     BOOST_REQUIRE(user.getPieces().size() == 1);
     BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(7,3));
     BOOST_CHECK(board.getPieceName(Position(7,3)) == WHITE_KING);
-
-
 
 }
 

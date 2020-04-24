@@ -1,8 +1,12 @@
 /**
- * @file Checkers.hpp
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
  * 
- * @brief Class managing whole checkers game.
- */
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy klasy Checkers, która reprezentuje mechanikę gry (główna klasa)
+ * 
+ * */
 
 #ifndef CHECKERS_HPP
 #define CHECKERS_HPP

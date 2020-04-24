@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy abstrakcyjnej Piece, która reprezntuje wszystkie figury warcabowe
+ * 
+ * */
+
 #ifndef PIECE_HPP
 #define PIECE_HPP
 
@@ -15,23 +25,19 @@ public:
     Piece(Position pos, bool isWhite, bool isUser);
     virtual ~Piece() {};
 
-    bool isWhite();
-    bool isUser();
+    bool isWhite() const;
+    bool isUser() const;
     
-    Position getPosition();
-
-    bool isOnSameDiagonal(Piece& piece);
-    // int radiusDistance(Piece& piece);
-    Position positionDistance(Position pos);
+    Position getPosition() const;
     void changePosition(Position pos);
 
-    bool isSameColor(PieceName pn);
-    bool isDiffColor(PieceName pn);
+    bool isSameColor(PieceName &pn) const;
+    bool isDiffColor(PieceName pn) const;
     
-    virtual std::vector<Move> getValidMoves(Board& board) = 0;
-    virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) = 0;
-    virtual std::vector<Move> getCaptureMoves(Board& board) = 0;
-    virtual std::ostream& print(std::ostream& os) = 0;
+    virtual std::vector<Move> getValidMoves(Board& board) const = 0;
+    virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
+    virtual std::vector<Move> getCaptureMoves(Board& board) const = 0;
+    virtual std::ostream& print(std::ostream& os) const = 0;
 
 protected:
     Position pos_;

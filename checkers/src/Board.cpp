@@ -1,3 +1,12 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy klasy Board, która reprezentuje plansze do gry w Warcaby
+ * 
+ * */
 #include <map>
 #include "Board.hpp"
 
@@ -32,31 +41,47 @@ std::ostream& operator<<(std::ostream& os, const Board& b)
     return os;
 }
 
-std::array<std::array<PieceName,8>,8> Board::getBoard(){
+std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard(){
     return board_;
 }
 
 void Board::clearPosition(Position pos) {
-    board_[pos.y][pos.x] = EMPTY;
+    if (!pos.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = EMPTY;
 }
 
 void Board::placePiece(Position pos, PieceName piece){
-    board_[pos.y][pos.x] = piece;
+    if (!pos.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = piece;
 }
 
 PieceName Board::getPieceName(Position pos) {
-    return board_[pos.y][pos.x];
+    return board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)];
 }
 
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
-    auto pc = board_[st.y][st.x];
-    board_[st.y][st.x] = EMPTY;
+    if (!st.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    auto pc = board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)];
+    board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)] = EMPTY;
     for (auto& c : m.getCapturedPositions()) {
-        board_[c.y][c.x] = EMPTY;
+        board_[static_cast<size_t>(c.y)][static_cast<size_t>(c.x)] = EMPTY;
     }
     auto en = m.getEndPosition();
-    board_[en.y][en.x] = pc;
+    if (!en.isValid()) {
+        throw std::out_of_range("Nieprawidłowa pozycja");
+        return;
+    }
+    board_[static_cast<size_t>(en.y)][static_cast<size_t>(en.x)] = pc;
 }
 
 Board& Board::operator=(Board other) {
@@ -69,15 +94,15 @@ std::string Board::getFEN() {
         { EMPTY, 'e' }, { WHITE_PAWN , 'p' }, { WHITE_KING, 'k' }, { BLACK_PAWN, 'P' }, { BLACK_KING, 'K' }
     };
     std::string fen = "";
-    for (int row = 7; row >=0; --row) {
-        for (int col = 0; col < 8; ++col) {
-            fen += pcs[board_[row][col]];
+    for (size_t row = 0; row < BOARD_SIZE; ++row) {
+        for (size_t col = 0; col < BOARD_SIZE; ++col) {
+            fen += pcs[board_[BOARD_SIZE - 1 -row][col]];
         }
         fen += '/';
     }
     fen.pop_back();
-    int eCount = 0;
-    int i;
+    size_t eCount = 0;
+    size_t i;
     for (i = 0; i < fen.length(); ++i) {
         if (fen[i] == 'e') {
             eCount++;

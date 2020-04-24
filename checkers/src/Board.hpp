@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy Board, która reprezentuje plansze do gry w Warcaby
+ * 
+ * */
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
@@ -8,6 +18,8 @@
 #include "Position.hpp"
 #include "Move.hpp"
 
+#define BOARD_SIZE 8
+
 enum PieceName {
     EMPTY, WHITE_KING, WHITE_PAWN, BLACK_KING, BLACK_PAWN
 };
@@ -15,7 +27,7 @@ enum PieceName {
 class Board {
 public:
     Board();
-    std::array<std::array<PieceName,8>,8> getBoard();
+    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> getBoard();
     void clearPosition(Position pos);
     void placePiece(Position pos, PieceName piece);
     void movePiece(Position posStart, Position posEnd);
@@ -31,7 +43,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const PieceName& p);
 
 private:
-    std::array<std::array<PieceName,8>,8> board_ ;
+    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> board_ ;
 };
 
 #endif  // BOARD_HPP
