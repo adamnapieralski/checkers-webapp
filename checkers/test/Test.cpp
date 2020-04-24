@@ -455,5 +455,44 @@ BOOST_AUTO_TEST_CASE(initilizePieces){
 
 }
 
+BOOST_AUTO_TEST_CASE(getValidMoves){
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    user.addPiece(false, Position(1,1), board);
+    user.addPiece(false, Position(3,1), board);
+    user.addPiece(false, Position(5,1), board);
+    Player computer = Player(&board, false, false);
+    computer.addPiece(false, Position(2,2), board);
+    computer.addPiece(true, Position(4,4), board);
+
+    std::vector<std::vector<Move>> moves_user = user.getValidMoves(board);
+    std::vector<std::vector<Move>> moves_computer = computer.getValidMoves(board);
+
+    BOOST_REQUIRE(moves_user.size() == 2);
+    BOOST_CHECK(moves_user[0].size() == 1 && moves_user[1].size() == 1);
+    BOOST_REQUIRE(moves_computer.size() == 1);
+    BOOST_CHECK(moves_computer[0].size() == 3);
+
+    //empty and not capture case
+    Board board_2 = Board();
+    Player user_2 = Player(&board_2, true, true);
+    user_2.addPiece(false, Position(0,0), board_2);
+    Player computer_2 = Player(&board_2, false, false);
+    computer_2.addPiece(false, Position(1,1), board_2);
+    computer_2.addPiece(false, Position(2,2), board_2);
+
+    std::vector<std::vector<Move>> moves_user_2 = user_2.getValidMoves(board_2);
+    std::vector<std::vector<Move>> moves_computer_2 = computer_2.getValidMoves(board_2);
+
+    BOOST_REQUIRE(moves_user_2.empty());
+    BOOST_REQUIRE(moves_computer_2.size() == 2);
+    BOOST_CHECK(moves_computer_2[0].size() == 1 && moves_computer_2[1].size() == 1);
+
+
+
+}
+
+
+
 
 BOOST_AUTO_TEST_SUITE_END()
