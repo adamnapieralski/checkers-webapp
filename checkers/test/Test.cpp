@@ -487,11 +487,30 @@ BOOST_AUTO_TEST_CASE(getValidMoves){
     BOOST_REQUIRE(moves_user_2.empty());
     BOOST_REQUIRE(moves_computer_2.size() == 2);
     BOOST_CHECK(moves_computer_2[0].size() == 1 && moves_computer_2[1].size() == 1);
+}
+
+BOOST_AUTO_TEST_CASE(movePiece){
+    Board board = Board();
+    Player user = Player(&board, true, true);
+    user.addPiece(false, Position(1,5), board);
+    Player computer = Player(&board, false, false);
+    computer.addPiece(false, Position(2,6), board);
+    computer.addPiece(false, Position(6,4), board);
+
+    std::vector<std::vector<Move>> moves_user = user.getValidMoves(board);
+    BOOST_REQUIRE(moves_user.size() == 1);
+    BOOST_REQUIRE(moves_user[0].size() == 1);
+
+    user.movePiece(board, computer, moves_user[0][0]);
+
+    BOOST_CHECK(computer.getPieces().empty());
+    BOOST_REQUIRE(user.getPieces().size() == 1);
+    BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(7,3));
+    BOOST_CHECK(board.getPieceName(Position(7,3)) == WHITE_KING);
 
 
 
 }
-
 
 
 
