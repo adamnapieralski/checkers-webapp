@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy klasy Move, która przechowuje ruchy możliwe do wykonania
+ * 
+ * */
+
 #include "Move.hpp"
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}
@@ -15,7 +25,7 @@ Move::Move(Position s, Position e, Position c) : startPos_(s), endPos_(e) {
     capturedPos_.push_back(tmp.capturedPos_[0]);
 }*/
 
-bool Move::isInitial() {
+bool Move::isInitial() const {
     Move initial;
     if (*this == initial) return true;
     else return false;
@@ -28,7 +38,7 @@ bool Move::operator==(const Move& move) const {
 }
 
 
-Move Move::merge(Move& next) {
+Move Move::merge(Move& next) const {
     if (endPos_ != next.startPos_)
         throw std::out_of_range("Start and end positions of moves to merge do not match.");
 

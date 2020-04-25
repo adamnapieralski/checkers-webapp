@@ -1,3 +1,13 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik źródłowy klasy Pawn, która reprezntuje pionka w warcabach
+ * 
+ * */
+
 #include "Pawn.hpp"
 #include "Board.hpp"
 #include "Move.hpp"
@@ -11,7 +21,7 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) {
+void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
 
@@ -53,7 +63,7 @@ void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) {
     }
 }
 
-std::vector<Move> Pawn::getCaptureMoves(Board &board){
+std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
     std::vector<Move> moves;
     Move move;
 
@@ -62,7 +72,7 @@ std::vector<Move> Pawn::getCaptureMoves(Board &board){
     return moves;
 }
 
-std::vector<Move> Pawn::getValidMoves(Board &board) {
+std::vector<Move> Pawn::getValidMoves(Board &board) const{
 
     std::vector<Move> moves;
 
@@ -70,16 +80,24 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
     if (isUser()) {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y + 1);
-            if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+            if(nP.isValid() && board.getPieceName(nP) == EMPTY){
+                Move tmp = Move(getPosition(), nP);
+                if (nP.isLastRow(isUser())) {
+                       tmp.addChange(nP);
+                    }
+                moves.push_back(tmp);
             }
         }
     }
     else {
         for(int i = 0 ; i < 2 ; ++i){
             Position nP(getPosition().x + d[i], getPosition().y - 1);
-            if(board.getPieceName(nP) == EMPTY){
-                moves.push_back(Move(getPosition(), nP));
+            if(nP.isValid() && board.getPieceName(nP) == EMPTY){
+                Move tmp = Move(getPosition(), nP);
+                if (nP.isLastRow(isUser())) {
+                       tmp.addChange(nP);
+                    }
+                moves.push_back(tmp);
             }
         }
     }
@@ -87,7 +105,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) {
     return moves;
 }
 
-std::ostream& Pawn::print(std::ostream& os){
+std::ostream& Pawn::print(std::ostream& os) const{
     if (this->isWhite()) os << "w";
     else os << "b";
     return os;

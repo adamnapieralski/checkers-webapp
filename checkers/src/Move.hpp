@@ -1,3 +1,14 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * Plik nagłówkowy klasy Move, która przechowuje ruchy możliwe do wykonania
+ * 
+ * */
+
+
 #ifndef MOVE_HPP
 #define MOVE_HPP
 
@@ -13,8 +24,8 @@ public:
 
     //void addStepMove(Move tmp);
     void addChange(Position pos);
-    bool isInitial();
-    Move merge(Move& next);
+    bool isInitial() const;
+    Move merge(Move& next) const;
 
     Position getStartPosition() const;
     Position getEndPosition() const;

@@ -1,3 +1,12 @@
+/**
+ * Projekt Zaawansowane Programowanie w C++ - Warcaby
+ * 24.04.2020
+ * 
+ * Autorzy: Patrycja Cieplicka, Adam Napieralski
+ * 
+ * 
+ * */
+
 #include <boost/python.hpp>
 #include "Checkers.hpp"
 
