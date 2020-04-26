@@ -1,7 +1,7 @@
 # Warcaby - aplikacja webowa
 Projekt realizowany na przedmiot Zaawansowane Programowanie w C++ [ZPR].<br>
 Warcaby w wariancie rosyjskim - aplikacja webowa w architekturze opartej na:
-- C++ | boost.python - logika aplikacji, mechanika gry,
+- C++, boost.python - logika aplikacji, mechanika gry,
 - Django (Python) - obsługa strony serwera,
 - AngularJS + HTML5 - obsługa strony klienta, GUI w przeglądarce.
 <br>
