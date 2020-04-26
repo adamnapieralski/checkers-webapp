@@ -1,6 +1,6 @@
 # checkers-webapp
 Project for university Advanced Programming course.<br>
-Checkers (draughts) in russian variant - web application build on architecture using:
+Checkers (draughts) in russian variant - web application build on architecture containing:
 - C++ | boost.python - app's logic, game mechanics
 - Django (Python) - server controller
 - AngularJS + HTML5 - client controller and interface
@@ -13,8 +13,8 @@ Authors: Adam Napieralski, Patrycja Cieplicka
 Packages and technologies used:
 - g++
 - scons
-- boost
-- python2.6+ / python3.x
+- boost (Boost.Python, Boost.Test)
+- python3 / python2
 - nodejs
 - django
 - angularjs
@@ -25,10 +25,19 @@ To install all of needed packages, use bash script:
 ```
 ./install.sh
 ```
-Default version of python for which some packages are installed is 3.x, however, you can change it to python2, e.g.:
+Default version of python for which some packages are installed is 3.x, however, you can change it to python2 with e.g.:
 ```
 ./install.sh python=2.6
 ```
+### On Windows
+1. Install Microsoft Visual Studio.
+2. Install preferred [Python](https://www.python.org/download/releases/) (e.g. Python3.6) in the default path (C:\Python36\), add it to the PATH.
+3. Install pip / pip3 - download [get-pip.py](https://bootstrap.pypa.io/get-pip.py) then run `python get-pip.py`.
+4. `pip install --egg scons`
+5. `pip install -r pip_requirements.txt`
+6. Download and install [boost](http://www.boost.org) in C:\Boost\
+7. Install [nodejs](http://nodejs.org/download/)
+8. In `client/` install js node modules with `npm install`.
 
 ## Build
 To build and compile application, use:
@@ -49,12 +58,4 @@ To run django server on predefined address (127.0.0.1:8000), use:
 ```
 scons --run
 ```
-or more manually use:
-```
-python ./build_web/manage.py runserver [ip]:[port]
-```
-or
-```
-python3 ./build_web/manage.py runserver [ip]:[port]
-```
-with matching python version used during build.
+or manually run: `python ./build_web/manage.py runserver [ip]:[port]` or `python3 ./build_web/manage.py runserver [ip]:[port]`
