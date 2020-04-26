@@ -26,7 +26,7 @@ fi
 cd client
 npm install
 
-sed -i 's#/img/chesspieces/wikipedia/{piece}.png#/static/media/chesspieces/{piece}.png#g' node_modules/@chrisoakman/chessboardjs/dist/chessboard-1.0.0.js
+sed -r -i 's/img\/chesspieces\/wikipedia/\/static\/media\/chesspieces/g' node_modules/@chrisoakman/chessboardjs/dist/chessboard-1.0.0.js
 
 
 
