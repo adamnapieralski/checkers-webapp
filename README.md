@@ -1,7 +1,7 @@
 # checkers-webapp
 Project for university Advanced Programming course.<br>
 Checkers (draughts) in russian variant - web application build on architecture containing:
-- C++ | boost.python - app's logic, game mechanics,
+- C++, boost.python - app's logic, game mechanics,
 - Django (Python) - server controller,
 - AngularJS + HTML5 - client controller and interface.
 <br>
