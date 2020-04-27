@@ -1,6 +1,6 @@
 # checkers-webapp
 Project for university Advanced Programming course.<br>
-Checkers (draughts) in russian variant - web application build on architecture containing:
+Checkers (draughts) in [russian variant](https://en.wikipedia.org/wiki/Russian_draughts) - web application build on architecture containing:
 - C++, boost.python - app's logic, game mechanics,
 - Django (Python) - server controller,
 - AngularJS + HTML5 - client controller and interface.
@@ -62,4 +62,4 @@ scons --run
 ```
 or manually run: `python ./build_web/manage.py runserver [ip]:[port]` or `python3 ./build_web/manage.py runserver [ip]:[port]`
 ## Usage
-Open your browser and go to defined address, like: `http://127.0.0.1:8000/`. You will be redirected to `/entry` page of the game, where you can type your nickname and select your color of pieces. After submitting it with button click, you go to `/play` page with the game itself.
+Open your browser and go to defined address, like: http://127.0.0.1:8000/. You will be redirected to `/entry` page of the game, where you can type your nickname and select your color of pieces. After submitting it with button click, you go to `/play` page with the game itself.
