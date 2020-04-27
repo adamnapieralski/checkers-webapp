@@ -1,12 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Board.hpp
+ * @brief Header file for Board class, representing checkers board.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy klasy Board, która reprezentuje plansze do gry w Warcaby
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #ifndef BOARD_HPP
 #define BOARD_HPP
@@ -34,6 +32,10 @@ public:
     PieceName getPieceName(Position pos);
     void makeMove(const Move& m);
 
+    /**
+     * Get string describing current board state with 1. field of FEN record
+     * https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+     */
     std::string getFEN();
 
     Board& operator=(Board other);

@@ -1,13 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Pawn.hpp
+ * @brief Header file for Pawn class, representing pawn piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy klasy Pawn, która reprezntuje pionka w warcabach
- * 
- * */
-
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #ifndef PAWN_HPP
 #define PAWN_HPP

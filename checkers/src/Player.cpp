@@ -1,12 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Player.cpp
+ * @brief Source file for Player class, representing player.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy Player, która reprezentuje gracza
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #include "Player.hpp"
 #include "Pawn.hpp"

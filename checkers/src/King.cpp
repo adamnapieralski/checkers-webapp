@@ -1,12 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file King.cpp
+ * @brief Source file for King class, representing king piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy King, która reprezentuje damkę w warcabach
- * 
- * */
+ * @author Adam Napieralski
+ * @author Patrycja Cieplicka
+ */
 
 #include "King.hpp"
 

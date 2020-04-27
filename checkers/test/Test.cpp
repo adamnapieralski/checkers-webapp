@@ -1,12 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Test.cpp
+ * @brief Source file for unit tests using Boost.Test.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Testy jednostkowe
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE CheckersTests

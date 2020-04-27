@@ -1,11 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file CheckersPy.cpp
+ * @brief Implementation of python module for C++ using Boost.Python
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #include <boost/python.hpp>
 #include "Checkers.hpp"

@@ -1,12 +1,10 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Position.hpp
+ * @brief Header file for Position structure, representing piece's position on the board.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy struktury Position, która reprezntuje pozycje pionków na planszy
- * 
- * */
+ * @author Adam Napieralski
+ * @author Patrycja Cieplicka
+ */
 
 #ifndef POSITION_HPP
 #define POSITION_HPP

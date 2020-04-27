@@ -1,19 +1,16 @@
+/**
+ * @file Player.hpp
+ * @brief Header file for Player class, representing player.
+ * 
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
+
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
 #include <vector>
 #include <memory>
-
-/**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
- * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy klasy Player, która reprezentuje Gracza
- * 
- * */
-
 #include "Piece.hpp"
 #include "Board.hpp"
 
