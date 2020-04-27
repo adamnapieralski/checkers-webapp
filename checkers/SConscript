@@ -19,7 +19,7 @@ if(platform.system() == "Linux"):
 
     env.Append( CPPFLAGS = '-Wall -std=c++11 -pedantic -pthread' )
     env.Append( LINKFLAGS = '-Wall -pthread' )
-    if python_version >= 3:
+    if float(python_version) >= 3:
         env.Append( LIBS = [ 'boost_python3' ] )
     else:
         env.Append( LIBS = [ 'boost_python' ] )
