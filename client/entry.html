@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 
 <html ng-app="Checkers">
@@ -7,12 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<title>Warcaby</title>
 
-		<link rel="stylesheet" href="{{ STATIC_URL }}styles.css" />
-		<script src="{{ STATIC_URL }}angular.min.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }}checkers_modules.js" data-cover></script>
+		<link rel="stylesheet" href="{% static "css/styles.css" %}" />
+		<script src="{% static "node_modules/angular/angular.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "js/checkers_modules.js" %}" data-cover></script>
 
-		<link rel="icon" href="icon.ico" type="image/x-icon" />
-		<link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
+		<link rel="icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
+		<link rel="shortcut icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
 
 	</head>
     <body>

@@ -13,13 +13,19 @@ SECRET_KEY = 'kw$@=pa)zdjmjx^6z65-+x3c5j+^ydyj1!t!@_q+z2qw06&1*i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATE_DEBUG = True
+# TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TEMPLATE_DIRS = (BASE_DIR, 
-	"client/"
-)
+# TEMPLATE_DIRS = (BASE_DIR, 
+# 	"client/"
+# )
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR, "client/"]
+    }
+]
 
 # Application definition
 INSTALLED_APPS = (
@@ -27,8 +33,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'checkerspy',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'checkerspy'
 )
 
 MIDDLEWARE_CLASSES = (

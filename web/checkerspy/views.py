@@ -1,6 +1,6 @@
 """version interface module. Return database version, database connecting strings and application build version"""
 
-import checkers
+from checkerspy import checkers
 
 game = checkers.Checkers()
     
