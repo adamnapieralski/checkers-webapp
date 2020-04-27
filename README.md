@@ -6,7 +6,7 @@ Checkers (draughts) in russian variant - web application build on architecture c
 - AngularJS + HTML5 - client controller and interface.
 <br>
 Authors: Adam Napieralski, Patrycja Cieplicka.<br>
-View in: [Polish](https://github.com/adamnapieralski/checkers-webapp/blob/develop/README.pl.md)
+View in: [Polish](README.pl.md)
 
 
 ## Installation
@@ -61,3 +61,5 @@ To run django server on predefined address (127.0.0.1:8000), use:
 scons --run
 ```
 or manually run: `python ./build_web/manage.py runserver [ip]:[port]` or `python3 ./build_web/manage.py runserver [ip]:[port]`
+## Usage
+Open your browser and go to defined address, like: `http://127.0.0.1:8000/`. You will be redirected to `/entry` page of the game, where you can type your nickname and select your color of pieces. After submitting it with button click, you go to `/play` page with the game itself.
