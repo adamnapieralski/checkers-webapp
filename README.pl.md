@@ -1,12 +1,12 @@
 # Warcaby - aplikacja webowa
 Projekt realizowany na przedmiot Zaawansowane Programowanie w C++ [ZPR].<br>
-Warcaby w wariancie rosyjskim - aplikacja webowa w architekturze opartej na:
+Warcaby w [wariancie rosyjskim](https://pl.wikipedia.org/wiki/Warcaby) - aplikacja webowa w architekturze opartej na:
 - C++, boost.python - logika aplikacji, mechanika gry,
 - Django (Python) - obsługa strony serwera,
 - AngularJS + HTML5 - obsługa strony klienta, GUI w przeglądarce.
 <br>
 Autorzy: Patrycja Cieplicka, Adam Napieralski.
-Wyświetl w języku: [Angielskim](https://github.com/adamnapieralski/checkers-webapp/blob/develop/README.md)
+Wyświetl w języku: [Angielskim](README.md)
 
 ## Instalacja
 
@@ -60,3 +60,5 @@ Aby uruchomić serwer django na domyślnym adresie (127.0.0.1:8000), użyj:
 scons --run
 ```
 lub manualnie: `python ./build_web/manage.py runserver [ip]:[port]` or `python3 ./build_web/manage.py runserver [ip]:[port]`
+## Użytkowanie
+Otwórz przeglądarkę i przejdź pod zdefiniowany wcześniej adres: http://127.0.0.1:8000/. Zostaniesz przekierowany na stronę początkową `/entry`, gdzie należy podać nick i wybrać kolor pionków. Po zaakceptowaniu danych przez kliknięcie przycisku nastąpi przejście na stronę samej gry `/play`.
