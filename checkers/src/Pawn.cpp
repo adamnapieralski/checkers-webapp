@@ -19,7 +19,7 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) const {
+void Pawn::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
 
@@ -61,7 +61,7 @@ void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) con
     }
 }
 
-std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
+std::vector<Move> Pawn::getCaptureMoves(Board& board) const{
     std::vector<Move> moves;
     Move move;
 
@@ -70,7 +70,7 @@ std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
     return moves;
 }
 
-std::vector<Move> Pawn::getValidMoves(Board &board) const{
+std::vector<Move> Pawn::getValidMoves(Board& board) const{
 
     std::vector<Move> moves;
 

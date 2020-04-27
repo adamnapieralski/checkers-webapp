@@ -25,18 +25,19 @@ enum PieceName {
 class Board {
 public:
     Board();
-    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> getBoard();
-    void clearPosition(Position pos);
-    void placePiece(Position pos, PieceName piece);
-    void movePiece(Position posStart, Position posEnd);
-    PieceName getPieceName(Position pos);
+    void clearPosition(const Position& pos);
+    void placePiece(const Position& pos, PieceName piece);
+    void movePiece(const Position& posStart, const Position& posEnd);
     void makeMove(const Move& m);
+
+    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> getBoard() const;
+    PieceName getPieceName(const Position& pos) const;
 
     /**
      * Get string describing current board state with 1. field of FEN record
      * https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
      */
-    std::string getFEN();
+    std::string getFEN() const;
 
     Board& operator=(Board other);
 

@@ -6,7 +6,6 @@
  * @author Patrycja Cieplicka
  */
 
-
 #ifndef KING_HPP
 #define KING_HPP
 
@@ -18,7 +17,7 @@ class King : public Piece {
 public:
     King(Position pos, bool isWhite, bool isUser, Board& board);
 
-    void captureMoves(std::vector<Move> &moves, Board board, Move current) const override;
+    void captureMoves(std::vector<Move>& moves, Board board, Move current) const override;
     std::vector<Move> getCaptureMoves(Board& board) const override;
     std::vector<Move> getValidMoves(Board& board) const override;
 
