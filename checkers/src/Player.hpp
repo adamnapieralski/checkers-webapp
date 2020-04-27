@@ -31,10 +31,7 @@ public:
 
     std::vector<std::vector<Move>> getValidMoves(Board& board) const;
     std::vector<std::shared_ptr<Piece>> getPieces() const; 
-    std::shared_ptr<Piece> findPiece(const Position& pos) const;
-
-        //void printPlayer(); // testy
-    
+    std::shared_ptr<Piece> findPiece(const Position& pos) const;    
 
 private:
     std::vector<std::shared_ptr<Piece>> pieces_;

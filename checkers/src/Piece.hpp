@@ -32,7 +32,7 @@ public:
     bool isSameColor(PieceName &pn) const;
     bool isDiffColor(PieceName pn) const;
     
-    virtual std::vector<Move> getValidMoves(Board& board) const = 0;
+    virtual std::vector<Move> getNonCaptureMoves(Board& board) const = 0;
     virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
     virtual std::vector<Move> getCaptureMoves(Board& board) const = 0;
     virtual std::ostream& print(std::ostream& os) const = 0;

@@ -70,7 +70,7 @@ std::vector<Move> Pawn::getCaptureMoves(Board& board) const{
     return moves;
 }
 
-std::vector<Move> Pawn::getValidMoves(Board& board) const{
+std::vector<Move> Pawn::getNonCaptureMoves(Board& board) const{
 
     std::vector<Move> moves;
 

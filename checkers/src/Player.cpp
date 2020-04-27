@@ -53,7 +53,7 @@ std::vector<std::vector<Move>> Player::getValidMoves(Board& board) const{
     }
     if(valid_moves.empty()){
         for (auto pc : pieces_){
-            auto mvs = pc->getValidMoves(board);
+            auto mvs = pc->getNonCaptureMoves(board);
             if(!mvs.empty()) valid_moves.push_back(mvs);
         }
     }

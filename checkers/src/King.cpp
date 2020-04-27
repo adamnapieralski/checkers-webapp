@@ -71,7 +71,7 @@ std::vector<Move> King::getCaptureMoves(Board& board) const{
 
 }
 
-std::vector<Move> King::getValidMoves(Board& board) const {
+std::vector<Move> King::getNonCaptureMoves(Board& board) const {
 
     std::vector<Move> moves;
 

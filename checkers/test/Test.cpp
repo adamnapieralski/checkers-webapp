@@ -292,7 +292,7 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_pawn){
     Pawn p3(Position(2,2), true, true, board);
     Pawn p4(Position(7,1), false, false, board);
 
-    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+    std::vector<Move> moves_p1 = p1.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p1.size() == 1);
     BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,1) );
@@ -301,13 +301,13 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_pawn){
     BOOST_CHECK( moves_p1[0].getStepMoves().empty() );
     BOOST_CHECK( moves_p1[0].getChangedPosition().empty() );
 
-    std::vector<Move> moves_p2 = p2.getValidMoves(board);
+    std::vector<Move> moves_p2 = p2.getNonCaptureMoves(board);
     BOOST_CHECK(moves_p2.empty());
 
-    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    std::vector<Move> moves_p3 = p3.getNonCaptureMoves(board);
     BOOST_CHECK(moves_p3.size() == 2);
 
-    std::vector<Move> moves_p4 = p4.getValidMoves(board);
+    std::vector<Move> moves_p4 = p4.getNonCaptureMoves(board);
     BOOST_REQUIRE(moves_p4.size() == 1);
     BOOST_CHECK( moves_p4[0].getStartPosition() == Position(7,1) );
     BOOST_CHECK( moves_p4[0].getEndPosition() == Position(6,0));
@@ -325,7 +325,7 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
     Pawn p2(Position(4,3), true, true, board);
     King p3(Position(7,0), true, true, board);
 
-    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+    std::vector<Move> moves_p1 = p1.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p1.size() == 5);
     BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,6)  && moves_p1[1].getStartPosition() == Position(1,6) && moves_p1[2].getStartPosition() == Position(1,6)
@@ -342,7 +342,7 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
     BOOST_CHECK( moves_p1[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
                                             moves_p1[2].getChangedPosition().empty() );
 
-    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    std::vector<Move> moves_p3 = p3.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p3.size() == 2);
     BOOST_CHECK( moves_p3[0].getStartPosition() == Position(7,0)  && moves_p3[1].getStartPosition() == Position(7,0) );
