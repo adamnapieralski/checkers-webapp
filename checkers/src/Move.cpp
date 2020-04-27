@@ -14,15 +14,6 @@ Move::Move(Position s, Position e, Position c) : startPos_(s), endPos_(e) {
     capturedPos_.push_back(c);
 }
 
-/*void Move::addStepMove(Move tmp){
-    if(!startPos_.x){
-        startPos_ = tmp.startPos_;
-    }
-    endPos_ = tmp.endPos_;
-    stepMoves_.push_back(tmp);
-    capturedPos_.push_back(tmp.capturedPos_[0]);
-}*/
-
 bool Move::isInitial() const {
     Move initial;
     if (*this == initial) return true;
@@ -55,17 +46,17 @@ Move Move::merge(Move& next) const {
             merged.capturedPos_.push_back(c);
         }
     }
-    if(!changePos_.empty()){
-        merged.changePos_ = changePos_;
+    if(!upgradePos_.empty()) {
+        merged.upgradePos_= upgradePos_;
     }
     return merged;
 }
 
-void Move::addChange(Position pos){
-    changePos_.push_back(pos);
+void Move::addUpgradePosition(const Position& pos){
+    upgradePos_.push_back(pos);
 }
 
-std::vector<Position> Move::getChangedPosition() const { return changePos_ ; }
+std::vector<Position> Move::getUpgradePositions() const { return upgradePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }
 

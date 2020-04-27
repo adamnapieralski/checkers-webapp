@@ -78,7 +78,7 @@ void Player::movePiece(Board& board, Player& opponent, const Move& move) {
     auto start = move.getStartPosition();
     auto tmp = findPiece(start);
 
-    if(!move.getChangedPosition().empty()){
+    if(!move.getUpgradePositions().empty()){
         erasePiece(tmp);
         addPiece(true, start, board);
     }

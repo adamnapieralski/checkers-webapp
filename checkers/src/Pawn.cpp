@@ -41,7 +41,7 @@ void Pawn::captureMoves(std::vector<Move>& moves, Board board, Move current) con
                     else current = current.merge(tmp);
                     board.makeMove(tmp);
                     if (newPos.isLastRow(isUser())) {
-                        current.addChange(newPos);
+                        current.addUpgradePosition(newPos);
                         King k(newPos, isWhite(), isUser(), board);
                         k.captureMoves(moves, board, current);
                         current = tmpCurrent;
@@ -81,7 +81,7 @@ std::vector<Move> Pawn::getNonCaptureMoves(Board& board) const{
             if(nP.isValid() && board.getPieceName(nP) == EMPTY){
                 Move tmp = Move(getPosition(), nP);
                 if (nP.isLastRow(isUser())) {
-                       tmp.addChange(nP);
+                       tmp.addUpgradePosition(nP);
                     }
                 moves.push_back(tmp);
             }
@@ -93,7 +93,7 @@ std::vector<Move> Pawn::getNonCaptureMoves(Board& board) const{
             if(nP.isValid() && board.getPieceName(nP) == EMPTY){
                 Move tmp = Move(getPosition(), nP);
                 if (nP.isLastRow(isUser())) {
-                       tmp.addChange(nP);
+                       tmp.addUpgradePosition(nP);
                     }
                 moves.push_back(tmp);
             }
