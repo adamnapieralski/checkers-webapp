@@ -23,7 +23,8 @@ vars = Variables('custom.py')
 env = Environment(variables=vars)
 test_val = ARGUMENTS.get('test', 0)
 python_version = ARGUMENTS.get('python', 3.6)
-supported_python_versions = [2.7, 3.6, 3.7]
+supported_python_versions = ['2.6', '2.7', '3.6', '3.7']
+print(python_version)
 
 if python_version not in supported_python_versions:
     raise AttributeError("Selected python version not supported. Build terminated.")

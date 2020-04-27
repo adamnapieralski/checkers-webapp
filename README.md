@@ -46,7 +46,7 @@ To build and compile application, use:
 ```
 scons
 ```
-The default python version is 3.6. To build with one of other supported versions [2.6, 3.6, 3.7], set argument:
+The default python version is 3.6. To build with one of other supported versions [2.6, 2.7, 3.6, 3.7], set argument:
 ```
 scons python=2.6
 ```

@@ -45,7 +45,7 @@ Aby skompilować i zbudować pełną aplikację użyj:
 ```
 scons
 ```
-Domyślna wersja Pythona w tym procesie to 3.6. By użyć innej wersji spośród wspieranych [2.6, 3.6, 3.7], dodaj argument:
+Domyślna wersja Pythona w tym procesie to 3.6. By użyć innej wersji spośród wspieranych [2.6, 2.7, 3.6, 3.7], dodaj argument:
 ```
 scons python=2.6
 ```
