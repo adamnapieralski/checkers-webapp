@@ -1,23 +1,15 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Piece.cc
+ * @brief Source file for abstract Piece class, representing piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy abstrakcyjnej Piece, która reprezntuje wszystkie figury warcabowe
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
-
-#include "Piece.hpp"
-#include "Pawn.hpp"
-#include "King.hpp"
-#include "Board.hpp"
-
-// Piece::Piece(Position pos, bool isWhite) {
-//     pos_ = pos;
-//     isWhite_ = isWhite;
-// }
+#include "Piece.h"
+#include "Pawn.h"
+#include "King.h"
+#include "Board.h"
 
 Piece::Piece(Position pos, bool isWhite, bool isUser) :
     pos_(pos), isWhite_(isWhite), isUser_(isUser) {}

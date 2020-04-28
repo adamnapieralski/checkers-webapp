@@ -1,20 +1,18 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Move.h
+ * @brief Source file for Move class, representing move of pieces.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy klasy Move, która przechowuje ruchy możliwe do wykonania
- * 
- * */
+ * @author Adam Napieralski
+ * @author Patrycja Cieplicka
+ */
 
 
-#ifndef MOVE_HPP
-#define MOVE_HPP
+#ifndef MOVE_H
+#define MOVE_H
 
 #include <vector>
 
-#include "Position.hpp"
+#include "Position.h"
 
 class Move {
 public:
@@ -22,14 +20,13 @@ public:
     Move(Position, Position);
     Move(Position, Position, Position);
 
-    //void addStepMove(Move tmp);
-    void addChange(Position pos);
+    void addUpgradePosition(const Position& pos);
     bool isInitial() const;
     Move merge(Move& next) const;
 
     Position getStartPosition() const;
     Position getEndPosition() const;
-    std::vector<Position> getChangedPosition() const;
+    std::vector<Position> getUpgradePositions() const;
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
 
@@ -39,8 +36,8 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
-    std::vector<Position> changePos_;
+    std::vector<Position> upgradePos_;        //Postion where Pawn change to King
 
 };
 
-#endif  // MOVE_HPP
+#endif  // MOVE_H

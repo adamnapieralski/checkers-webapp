@@ -1,14 +1,12 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Board.cc
+ * @brief Source file for Board class, representing checkers board
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy Board, która reprezentuje plansze do gry w Warcaby
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 #include <map>
-#include "Board.hpp"
+#include "Board.h"
 
 std::ostream& operator<<(std::ostream& os, const PieceName& p){
     switch (p){
@@ -41,47 +39,40 @@ std::ostream& operator<<(std::ostream& os, const Board& b)
     return os;
 }
 
-std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard(){
+std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard() const {
     return board_;
 }
 
-void Board::clearPosition(Position pos) {
+void Board::clearPosition(const Position& pos) {
     if (!pos.isValid()) {
-        throw std::out_of_range("Nieprawidłowa pozycja");
+        throw std::out_of_range("Invalid position.");
         return;
     }
     board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = EMPTY;
 }
 
-void Board::placePiece(Position pos, PieceName piece){
+void Board::placePiece(const Position& pos, PieceName piece) {
     if (!pos.isValid()) {
-        throw std::out_of_range("Nieprawidłowa pozycja");
+        throw std::out_of_range("Invalid position.");
         return;
     }
     board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = piece;
 }
 
-PieceName Board::getPieceName(Position pos) {
+PieceName Board::getPieceName(const Position& pos) const {
     return board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)];
 }
 
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
     if (!st.isValid()) {
-        throw std::out_of_range("Nieprawidłowa pozycja");
+        throw std::out_of_range("Invalid position.");
         return;
     }
-    auto pc = board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)];
-    board_[static_cast<size_t>(st.y)][static_cast<size_t>(st.x)] = EMPTY;
-    for (auto& c : m.getCapturedPositions()) {
-        board_[static_cast<size_t>(c.y)][static_cast<size_t>(c.x)] = EMPTY;
-    }
-    auto en = m.getEndPosition();
-    if (!en.isValid()) {
-        throw std::out_of_range("Nieprawidłowa pozycja");
-        return;
-    }
-    board_[static_cast<size_t>(en.y)][static_cast<size_t>(en.x)] = pc;
+    auto pc = getPieceName(st);
+    clearPosition(st);
+    for (auto& c : m.getCapturedPositions()) { clearPosition(c); }
+    placePiece(m.getEndPosition(), pc);
 }
 
 Board& Board::operator=(Board other) {
@@ -89,7 +80,7 @@ Board& Board::operator=(Board other) {
     return *this;
 }
 
-std::string Board::getFEN() {
+std::string Board::getFEN() const {
     std::map<enum PieceName, char>  pcs = {
         { EMPTY, 'e' }, { WHITE_PAWN , 'p' }, { WHITE_KING, 'k' }, { BLACK_PAWN, 'P' }, { BLACK_KING, 'K' }
     };
@@ -116,18 +107,6 @@ std::string Board::getFEN() {
     if (eCount > 0) fen = fen.replace(i - eCount, eCount, std::to_string(eCount));
     return fen;
 }
-
-// void Board::makeMove(const Move &move){
-
-//     auto st = move.startPos;
-//     auto pc = board_[st.x][st.y];
-//     board_[st.x][st.y] = Empty;
-//     for (auto& c : move.capturedPos) {
-//         board_[c.x][c.y] = Empty;
-//     }
-//     auto en = move.endPos;
-//     board_[en.x][en.y] = pc;
-// }
 
 void swap(Board& b1, Board& b2) {
     std::swap(b1.board_, b2.board_);

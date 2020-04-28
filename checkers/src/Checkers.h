@@ -1,21 +1,19 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Checkers.h
+ * @brief Header file for Checkers class, handling game mechanics.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy Checkers, która reprezentuje mechanikę gry (główna klasa)
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
-#ifndef CHECKERS_HPP
-#define CHECKERS_HPP
+#ifndef CHECKERS_H
+#define CHECKERS_H
 
 #include <iostream>
 #include <string>
 
-#include "Player.hpp"
-#include "Board.hpp"
+#include "Player.h"
+#include "Board.h"
 
 struct GameState {
 	std::string boardFEN;
@@ -26,10 +24,9 @@ struct GameState {
 
 class Checkers {
 public:
-	// Checkers();
-	// Checkers(bool isUserWhite);
+	Checkers(){};
 	
-	std::string findTile(std::string id); // temp test method
+	std::string findTile(std::string id); // temporary test method
 
 	void initialize(std::string userName, bool isUserWhite);
 	bool getIsUserWhite();
@@ -39,10 +36,10 @@ public:
 	GameState processComputerMove() {	return GameState();	}
 
 private:
-	//Player userPlayer_, compPlayer_;
+	Player userPlayer_, compPlayer_;
 	Board board_;
 	bool isUserWhite_;
 	std::string userName_;
 };
 
-#endif	// CHECKERS_HPP
+#endif	// CHECKERS_H

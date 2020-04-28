@@ -1,21 +1,19 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Test.cc
+ * @brief Source file for unit tests using Boost.Test.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Testy jednostkowe
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
 
-#include "../src/Player.hpp"
-#include "../src/Board.hpp"
-#include "../src/King.hpp"
-#include "../src/Pawn.hpp"
+#include "../src/Player.h"
+#include "../src/Board.h"
+#include "../src/King.h"
+#include "../src/Pawn.h"
 
 
 BOOST_AUTO_TEST_SUITE(MovePiece)
@@ -111,8 +109,8 @@ BOOST_AUTO_TEST_CASE( capture_moves_pawn_simple ){
     BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,6));
     BOOST_CHECK( move_a.getStepMoves().empty());
-    BOOST_REQUIRE( move_a.getChangedPosition().size() == 1 );
-    BOOST_CHECK (move_a.getChangedPosition()[0] == Position(3,7));
+    BOOST_REQUIRE( move_a.getUpgradePositions().size() == 1 );
+    BOOST_CHECK (move_a.getUpgradePositions()[0] == Position(3,7));
 
     Move move_b = moves_b[0];
 
@@ -121,7 +119,7 @@ BOOST_AUTO_TEST_CASE( capture_moves_pawn_simple ){
     BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,5));
     BOOST_CHECK( move_b.getStepMoves().empty());
-    BOOST_CHECK( move_b.getChangedPosition().empty());
+    BOOST_CHECK( move_b.getUpgradePositions().empty());
 
     
 }
@@ -151,7 +149,7 @@ BOOST_AUTO_TEST_CASE( capture_moves_king_simple ){
     BOOST_REQUIRE( move_a.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_a.getCapturedPositions()[0] == Position(2,5));
     BOOST_CHECK( move_a.getStepMoves().empty());
-    BOOST_CHECK( move_a.getChangedPosition().empty() );
+    BOOST_CHECK( move_a.getUpgradePositions().empty() );
 
     Move move_b = moves_b[0];
 
@@ -160,7 +158,7 @@ BOOST_AUTO_TEST_CASE( capture_moves_king_simple ){
     BOOST_REQUIRE( move_b.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_b.getCapturedPositions()[0] == Position(1,4));
     BOOST_CHECK( move_b.getStepMoves().empty());
-    BOOST_CHECK( move_b.getChangedPosition().empty());
+    BOOST_CHECK( move_b.getUpgradePositions().empty());
 
     
 }
@@ -186,7 +184,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_pawn ){
     BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 2 );
     BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(3,3) && move_b_0.getCapturedPositions()[1] == Position(5,3));
     BOOST_CHECK( move_b_0.getStepMoves().size() == 2 );
-    BOOST_CHECK( move_b_0.getChangedPosition().empty());
+    BOOST_CHECK( move_b_0.getUpgradePositions().empty());
 
     Move move_b_1 = moves_b[1];
 
@@ -195,7 +193,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_pawn ){
     BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 1 );
     BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) );
     BOOST_CHECK( move_b_1.getStepMoves().empty() );
-    BOOST_CHECK( move_b_1.getChangedPosition().empty());
+    BOOST_CHECK( move_b_1.getUpgradePositions().empty());
 
     std::vector<Move> moves_a_1 = player_a_1.getCaptureMoves(board);
     std::vector<Move> moves_a_2 = player_a_2.getCaptureMoves(board);
@@ -227,7 +225,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_king ){
     BOOST_REQUIRE( move_b_0.getCapturedPositions().size() == 2 );
     BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(3,3) && move_b_0.getCapturedPositions()[1] == Position(1,1) );
     BOOST_CHECK( move_b_0.getStepMoves().size() == 2 );
-    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+    BOOST_CHECK (move_b_0.getUpgradePositions().empty());
 
     Move step_b_0 =  move_b_0.getStepMoves()[0];
     BOOST_CHECK( step_b_0.getStartPosition() == Position(2,2) );
@@ -235,7 +233,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_king ){
     BOOST_REQUIRE( step_b_0.getCapturedPositions().size() == 1 );
     BOOST_CHECK( step_b_0.getCapturedPositions()[0] == Position(3,3) );
     BOOST_CHECK( step_b_0.getStepMoves().empty() );
-    BOOST_CHECK (step_b_0.getChangedPosition().empty());
+    BOOST_CHECK (step_b_0.getUpgradePositions().empty());
 
     Move move_b_1 = moves_b[8];
 
@@ -244,7 +242,7 @@ BOOST_AUTO_TEST_CASE ( capture_moves_king ){
     BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 2 );
     BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) &&  move_b_1.getCapturedPositions()[1] == Position(3,3));
     BOOST_CHECK( move_b_1.getStepMoves().size() == 2);
-    BOOST_CHECK (move_b_0.getChangedPosition().empty());
+    BOOST_CHECK (move_b_0.getUpgradePositions().empty());
 
 
 }
@@ -272,8 +270,8 @@ BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
     BOOST_CHECK( move_b_0.getCapturedPositions()[0] == Position(1,1) && move_b_0.getCapturedPositions()[1] == Position(3,3) &&
                                          move_b_0.getCapturedPositions()[2] == Position(5,3));
     BOOST_CHECK( move_b_0.getStepMoves().size() == 3 );
-    BOOST_REQUIRE( move_b_0.getChangedPosition().size() == 1);
-    BOOST_CHECK (move_b_0.getChangedPosition()[0] == Position(0,0));
+    BOOST_REQUIRE( move_b_0.getUpgradePositions().size() == 1);
+    BOOST_CHECK (move_b_0.getUpgradePositions()[0] == Position(0,0));
 
     Move move_b_1 = moves_b[4];
 
@@ -282,8 +280,8 @@ BOOST_AUTO_TEST_CASE ( capture_change_pawn_king ){
     BOOST_REQUIRE( move_b_1.getCapturedPositions().size() == 2 );
     BOOST_CHECK( move_b_1.getCapturedPositions()[0] == Position(1,1) &&  move_b_1.getCapturedPositions()[1] == Position(3,3));
     BOOST_CHECK( move_b_1.getStepMoves().size() == 2);
-    BOOST_REQUIRE( move_b_0.getChangedPosition().size() == 1);
-    BOOST_CHECK (move_b_0.getChangedPosition()[0] == Position(0,0));
+    BOOST_REQUIRE( move_b_0.getUpgradePositions().size() == 1);
+    BOOST_CHECK (move_b_0.getUpgradePositions()[0] == Position(0,0));
 
 }
 
@@ -294,29 +292,29 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_pawn){
     Pawn p3(Position(2,2), true, true, board);
     Pawn p4(Position(7,1), false, false, board);
 
-    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+    std::vector<Move> moves_p1 = p1.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p1.size() == 1);
     BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,1) );
     BOOST_CHECK( moves_p1[0].getEndPosition() == Position(0,2));
     BOOST_CHECK( moves_p1[0].getCapturedPositions().empty() );
     BOOST_CHECK( moves_p1[0].getStepMoves().empty() );
-    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() );
+    BOOST_CHECK( moves_p1[0].getUpgradePositions().empty() );
 
-    std::vector<Move> moves_p2 = p2.getValidMoves(board);
+    std::vector<Move> moves_p2 = p2.getNonCaptureMoves(board);
     BOOST_CHECK(moves_p2.empty());
 
-    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    std::vector<Move> moves_p3 = p3.getNonCaptureMoves(board);
     BOOST_CHECK(moves_p3.size() == 2);
 
-    std::vector<Move> moves_p4 = p4.getValidMoves(board);
+    std::vector<Move> moves_p4 = p4.getNonCaptureMoves(board);
     BOOST_REQUIRE(moves_p4.size() == 1);
     BOOST_CHECK( moves_p4[0].getStartPosition() == Position(7,1) );
     BOOST_CHECK( moves_p4[0].getEndPosition() == Position(6,0));
     BOOST_CHECK( moves_p4[0].getCapturedPositions().empty() );
     BOOST_CHECK( moves_p4[0].getStepMoves().empty() );
-    BOOST_REQUIRE( moves_p4[0].getChangedPosition().size() == 1 );
-    BOOST_CHECK( moves_p4[0].getChangedPosition()[0] == Position(6,0));
+    BOOST_REQUIRE( moves_p4[0].getUpgradePositions().size() == 1 );
+    BOOST_CHECK( moves_p4[0].getUpgradePositions()[0] == Position(6,0));
 
 
 }
@@ -327,7 +325,7 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
     Pawn p2(Position(4,3), true, true, board);
     King p3(Position(7,0), true, true, board);
 
-    std::vector<Move> moves_p1 = p1.getValidMoves(board);
+    std::vector<Move> moves_p1 = p1.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p1.size() == 5);
     BOOST_CHECK( moves_p1[0].getStartPosition() == Position(1,6)  && moves_p1[1].getStartPosition() == Position(1,6) && moves_p1[2].getStartPosition() == Position(1,6)
@@ -341,10 +339,10 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
                                             moves_p1[2].getCapturedPositions().empty() );
     BOOST_CHECK( moves_p1[0].getStepMoves().empty() && moves_p1[1].getStepMoves().empty() && 
                                             moves_p1[2].getStepMoves().empty() );
-    BOOST_CHECK( moves_p1[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
-                                            moves_p1[2].getChangedPosition().empty() );
+    BOOST_CHECK( moves_p1[0].getUpgradePositions().empty() && moves_p1[1].getUpgradePositions().empty() && 
+                                            moves_p1[2].getUpgradePositions().empty() );
 
-    std::vector<Move> moves_p3 = p3.getValidMoves(board);
+    std::vector<Move> moves_p3 = p3.getNonCaptureMoves(board);
 
     BOOST_REQUIRE (moves_p3.size() == 2);
     BOOST_CHECK( moves_p3[0].getStartPosition() == Position(7,0)  && moves_p3[1].getStartPosition() == Position(7,0) );
@@ -354,8 +352,8 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
                                             moves_p1[2].getCapturedPositions().empty() );
     BOOST_CHECK( moves_p3[0].getStepMoves().empty() && moves_p1[1].getStepMoves().empty() && 
                                             moves_p1[2].getStepMoves().empty() );
-    BOOST_CHECK( moves_p3[0].getChangedPosition().empty() && moves_p1[1].getChangedPosition().empty() && 
-                                            moves_p1[2].getChangedPosition().empty() );
+    BOOST_CHECK( moves_p3[0].getUpgradePositions().empty() && moves_p1[1].getUpgradePositions().empty() && 
+                                            moves_p1[2].getUpgradePositions().empty() );
 
 
 }

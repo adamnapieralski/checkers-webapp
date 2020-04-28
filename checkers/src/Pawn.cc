@@ -1,17 +1,15 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Pawn.cc
+ * @brief Source file for Pawn class, representing pawn piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy Pawn, która reprezntuje pionka w warcabach
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
-#include "Pawn.hpp"
-#include "Board.hpp"
-#include "Move.hpp"
-#include "King.hpp"
+#include "Pawn.h"
+#include "Board.h"
+#include "Move.h"
+#include "King.h"
 #include <vector>
 
 Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
@@ -21,7 +19,7 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) const {
+void Pawn::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
 
@@ -43,7 +41,7 @@ void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) con
                     else current = current.merge(tmp);
                     board.makeMove(tmp);
                     if (newPos.isLastRow(isUser())) {
-                        current.addChange(newPos);
+                        current.addUpgradePosition(newPos);
                         King k(newPos, isWhite(), isUser(), board);
                         k.captureMoves(moves, board, current);
                         current = tmpCurrent;
@@ -63,7 +61,7 @@ void Pawn::captureMoves(std::vector<Move> &moves, Board board, Move current) con
     }
 }
 
-std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
+std::vector<Move> Pawn::getCaptureMoves(Board& board) const{
     std::vector<Move> moves;
     Move move;
 
@@ -72,7 +70,7 @@ std::vector<Move> Pawn::getCaptureMoves(Board &board) const{
     return moves;
 }
 
-std::vector<Move> Pawn::getValidMoves(Board &board) const{
+std::vector<Move> Pawn::getNonCaptureMoves(Board& board) const{
 
     std::vector<Move> moves;
 
@@ -83,7 +81,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) const{
             if(nP.isValid() && board.getPieceName(nP) == EMPTY){
                 Move tmp = Move(getPosition(), nP);
                 if (nP.isLastRow(isUser())) {
-                       tmp.addChange(nP);
+                       tmp.addUpgradePosition(nP);
                     }
                 moves.push_back(tmp);
             }
@@ -95,7 +93,7 @@ std::vector<Move> Pawn::getValidMoves(Board &board) const{
             if(nP.isValid() && board.getPieceName(nP) == EMPTY){
                 Move tmp = Move(getPosition(), nP);
                 if (nP.isLastRow(isUser())) {
-                       tmp.addChange(nP);
+                       tmp.addUpgradePosition(nP);
                     }
                 moves.push_back(tmp);
             }

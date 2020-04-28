@@ -1,22 +1,20 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Piece.h
+ * @brief Header file for abstract Piece class, representing piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik nagłówkowy klasy abstrakcyjnej Piece, która reprezntuje wszystkie figury warcabowe
- * 
- * */
+ * @author Patrycja Cieplicka
+ * @author Adam Napieralski
+ */
 
-#ifndef PIECE_HPP
-#define PIECE_HPP
+#ifndef PIECE_H
+#define PIECE_H
 
 #include <string>
 #include <vector>
 
-#include "Position.hpp"
-#include "Move.hpp"
-#include "Board.hpp"
+#include "Position.h"
+#include "Move.h"
+#include "Board.h"
 
 // to resolve: class Piece has virtual funcs and accessible non-virtual destructor
 class Piece {
@@ -33,10 +31,20 @@ public:
 
     bool isSameColor(PieceName &pn) const;
     bool isDiffColor(PieceName pn) const;
-    
-    virtual std::vector<Move> getValidMoves(Board& board) const = 0;
+
+
+    /**
+     * @brief Recursive method finding all possible capture moves.
+     * 
+     * @param moves vector of moves that will be overwritten with found capture moves
+     * @param board board on which moves can be done
+     * @param current move already done to the moment of method call
+     */
     virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
+    
+    virtual std::vector<Move> getNonCaptureMoves(Board& board) const = 0;
     virtual std::vector<Move> getCaptureMoves(Board& board) const = 0;
+
     virtual std::ostream& print(std::ostream& os) const = 0;
 
 protected:
@@ -47,4 +55,4 @@ private:
     bool isUser_;
 };
 
-#endif  // PIECE_HPP
+#endif  // PIECE_H

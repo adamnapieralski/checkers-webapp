@@ -1,29 +1,18 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file Move.cc
+ * @brief Source file for Move class, representing move of pieces.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy klasy Move, która przechowuje ruchy możliwe do wykonania
- * 
- * */
+ * @author Adam Napieralski
+ * @author Patrycja Cieplicka
+ */
 
-#include "Move.hpp"
+#include "Move.h"
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}
 
 Move::Move(Position s, Position e, Position c) : startPos_(s), endPos_(e) {
     capturedPos_.push_back(c);
 }
-
-/*void Move::addStepMove(Move tmp){
-    if(!startPos_.x){
-        startPos_ = tmp.startPos_;
-    }
-    endPos_ = tmp.endPos_;
-    stepMoves_.push_back(tmp);
-    capturedPos_.push_back(tmp.capturedPos_[0]);
-}*/
 
 bool Move::isInitial() const {
     Move initial;
@@ -57,17 +46,17 @@ Move Move::merge(Move& next) const {
             merged.capturedPos_.push_back(c);
         }
     }
-    if(!changePos_.empty()){
-        merged.changePos_ = changePos_;
+    if(!upgradePos_.empty()) {
+        merged.upgradePos_= upgradePos_;
     }
     return merged;
 }
 
-void Move::addChange(Position pos){
-    changePos_.push_back(pos);
+void Move::addUpgradePosition(const Position& pos){
+    upgradePos_.push_back(pos);
 }
 
-std::vector<Position> Move::getChangedPosition() const { return changePos_ ; }
+std::vector<Position> Move::getUpgradePositions() const { return upgradePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }
 

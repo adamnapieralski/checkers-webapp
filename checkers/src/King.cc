@@ -1,14 +1,12 @@
 /**
- * Projekt Zaawansowane Programowanie w C++ - Warcaby
- * 24.04.2020
+ * @file King.cc
+ * @brief Source file for King class, representing king piece.
  * 
- * Autorzy: Patrycja Cieplicka, Adam Napieralski
- * 
- * Plik źródłowy King, która reprezentuje damkę w warcabach
- * 
- * */
+ * @author Adam Napieralski
+ * @author Patrycja Cieplicka
+ */
 
-#include "King.hpp"
+#include "King.h"
 
 King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
     if (isWhite)
@@ -70,10 +68,9 @@ std::vector<Move> King::getCaptureMoves(Board& board) const{
     captureMoves(moves, board, move);
 
     return moves;
-
 }
 
-std::vector<Move> King::getValidMoves(Board& board) const {
+std::vector<Move> King::getNonCaptureMoves(Board& board) const {
 
     std::vector<Move> moves;
 
