@@ -29,6 +29,9 @@ public:
     void changePiece(std::shared_ptr<Piece> piece, const Position& pos);
     void addPiece(bool isKing, Position pos, Board &board); 
 
+    /**
+     * Get all valid moves for owned pieces on board, respecting the rule of capture obligation.
+     */
     std::vector<std::vector<Move>> getValidMoves(Board& board) const;
     std::vector<std::shared_ptr<Piece>> getPieces() const; 
     std::shared_ptr<Piece> findPiece(const Position& pos) const;    

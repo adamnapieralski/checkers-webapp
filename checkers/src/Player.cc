@@ -45,9 +45,6 @@ std::vector<std::shared_ptr<Piece>> Player::getPieces() const{
     return pieces_;
 }
 
-/**
- * Function find all the valid moves for Pieces on board. If they are beating moves return only them  - if not, return only non beating moves
- * */
 std::vector<std::vector<Move>> Player::getValidMoves(Board& board) const{
     std::vector<std::vector<Move>> valid_moves;
     for (auto pc : pieces_){

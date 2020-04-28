@@ -31,10 +31,20 @@ public:
 
     bool isSameColor(PieceName &pn) const;
     bool isDiffColor(PieceName pn) const;
+
+
+    /**
+     * @brief Recursive method finding all possible capture moves.
+     * 
+     * @param moves vector of moves that will be overwritten with found capture moves
+     * @param board board on which moves can be done
+     * @param current move already done to the moment of method call
+     */
+    virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
     
     virtual std::vector<Move> getNonCaptureMoves(Board& board) const = 0;
-    virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
     virtual std::vector<Move> getCaptureMoves(Board& board) const = 0;
+
     virtual std::ostream& print(std::ostream& os) const = 0;
 
 protected:

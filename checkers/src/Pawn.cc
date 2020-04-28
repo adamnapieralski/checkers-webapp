@@ -19,10 +19,6 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
-
-/**
- * Recursive function that find all beating moves for Pawn
- * */
 void Pawn::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
@@ -74,9 +70,6 @@ std::vector<Move> Pawn::getCaptureMoves(Board& board) const{
     return moves;
 }
 
-/**
- * Function that find all non beating moves for Pawn
- * */
 std::vector<Move> Pawn::getNonCaptureMoves(Board& board) const{
 
     std::vector<Move> moves;

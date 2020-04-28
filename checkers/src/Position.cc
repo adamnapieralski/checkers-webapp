@@ -1,5 +1,5 @@
 /**
- * @file Position.cpp
+ * @file Position.cc
  * @brief Source file for Position structure, representing piece's position on the board.
  * 
  * @author Adam Napieralski
