@@ -10,7 +10,7 @@
 
 std::string Checkers::findTile(std::string id){
 	std::string result = id;
-	result = "e5";
+	result = "funkcja testowa";
 
 	return result;
 }

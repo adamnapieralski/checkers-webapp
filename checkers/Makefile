@@ -27,7 +27,7 @@ run: build/main$(EXT)
 build/main$(EXT): $(output_files)
 	$(CXX) $(CPPFLAGS) -o $@ $(output_files)
 
-build/%.o: src/%.cpp $(header_files)
+build/%.o: src/%.cc $(header_files)
 	$(CXX) $(CPPFLAGS) -o $@ -c $<
 
 clean:

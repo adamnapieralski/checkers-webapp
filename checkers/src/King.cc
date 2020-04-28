@@ -15,6 +15,9 @@ King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_KING);
 }
 
+/**
+ * Recursive function that finds all possible beating moves for King 
+ * **/
 void King::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dy[4] = {1, 1, -1, -1};
     int dx[4] = {1, -1, -1, 1};
@@ -71,6 +74,9 @@ std::vector<Move> King::getCaptureMoves(Board& board) const{
 
 }
 
+/**
+ * Function that find all non beating moves for King
+ * */
 std::vector<Move> King::getNonCaptureMoves(Board& board) const {
 
     std::vector<Move> moves;

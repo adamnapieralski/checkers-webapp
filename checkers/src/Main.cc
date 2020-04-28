@@ -3,10 +3,10 @@
 //#include "Pawn.hpp"
 //#include "Piece.hpp"
 //#include "Checkers.hpp"
-#include "Player.hpp"
-#include "Board.hpp"
-#include "King.hpp"
-#include "Pawn.hpp"
+#include "Player.h"
+#include "Board.h"
+#include "King.h"
+#include "Pawn.h"
 
 int main() {
     /*Board board = Board();

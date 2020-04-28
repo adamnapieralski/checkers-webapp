@@ -36,7 +36,7 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
-    std::vector<Position> upgradePos_;
+    std::vector<Position> upgradePos_;        //Postion where Pawn change to King
 
 };
 

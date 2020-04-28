@@ -20,5 +20,4 @@ BOOST_PYTHON_MODULE(checkers)
         .def("findTile", &Checkers::findTile)
     ;
 
-    // def("findTile", Checkers::findTile);   
 }
