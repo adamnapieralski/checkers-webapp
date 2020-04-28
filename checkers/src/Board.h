@@ -1,20 +1,20 @@
 /**
- * @file Board.hpp
+ * @file Board.h
  * @brief Header file for Board class, representing checkers board.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#ifndef BOARD_HPP
-#define BOARD_HPP
+#ifndef BOARD_H
+#define BOARD_H
 
 #include <array>
 #include <vector>
 #include <iostream>
 
-#include "Position.hpp"
-#include "Move.hpp"
+#include "Position.h"
+#include "Move.h"
 
 #define BOARD_SIZE 8
 
@@ -49,4 +49,4 @@ private:
     std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> board_ ;
 };
 
-#endif  // BOARD_HPP
+#endif  // BOARD_H

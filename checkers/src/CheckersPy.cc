@@ -1,5 +1,5 @@
 /**
- * @file CheckersPy.cpp
+ * @file CheckersPy.cc
  * @brief Implementation of python module for C++ using Boost.Python
  * 
  * @author Patrycja Cieplicka
@@ -7,7 +7,7 @@
  */
 
 #include <boost/python.hpp>
-#include "Checkers.hpp"
+#include "Checkers.h"
 
 using namespace boost::python;
 

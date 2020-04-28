@@ -1,19 +1,19 @@
 /**
- * @file Checkers.hpp
+ * @file Checkers.h
  * @brief Header file for Checkers class, handling game mechanics.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#ifndef CHECKERS_HPP
-#define CHECKERS_HPP
+#ifndef CHECKERS_H
+#define CHECKERS_H
 
 #include <iostream>
 #include <string>
 
-#include "Player.hpp"
-#include "Board.hpp"
+#include "Player.h"
+#include "Board.h"
 
 struct GameState {
 	std::string boardFEN;
@@ -43,4 +43,4 @@ private:
 	std::string userName_;
 };
 
-#endif	// CHECKERS_HPP
+#endif	// CHECKERS_H

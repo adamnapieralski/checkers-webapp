@@ -1,12 +1,12 @@
 /**
- * @file Checkers.cpp
+ * @file Checkers.cc
  * @brief Source file for Checkers class, handling game mechanics.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#include "Checkers.hpp"
+#include "Checkers.h"
 
 std::string Checkers::findTile(std::string id){
 	std::string result = id;

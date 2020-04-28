@@ -1,21 +1,21 @@
 /**
- * @file King.hpp
- * @brief Header file for King class, representing king piece.
+ * @file Pawn.h
+ * @brief Header file for Pawn class, representing pawn piece.
  * 
- * @author Adam Napieralski
  * @author Patrycja Cieplicka
+ * @author Adam Napieralski
  */
 
-#ifndef KING_HPP
-#define KING_HPP
+#ifndef PAWN_H
+#define PAWN_H
 
-#include "Piece.hpp"
+#include "Piece.h"
 
-class King : public Piece {
+class Pawn : public Piece {
     using Piece::Piece;
-
+    
 public:
-    King(Position pos, bool isWhite, bool isUser, Board& board);
+    Pawn(Position pos, bool isWhite, bool isUser, Board& board);
 
     void captureMoves(std::vector<Move>& moves, Board board, Move current) const override;
     std::vector<Move> getCaptureMoves(Board& board) const override;
@@ -24,4 +24,4 @@ public:
     std::ostream& print(std::ostream&) const override;
 };
 
-#endif  // KING_HPP
+#endif  // PAWN_H

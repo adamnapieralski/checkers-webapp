@@ -1,5 +1,5 @@
 /**
- * @file Move.hpp
+ * @file Move.h
  * @brief Source file for Move class, representing move of pieces.
  * 
  * @author Adam Napieralski
@@ -7,12 +7,12 @@
  */
 
 
-#ifndef MOVE_HPP
-#define MOVE_HPP
+#ifndef MOVE_H
+#define MOVE_H
 
 #include <vector>
 
-#include "Position.hpp"
+#include "Position.h"
 
 class Move {
 public:
@@ -40,4 +40,4 @@ private:
 
 };
 
-#endif  // MOVE_HPP
+#endif  // MOVE_H

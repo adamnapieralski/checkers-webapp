@@ -1,12 +1,12 @@
 /**
- * @file King.cpp
+ * @file King.cc
  * @brief Source file for King class, representing king piece.
  * 
  * @author Adam Napieralski
  * @author Patrycja Cieplicka
  */
 
-#include "King.hpp"
+#include "King.h"
 
 King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {
     if (isWhite)

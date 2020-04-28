@@ -1,14 +1,14 @@
 /**
- * @file Player.cpp
+ * @file Player.cc
  * @brief Source file for Player class, representing player.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#include "Player.hpp"
-#include "Pawn.hpp"
-#include "King.hpp"
+#include "Player.h"
+#include "Pawn.h"
+#include "King.h"
 #include <algorithm> 
 
 #define INIT_ROW 3

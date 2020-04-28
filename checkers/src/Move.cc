@@ -1,12 +1,12 @@
 /**
- * @file Move.cpp
+ * @file Move.cc
  * @brief Source file for Move class, representing move of pieces.
  * 
  * @author Adam Napieralski
  * @author Patrycja Cieplicka
  */
 
-#include "Move.hpp"
+#include "Move.h"
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}
 

@@ -1,15 +1,15 @@
 /**
- * @file Pawn.cpp
+ * @file Pawn.cc
  * @brief Source file for Pawn class, representing pawn piece.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#include "Pawn.hpp"
-#include "Board.hpp"
-#include "Move.hpp"
-#include "King.hpp"
+#include "Pawn.h"
+#include "Board.h"
+#include "Move.h"
+#include "King.h"
 #include <vector>
 
 Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, isWhite, isUser) {

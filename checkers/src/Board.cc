@@ -1,12 +1,12 @@
 /**
- * @file Board.cpp
+ * @file Board.cc
  * @brief Source file for Board class, representing checkers board
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 #include <map>
-#include "Board.hpp"
+#include "Board.h"
 
 std::ostream& operator<<(std::ostream& os, const PieceName& p){
     switch (p){

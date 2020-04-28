@@ -1,20 +1,20 @@
 /**
- * @file Piece.hpp
+ * @file Piece.h
  * @brief Header file for abstract Piece class, representing piece.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#ifndef PIECE_HPP
-#define PIECE_HPP
+#ifndef PIECE_H
+#define PIECE_H
 
 #include <string>
 #include <vector>
 
-#include "Position.hpp"
-#include "Move.hpp"
-#include "Board.hpp"
+#include "Position.h"
+#include "Move.h"
+#include "Board.h"
 
 // to resolve: class Piece has virtual funcs and accessible non-virtual destructor
 class Piece {
@@ -45,4 +45,4 @@ private:
     bool isUser_;
 };
 
-#endif  // PIECE_HPP
+#endif  // PIECE_H

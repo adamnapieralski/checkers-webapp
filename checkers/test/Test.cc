@@ -1,5 +1,5 @@
 /**
- * @file Test.cpp
+ * @file Test.cc
  * @brief Source file for unit tests using Boost.Test.
  * 
  * @author Patrycja Cieplicka
@@ -10,10 +10,10 @@
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
 
-#include "../src/Player.hpp"
-#include "../src/Board.hpp"
-#include "../src/King.hpp"
-#include "../src/Pawn.hpp"
+#include "../src/Player.h"
+#include "../src/Board.h"
+#include "../src/King.h"
+#include "../src/Pawn.h"
 
 
 BOOST_AUTO_TEST_SUITE(MovePiece)

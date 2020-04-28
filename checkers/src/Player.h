@@ -1,18 +1,18 @@
 /**
- * @file Player.hpp
+ * @file Player.h
  * @brief Header file for Player class, representing player.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <vector>
 #include <memory>
-#include "Piece.hpp"
-#include "Board.hpp"
+#include "Piece.h"
+#include "Board.h"
 
 class Player {
 public:
@@ -40,4 +40,4 @@ private:
     bool isUser_;
 };
 
-#endif  // PLAYER_HPP
+#endif  // PLAYER_H

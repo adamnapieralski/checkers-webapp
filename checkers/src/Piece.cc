@@ -1,20 +1,15 @@
 /**
- * @file Piece.cpp
+ * @file Piece.cc
  * @brief Source file for abstract Piece class, representing piece.
  * 
  * @author Patrycja Cieplicka
  * @author Adam Napieralski
  */
 
-#include "Piece.hpp"
-#include "Pawn.hpp"
-#include "King.hpp"
-#include "Board.hpp"
-
-// Piece::Piece(Position pos, bool isWhite) {
-//     pos_ = pos;
-//     isWhite_ = isWhite;
-// }
+#include "Piece.h"
+#include "Pawn.h"
+#include "King.h"
+#include "Board.h"
 
 Piece::Piece(Position pos, bool isWhite, bool isUser) :
     pos_(pos), isWhite_(isWhite), isUser_(isUser) {}
