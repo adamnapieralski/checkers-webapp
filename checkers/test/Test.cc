@@ -10,7 +10,8 @@
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
 
-#include "../src/Player.h"
+#include "../src/UserPlayer.h"
+#include "../src/AIPlayer.h"
 #include "../src/Board.h"
 #include "../src/King.h"
 #include "../src/Pawn.h"
@@ -52,8 +53,8 @@ BOOST_AUTO_TEST_CASE( move_merge )
 BOOST_AUTO_TEST_CASE( board_fen )
 {
     Board board = Board();
-    Player user = Player(true, true);
-    Player computer = Player(false, false);
+    auto user = UserPlayer(true);
+    auto computer = AIPlayer(false);
     user.initializePieces(board);
     computer.initializePieces(board);
     BOOST_CHECK( board.getFEN() == "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1" );
@@ -362,14 +363,14 @@ BOOST_AUTO_TEST_CASE(no_capture_moves_king){
 
 BOOST_AUTO_TEST_CASE(initilizePieces){
     Board board = Board();
-    Player user = Player(true, true);
+    auto user = UserPlayer(true);
     user.initializePieces(board);
 
     BOOST_REQUIRE(user.getPieces().size() == 12);
     BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(0,0));
     BOOST_CHECK(board.getPieceName(Position(0,0)) == WHITE_PAWN);
 
-    Player computer = Player(false, false);
+    auto computer = AIPlayer(false);
     computer.initializePieces(board);
     BOOST_REQUIRE(computer.getPieces().size() == 12);
     BOOST_CHECK(computer.getPieces()[11]->getPosition() == Position(7,5));
@@ -379,11 +380,11 @@ BOOST_AUTO_TEST_CASE(initilizePieces){
 
 BOOST_AUTO_TEST_CASE(getValidMoves){
     Board board = Board();
-    Player user = Player(true, true);
+    auto user = UserPlayer(true);
     user.addPiece(false, Position(1,1), board);
     user.addPiece(false, Position(3,1), board);
     user.addPiece(false, Position(5,1), board);
-    Player computer = Player(false, false);
+    auto computer = AIPlayer(false);
     computer.addPiece(false, Position(2,2), board);
     computer.addPiece(true, Position(4,4), board);
 
@@ -397,9 +398,9 @@ BOOST_AUTO_TEST_CASE(getValidMoves){
 
     //empty and not capture case
     Board board_2 = Board();
-    Player user_2 = Player(true, true);
+    auto user_2 = UserPlayer(true);
     user_2.addPiece(false, Position(0,0), board_2);
-    Player computer_2 = Player(false, false);
+    auto computer_2 = AIPlayer(false);
     computer_2.addPiece(false, Position(1,1), board_2);
     computer_2.addPiece(false, Position(2,2), board_2);
 
@@ -413,9 +414,9 @@ BOOST_AUTO_TEST_CASE(getValidMoves){
 
 BOOST_AUTO_TEST_CASE(movePiece){
     Board board = Board();
-    Player user = Player(true, true);
+    auto user = UserPlayer(true);
     user.addPiece(false, Position(1,5), board);
-    Player computer = Player(false, false);
+    auto computer = AIPlayer(false);
     computer.addPiece(false, Position(2,6), board);
     computer.addPiece(false, Position(6,4), board);
 

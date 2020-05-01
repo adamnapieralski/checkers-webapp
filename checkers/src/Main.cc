@@ -3,7 +3,8 @@
 //#include "Pawn.hpp"
 //#include "Piece.hpp"
 //#include "Checkers.hpp"
-#include "Player.h"
+#include "AIPlayer.h"
+#include "UserPlayer.h"
 #include "Board.h"
 #include "King.h"
 #include "Pawn.h"
@@ -22,8 +23,8 @@ int main() {
 
     
     Board board = Board();
-    Player user = Player(true, true);
-    Player computer = Player(false, false);
+    auto user = UserPlayer(true);
+    auto computer = AIPlayer(false);
     computer.addPiece(true, Position(2, 2), board);
     // computer.addPiece(true, Position(3, 0), board);
     user.addPiece(false, Position(3,3), board);

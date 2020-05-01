@@ -8,6 +8,8 @@
 
 #include "Checkers.h"
 
+Checkers::Checkers() : userPlayer_(true), compPlayer_(false) {}
+
 std::string Checkers::findTile(std::string id){
 	std::string result = id;
 	result = "funkcja testowa";
