@@ -25,7 +25,7 @@ struct GameState {
 
 class Checkers {
 public:
-	Checkers();
+	static Checkers& getInstance();
 	
 	std::string findTile(std::string id); // temporary test method
 
@@ -37,11 +37,13 @@ public:
 	GameState processComputerMove() {	return GameState();	}
 
 private:
+	Checkers();
+	Checkers(const Checkers&) = delete;
+	Checkers& operator=(const Checkers&) = delete;
+
 	UserPlayer userPlayer_;
 	AIPlayer compPlayer_;
 	Board board_;
-	bool isUserWhite_;
-	std::string userName_;
 };
 
 #endif	// CHECKERS_H

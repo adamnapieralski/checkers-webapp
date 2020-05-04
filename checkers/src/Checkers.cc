@@ -8,7 +8,13 @@
 
 #include "Checkers.h"
 
+Checkers& Checkers::getInstance() {
+	static Checkers instance;
+	return instance;
+}
+
 Checkers::Checkers() : userPlayer_(true), compPlayer_(false) {}
+
 
 std::string Checkers::findTile(std::string id){
 	std::string result = id;
@@ -18,11 +24,15 @@ std::string Checkers::findTile(std::string id){
 }
 
 void Checkers::initialize(std::string userName, bool isUserWhite) {
-	isUserWhite_ = isUserWhite;
-	userName_ = userName;
+	userPlayer_.setName(userName);
+	userPlayer_.setIsWhite(isUserWhite);
+	compPlayer_.setIsWhite(!isUserWhite);
+	
+	userPlayer_.initializePieces(board_);
+	compPlayer_.initializePieces(board_);
 }
 
-bool Checkers::getIsUserWhite() { return isUserWhite_; }
+bool Checkers::getIsUserWhite() { return userPlayer_.isWhite(); }
 
-std::string Checkers::getUserName() { return userName_;	}
+std::string Checkers::getUserName() { return userPlayer_.getName(); }
 

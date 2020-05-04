@@ -13,7 +13,9 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(checkers)
 {
-    class_<Checkers>("Checkers")
+    class_<Checkers, boost::noncopyable>("Checkers", no_init)
+        .def("getInstance", &Checkers::getInstance, return_value_policy<reference_existing_object>())
+            .staticmethod("getInstance")
         .def("initialize", &Checkers::initialize)
         .def("getIsUserWhite", &Checkers::getIsUserWhite)
         .def("getUserName", &Checkers::getUserName)

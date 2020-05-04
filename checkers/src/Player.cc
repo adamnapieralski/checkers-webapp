@@ -13,7 +13,21 @@
 
 Player::Player(bool isWhite) : isWhite_(isWhite) {}
 
-bool Player::isWhite() const {    return isWhite_;    }
+bool Player::isWhite() const {
+    return isWhite_;
+}
+
+std::string Player::getName() const {
+    return name_;
+}
+
+void Player::setIsWhite(bool isWhite) {
+    isWhite_ = isWhite;
+}
+
+void Player::setName(std::string name) {
+    name_ = name;
+}
 
 std::vector<std::shared_ptr<Piece>> Player::getPieces() const{
     return pieces_;
