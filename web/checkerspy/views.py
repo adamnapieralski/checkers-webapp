@@ -2,7 +2,7 @@
 
 from checkerspy import checkers
 
-game = checkers.Checkers()
+game = checkers.Checkers.getInstance()
     
 def findTile(params):
     pawn_id = str(params['pawn_id'])

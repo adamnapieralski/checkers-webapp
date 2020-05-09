@@ -22,7 +22,12 @@ public:
     virtual ~Player(){};
 
     bool isWhite() const;
-    void setHasTurn(bool hasTurn) const;
+    std::string getName() const;
+
+    void setIsWhite(bool isWhite);
+    void setName(std::string name);
+
+    void setHasTurn(bool hasTurn);
 
     virtual void initializePieces(Board &board) = 0;
     virtual void addPiece(bool isKing, Position pos, Board &board) = 0; 
@@ -44,6 +49,7 @@ protected:
     std::vector<std::shared_ptr<Piece>> pieces_;
     bool hasTurn_;
     bool isWhite_;
+    std::string name_;
 };
 
 #endif  // PLAYER_H

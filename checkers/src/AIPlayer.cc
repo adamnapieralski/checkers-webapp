@@ -10,7 +10,9 @@
 #include "Pawn.h"
 #include "King.h"
 
-AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {}
+AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {
+    name_ = "Computer";
+}
 
 void AIPlayer::initializePieces(Board& board){
     for (int i = BOARD_SIZE - 1; i > INIT_ROW + 1; --i){
