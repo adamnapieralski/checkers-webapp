@@ -1,5 +1,5 @@
 # -*- mode: Python; -*-
-import os, platform, subprocess, re, time, ConfigParser, shutil, sys, signal, webbrowser
+import os, platform, subprocess, re, time, shutil, sys, signal
 
 MYAPP_VER_MAJOR = '0'
 MYAPP_VER_MINOR = '03'

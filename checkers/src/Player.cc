@@ -11,35 +11,9 @@
 #include "King.h"
 #include <algorithm> 
 
-#define INIT_ROW 3
-
-Player::Player(bool isWhite, bool isUser) :
-    isWhite_(isWhite), isUser_(isUser) {}
+Player::Player(bool isWhite) : isWhite_(isWhite) {}
 
 bool Player::isWhite() const {    return isWhite_;    }
-
-void Player::initializePieces(Board& board){
-    // place in lower part for user
-    if (isUser_) {
-        for (int i = 0; i < INIT_ROW; ++i){
-            for(int j = 0; j < BOARD_SIZE; ++j) {
-                if ((i + j) % 2 == 0) {
-                    pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, board));
-                }
-            }
-        }
-    }
-    // place in upper part for computer
-    else {
-        for (int i = BOARD_SIZE - 1; i > INIT_ROW + 1; --i){
-            for (int j = 0; j < BOARD_SIZE; ++j){
-                if ((i + j) % 2 == 0){
-                    pieces_.push_back(std::make_shared<Pawn>(Position(j, i), isWhite_, isUser_, board));
-                }
-            }
-        }
-    }
-}
 
 std::vector<std::shared_ptr<Piece>> Player::getPieces() const{
     return pieces_;
@@ -67,11 +41,6 @@ void Player::erasePiece(std::shared_ptr<Piece> piece){
 
 void Player::changePiece(std::shared_ptr<Piece> piece, const Position& pos){
     piece->changePosition(pos);
-}
-
-void Player::addPiece(bool isKing, Position pos, Board& board){
-    if(isKing) pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser_, board));
-    else pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser_, board));
 }
 
 void Player::movePiece(Board& board, Player& opponent, const Move& move) {

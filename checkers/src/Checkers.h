@@ -12,7 +12,8 @@
 #include <iostream>
 #include <string>
 
-#include "Player.h"
+#include "UserPlayer.h"
+#include "AIPlayer.h"
 #include "Board.h"
 
 struct GameState {
@@ -24,7 +25,7 @@ struct GameState {
 
 class Checkers {
 public:
-	Checkers(){};
+	Checkers();
 	
 	std::string findTile(std::string id); // temporary test method
 
@@ -36,7 +37,8 @@ public:
 	GameState processComputerMove() {	return GameState();	}
 
 private:
-	Player userPlayer_, compPlayer_;
+	UserPlayer userPlayer_;
+	AIPlayer compPlayer_;
 	Board board_;
 	bool isUserWhite_;
 	std::string userName_;
