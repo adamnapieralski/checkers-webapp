@@ -35,6 +35,16 @@ myAppControllers.controller('codeController',
 				}
 			)
 		}
+
+		$scope.loadBoard = function(data) {
+			srvInfo.getGameState (
+				function(data) {
+					document.getElementById('bb').textContent = data.data.boardfen;
+					$scope.board = data.data;
+					console.log(data);
+				}
+			)
+		}
 }]);
 	
 
@@ -60,6 +70,9 @@ angular.module('myAppServices', [])
 				 this.getUserName = function(callback) {
 					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
 				 };
+				 this.getGameState = function(callback) {
+					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 
+				 }
 
              });
 

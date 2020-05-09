@@ -24,10 +24,12 @@
     <body>
 		<div id="contenta" class="container" ng-controller="codeController">
 			<div class="header"><b>Warcaby</b></div>
-			<div class="usage"></div>
-				  Podaj id pionka: <input type="text" id="pawn_id">
-				  <button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
-			  <div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
+			Podaj id pionka: <input type="text" id="pawn_id">
+			<button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
+			<div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
+			<button type="button" onclick="angular.element(this).scope().loadBoard()" id="button_2">Zwroc FEN</button><br>
+			<div id="loadBoard">Obecny FEN:  <em id="board_value"><span ng-bind="board.boardfen"></span></em></div>
+			<div id="loadBoar" >Obecny FEN:  <span id="bb"></span></div>
 		</div>
 	<br>
 	<div class="row" ng-controller="codeController">
@@ -48,7 +50,7 @@
 		var config = {
 			draggable: true,							//myszka
 			dropOffBoard: 'snapback',
-			position: '1k1k1k1k/p1p1p1p1/1p1p1p1p/8/8/P1P1P1P1/1P1P1P1P/K1K1K1K1'  //poczatkowa pozycja
+			//position: '1k1k1k1k/p1p1p1p1/1p1p1p1p/8/8/P1P1P1P1/1P1P1P1P/K1K1K1K1'  //poczatkowa pozycja
 			// a1: 'wP', c1: 'wP', e1: 'wP', g1: 'wP',
 			// b2: 'wP', d2: 'wP', f2: 'wP', h2: 'wP',
 			// a3: 'wP', c3: 'wP', e3: 'wP', g3: 'wP',
@@ -58,7 +60,8 @@
 			// b8: 'bP', d8: 'bP', f8: 'bP', h8: 'bP'
 		}
 		var board = Chessboard('board', config);
-		// console.log(board.fen())
+		console.log(board.fen());
+		board.position("bb");
     </script>
     </body>
 </html>

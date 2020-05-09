@@ -20,6 +20,7 @@ BOOST_PYTHON_MODULE(checkers)
         .def("getIsUserWhite", &Checkers::getIsUserWhite)
         .def("getUserName", &Checkers::getUserName)
         .def("findTile", &Checkers::findTile)
+        .def("processUserMove", &Checkers::processUserMove)
     ;
 
 }
