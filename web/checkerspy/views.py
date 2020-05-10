@@ -31,3 +31,9 @@ def get_user_data(params):
         'user_name': game.getUserName(),
         'user_color': color
     }
+
+def get_game_state(params):
+    game_state = game.processUserMove()
+    return {
+        'fen': game_state.boardFEN
+    }

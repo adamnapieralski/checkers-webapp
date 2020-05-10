@@ -23,4 +23,8 @@ BOOST_PYTHON_MODULE(checkers)
         .def("processUserMove", &Checkers::processUserMove)
     ;
 
+    class_<GameState>("GameState")
+        .def_readonly("boardFEN", &GameState::boardFEN)
+    ;
+
 }
