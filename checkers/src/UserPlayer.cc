@@ -17,10 +17,11 @@ UserPlayer::UserPlayer(bool isWhite, std::string name) : Player(isWhite) {
 }
 
 UserPlayer UserPlayer::operator=( const UserPlayer & comp ){
-        for (auto& p : comp.pieces_){
-            this->pieces_.push_back(std::shared_ptr<Piece>(p->clone()));
-        }
+    for (auto& p : comp.pieces_){
+        this->pieces_.push_back(std::shared_ptr<Piece>(p->clone()));
     }
+    return UserPlayer(*this);
+}
 
 void UserPlayer::initializePieces(Board& board){
     for (int i = 0; i < INIT_ROW; ++i){

@@ -10,6 +10,7 @@
 #define GAMETREE_H
 
 #include <memory>
+#include "Board.h"
 
 struct TNode {
     TNode(Move m, Board b) : move_(m), board_(b){}

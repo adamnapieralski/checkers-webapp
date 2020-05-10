@@ -7,7 +7,7 @@
  */
 
 #include "GameTree.h"
-#include "Board.h"
+
 
 GameTree::GameTree(Board b){
     root_ = std::make_shared<TNode>(b);
@@ -15,7 +15,7 @@ GameTree::GameTree(Board b){
 }
 
 void GameTree::addChildren(Move m, Board b){
-    currentHead_.lock()->children_.push_back(std::make_shared<TNode>(b,m));
+    currentHead_.lock()->children_.push_back(std::make_shared<TNode>(m,b));
     currentHead_ = currentHead_.lock() -> children_.back();
 }
 

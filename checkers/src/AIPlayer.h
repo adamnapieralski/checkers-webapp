@@ -11,6 +11,7 @@
 
 #include "Player.h"
 #include "UserPlayer.h"
+#include "GameTree.h"
 
 class AIPlayer : public Player {
 public:
@@ -22,10 +23,11 @@ public:
 
     GameTree getGameTree(const UserPlayer &user, const Board &board);
     void fillTree(AIPlayer computer, UserPlayer user, GameTree &tree, int depth, Board board, bool ifUser);
-    Move minmax();
+    Move minmax(AIPlayer computer, UserPlayer user, Board board, std::vector<std::vector<Move>> valid_moves);
 
 private:
-    double minmaxAlphaBeta();
+    double minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board, int depth, double alpha, double beta, bool ifUser);
+    double evaluationFunction(AIPlayer computer, UserPlayer user, Board board);
 };
 
 #endif  // AIPLAYER_H
