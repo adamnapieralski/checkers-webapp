@@ -57,14 +57,14 @@ BOOST_AUTO_TEST_CASE( board_fen )
     auto computer = AIPlayer(false);
     user.initializePieces(board);
     computer.initializePieces(board);
-    BOOST_CHECK( board.getFEN() == "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1" );
+    BOOST_CHECK( board.getFEN() == "1p1p1p1p/p1p1p1p1/1p1p1p1p/8/8/P1P1P1P1/1P1P1P1P/P1P1P1P1" );
 
     board.placePiece(Position(0, 0), WHITE_KING);
     board.placePiece(Position(4, 4), BLACK_KING);
     board.placePiece(Position(2, 6), WHITE_KING);
     board.placePiece(Position(7, 7), BLACK_KING);
     board.placePiece(Position(5, 3), WHITE_KING);
-    BOOST_CHECK( board.getFEN() == "1P1P1P1K/P1k1P1P1/1P1P1P1P/4K3/5k2/p1p1p1p1/1p1p1p1p/k1p1p1p1" );
+    BOOST_CHECK( board.getFEN() == "1p1p1p1k/p1K1p1p1/1p1p1p1p/4k3/5K2/P1P1P1P1/1P1P1P1P/K1P1P1P1" );
 }
 
 BOOST_AUTO_TEST_CASE( board_make_move )

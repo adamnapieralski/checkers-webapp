@@ -82,7 +82,7 @@ Board& Board::operator=(Board other) {
 
 std::string Board::getFEN() const {
     std::map<enum PieceName, char>  pcs = {
-        { EMPTY, 'e' }, { WHITE_PAWN , 'p' }, { WHITE_KING, 'k' }, { BLACK_PAWN, 'P' }, { BLACK_KING, 'K' }
+        { EMPTY, 'e' }, { WHITE_PAWN , 'P' }, { WHITE_KING, 'K' }, { BLACK_PAWN, 'p' }, { BLACK_KING, 'k' }
     };
     std::string fen = "";
     for (size_t row = 0; row < BOARD_SIZE; ++row) {
