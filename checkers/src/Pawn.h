@@ -16,6 +16,9 @@ class Pawn : public Piece {
     
 public:
     Pawn(Position pos, bool isWhite, bool isUser, Board& board);
+    virtual Piece* clone() const{
+        return new Pawn(*this);
+    }
 
     void captureMoves(std::vector<Move>& moves, Board board, Move current) const override;
     std::vector<Move> getCaptureMoves(Board& board) const override;

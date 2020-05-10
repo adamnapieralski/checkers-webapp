@@ -15,6 +15,12 @@ AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {
     name_ = "Computer";
 }
 
+AIPlayer AIPlayer::operator=( const AIPlayer & comp ){
+        for (auto& p : comp.pieces_){
+            this->pieces_.push_back(std::shared_ptr<Piece>(p->clone()));
+        }
+    }
+
 void AIPlayer::initializePieces(Board& board){
     for (int i = BOARD_SIZE - 1; i > INIT_ROW + 1; --i){
         for (int j = 0; j < BOARD_SIZE; ++j){

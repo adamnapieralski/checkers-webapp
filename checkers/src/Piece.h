@@ -22,6 +22,7 @@ public:
     // Piece(Position pos, bool isWhite, Board* board);
     Piece(Position pos, bool isWhite, bool isUser);
     virtual ~Piece() {};
+    virtual Piece* clone() const = 0;
 
     bool isWhite() const;
     bool isUser() const;

@@ -15,11 +15,7 @@
 class AIPlayer : public Player {
 public:
     AIPlayer(bool isWhite);
-    AIPlayer::AIPlayer( const AIPlayer & comp ){
-        for (auto& p : comp.pieces_){
-            this->pieces_.push_back(std::shared_ptr<Piece>());
-        }
-    }
+    AIPlayer operator=( const AIPlayer & comp );
 
     void initializePieces(Board &board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
