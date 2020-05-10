@@ -9,6 +9,7 @@
 #include "AIPlayer.h"
 #include "Pawn.h"
 #include "King.h"
+#include "GameTree.h"
 
 AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {
     name_ = "Computer";
@@ -35,4 +36,9 @@ Move AIPlayer::minmax() {
 
 double AIPlayer::minmaxAlphaBeta() {
     return 0.;
+}
+
+GameTree AIPlayer::getGameTree(UserPlayer user, Board &board){
+    this->getValidMoves(board);
+
 }

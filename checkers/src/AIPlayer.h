@@ -10,6 +10,7 @@
 #define AIPLAYER_H
 
 #include "Player.h"
+#include "UserPlayer.h"
 
 class AIPlayer : public Player {
 public:
@@ -18,6 +19,7 @@ public:
     void initializePieces(Board &board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
 
+    GameTree getGameTree(UserPlayer user, Board &board);
     Move minmax();
 
 private:

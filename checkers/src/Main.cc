@@ -8,6 +8,7 @@
 #include "Board.h"
 #include "King.h"
 #include "Pawn.h"
+#include "GameTree.h"
 
 int main() {
     /*Board board = Board();
@@ -22,7 +23,7 @@ int main() {
     std::cout << board << std::endl;*/
 
     
-    Board board = Board();
+    /*Board board = Board();
     auto user = UserPlayer(true);
     auto computer = AIPlayer(false);
     computer.addPiece(true, Position(2, 2), board);
@@ -37,7 +38,9 @@ int main() {
     computer.movePiece(board, user, moves[0][0]);
     std::cout << board << std::endl;
     //std::vector<Piece*> newComp = computer.getPieces();
-    //std::vector<Piece*> newUs = user.getPieces();
+    //std::vector<Piece*> newUs = user.getPieces();*/
+
+    GameTree tree = GameTree();
 
     return 0;
 }
