@@ -33,8 +33,8 @@ public:
 	bool getIsUserWhite();
 	std::string getUserName();
 
-	GameState processUserMove(std::string org, std::string dest) {	return GameState();	}
-	GameState processComputerMove() {	return GameState();	}
+	GameState processUserMove();
+	//GameState processUserMove(std::string org, std::string dest);
 
 private:
 	Checkers();
@@ -44,6 +44,7 @@ private:
 	UserPlayer userPlayer_;
 	AIPlayer compPlayer_;
 	Board board_;
+	GameState state_;
 };
 
 #endif	// CHECKERS_H

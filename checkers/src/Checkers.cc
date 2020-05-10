@@ -17,8 +17,11 @@ Checkers::Checkers() : userPlayer_(true), compPlayer_(false) {}
 
 
 std::string Checkers::findTile(std::string id){
-	std::string result = id;
-	result = "funkcja testowa";
+	std::string result;
+	if(id == "tak"){
+		result = "funkcja testowa";
+	}
+	else result = id;
 
 	return result;
 }
@@ -30,7 +33,17 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	
 	userPlayer_.initializePieces(board_);
 	compPlayer_.initializePieces(board_);
+
+	state_.boardFEN = board_.getFEN();
 }
+
+GameState Checkers::processUserMove(){
+	return state_;
+}
+
+/*GameState Checkers::processUserMove(std::string org, std::string dest){
+	return state_;
+}*/
 
 bool Checkers::getIsUserWhite() { return userPlayer_.isWhite(); }
 

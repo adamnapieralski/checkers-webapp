@@ -2,9 +2,30 @@ angular.module('Checkers', ['myAppControllers', 'myAppServices'] );
 
 var myAppControllers = angular.module('myAppControllers', []);
 
-myAppControllers.controller('codeController',
+myAppControllers.controller('entryController',
+	['$scope', 'srvInfo',
+		function($scope, srvInfo) {
+			$scope.loadGame = function(data) {
+				if (document.getElementById('userNameText').value == "") {
+					document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
+					document.getElementById('userNameText').style.borderColor = 'red';
+				}
+				else {
+					srvInfo.initializeGame(function(data) {});
+					window.location = "/play";
+				}
+			};
+}]);
+
+myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
+
+		$scope.boardConfig = {
+			draggable: true,	//myszka
+			dropOffBoard: 'snapback'
+		}
+		$scope.board = Chessboard('board', $scope.boardConfig);
 
 		$scope.viewTile = function(data) {
 			this.printUserName();
@@ -16,22 +37,21 @@ myAppControllers.controller('codeController',
 				});
 		};
 
-		$scope.loadGame = function(data) {
-			if (document.getElementById('userNameText').value == "") {
-				document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
-				document.getElementById('userNameText').style.borderColor = 'red';
-			}
-			else {
-				srvInfo.initializeGame(function(data) {});
-				window.location = "/play";
-			}
-		};
-
 		$scope.printUserName = function(data) {
 			srvInfo.getUserName(
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
+				}
+			)
+		}
+
+		$scope.loadBoard = function(data) {
+			srvInfo.getGameState (
+				function(data) {
+					$scope.currentFEN = data.data.fen;
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
 				}
 			)
 		}
@@ -60,6 +80,9 @@ angular.module('myAppServices', [])
 				 this.getUserName = function(callback) {
 					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
 				 };
+				 this.getGameState = function(callback) {
+					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 
+				 }
 
              });
 
