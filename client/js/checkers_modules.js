@@ -2,9 +2,30 @@ angular.module('Checkers', ['myAppControllers', 'myAppServices'] );
 
 var myAppControllers = angular.module('myAppControllers', []);
 
-myAppControllers.controller('codeController',
+myAppControllers.controller('entryController',
+	['$scope', 'srvInfo',
+		function($scope, srvInfo) {
+			$scope.loadGame = function(data) {
+				if (document.getElementById('userNameText').value == "") {
+					document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
+					document.getElementById('userNameText').style.borderColor = 'red';
+				}
+				else {
+					srvInfo.initializeGame(function(data) {});
+					window.location = "/play";
+				}
+			};
+}]);
+
+myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
+
+		$scope.boardConfig = {
+			draggable: true,	//myszka
+			dropOffBoard: 'snapback'
+		}
+		$scope.board = Chessboard('board', $scope.boardConfig);
 
 		$scope.viewTile = function(data) {
 			this.printUserName();
@@ -14,17 +35,6 @@ myAppControllers.controller('codeController',
 					$scope.pawn_tile = data.data;
 					console.log(data);
 				});
-		};
-
-		$scope.loadGame = function(data) {
-			if (document.getElementById('userNameText').value == "") {
-				document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
-				document.getElementById('userNameText').style.borderColor = 'red';
-			}
-			else {
-				srvInfo.initializeGame(function(data) {});
-				window.location = "/play";
-			}
 		};
 
 		$scope.printUserName = function(data) {
@@ -39,9 +49,9 @@ myAppControllers.controller('codeController',
 		$scope.loadBoard = function(data) {
 			srvInfo.getGameState (
 				function(data) {
-					document.getElementById('bb').textContent = data.data.boardfen;
-					$scope.board = data.data;
-					console.log(data);
+					$scope.currentFEN = data.data.fen;
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
 				}
 			)
 		}
