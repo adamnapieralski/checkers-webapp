@@ -9,8 +9,8 @@
 #include "GameTree.h"
 #include "Board.h"
 
-GameTree::GameTree(Move m, Board b){
-    root_ = std::make_shared<TNode>(b,m);
+GameTree::GameTree(Board b){
+    root_ = std::make_shared<TNode>(b);
     currentHead_ = root_;
 }
 

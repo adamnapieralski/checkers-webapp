@@ -15,11 +15,17 @@
 class AIPlayer : public Player {
 public:
     AIPlayer(bool isWhite);
+    AIPlayer::AIPlayer( const AIPlayer & comp ){
+        for (auto& p : comp.pieces_){
+            this->pieces_.push_back(std::shared_ptr<Piece>());
+        }
+    }
 
     void initializePieces(Board &board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
 
-    GameTree getGameTree(UserPlayer user, Board &board);
+    GameTree getGameTree(const UserPlayer &user, const Board &board);
+    void fillTree(AIPlayer computer, UserPlayer user, GameTree &tree, int depth, Board board, bool ifUser);
     Move minmax();
 
 private:

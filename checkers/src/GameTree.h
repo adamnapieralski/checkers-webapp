@@ -13,6 +13,7 @@
 
 struct TNode {
     TNode(Move m, Board b) : move_(m), board_(b){}
+    TNode(Board b) : board_(b){}
     ~TNode() {};
 
     Move move_;
@@ -25,7 +26,7 @@ struct TNode {
 class GameTree {
 
 public:
-    GameTree(Move m, Board b);
+    GameTree(Board b);
     void addChildren(Move m, Board b);
     void changeCurrentHeadToParent();
 
