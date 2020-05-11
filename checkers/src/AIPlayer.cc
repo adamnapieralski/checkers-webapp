@@ -37,7 +37,7 @@ double AIPlayer::evaluationFunction(AIPlayer computer, UserPlayer user, Board bo
     return 5.;
 }
 
-Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board, std::vector<std::vector<Move>> valid_moves) {
+Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     std::vector<std::pair<Move, double>> heuristics;
     Board temp = board;
     AIPlayer temp_comp = computer;
@@ -45,7 +45,7 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board, std::vect
     double alpha = -std::numeric_limits<double>::infinity(); 
     double beta = std::numeric_limits<double>::infinity();
 
-    for (auto& row : valid_moves){
+    for (auto& row : getValidMoves(board)){
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
             heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 3, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
