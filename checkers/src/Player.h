@@ -19,6 +19,10 @@ public:
 
     Player(bool isWhite);
     Player(){};
+
+    Player(const Player& p);
+    Player& operator=(const Player& p);
+    
     virtual ~Player(){};
 
     bool isWhite() const;

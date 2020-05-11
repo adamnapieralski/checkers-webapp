@@ -22,11 +22,13 @@ int main() {
     user.addPiece(false, Position(5,3), board);
     std::cout << board << std::endl;
     auto moves = computer.getValidMoves(board);
-    // auto movesK = computer.getValidMovePiece(board, 1);
 
-    //computer.movePiece(board, user, moves[0][0]);
+    auto userPieces = user.getPieces();
+    auto p1 = userPieces[0];
+    auto p2 = p1->clone();
+
     std::cout << board << std::endl;
-    Move t = computer.minmax(computer,user,board,moves);
+    Move t = computer.minmax(computer, user, board, moves);
     computer.movePiece(board, user, t);
     std::cout << board << std::endl;
     //std::vector<Piece*> newComp = computer.getPieces();

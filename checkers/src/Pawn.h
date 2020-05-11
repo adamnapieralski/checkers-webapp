@@ -16,15 +16,19 @@ class Pawn : public Piece {
     
 public:
     Pawn(Position pos, bool isWhite, bool isUser, Board& board);
-    virtual Piece* clone() const{
-        return new Pawn(*this);
-    }
+
+    std::shared_ptr<Pawn> clone() const;
+
+    Pawn(const Pawn& p) : Piece(p) {}
 
     void captureMoves(std::vector<Move>& moves, Board board, Move current) const override;
     std::vector<Move> getCaptureMoves(Board& board) const override;
     std::vector<Move> getNonCaptureMoves(Board& board) const override;
 
     std::ostream& print(std::ostream&) const override;
+
+private:
+    std::shared_ptr<Piece> cloneImplementation() const override;
 };
 
 #endif  // PAWN_H
