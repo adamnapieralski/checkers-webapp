@@ -16,13 +16,6 @@ UserPlayer::UserPlayer(bool isWhite, std::string name) : Player(isWhite) {
     name_ = name;
 }
 
-UserPlayer UserPlayer::operator=( const UserPlayer & comp ){
-    for (auto& p : comp.pieces_){
-        this->pieces_.push_back(std::shared_ptr<Piece>(p->clone()));
-    }
-    return UserPlayer(*this);
-}
-
 void UserPlayer::initializePieces(Board& board){
     for (int i = 0; i < INIT_ROW; ++i){
         for(int j = 0; j < BOARD_SIZE; ++j) {
