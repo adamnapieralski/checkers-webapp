@@ -46,14 +46,15 @@ To build and compile application, use:
 ```
 scons
 ```
-The default python version is 3.6. To build with one of other supported versions [2.6, 2.7, 3.6, 3.7], set argument:
+The default python version is 3.6. To build with one of other supported versions [2.6, 2.7, 3.6, 3.7, 3.8], set argument:
 ```
-scons python=2.6
+scons python=2.7
 ```
+After once defined, it will be stored and used in further scons run, so there will be no need to define it again.
 ## Tests
 To run unit tests (together with building), use:
 ```
-scons test=1
+scons --test
 ```
 ## Run server
 To run django server on predefined address (127.0.0.1:8000), use:

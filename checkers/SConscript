@@ -2,10 +2,10 @@
 
 import os, platform, shutil
 
-Import('env', 'python_version', 'test_val')
+Import('env', 'python_version', 'test_opt')
 
 def copyLibBuilder( target, source, env):
-    '''kopiuje biblioteke'''
+    '''copy library'''
     shutil.copy( str(source[0]), str(target[0]) )
     return
 
@@ -19,7 +19,9 @@ if(platform.system() == "Linux"):
 
     env.Append( CPPFLAGS = '-Wall -std=c++11 -pedantic -pthread' )
     env.Append( LINKFLAGS = '-Wall -pthread' )
-    if float(python_version) >= 3:
+    if float(python_version) == 3.8:
+        env.Append( LIBS = [ 'boost_python38' ] )
+    elif float(python_version) >= 3:
         env.Append( LIBS = [ 'boost_python3' ] )
     else:
         env.Append( LIBS = [ 'boost_python' ] )
@@ -32,9 +34,9 @@ elif(platform.system() == "Windows"):
     env.Append( CPPFLAGS = ' /EHsc /MD /D "WIN32" /D "_CONSOLE" /W4' )
     env.Append( LINKFLAGS = ' /SUBSYSTEM:WINDOWS ' )
 else:
-    print platform.system() + " not supported"
+    print(platform.system() + " not supported")
 
-#build C++ library
+# build C++ library
 cpplib = env.SharedLibrary( target = 'checkers', source = ['src/CheckersPy.cc', 'src/Checkers.cc', 'src/Player.cc', 'src/UserPlayer.cc',
 'src/AIPlayer.cc', 'src/Board.cc', 'src/Piece.cc', 'src/Pawn.cc', 'src/King.cc', 'src/Move.cc', 'src/Position.cc'])
 if(platform.system() == "Linux"):
@@ -43,11 +45,11 @@ elif(platform.system() == "Windows"):
     target = '../build_web/checkerspy/checkers.pyd'
 env.Command(target, cpplib, copyLibBuilder )
 
-#build tests
+# build tests
 SConscript('test/SConscript', variant_dir='build', duplicate=0, exports=['env'])
 
 # run tests
-if int(test_val):
+if test_opt is not None:
     print('scons: Running unit tests ...')
     os.system('./build/test')
     print('scons: done running tests.')
