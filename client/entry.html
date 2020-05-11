@@ -16,17 +16,33 @@
 
 	</head>
     <body>
-		<div id="entry" class="container" ng-controller="entryController">
-			<center><br>
-				<input type="text" id="userNameText" placeholder="Nazwa gracza" maxlength="10">
-				<br>
-				<input type="radio" id="userColor1" name="userColors" value="white", checked>
-				<label for="userColor1">Białe</label>
-				<input type="radio" id="userColor2" name="userColors" value="black">
-				<label for="userColor1">Czarne</label>
-				<br>
-				<button type="button" onclick="angular.element(this).scope().loadGame()" id="button_id">GRAJ</button><br>
-			</center>
+		<div id="entry" style="width: 95%; margin: 0px 2.5%" class="own-div vertical-center" ng-controller="entryController">
+			<div style="text-align: center;" class="own-div">
+				<input type="text" id="userNameText" style="text-align: center" class="usernameInput" placeholder="Nazwa gracza" maxlength="10">
+			</div>
+			<div style="width: 100%; display: table; text-align: center;" class="own-div">
+				<div style="display: table-row;">
+					<div style="display: table-cell; width: 40%;"></div>
+					<div style="display: table-cell; width: 7%; text-align: center; vertical-align: middle;">
+						Białe
+					</div>
+					<div style="display:table-cell;">
+						<label class="switch">
+							<input id="userColorSwitch" type="checkbox" ng-click="changeUserColor()">
+							<div class="slider round">
+							</div>
+						</label>
+					</div>
+					<div style="display: table-cell; width: 7%; text-align: center; vertical-align: middle;">
+						Czarne
+					</div>
+					<div style="display: table-cell; width: 40%;"></div>
+				</div>
+
+			</div>
+			<div style="text-align: center;" class="own-div">
+				<input type="submit" id="button_id" ng-click="loadGame()" value="GRAJ"></button><br>
+			</div>
 		</div>
 	<br>
     </body>
