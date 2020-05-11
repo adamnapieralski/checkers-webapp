@@ -5,13 +5,6 @@ var myAppControllers = angular.module('myAppControllers', []);
 myAppControllers.controller('entryController',
 	['$scope', 'srvInfo',
 		function($scope, srvInfo) {
-			$scope.isUserWhite = Boolean(true);
-
-			$scope.changeUserColor = function(data) {
-				$scope.isUserWhite != $scope.isUserWhite;
-				console.log(!document.getElementById('userColorSwitch').checked)
-			};
-
 			$scope.loadGame = function(data) {
 				if (document.getElementById('userNameText').value == "") {
 					document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
