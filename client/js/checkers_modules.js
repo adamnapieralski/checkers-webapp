@@ -21,10 +21,21 @@ myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
 
+		this.$oninit = function() {
+			console.log("INIT");
+		}
+		
+		$scope.onPieceDrop = function(source, target) {
+			console.log('Source: ' + source)
+			console.log('Target: ' + target)
+		}
+
 		$scope.boardConfig = {
 			draggable: true,	//myszka
-			dropOffBoard: 'snapback'
+			dropOffBoard: 'snapback',
+			onDrop: $scope.onPieceDrop
 		}
+
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
 		$scope.printUserData = function(data) {
