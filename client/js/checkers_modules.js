@@ -11,7 +11,7 @@ myAppControllers.controller('entryController',
 					document.getElementById('userNameText').style.borderColor = 'red';
 				}
 				else {
-					srvInfo.initializeGame(function(data) {});
+					srvInfo.initializeGame($scope.isUserWhite);
 					window.location = "/play";
 				}
 			};
@@ -38,20 +38,8 @@ myAppControllers.controller('gameController',
 
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
-
-
-		$scope.viewTile = function(data) {
-			this.printUserName();
-			srvInfo.findTile(
-				function(data) {
-					// zwrocone z findTile z checkerspy/views.py
-					$scope.pawn_tile = data.data;
-					console.log(data);
-				});
-		}
-
-		$scope.printUserName = function(data) {
-			srvInfo.getUserName(
+		$scope.printUserData = function(data) {
+			srvInfo.getUserData(
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
@@ -75,22 +63,13 @@ myAppControllers.controller('gameController',
 angular.module('myAppServices', [])
     .service('srvInfo',
              function($http) {
-                 this.findTile = function(callback) {
-					 // wywoluje findTile z checkerspy/views.py
-                     return $http.get('/ajax/checkerspy/findTile/?pawn_id='+document.getElementById('pawn_id').value).then(callback);
-				 };
-				 this.initializeGame = function(callback) {
-					var colors = document.getElementsByName('userColors'); 
-					var user_color = "";
-					for(i = 0; i < colors.length; i++) { 
-						if(colors[i].checked) 
-							user_color = colors[i].value;
-					} 
+
+				 this.initializeGame = function(data) {
 					return $http.get('/ajax/checkerspy/initialize/?user_name='
-					+ document.getElementById('userNameText').value + '&user_color='
-					+ user_color).then(callback); 
+					+ document.getElementById('userNameText').value + '&is_user_white='
+					+ !document.getElementById('userColorSwitch').checked); 
 				 };
-				 this.getUserName = function(callback) {
+				 this.getUserData = function(callback) {
 					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
 				 };
 				 this.getGameState = function(callback) {

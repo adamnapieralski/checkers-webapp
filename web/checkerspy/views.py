@@ -15,10 +15,10 @@ def findTile(params):
 
 def initialize(params):
     user_name = str(params['user_name'])
-    user_color = True
-    if (params['user_color'] == 'black'):
-        user_color = False
-    game.initialize(user_name, user_color)
+    is_user_white = True
+    if (params['is_user_white'] == 'false'):
+        is_user_white = False
+    game.initialize(user_name, is_user_white)
 
 def get_user_data(params):
     color = ""

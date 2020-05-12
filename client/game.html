@@ -22,16 +22,14 @@
 
 
     <body>
-		<div id="contenta" class="container" ng-controller="gameController">
-			<div class="header"><b>Warcaby</b></div>
-			Podaj id pionka: <input type="text" id="pawn_id">
-			<button type="button" onclick="angular.element(this).scope().viewTile()" id="button_id">Zastosuj</button><br>
-			<div id="cpp_run_pawn_tile_view" class="coded">Zajmowane pole: <em id="cpp_run_pawn_tile_val" class="coded_value"><span ng-bind="pawn_tile.val"></span></em></div>
-			<button type="button" onclick="angular.element(this).scope().loadBoard()" id="button_2">Zwroc FEN</button><br>
+		<div ng-controller="gameController">
+			<div class="header"><b>WARCABY</b></div>
+			<button type="button" ng-click="printUserData()" id="button_id">Wyswietl dane uzytkownika</button><br>
+			<button type="button" ng-click="loadBoard()" id="button_2">Zwroc FEN</button><br>
 			<div id="loadBoard" >Obecny FEN:  <span id="currentFEN" ng-bind="currentFEN"></span></div>
 		</div>
 	<br>
-	<div class="row" ng-controller="gameController">
+	<div class="row own-div" style="width: 95%; margin: 0px 2.5%" ng-controller="gameController">
 		<div class="column left" >
 			Gracz info <br><br>
 			<span id="userNameView"></span><br>
