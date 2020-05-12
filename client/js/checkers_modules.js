@@ -21,11 +21,24 @@ myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
 
+		this.$oninit = function() {
+			console.log("INIT");
+		}
+		
+		$scope.onPieceDrop = function(source, target) {
+			console.log('Source: ' + source)
+			console.log('Target: ' + target)
+		}
+
 		$scope.boardConfig = {
 			draggable: true,	//myszka
-			dropOffBoard: 'snapback'
+			dropOffBoard: 'snapback',
+			onDrop: $scope.onPieceDrop
 		}
+
 		$scope.board = Chessboard('board', $scope.boardConfig);
+
+
 
 		$scope.viewTile = function(data) {
 			this.printUserName();
@@ -35,7 +48,7 @@ myAppControllers.controller('gameController',
 					$scope.pawn_tile = data.data;
 					console.log(data);
 				});
-		};
+		}
 
 		$scope.printUserName = function(data) {
 			srvInfo.getUserName(
