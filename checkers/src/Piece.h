@@ -11,6 +11,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "Position.h"
 #include "Move.h"
@@ -22,7 +23,8 @@ public:
     // Piece(Position pos, bool isWhite, Board* board);
     Piece(Position pos, bool isWhite, bool isUser);
     virtual ~Piece() {};
-    virtual Piece* clone() const = 0;
+
+    std::shared_ptr<Piece> clone() const;
 
     bool isWhite() const;
     bool isUser() const;
@@ -51,9 +53,13 @@ public:
 protected:
     Position pos_;
 
+    virtual std::shared_ptr<Piece> cloneImplementation() const = 0;
+
 private:
     bool isWhite_;
     bool isUser_;
+
+
 };
 
 #endif  // PIECE_H

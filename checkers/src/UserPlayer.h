@@ -15,7 +15,6 @@ class UserPlayer : public Player {
 public:
     UserPlayer(bool isWhite);
     UserPlayer(bool isWhite, std::string name);
-    UserPlayer operator=( const UserPlayer & comp );
 
     void initializePieces(Board &board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 

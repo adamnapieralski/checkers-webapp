@@ -13,6 +13,27 @@
 
 Player::Player(bool isWhite) : isWhite_(isWhite) {}
 
+Player::Player(const Player& p) {
+    for (auto& piece : p.pieces_){
+        this->pieces_.push_back(piece->clone());
+    }
+    name_ = p.name_;
+    isWhite_ = p.isWhite_;
+    hasTurn_ = p.hasTurn_;
+}
+
+Player& Player::operator=(const Player& p) {
+    if (this != &p) {
+        for (auto& piece : p.pieces_){
+            this->pieces_.push_back(piece->clone());
+        }
+        name_ = p.name_;
+        isWhite_ = p.isWhite_;
+        hasTurn_ = p.hasTurn_;
+    }
+    return *this;
+}
+
 bool Player::isWhite() const {
     return isWhite_;
 }

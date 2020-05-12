@@ -19,6 +19,14 @@ Pawn::Pawn(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_PAWN);
 }
 
+std::shared_ptr<Pawn> Pawn::clone() const {
+    return std::static_pointer_cast<Pawn>(cloneImplementation());
+}
+
+std::shared_ptr<Piece> Pawn::cloneImplementation() const {
+    return std::shared_ptr<Pawn>(new Pawn(*this));
+}
+
 void Pawn::captureMoves(std::vector<Move>& moves, Board board, Move current) const {
     int dx[4] = {1,1,-1,-1};
     int dy[4] = {-1,1,-1,1};
