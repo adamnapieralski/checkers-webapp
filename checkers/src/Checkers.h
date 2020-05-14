@@ -21,6 +21,8 @@ struct GameState {
 	bool isUserTurn;
 	int uAP=12, uAK=0, uBP=0, uBK=0; // user's/copmuter's Alive/Beaten Pawns/Kings
 	int cAP=12, cAK=0, cBP=0, cBK=0;
+	bool endPlay;
+	bool ifUserWin;
 };
 
 class Checkers {
@@ -32,8 +34,9 @@ public:
 	void initialize(std::string userName, bool isUserWhite);
 	bool getIsUserWhite();
 	std::string getUserName();
+	bool checkIfEndGame();
 
-	GameState processUserMove();
+	GameState processUserMove(GameState state);
 	//GameState processUserMove(std::string org, std::string dest);
 
 private:

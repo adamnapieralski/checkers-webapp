@@ -9,7 +9,6 @@
 #include "AIPlayer.h"
 #include "Pawn.h"
 #include "King.h"
-#include "GameTree.h"
 #include <map> 
 #include <limits>
 #include <algorithm>
@@ -122,6 +121,11 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
     }
     
     return 0.;
+}
+
+void AIPlayer::makeMove(UserPlayer& user, Board& board){
+    Move t = minmax( *(this) , user, board);
+    movePiece(board, user, t);
 }
 
 // GameTree AIPlayer::getGameTree(const UserPlayer &user, const Board &board) {
