@@ -34,7 +34,12 @@ void AIPlayer::addPiece(bool isKing, Position pos, Board& board){
 }
 
 double AIPlayer::evaluationFunction(AIPlayer computer, UserPlayer user, Board board){
-    return 5.;
+    double pieces_difference;
+
+    pieces_difference = computer.getNumberOfPawns(board) - user.getNumberOfPawns(board) 
+                                    + computer.getNumberOfKings(board) * 1.7 - user.getNumberOfKings(board) * 1.7;
+
+    return pieces_difference;
 }
 
 Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
@@ -49,7 +54,6 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
             heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 3, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
-            // heuristics.push_back(std::pair<Move, double>(mv, 2.));
             board = temp;
             computer = temp_comp;
             user = temp_user;
@@ -62,7 +66,7 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
         }
     );
     
-    std::cout << "Alpha:" << max->second << std::endl;
+    //std::cout << "Alpha:" << max->second << std::endl;
 
     return max->first;
 }
@@ -70,16 +74,17 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
 double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board, int depth, double alpha, double beta, bool isUser) {
     //end state
     std::vector<std::vector<Move>> valid_moves;
-    if (depth == 0) return evaluationFunction(computer, user, board);
+    if (depth == 0) {return evaluationFunction(computer, user, board);}
+    if (computer.getPieces().size() == 0) {return evaluationFunction(computer,user,board);} 
+    if (user.getPieces().size() == 0) {return evaluationFunction(computer,user,board);} 
+
     if (isUser){
-        if(computer.getPieces().size() == 0) return evaluationFunction(computer,user,board);
         valid_moves = user.getValidMoves(board);
     }
     else{
-        if(user.getPieces().size() == 0) return evaluationFunction(computer,user,board);
         valid_moves = computer.getValidMoves(board);
     }
-    if (valid_moves.size() == 0) return evaluationFunction(computer,user,board);
+    if (valid_moves.size() == 0) {return evaluationFunction(computer,user,board);}
 
     Board temp = board;
     AIPlayer temp_comp = computer;
@@ -91,7 +96,7 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
             for (auto& mv : row){
                 computer.movePiece(board, user, mv);
                 alpha = std::max(alpha, minmaxAlphaBeta(computer,user,board, depth-1, alpha, beta, !isUser));
-                if (alpha >= beta) return beta;
+                if (alpha >= beta) {return beta;}
                 board = temp;
                 computer = temp_comp;
                 user = temp_user;
@@ -107,7 +112,7 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
             for (auto& column : row){
                 user.movePiece(board, user, column);
                 beta = std::min(beta, minmaxAlphaBeta(computer,user,board, depth-1, alpha, beta, !isUser));
-                if (alpha >= beta) return alpha;
+                if (alpha >= beta) {return alpha;}
                 board = temp;
                 computer = temp_comp;
                 user = temp_user;
@@ -115,11 +120,6 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
         }
         return beta;
     }
-
-    
-
-
-    
     
     return 0.;
 }

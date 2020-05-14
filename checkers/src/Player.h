@@ -32,7 +32,10 @@ public:
     void setName(std::string name);
 
     void setHasTurn(bool hasTurn);
+    int getNumberOfPawns(Board& board);
+    int getNumberOfKings(Board& board);
 
+    // functions connected with movment of pieces at board
     virtual void initializePieces(Board &board) = 0;
     virtual void addPiece(bool isKing, Position pos, Board &board) = 0; 
     void movePiece(Board& board, Player& opponent, const Move& move);
@@ -54,6 +57,7 @@ protected:
     bool hasTurn_;
     bool isWhite_;
     std::string name_;
+
 };
 
 #endif  // PLAYER_H

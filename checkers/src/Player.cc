@@ -14,6 +14,7 @@
 Player::Player(bool isWhite) : isWhite_(isWhite) {}
 
 Player::Player(const Player& p) {
+
     for (auto& piece : p.pieces_){
         this->pieces_.push_back(piece->clone());
     }
@@ -23,6 +24,13 @@ Player::Player(const Player& p) {
 }
 
 Player& Player::operator=(const Player& p) {
+    
+    if( this -> pieces_.size() > 0 ){
+        for (auto& piece : pieces_){
+            erasePiece(piece);
+        }
+    }
+    
     if (this != &p) {
         for (auto& piece : p.pieces_){
             this->pieces_.push_back(piece->clone());
@@ -100,3 +108,37 @@ std::shared_ptr<Piece> Player::findPiece(const Position& pos) const {
     }
     return nullptr;
 }
+
+int Player::getNumberOfPawns(Board& board){
+    int pawns = 0;
+
+    for (size_t row = 0; row < BOARD_SIZE; ++row) {
+        for (size_t col = 0; col < BOARD_SIZE; ++col) {
+            if (isWhite_){
+                if (board.getPieceName(Position(row,col)) == WHITE_PAWN ) pawns++;
+            }
+            else{
+                if (board.getPieceName(Position(row,col)) == BLACK_PAWN ) pawns++;
+            }
+        }
+    }
+
+    return pawns;
+}
+
+int Player::getNumberOfKings(Board& board){
+    int kings = 0;
+
+    for (size_t row = 0; row < BOARD_SIZE; ++row) {
+        for (size_t col = 0; col < BOARD_SIZE; ++col) {
+            if (isWhite_){
+                if (board.getPieceName(Position(row,col)) == WHITE_KING ) kings++;
+            }
+            else{
+                if (board.getPieceName(Position(row,col)) == BLACK_KING ) kings++;
+            }
+        }
+    }
+    return kings;
+}
+
