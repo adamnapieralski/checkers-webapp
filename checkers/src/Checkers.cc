@@ -37,7 +37,37 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	state_.boardFEN = board_.getFEN();
 }
 
-GameState Checkers::processUserMove(){
+GameState Checkers::processUserMove(GameState state){
+
+	Board temp = Board(state.boardFEN);
+	if(userPlayer_.checkIfValidMove(temp, board_)){
+		//user robi ruch; moze chek valid move niech zwraca Move?
+		state_.isUserTurn = false;
+	}
+	else{
+		//wysylamy komunikat, ze nie prawidlowy ruch ?
+		return state_;
+	}
+
+	if(!checkIfEndGame()){
+		compPlayer_.makeMove(userPlayer_ , board_);
+	}
+	else{
+		state_.endPlay = true;
+		return state_;
+	}
+
+	state_.isUserTurn = true;
+	state_.boardFEN = board_.getFEN();
+	state_.uAP = userPlayer_.getNumberOfPawns(board_);
+	state_.cAP = compPlayer_.getNumberOfPawns(board_);
+	state_.uAK = userPlayer_.getNumberOfKings(board_);
+	state_.cAK = compPlayer_.getNumberOfKings(board_);
+
+	if(checkIfEndGame()){
+		state_.endPlay = true;
+	}
+
 	return state_;
 }
 
@@ -48,4 +78,34 @@ GameState Checkers::processUserMove(){
 bool Checkers::getIsUserWhite() { return userPlayer_.isWhite(); }
 
 std::string Checkers::getUserName() { return userPlayer_.getName(); }
+
+bool Checkers::checkIfEndGame(){
+	if(userPlayer_.getPieces().size() == 0) {
+		state_.ifUserWin = false;
+		return true;
+	}
+
+	else if(compPlayer_.getPieces().size() == 0) {
+		state_.ifUserWin = true;
+		return true;
+	}
+
+	else if(state_.isUserTurn){
+		std::vector<std::vector<Move>> moves = userPlayer_.getValidMoves(board_);
+		if(moves.empty()){
+			state_.ifUserWin = false;
+			return true;
+		}
+	}
+
+	else if(!state_.isUserTurn){
+		std::vector<std::vector<Move>> moves = compPlayer_.getValidMoves(board_);
+		if(moves.empty()){
+			state_.ifUserWin = true;
+			return true;
+		}
+	}
+	
+	else return false;
+}
 

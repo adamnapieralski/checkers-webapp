@@ -30,3 +30,10 @@ void UserPlayer::addPiece(bool isKing, Position pos, Board& board) {
     if(isKing) pieces_.push_back(std::make_shared<King>(pos, isWhite_, true, board));
     else pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, true, board));
 }
+
+
+bool UserPlayer::checkIfValidMove(Board& state, Board& board){
+
+    
+}
+

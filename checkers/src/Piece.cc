@@ -14,6 +14,10 @@
 Piece::Piece(Position pos, bool isWhite, bool isUser) :
     pos_(pos), isWhite_(isWhite), isUser_(isUser) {}
 
+std::shared_ptr<Piece> Piece::clone() const {
+    return cloneImplementation();
+}
+
 bool Piece::isWhite() const { return isWhite_;    }
 
 bool Piece::isUser() const {  return isUser_; }

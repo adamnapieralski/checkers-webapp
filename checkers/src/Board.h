@@ -25,6 +25,7 @@ enum PieceName {
 class Board {
 public:
     Board();
+    Board(std::string fen);
     void clearPosition(const Position& pos);
     void placePiece(const Position& pos, PieceName piece);
     void movePiece(const Position& posStart, const Position& posEnd);

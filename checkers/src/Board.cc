@@ -28,6 +28,10 @@ Board::Board(){
     }
 }
 
+Board::Board(std::string fen){
+
+}
+
 std::ostream& operator<<(std::ostream& os, const Board& b)
 {
     for(auto i = b.board_.rbegin(); i != b.board_.rend(); ++i ){

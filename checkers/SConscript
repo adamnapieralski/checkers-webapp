@@ -38,7 +38,7 @@ else:
 
 # build C++ library
 cpplib = env.SharedLibrary( target = 'checkers', source = ['src/CheckersPy.cc', 'src/Checkers.cc', 'src/Player.cc', 'src/UserPlayer.cc',
-'src/AIPlayer.cc', 'src/Board.cc', 'src/Piece.cc', 'src/Pawn.cc', 'src/King.cc', 'src/Move.cc', 'src/Position.cc'])
+'src/AIPlayer.cc','src/GameTree.cc', 'src/Board.cc', 'src/Piece.cc', 'src/Pawn.cc', 'src/King.cc', 'src/Move.cc', 'src/Position.cc'])
 if(platform.system() == "Linux"):
     target = '../build_web/checkerspy/checkers.so'
 elif(platform.system() == "Windows"):

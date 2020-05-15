@@ -10,7 +10,6 @@
 #define USERPLAYER_H
 
 #include "Player.h"
-
 class UserPlayer : public Player {
 public:
     UserPlayer(bool isWhite);
@@ -18,6 +17,8 @@ public:
 
     void initializePieces(Board &board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
+
+    bool checkIfValidMove(Board& state, Board& board);
 
 };
 
