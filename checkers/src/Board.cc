@@ -26,10 +26,29 @@ Board::Board(){
             *j = EMPTY;
         }
     }
+    initializePositionNames();
 }
 
 Board::Board(std::string fen){
 
+}
+
+void Board::initializePositionNames() {
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            positionNames_.insert({ positionLetters_.substr(i, 1) + positionNumbers_.substr(j, 1), Position(i, j )});
+        }
+    }
+}
+
+Position Board::getPositionByName(std::string posName) const {
+    auto posIt = positionNames_.find(posName);
+    if (posIt != positionNames_.end()) {
+        return posIt->second;
+    }
+    else {
+        throw std::out_of_range("Position name not valid.");
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Board& b)
@@ -67,6 +86,34 @@ PieceName Board::getPieceName(const Position& pos) const {
     return board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)];
 }
 
+bool Board::arePiecesSameColor(PieceName p1, PieceName p2) {
+    if (p1 == WHITE_KING || p1 == WHITE_PAWN) {
+        if (p2 == WHITE_PAWN || p2 == WHITE_PAWN) {
+            return true;
+        }
+    }
+    else if (p1 != EMPTY) {
+        if (p2 == BLACK_KING || p2 == BLACK_PAWN) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Board::arePiecesDifferentColor(PieceName p1, PieceName p2) {
+    if (p1 == WHITE_KING || p1 == WHITE_PAWN) {
+        if (p2 == BLACK_KING || p2 == BLACK_PAWN) {
+            return true;
+        }
+    }
+    else if (p1 != EMPTY) {
+        if (p2 == WHITE_KING || p2 == WHITE_PAWN) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
     if (!st.isValid()) {
@@ -77,6 +124,20 @@ void Board::makeMove(const Move& m) {
     clearPosition(st);
     for (auto& c : m.getCapturedPositions()) { clearPosition(c); }
     placePiece(m.getEndPosition(), pc);
+}
+
+Move Board::findMove(const Position& origin, const Position& destination) {
+    if (getPieceName(destination) != EMPTY || getPieceName(origin) == EMPTY) return Move();
+    auto diffUnit = (destination - origin).getUnitPosition();
+    if (diffUnit.isZero()) return Move();
+    auto checkPos = origin + diffUnit;
+    while (checkPos != destination) {
+        if (arePiecesDifferentColor(getPieceName(checkPos), getPieceName(origin))) {
+            return Move(origin, destination, checkPos);
+        }
+        checkPos += diffUnit;
+    }
+    return Move(origin, destination);
 }
 
 Board& Board::operator=(Board other) {

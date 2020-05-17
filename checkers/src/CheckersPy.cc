@@ -19,8 +19,8 @@ BOOST_PYTHON_MODULE(checkers)
         .def("initialize", &Checkers::initialize)
         .def("getIsUserWhite", &Checkers::getIsUserWhite)
         .def("getUserName", &Checkers::getUserName)
-        .def("findTile", &Checkers::findTile)
         .def("processUserMove", &Checkers::processUserMove)
+        .def("getGameState", &Checkers::getGameState)
     ;
 
     class_<GameState>("GameState")

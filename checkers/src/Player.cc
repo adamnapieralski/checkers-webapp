@@ -142,3 +142,33 @@ int Player::getNumberOfKings(Board& board){
     return kings;
 }
 
+bool Player::isMoveValid(const Move& move, Board& board) const {
+    auto movedPiece = findPiece(move.getStartPosition());
+    if (!movedPiece) return false;
+    auto moves = movedPiece->getCaptureMoves(board);
+    if (moves.empty()) {
+        moves = movedPiece->getNonCaptureMoves(board);
+    }
+    for (auto& pieceMove : moves) {
+        if (pieceMove.containsAsStep(move) || pieceMove == move) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Player::isMoveMultiple(const Move& move, Board& board) const {
+    auto movedPiece = findPiece(move.getStartPosition());
+    if (!movedPiece) return false;
+    auto moves = movedPiece->getCaptureMoves(board);
+    if (moves.size()) {
+        for (auto& pieceMove : moves) {
+            if (pieceMove.containsAsStep(move)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+

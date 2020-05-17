@@ -7,6 +7,7 @@
  */
 
 #include "Move.h"
+#include <algorithm>
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}
 
@@ -65,3 +66,11 @@ Position Move::getEndPosition() const { return endPos_; }
 std::vector<Position> Move::getCapturedPositions() const {  return capturedPos_;    }
 
 std::vector<Move> Move::getStepMoves() const { return stepMoves_;  }
+
+bool Move::containsAsStep(const Move& move) const {
+    auto it = std::find(stepMoves_.begin(), stepMoves_.end(), move);
+    if (it != stepMoves_.end()) {
+        return true;
+    }
+    return false;
+}

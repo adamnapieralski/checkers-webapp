@@ -3,15 +3,6 @@
 from checkerspy import checkers
 
 game = checkers.Checkers.getInstance()
-    
-def findTile(params):
-    pawn_id = str(params['pawn_id'])
-    # input_key = str(params['input_key'])
-    """the calculation from C++ library"""
-    return {
-        # "val" : checkers.findTile(pawn_id)
-        'val' : game.findTile(pawn_id)
-    }
 
 def initialize(params):
     user_name = str(params['user_name'])
@@ -33,7 +24,17 @@ def get_user_data(params):
     }
 
 def get_game_state(params):
-    game_state = game.processUserMove()
+    game_state = game.getGameState()
+    return {
+        'fen': game_state.boardFEN
+    }
+
+def process_user_move(params):
+    print('Process user move')
+    print(params['source'], params['destination'], type(params['source']))
+    game_state = game.processUserMove(params['source'], params['destination'])
+    print("FEN")
+    print(game_state.boardFEN)
     return {
         'fen': game_state.boardFEN
     }

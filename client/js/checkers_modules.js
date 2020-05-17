@@ -23,11 +23,21 @@ myAppControllers.controller('gameController',
 
 		this.$oninit = function() {
 			console.log("INIT");
+			$scope.loadBoard();
 		}
 		
 		$scope.onPieceDrop = function(source, target) {
 			console.log('Source: ' + source)
 			console.log('Target: ' + target)
+			move = { 'source' : source, 'destination' : target }
+			srvInfo.processUserMove(move,
+				function(data) {
+					$scope.currentFEN = data.data.fen;
+					console.log($scope.currentFEN)
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
+				}
+			)
 		}
 
 		$scope.boardConfig = {
@@ -38,7 +48,7 @@ myAppControllers.controller('gameController',
 
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
-		$scope.printUserData = function(data) {
+		$scope.printUserData = function() {
 			srvInfo.getUserData(
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
@@ -47,7 +57,7 @@ myAppControllers.controller('gameController',
 			)
 		}
 
-		$scope.loadBoard = function(data) {
+		$scope.loadBoard = function() {
 			srvInfo.getGameState (
 				function(data) {
 					$scope.currentFEN = data.data.fen;
@@ -74,6 +84,10 @@ angular.module('myAppServices', [])
 				 };
 				 this.getGameState = function(callback) {
 					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 
+				 };
+				 this.processUserMove = function(data, callback) {
+					return $http.get('/ajax/checkerspy/process_user_move/?source='
+					+ data.source + '&destination=' + data.destination).then(callback); 
 				 }
 
              });

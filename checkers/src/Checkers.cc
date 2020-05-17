@@ -15,17 +15,6 @@ Checkers& Checkers::getInstance() {
 
 Checkers::Checkers() : userPlayer_(true), compPlayer_(false) {}
 
-
-std::string Checkers::findTile(std::string id){
-	std::string result;
-	if(id == "tak"){
-		result = "funkcja testowa";
-	}
-	else result = id;
-
-	return result;
-}
-
 void Checkers::initialize(std::string userName, bool isUserWhite) {
 	userPlayer_.setName(userName);
 	userPlayer_.setIsWhite(isUserWhite);
@@ -35,45 +24,83 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	compPlayer_.initializePieces(board_);
 
 	state_.boardFEN = board_.getFEN();
+	state_.isUserTurn = isUserWhite;
 }
 
-GameState Checkers::processUserMove(GameState state){
-
-	Board temp = Board(state.boardFEN);
-	if(userPlayer_.checkIfValidMove(temp, board_)){
-		//user robi ruch; moze chek valid move niech zwraca Move?
-		state_.isUserTurn = false;
-	}
-	else{
-		//wysylamy komunikat, ze nie prawidlowy ruch ?
-		return state_;
-	}
-
-	if(!checkIfEndGame()){
-		compPlayer_.makeMove(userPlayer_ , board_);
-	}
-	else{
-		state_.endPlay = true;
-		return state_;
-	}
-
-	state_.isUserTurn = true;
+void Checkers::updateState(bool hasMoreMoves) {
 	state_.boardFEN = board_.getFEN();
 	state_.uAP = userPlayer_.getNumberOfPawns(board_);
 	state_.cAP = compPlayer_.getNumberOfPawns(board_);
 	state_.uAK = userPlayer_.getNumberOfKings(board_);
 	state_.cAK = compPlayer_.getNumberOfKings(board_);
-
-	if(checkIfEndGame()){
-		state_.endPlay = true;
+	state_.hasGameEnded = checkIfEndGame();
+	if (!hasMoreMoves) {
+		state_.isUserTurn = !state_.isUserTurn;
 	}
+}
 
+GameState Checkers::getGameState() const {
 	return state_;
 }
 
-/*GameState Checkers::processUserMove(std::string org, std::string dest){
-	return state_;
-}*/
+Board Checkers::getBoard() const {
+	return board_;
+}
+
+GameState Checkers::processUserMove(std::string origin, std::string destination) {
+	try {
+		if (!state_.isUserTurn) {
+			return state_;
+		}
+		Position org = board_.getPositionByName(origin);
+		Position dest = board_.getPositionByName(destination);
+		Move triedMove = board_.findMove(org, dest);
+		if (userPlayer_.isMoveValid(triedMove, board_)) {
+			userPlayer_.movePiece(board_, compPlayer_, triedMove);
+			updateState(userPlayer_.isMoveMultiple(triedMove, board_));
+		}
+		return state_;
+	}
+	catch (std::out_of_range& e) {
+		return state_;
+	}
+
+}
+
+
+// GameState Checkers::processUserMove(GameState state) {
+
+// 	Board temp = Board(state.boardFEN);
+// 	if(userPlayer_.checkIfValidMove(temp, board_)){
+// 		//user robi ruch; moze chek valid move niech zwraca Move?
+// 		state_.isUserTurn = false;
+// 	}
+// 	else{
+// 		//wysylamy komunikat, ze nie prawidlowy ruch ?
+// 		return state_;
+// 	}
+
+// 	if(!checkIfEndGame()){
+// 		compPlayer_.makeMove(userPlayer_ , board_);
+// 	}
+// 	else{
+// 		state_.endPlay = true;
+// 		return state_;
+// 	}
+
+// 	state_.isUserTurn = true;
+// 	state_.boardFEN = board_.getFEN();
+// 	state_.uAP = userPlayer_.getNumberOfPawns(board_);
+// 	state_.cAP = compPlayer_.getNumberOfPawns(board_);
+// 	state_.uAK = userPlayer_.getNumberOfKings(board_);
+// 	state_.cAK = compPlayer_.getNumberOfKings(board_);
+
+// 	if(checkIfEndGame()){
+// 		state_.endPlay = true;
+// 	}
+
+// 	return state_;
+// }
 
 bool Checkers::getIsUserWhite() { return userPlayer_.isWhite(); }
 
@@ -81,19 +108,19 @@ std::string Checkers::getUserName() { return userPlayer_.getName(); }
 
 bool Checkers::checkIfEndGame(){
 	if(userPlayer_.getPieces().size() == 0) {
-		state_.ifUserWin = false;
+		state_.hasUserWon = false;
 		return true;
 	}
 
 	else if(compPlayer_.getPieces().size() == 0) {
-		state_.ifUserWin = true;
+		state_.hasUserWon = true;
 		return true;
 	}
 
 	else if(state_.isUserTurn){
 		std::vector<std::vector<Move>> moves = userPlayer_.getValidMoves(board_);
 		if(moves.empty()){
-			state_.ifUserWin = false;
+			state_.hasUserWon = false;
 			return true;
 		}
 	}
@@ -101,7 +128,7 @@ bool Checkers::checkIfEndGame(){
 	else if(!state_.isUserTurn){
 		std::vector<std::vector<Move>> moves = compPlayer_.getValidMoves(board_);
 		if(moves.empty()){
-			state_.ifUserWin = true;
+			state_.hasUserWon = true;
 			return true;
 		}
 	}

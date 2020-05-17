@@ -30,6 +30,8 @@ public:
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
 
+    bool containsAsStep(const Move& move) const;
+
     bool operator==(const Move& move) const;
 
 private:

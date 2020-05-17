@@ -22,6 +22,27 @@ bool Position::isLastRow(bool isUser) const {
     else return false;
 }
 
+bool Position::isZero() const {
+    if (x == 0 && y == 0) {
+        return true;
+    }
+    return false;
+}
+
+Position Position::getUnitPosition() const {
+    int ux, uy;
+    if (abs(x) != abs(y)) return Position(0, 0);
+    if (x > 0) ux = 1;
+    else if (x < 0) ux = -1;
+    else ux = 0;
+
+    if (y > 0) uy = 1;
+    else if (y < 0) uy = -1;
+    else uy = 0;
+
+    return Position(ux, uy);
+}
+
 bool Position::operator==(const Position& p) const {
     if (x == p.x && y == p.y) return true;
     else return false;
@@ -30,4 +51,26 @@ bool Position::operator==(const Position& p) const {
 bool Position::operator!=(const Position& p) const{
     if (x != p.x || y != p.y) return true;
     else return false;
+}
+
+Position& Position::operator+=(const Position& rhs) {
+    x += rhs.x;
+    y += rhs.y;
+    return *this;
+}
+
+Position& Position::operator-=(const Position& rhs) {
+    x -= rhs.x;
+    y -= rhs.y;
+    return *this;
+}
+
+Position operator+(Position lhs, const Position& rhs) {
+    lhs += rhs;
+    return lhs;
+}
+
+Position operator-(Position lhs, const Position& rhs) {
+    lhs -= rhs;
+    return lhs;
 }
