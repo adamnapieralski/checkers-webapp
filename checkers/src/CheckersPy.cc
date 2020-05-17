@@ -20,6 +20,7 @@ BOOST_PYTHON_MODULE(checkers)
         .def("getIsUserWhite", &Checkers::getIsUserWhite)
         .def("getUserName", &Checkers::getUserName)
         .def("processUserMove", &Checkers::processUserMove)
+        .def("makeComputerMove", &Checkers::makeComputerMove)
         .def("getGameState", &Checkers::getGameState)
     ;
 

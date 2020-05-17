@@ -27,20 +27,21 @@ int main() {
     auto p1 = userPieces[0];
     auto p2 = p1->clone();
 
-    std::cout << board << std::endl;
+    // std::cout << board << std::endl;
     // Move t = computer.minmax(computer, user, board);
     // computer.movePiece(board, user, t);
     // std::cout << board << std::endl;
-    //std::vector<Piece*> newComp = computer.getPieces();
-    //std::vector<Piece*> newUs = user.getPieces();*/
+    /* std::vector<Piece*> newComp = computer.getPieces();
+    std::vector<Piece*> newUs = user.getPieces();*/
 
     auto checkers = Checkers::getInstance();
-    checkers.initialize("Adam", true);
+    checkers.initialize("Adam", false);
     std::cout << checkers.getBoard() << std::endl;
 
-    checkers.processUserMove("c3", "d4");
-
+    checkers.makeComputerMove();
+    // checkers.processUserMove("c3", "d4");
     std::cout << checkers.getBoard() << std::endl;
+
 
 
 

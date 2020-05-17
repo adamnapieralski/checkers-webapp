@@ -64,7 +64,11 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 	catch (std::out_of_range& e) {
 		return state_;
 	}
-
+}
+GameState Checkers::makeComputerMove() {
+	compPlayer_.makeMinmaxMove(userPlayer_, board_);
+	updateState();
+	return state_;
 }
 
 

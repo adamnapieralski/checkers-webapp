@@ -59,14 +59,11 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
 
         }
     }
-    auto max = std::max_element(heuristics.begin(),heuristics.end(),
-        [] (const std::pair<Move,double>& a, const std::pair<Move,double>& b) {
+    auto max = std::max_element(heuristics.begin(), heuristics.end(),
+        [&] (const std::pair<Move,double>& a, const std::pair<Move,double>& b) {
             return a.second < b.second;
         }
     );
-    
-    //std::cout << "Alpha:" << max->second << std::endl;
-
     return max->first;
 }
 

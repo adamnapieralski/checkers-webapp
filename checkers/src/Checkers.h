@@ -40,6 +40,7 @@ public:
 
 	// GameState processUserMove(GameState state);
 	GameState processUserMove(std::string origin, std::string destination);
+	GameState makeComputerMove();
 	//GameState processUserMove(std::string org, std::string dest);
 	Board getBoard() const;
 

@@ -66,6 +66,16 @@ myAppControllers.controller('gameController',
 				}
 			)
 		}
+
+		$scope.makeComputerMove = function() {
+			srvInfo.makeComputerMove(
+				function(data) {
+					$scope.currentFEN = data.data.fen;
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
+				}
+			)
+		}
 }]);
 	
 
@@ -88,6 +98,9 @@ angular.module('myAppServices', [])
 				 this.processUserMove = function(data, callback) {
 					return $http.get('/ajax/checkerspy/process_user_move/?source='
 					+ data.source + '&destination=' + data.destination).then(callback); 
+				 }
+				 this.makeComputerMove = function(callback) {
+					return $http.get('/ajax/checkerspy/make_computer_move/').then(callback); 
 				 }
 
              });

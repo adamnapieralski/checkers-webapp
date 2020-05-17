@@ -30,11 +30,14 @@ def get_game_state(params):
     }
 
 def process_user_move(params):
-    print('Process user move')
     print(params['source'], params['destination'], type(params['source']))
     game_state = game.processUserMove(params['source'], params['destination'])
-    print("FEN")
-    print(game_state.boardFEN)
     return {
         'fen': game_state.boardFEN
+    }
+
+def make_computer_move(params):
+    game_state = game.makeComputerMove()
+    return {
+        'fen' : game_state.boardFEN
     }
