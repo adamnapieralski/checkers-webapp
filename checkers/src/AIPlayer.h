@@ -23,7 +23,7 @@ public:
     // GameTree getGameTree(const UserPlayer &user, const Board &board);
     // void fillTree(AIPlayer computer, UserPlayer user, GameTree &tree, int depth, Board board, bool ifUser);
     Move minmax(AIPlayer computer, UserPlayer user, Board board);
-    void makeMove(UserPlayer& user, Board& board);
+    void makeMinmaxMove(UserPlayer& user, Board& board);
 
 private:
     double minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board, int depth, double alpha, double beta, bool ifUser);

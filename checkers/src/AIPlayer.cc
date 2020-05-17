@@ -48,7 +48,7 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     UserPlayer temp_user = user;
     double alpha = -std::numeric_limits<double>::infinity(); 
     double beta = std::numeric_limits<double>::infinity();
-
+    
     for (auto& row : getValidMoves(board)){
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
@@ -105,11 +105,10 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
     }
 
     //min
-
     if(isUser){
         for (auto& row : valid_moves){
-            for (auto& column : row){
-                user.movePiece(board, user, column);
+            for (auto& mv : row){
+                user.movePiece(board, computer, mv);
                 beta = std::min(beta, minmaxAlphaBeta(computer,user,board, depth-1, alpha, beta, !isUser));
                 if (alpha >= beta) {return alpha;}
                 board = temp;
@@ -123,7 +122,7 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
     return 0.;
 }
 
-void AIPlayer::makeMove(UserPlayer& user, Board& board){
+void AIPlayer::makeMinmaxMove(UserPlayer& user, Board& board){
     Move t = minmax( *(this) , user, board);
     movePiece(board, user, t);
 }
