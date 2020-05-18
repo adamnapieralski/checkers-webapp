@@ -31,7 +31,7 @@ public:
     void movePiece(const Position& posStart, const Position& posEnd);
     void makeMove(const Move& m);
 
-    Move findMove(const Position& origin, const Position& destination);
+    Move findUserMove(const Position& origin, const Position& destination);
 
     std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> getBoard() const;
     PieceName getPieceName(const Position& pos) const;

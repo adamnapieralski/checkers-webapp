@@ -142,11 +142,22 @@ int Player::getNumberOfKings(Board& board){
     return kings;
 }
 
+bool Player::canCapture(Board& board) const {
+    for (auto pc : pieces_){
+        auto mvs = pc->getCaptureMoves(board);
+        if(!mvs.empty()) return true;
+    }
+    return false;
+}
+
 bool Player::isMoveValid(const Move& move, Board& board) const {
     auto movedPiece = findPiece(move.getStartPosition());
     if (!movedPiece) return false;
     auto moves = movedPiece->getCaptureMoves(board);
-    if (moves.empty()) {
+    if (canCapture(board) && moves.empty()) {
+        return false;
+    }
+    else if (moves.empty()) {
         moves = movedPiece->getNonCaptureMoves(board);
     }
     for (auto& pieceMove : moves) {

@@ -54,7 +54,7 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 		}
 		Position org = board_.getPositionByName(origin);
 		Position dest = board_.getPositionByName(destination);
-		Move triedMove = board_.findMove(org, dest);
+		Move triedMove = board_.findUserMove(org, dest);
 		if (userPlayer_.isMoveValid(triedMove, board_)) {
 			userPlayer_.movePiece(board_, compPlayer_, triedMove);
 			updateState(userPlayer_.isMoveMultiple(triedMove, board_));
@@ -66,6 +66,9 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 	}
 }
 GameState Checkers::makeComputerMove() {
+	if (state_.isUserTurn) {
+		return state_;
+	}
 	compPlayer_.makeMinmaxMove(userPlayer_, board_);
 	updateState();
 	return state_;
@@ -137,6 +140,6 @@ bool Checkers::checkIfEndGame(){
 		}
 	}
 	
-	else return false;
+	return false;
 }
 

@@ -57,6 +57,11 @@ void Move::addUpgradePosition(const Position& pos){
     upgradePos_.push_back(pos);
 }
 
+void Move::addCapturedPosition(const Position& pos) {
+    capturedPos_.push_back(pos);
+}
+
+
 std::vector<Position> Move::getUpgradePositions() const { return upgradePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }

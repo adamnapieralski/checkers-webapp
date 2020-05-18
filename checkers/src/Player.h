@@ -50,6 +50,7 @@ public:
     std::vector<std::shared_ptr<Piece>> getPieces() const; 
     std::shared_ptr<Piece> findPiece(const Position& pos) const;
 
+    bool canCapture(Board& board) const;
     bool isMoveValid(const Move& move, Board& board) const;
     bool isMoveMultiple(const Move& move, Board& board) const;
 

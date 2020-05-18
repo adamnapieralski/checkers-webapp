@@ -21,6 +21,8 @@ public:
     Move(Position, Position, Position);
 
     void addUpgradePosition(const Position& pos);
+    void addCapturedPosition(const Position& pos);
+    
     bool isInitial() const;
     Move merge(Move& next) const;
 

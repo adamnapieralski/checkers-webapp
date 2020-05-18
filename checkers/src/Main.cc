@@ -35,10 +35,20 @@ int main() {
     std::vector<Piece*> newUs = user.getPieces();*/
 
     auto checkers = Checkers::getInstance();
-    checkers.initialize("Adam", false);
+    checkers.initialize("Adam", true);
     std::cout << checkers.getBoard() << std::endl;
 
+    // checkers.makeComputerMove();
+    checkers.processUserMove("c3", "d4");
+    std::cout << checkers.getBoard() << std::endl;
     checkers.makeComputerMove();
+    std::cout << checkers.getBoard() << std::endl;
+    checkers.processUserMove("d4", "e5");
+    // checkers.processUserMove("d2", "c3");
+    // checkers.makeComputerMove();
+    // checkers.processUserMove("c3", "b4");
+    // checkers.makeComputerMove();
+    // checkers.processUserMove("b2", "c3");   
     // checkers.processUserMove("c3", "d4");
     std::cout << checkers.getBoard() << std::endl;
 

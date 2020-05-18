@@ -126,18 +126,25 @@ void Board::makeMove(const Move& m) {
     placePiece(m.getEndPosition(), pc);
 }
 
-Move Board::findMove(const Position& origin, const Position& destination) {
+Move Board::findUserMove(const Position& origin, const Position& destination) {
     if (getPieceName(destination) != EMPTY || getPieceName(origin) == EMPTY) return Move();
     auto diffUnit = (destination - origin).getUnitPosition();
     if (diffUnit.isZero()) return Move();
     auto checkPos = origin + diffUnit;
+
+    auto foundMove = Move(origin, destination);
+    if (destination.isLastRow(true)) {
+        foundMove.addUpgradePosition(destination);
+    }
     while (checkPos != destination) {
         if (arePiecesDifferentColor(getPieceName(checkPos), getPieceName(origin))) {
-            return Move(origin, destination, checkPos);
+            foundMove.addCapturedPosition(checkPos);
+        
+            return foundMove;
         }
         checkPos += diffUnit;
     }
-    return Move(origin, destination);
+    return foundMove;
 }
 
 Board& Board::operator=(Board other) {
