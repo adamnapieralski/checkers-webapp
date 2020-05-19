@@ -102,6 +102,7 @@ void Player::movePiece(Board& board, Player& opponent, const Move& move) {
     board.makeMove(move);
 }
 
+
 std::shared_ptr<Piece> Player::findPiece(const Position& pos) const {
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
@@ -180,6 +181,33 @@ bool Player::isMoveMultiple(const Move& move, Board& board) const {
         }
     }
     return false;
+}
+
+
+void Player::initializePiecesFromBoardPerUser(Board& board, bool isUser) {
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            auto pos = Position(j, i);
+            auto pcName = board.getPieceName(pos);
+            if (isWhite_) {
+                if (pcName == WHITE_PAWN) {
+                    pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser, board));
+                }
+                if (pcName == WHITE_KING) {
+                    pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser, board));
+                }
+            }
+            else {
+                if (pcName == BLACK_PAWN) {
+                    pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser, board));
+                }
+                if (pcName == BLACK_KING) {
+                    pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser, board));
+                }
+            }
+
+        }
+    }
 }
 
 

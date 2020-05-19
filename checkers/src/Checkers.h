@@ -23,6 +23,8 @@ struct GameState {
 	int cAP=12, cAK=0, cBP=0, cBK=0;
 	bool hasGameEnded;
 	bool hasUserWon;
+	Move lastMove;
+	bool isInMultipleMove;
 };
 
 class Checkers {
@@ -30,13 +32,14 @@ public:
 	static Checkers& getInstance();
 	
 	void initialize(std::string userName, bool isUserWhite);
+	void fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn);
 	bool getIsUserWhite();
 	std::string getUserName();
 	bool checkIfEndGame();
 
 	GameState getGameState() const;
 
-	void updateState(bool hasMoreMoves=false);
+	void updateState(const Move& lastMove, bool hasMoreMoves=false);
 
 	// GameState processUserMove(GameState state);
 	GameState processUserMove(std::string origin, std::string destination);

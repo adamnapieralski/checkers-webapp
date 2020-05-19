@@ -63,6 +63,10 @@ private:
 
     std::string positionLetters_ = "abcdefgh";
     std::string positionNumbers_ = "12345678";
+
+    const std::map<enum PieceName, char>  fenPiecesNames_ = {
+        { EMPTY, 'e' }, { WHITE_PAWN , 'P' }, { WHITE_KING, 'K' }, { BLACK_PAWN, 'p' }, { BLACK_KING, 'k' }
+    };
 };
 
 #endif  // BOARD_H

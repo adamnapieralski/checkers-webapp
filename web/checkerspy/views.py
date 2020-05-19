@@ -4,12 +4,16 @@ from checkerspy import checkers
 
 game = checkers.Checkers.getInstance()
 
+# initialize_fen = "8/4P3/8/4p3/5P2/2k5/1P6/8"
+# initialize_fen = "8/4P3/8/3p4/3k1P2/8/1P6/8"
+
 def initialize(params):
     user_name = str(params['user_name'])
     is_user_white = True
     if (params['is_user_white'] == 'false'):
         is_user_white = False
     game.initialize(user_name, is_user_white)
+    # game.fenInitialize(initialize_fen, user_name, is_user_white, True)
 
 def get_user_data(params):
     color = ""

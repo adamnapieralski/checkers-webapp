@@ -27,13 +27,30 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	state_.isUserTurn = isUserWhite;
 }
 
-void Checkers::updateState(bool hasMoreMoves) {
+void Checkers::fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn) {
+	board_ = Board(fen);
+
+	userPlayer_.setIsWhite(isUserWhite);
+	compPlayer_.setIsWhite(!isUserWhite);
+
+	userPlayer_.initializePiecesFromBoard(board_);
+	compPlayer_.initializePiecesFromBoard(board_);
+
+	state_.boardFEN = fen;
+	state_.isUserTurn = isUserTurn;
+
+}
+
+
+void Checkers::updateState(const Move& lastMove, bool hasMoreMoves) {
 	state_.boardFEN = board_.getFEN();
 	state_.uAP = userPlayer_.getNumberOfPawns(board_);
 	state_.cAP = compPlayer_.getNumberOfPawns(board_);
 	state_.uAK = userPlayer_.getNumberOfKings(board_);
 	state_.cAK = compPlayer_.getNumberOfKings(board_);
+	state_.lastMove = lastMove;
 	state_.hasGameEnded = checkIfEndGame();
+	state_.isInMultipleMove = hasMoreMoves;
 	if (!hasMoreMoves) {
 		state_.isUserTurn = !state_.isUserTurn;
 	}
@@ -56,8 +73,14 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 		Position dest = board_.getPositionByName(destination);
 		Move triedMove = board_.findUserMove(org, dest);
 		if (userPlayer_.isMoveValid(triedMove, board_)) {
+			if (state_.isInMultipleMove) {
+				if (triedMove.getStartPosition() != state_.lastMove.getEndPosition()) {
+					return state_;
+				}
+			}
+			auto isMoveMultiple = userPlayer_.isMoveMultiple(triedMove, board_);
 			userPlayer_.movePiece(board_, compPlayer_, triedMove);
-			updateState(userPlayer_.isMoveMultiple(triedMove, board_));
+			updateState(triedMove, isMoveMultiple);
 		}
 		return state_;
 	}
@@ -69,8 +92,9 @@ GameState Checkers::makeComputerMove() {
 	if (state_.isUserTurn) {
 		return state_;
 	}
-	compPlayer_.makeMinmaxMove(userPlayer_, board_);
-	updateState();
+
+	auto move = compPlayer_.makeMinmaxMove(userPlayer_, board_);
+	updateState(move);
 	return state_;
 }
 

@@ -19,8 +19,8 @@ int main() {
     // user.addPiece(false, Position(3,3), board);
     user.addPiece(false, Position(1,1), board);
     user.addPiece(false, Position(5,3), board);
-    user.addPiece(false, Position(3,3), board);
-    std::cout << board << std::endl;
+    // user.addPiece(false, Position(3,3), board);
+    std::cout << board.getFEN() << std::endl;
 
 
     auto userPieces = user.getPieces();
@@ -35,15 +35,15 @@ int main() {
     std::vector<Piece*> newUs = user.getPieces();*/
 
     auto checkers = Checkers::getInstance();
-    checkers.initialize("Adam", true);
-    std::cout << checkers.getBoard() << std::endl;
+    // checkers.initialize("Adam", true);
+    // std::cout << checkers.getBoard() << std::endl;
 
     // checkers.makeComputerMove();
-    checkers.processUserMove("c3", "d4");
-    std::cout << checkers.getBoard() << std::endl;
-    checkers.makeComputerMove();
-    std::cout << checkers.getBoard() << std::endl;
-    checkers.processUserMove("d4", "e5");
+    // checkers.processUserMove("c3", "d4");
+    // std::cout << checkers.getBoard() << std::endl;
+    // checkers.makeComputerMove();
+    // std::cout << checkers.getBoard() << std::endl;
+    // checkers.processUserMove("d4", "e5");
     // checkers.processUserMove("d2", "c3");
     // checkers.makeComputerMove();
     // checkers.processUserMove("c3", "b4");
@@ -51,6 +51,11 @@ int main() {
     // checkers.processUserMove("b2", "c3");   
     // checkers.processUserMove("c3", "d4");
     std::cout << checkers.getBoard() << std::endl;
+
+    std::string fen = "8/3P4/8/4p3/5P2/2k5/1P6/8";
+    checkers.fenInitialize(fen, "Adam", true, true);
+    std::cout << checkers.getBoard() << std::endl;
+    checkers.processUserMove("b2", "d4");
 
 
 

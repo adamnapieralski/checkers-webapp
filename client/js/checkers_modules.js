@@ -21,10 +21,10 @@ myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
 
-		this.$oninit = function() {
-			console.log("INIT");
+		angular.element(function() {
 			$scope.loadBoard();
-		}
+			$scope.printUserData();
+		});
 		
 		$scope.onPieceDrop = function(source, target) {
 			console.log('Source: ' + source)
@@ -49,10 +49,13 @@ myAppControllers.controller('gameController',
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
 		$scope.printUserData = function() {
+			console.log("Printing user data");
 			srvInfo.getUserData(
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
+					console.log("got user data");
+					console.log(data.data.user_name);
 				}
 			)
 		}

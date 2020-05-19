@@ -6,6 +6,8 @@
  * @author Adam Napieralski
  */
 #include <map>
+#include <algorithm>
+#include <iostream>
 #include "Board.h"
 
 std::ostream& operator<<(std::ostream& os, const PieceName& p){
@@ -30,7 +32,31 @@ Board::Board(){
 }
 
 Board::Board(std::string fen){
-
+    std::string fenSlashed = fen + '/';
+    int alreadyVisitedIds = 0;
+    for (int row = BOARD_SIZE - 1; row >= 0; --row) {
+        int j = 0;
+        int k = 0;
+        while (fenSlashed[alreadyVisitedIds + j] != '/') {
+            if (std::isdigit(fenSlashed[alreadyVisitedIds + j])) {
+                int max = k + std::stoi(fenSlashed.substr(alreadyVisitedIds + j, 1));
+                for (; k < max; ++k) {
+                    board_[row][j + k] = EMPTY;
+                }
+                std::cout << *this << std::endl;
+                --k;
+            }
+            else {
+                auto piecePair = std::find_if(fenPiecesNames_.begin(), fenPiecesNames_.end(), [&](const std::pair<PieceName, char> &pair) {
+                    return pair.second == fenSlashed[alreadyVisitedIds + j];
+                });
+                board_[row][j + k] = piecePair->first;
+                std::cout << *this << std::endl;
+            }
+            ++j;
+        }
+        alreadyVisitedIds += j + 1;
+    }
 }
 
 void Board::initializePositionNames() {
@@ -153,13 +179,13 @@ Board& Board::operator=(Board other) {
 }
 
 std::string Board::getFEN() const {
-    std::map<enum PieceName, char>  pcs = {
+    std::map<enum PieceName, char>  fenPiecesNames_ = {
         { EMPTY, 'e' }, { WHITE_PAWN , 'P' }, { WHITE_KING, 'K' }, { BLACK_PAWN, 'p' }, { BLACK_KING, 'k' }
     };
     std::string fen = "";
     for (size_t row = 0; row < BOARD_SIZE; ++row) {
         for (size_t col = 0; col < BOARD_SIZE; ++col) {
-            fen += pcs[board_[BOARD_SIZE - 1 -row][col]];
+            fen += fenPiecesNames_[board_[BOARD_SIZE - 1 -row][col]];
         }
         fen += '/';
     }
