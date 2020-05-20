@@ -17,10 +17,12 @@ BOOST_PYTHON_MODULE(checkers)
         .def("getInstance", &Checkers::getInstance, return_value_policy<reference_existing_object>())
             .staticmethod("getInstance")
         .def("initialize", &Checkers::initialize)
+        .def("fenInitialize", &Checkers::fenInitialize)
         .def("getIsUserWhite", &Checkers::getIsUserWhite)
         .def("getUserName", &Checkers::getUserName)
-        .def("findTile", &Checkers::findTile)
         .def("processUserMove", &Checkers::processUserMove)
+        .def("makeComputerMove", &Checkers::makeComputerMove)
+        .def("getGameState", &Checkers::getGameState)
     ;
 
     class_<GameState>("GameState")

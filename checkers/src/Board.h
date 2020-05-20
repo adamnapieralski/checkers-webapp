@@ -31,8 +31,16 @@ public:
     void movePiece(const Position& posStart, const Position& posEnd);
     void makeMove(const Move& m);
 
+    Move findUserMove(const Position& origin, const Position& destination);
+
     std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> getBoard() const;
     PieceName getPieceName(const Position& pos) const;
+
+    bool arePiecesSameColor(PieceName p1, PieceName p2);
+    bool arePiecesDifferentColor(PieceName p1, PieceName p2);
+
+    bool isPositionNameValid(std::string pos) const;
+    Position getPositionByName(std::string pos) const;
 
     /**
      * @brief Get string describing current board state with 1. field of FEN record
@@ -47,7 +55,18 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const PieceName& p);
 
 private:
+    void initializePositionNames();
+
     std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> board_ ;
+    
+    std::map<std::string, Position> positionNames_;
+
+    std::string positionLetters_ = "abcdefgh";
+    std::string positionNumbers_ = "12345678";
+
+    const std::map<enum PieceName, char>  fenPiecesNames_ = {
+        { EMPTY, 'e' }, { WHITE_PAWN , 'P' }, { WHITE_KING, 'K' }, { BLACK_PAWN, 'p' }, { BLACK_KING, 'k' }
+    };
 };
 
 #endif  // BOARD_H

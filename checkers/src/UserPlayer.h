@@ -16,10 +16,8 @@ public:
     UserPlayer(bool isWhite, std::string name);
 
     void initializePieces(Board &board) override;
+    void initializePiecesFromBoard(Board& board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
-
-    bool checkIfValidMove(Board& state, Board& board);
-
 };
 
 #endif  // USERPLAYER_H

@@ -7,6 +7,7 @@
  */
 
 #include "Move.h"
+#include <algorithm>
 
 Move::Move(Position s, Position e) : startPos_(s), endPos_(e) {}
 
@@ -56,6 +57,11 @@ void Move::addUpgradePosition(const Position& pos){
     upgradePos_.push_back(pos);
 }
 
+void Move::addCapturedPosition(const Position& pos) {
+    capturedPos_.push_back(pos);
+}
+
+
 std::vector<Position> Move::getUpgradePositions() const { return upgradePos_ ; }
 
 Position Move::getStartPosition() const { return startPos_;   }
@@ -65,3 +71,11 @@ Position Move::getEndPosition() const { return endPos_; }
 std::vector<Position> Move::getCapturedPositions() const {  return capturedPos_;    }
 
 std::vector<Move> Move::getStepMoves() const { return stepMoves_;  }
+
+bool Move::containsAsStep(const Move& move) const {
+    auto it = std::find(stepMoves_.begin(), stepMoves_.end(), move);
+    if (it != stepMoves_.end()) {
+        return true;
+    }
+    return false;
+}

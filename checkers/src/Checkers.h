@@ -21,28 +21,36 @@ struct GameState {
 	bool isUserTurn;
 	int uAP=12, uAK=0, uBP=0, uBK=0; // user's/copmuter's Alive/Beaten Pawns/Kings
 	int cAP=12, cAK=0, cBP=0, cBK=0;
-	bool endPlay;
-	bool ifUserWin;
+	bool hasGameEnded;
+	bool hasUserWon;
+	Move lastMove;
+	bool isInMultipleMove;
 };
 
 class Checkers {
 public:
 	static Checkers& getInstance();
 	
-	std::string findTile(std::string id); // temporary test method
-
 	void initialize(std::string userName, bool isUserWhite);
+	void fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn);
 	bool getIsUserWhite();
 	std::string getUserName();
 	bool checkIfEndGame();
 
-	GameState processUserMove(GameState state);
+	GameState getGameState() const;
+
+	void updateState(const Move& lastMove, bool hasMoreMoves=false);
+
+	// GameState processUserMove(GameState state);
+	GameState processUserMove(std::string origin, std::string destination);
+	GameState makeComputerMove();
 	//GameState processUserMove(std::string org, std::string dest);
+	Board getBoard() const;
 
 private:
 	Checkers();
-	Checkers(const Checkers&) = delete;
-	Checkers& operator=(const Checkers&) = delete;
+	// Checkers(const Checkers&) = delete;
+	// Checkers& operator=(const Checkers&) = delete;
 
 	UserPlayer userPlayer_;
 	AIPlayer compPlayer_;

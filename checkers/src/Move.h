@@ -21,6 +21,8 @@ public:
     Move(Position, Position, Position);
 
     void addUpgradePosition(const Position& pos);
+    void addCapturedPosition(const Position& pos);
+    
     bool isInitial() const;
     Move merge(Move& next) const;
 
@@ -29,6 +31,8 @@ public:
     std::vector<Position> getUpgradePositions() const;
     std::vector<Position> getCapturedPositions() const;
     std::vector<Move> getStepMoves() const;
+
+    bool containsAsStep(const Move& move) const;
 
     bool operator==(const Move& move) const;
 

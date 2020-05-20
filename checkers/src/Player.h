@@ -37,11 +37,11 @@ public:
 
     // functions connected with movment of pieces at board
     virtual void initializePieces(Board &board) = 0;
+    virtual void initializePiecesFromBoard(Board& board) = 0;
     virtual void addPiece(bool isKing, Position pos, Board &board) = 0; 
     void movePiece(Board& board, Player& opponent, const Move& move);
     void erasePiece(std::shared_ptr<Piece> piece);
     void changePiece(std::shared_ptr<Piece> piece, const Position& pos);
-
 
     /**
      * Get all valid moves for owned pieces on board, respecting the rule of capture obligation.
@@ -50,7 +50,13 @@ public:
     std::vector<std::shared_ptr<Piece>> getPieces() const; 
     std::shared_ptr<Piece> findPiece(const Position& pos) const;
 
+    bool canCapture(Board& board) const;
+    bool isMoveValid(const Move& move, Board& board) const;
+    bool isMoveMultiple(const Move& move, Board& board) const;
+
 protected:
+    void initializePiecesFromBoardPerUser(Board& board, bool isUser);
+
     const int INIT_ROW = 3;
 
     std::vector<std::shared_ptr<Piece>> pieces_;

@@ -21,13 +21,23 @@ myAppControllers.controller('gameController',
 	['$scope', 'srvInfo',
 		function ($scope, srvInfo) {
 
-		this.$oninit = function() {
-			console.log("INIT");
-		}
+		angular.element(function() {
+			$scope.loadBoard();
+			$scope.printUserData();
+		});
 		
 		$scope.onPieceDrop = function(source, target) {
 			console.log('Source: ' + source)
 			console.log('Target: ' + target)
+			move = { 'source' : source, 'destination' : target }
+			srvInfo.processUserMove(move,
+				function(data) {
+					$scope.currentFEN = data.data.fen;
+					console.log($scope.currentFEN)
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
+				}
+			)
 		}
 
 		$scope.boardConfig = {
@@ -38,17 +48,30 @@ myAppControllers.controller('gameController',
 
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
-		$scope.printUserData = function(data) {
+		$scope.printUserData = function() {
+			console.log("Printing user data");
 			srvInfo.getUserData(
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
+					console.log("got user data");
+					console.log(data.data.user_name);
 				}
 			)
 		}
 
-		$scope.loadBoard = function(data) {
+		$scope.loadBoard = function() {
 			srvInfo.getGameState (
+				function(data) {
+					$scope.currentFEN = data.data.fen;
+					$scope.boardConfig.position = $scope.currentFEN;
+					$scope.board = Chessboard('board', $scope.boardConfig);
+				}
+			)
+		}
+
+		$scope.makeComputerMove = function() {
+			srvInfo.makeComputerMove(
 				function(data) {
 					$scope.currentFEN = data.data.fen;
 					$scope.boardConfig.position = $scope.currentFEN;
@@ -74,6 +97,13 @@ angular.module('myAppServices', [])
 				 };
 				 this.getGameState = function(callback) {
 					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 
+				 };
+				 this.processUserMove = function(data, callback) {
+					return $http.get('/ajax/checkerspy/process_user_move/?source='
+					+ data.source + '&destination=' + data.destination).then(callback); 
+				 }
+				 this.makeComputerMove = function(callback) {
+					return $http.get('/ajax/checkerspy/make_computer_move/').then(callback); 
 				 }
 
              });

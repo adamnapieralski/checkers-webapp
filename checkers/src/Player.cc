@@ -102,6 +102,7 @@ void Player::movePiece(Board& board, Player& opponent, const Move& move) {
     board.makeMove(move);
 }
 
+
 std::shared_ptr<Piece> Player::findPiece(const Position& pos) const {
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
@@ -141,4 +142,72 @@ int Player::getNumberOfKings(Board& board){
     }
     return kings;
 }
+
+bool Player::canCapture(Board& board) const {
+    for (auto pc : pieces_){
+        auto mvs = pc->getCaptureMoves(board);
+        if(!mvs.empty()) return true;
+    }
+    return false;
+}
+
+bool Player::isMoveValid(const Move& move, Board& board) const {
+    auto movedPiece = findPiece(move.getStartPosition());
+    if (!movedPiece) return false;
+    auto moves = movedPiece->getCaptureMoves(board);
+    if (canCapture(board) && moves.empty()) {
+        return false;
+    }
+    else if (moves.empty()) {
+        moves = movedPiece->getNonCaptureMoves(board);
+    }
+    for (auto& pieceMove : moves) {
+        if (pieceMove.containsAsStep(move) || pieceMove == move) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Player::isMoveMultiple(const Move& move, Board& board) const {
+    auto movedPiece = findPiece(move.getStartPosition());
+    if (!movedPiece) return false;
+    auto moves = movedPiece->getCaptureMoves(board);
+    if (moves.size()) {
+        for (auto& pieceMove : moves) {
+            if (pieceMove.containsAsStep(move)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+void Player::initializePiecesFromBoardPerUser(Board& board, bool isUser) {
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            auto pos = Position(j, i);
+            auto pcName = board.getPieceName(pos);
+            if (isWhite_) {
+                if (pcName == WHITE_PAWN) {
+                    pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser, board));
+                }
+                if (pcName == WHITE_KING) {
+                    pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser, board));
+                }
+            }
+            else {
+                if (pcName == BLACK_PAWN) {
+                    pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, isUser, board));
+                }
+                if (pcName == BLACK_KING) {
+                    pieces_.push_back(std::make_shared<King>(pos, isWhite_, isUser, board));
+                }
+            }
+
+        }
+    }
+}
+
 

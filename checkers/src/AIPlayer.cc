@@ -27,6 +27,11 @@ void AIPlayer::initializePieces(Board& board){
     }
 }
 
+void AIPlayer::initializePiecesFromBoard(Board& board) {
+    initializePiecesFromBoardPerUser(board, false);
+}
+
+
 void AIPlayer::addPiece(bool isKing, Position pos, Board& board){
     if(isKing) pieces_.push_back(std::make_shared<King>(pos, isWhite_, false, board));
     else pieces_.push_back(std::make_shared<Pawn>(pos, isWhite_, false, board));
@@ -48,25 +53,22 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     UserPlayer temp_user = user;
     double alpha = -std::numeric_limits<double>::infinity(); 
     double beta = std::numeric_limits<double>::infinity();
-
+    
     for (auto& row : getValidMoves(board)){
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
-            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 3, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
+            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 2, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
             board = temp;
             computer = temp_comp;
             user = temp_user;
 
         }
     }
-    auto max = std::max_element(heuristics.begin(),heuristics.end(),
-        [] (const std::pair<Move,double>& a, const std::pair<Move,double>& b) {
+    auto max = std::max_element(heuristics.begin(), heuristics.end(),
+        [&] (const std::pair<Move,double>& a, const std::pair<Move,double>& b) {
             return a.second < b.second;
         }
     );
-    
-    //std::cout << "Alpha:" << max->second << std::endl;
-
     return max->first;
 }
 
@@ -105,11 +107,10 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
     }
 
     //min
-
     if(isUser){
         for (auto& row : valid_moves){
-            for (auto& column : row){
-                user.movePiece(board, user, column);
+            for (auto& mv : row){
+                user.movePiece(board, computer, mv);
                 beta = std::min(beta, minmaxAlphaBeta(computer,user,board, depth-1, alpha, beta, !isUser));
                 if (alpha >= beta) {return alpha;}
                 board = temp;
@@ -123,9 +124,10 @@ double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board
     return 0.;
 }
 
-void AIPlayer::makeMove(UserPlayer& user, Board& board){
+Move AIPlayer::makeMinmaxMove(UserPlayer& user, Board& board){
     Move t = minmax( *(this) , user, board);
     movePiece(board, user, t);
+    return t;
 }
 
 // GameTree AIPlayer::getGameTree(const UserPlayer &user, const Board &board) {
