@@ -27,6 +27,8 @@ BOOST_PYTHON_MODULE(checkers)
 
     class_<GameState>("GameState")
         .def_readonly("boardFEN", &GameState::boardFEN)
+        .def_readonly("isUserTurn", &GameState::isUserTurn)
+        .def_readonly("isInMultipleMove", &GameState::isInMultipleMove)
     ;
 
 }
