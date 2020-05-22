@@ -19,7 +19,8 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	userPlayer_.setName(userName);
 	userPlayer_.setIsWhite(isUserWhite);
 	compPlayer_.setIsWhite(!isUserWhite);
-	
+
+	board_.clear();	
 	userPlayer_.initializePieces(board_);
 	compPlayer_.initializePieces(board_);
 

@@ -10,7 +10,7 @@
 #include <iostream>
 #include "Board.h"
 
-std::ostream& operator<<(std::ostream& os, const PieceName& p){
+std::ostream& operator<<(std::ostream& os, const PieceName& p) {
     switch (p){
         case EMPTY : os << "_"; break;
         case WHITE_KING : os << "K"; break ;
@@ -22,16 +22,17 @@ std::ostream& operator<<(std::ostream& os, const PieceName& p){
     return os;
 }
 
-Board::Board(){
-    for(auto i = board_.begin(); i != board_.end(); ++i ){
-        for(auto j = i->begin(); j != i->end(); ++j ){
-            *j = EMPTY;
-        }
-    }
+Board::Board() {
+    // for(auto i = board_.begin(); i != board_.end(); ++i ){
+    //     for(auto j = i->begin(); j != i->end(); ++j ){
+    //         *j = EMPTY;
+    //     }
+    // }
+    clear();
     initializePositionNames();
 }
 
-Board::Board(std::string fen){
+Board::Board(std::string fen) {
     std::string fenSlashed = fen + '/';
     int alreadyVisitedIds = 0;
     for (int row = BOARD_SIZE - 1; row >= 0; --row) {
@@ -56,6 +57,14 @@ Board::Board(std::string fen){
             ++j;
         }
         alreadyVisitedIds += j + 1;
+    }
+}
+
+void Board::clear() {
+    for (auto& row : board_) {
+        for (auto& spot : row) {
+            spot = EMPTY;
+        }
     }
 }
 
