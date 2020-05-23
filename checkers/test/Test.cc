@@ -10,6 +10,7 @@
 #define BOOST_TEST_MODULE CheckersTests
 #include <boost/test/unit_test.hpp>
 
+#include "../src/Checkers.h"
 #include "../src/UserPlayer.h"
 #include "../src/AIPlayer.h"
 #include "../src/Board.h"
@@ -430,9 +431,100 @@ BOOST_AUTO_TEST_CASE(movePiece){
     BOOST_REQUIRE(user.getPieces().size() == 1);
     BOOST_CHECK(user.getPieces()[0]->getPosition() == Position(7,3));
     BOOST_CHECK(board.getPieceName(Position(7,3)) == WHITE_KING);
-
 }
 
+BOOST_AUTO_TEST_CASE(checkersInit) {
+    std::string initWhite = "1p1p1p1p/p1p1p1p1/1p1p1p1p/8/8/P1P1P1P1/1P1P1P1P/P1P1P1P1";
+    std::string initBlack = "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1";
+    auto ch = Checkers::getInstance();
+    ch.initialize("Adam", false);
+    BOOST_REQUIRE(ch.getGameState().boardFEN == initBlack);
+    BOOST_CHECK(ch.getUserName() == "Adam" );
+    ch.initialize("Bartek", true);
+    BOOST_REQUIRE(ch.getGameState().boardFEN == initWhite);
+
+    ch.fenInitialize("8/2k5/8/4p3/8/2P3P1/8/4K3", "Jim", true, true);
+    BOOST_CHECK(ch.getGameState().boardFEN == "8/2k5/8/4p3/8/2P3P1/8/4K3");
+    // checkers.processUserMove("c3", "d4");
+    // std::cout << checkers.getBoard() << std::endl;
+    // checkers.makeComputerMove();
+    // std::cout << checkers.getBoard() << std::endl;
+    // checkers.processUserMove("d4", "e5");
+    // checkers.processUserMove("d2", "c3");
+    // checkers.makeComputerMove();
+    // checkers.processUserMove("c3", "b4");
+    // checkers.makeComputerMove();
+    // checkers.processUserMove("b2", "c3");   
+    // checkers.processUserMove("c3", "d4");
+}
+
+BOOST_AUTO_TEST_CASE(checkersGame) {
+    std::string initWhite = "1p1p1p1p/p1p1p1p1/1p1p1p1p/8/8/P1P1P1P1/1P1P1P1P/P1P1P1P1";
+    std::string initBlack = "1P1P1P1P/P1P1P1P1/1P1P1P1P/8/8/p1p1p1p1/1p1p1p1p/p1p1p1p1";
+
+    auto ch = Checkers::getInstance();
+    ch.initialize("Patrycja", true);
+    // computer move not in its turn
+    auto state = ch.makeComputerMove();
+    BOOST_REQUIRE( state.boardFEN == initWhite);
+    // wrong user move
+    state = ch.processUserMove("c3", "e5");
+    BOOST_REQUIRE( state.boardFEN == initWhite);
+    state = ch.processUserMove("a1", "b2");
+    BOOST_REQUIRE( state.boardFEN == initWhite);
+    // good move
+    state = ch.processUserMove("c3", "d4");
+    BOOST_REQUIRE( state.boardFEN == "1p1p1p1p/p1p1p1p1/1p1p1p1p/8/3P4/P3P1P1/1P1P1P1P/P1P1P1P1");
+    state = ch.makeComputerMove();
+    BOOST_REQUIRE(state.boardFEN != "1p1p1p1p/p1p1p1p1/1p1p1p1p/8/3P4/P3P1P1/1P1P1P1P/P1P1P1P1");
+}
+
+BOOST_AUTO_TEST_CASE(multipleCaptureUser) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/8/3p3K/8/3p4/2P5/8/8", "Adam", true, true);
+    auto state = ch.processUserMove("c3", "e5");
+    BOOST_CHECK(state.boardFEN == "8/8/3p3K/4P3/8/8/8/8");
+    BOOST_REQUIRE( state.isUserTurn && state.isInMultipleMove);
+    state = ch.processUserMove("e5", "c7");
+    BOOST_CHECK( state.boardFEN == "8/2P5/7K/8/8/8/8/8");
+    BOOST_CHECK( !state.isUserTurn && !state.isInMultipleMove);
+}
+
+BOOST_AUTO_TEST_CASE(multipleCaptureComputer) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/8/3p3K/8/3p4/2P5/8/8", "Adam", false, false);
+    auto state = ch.makeComputerMove();
+    BOOST_CHECK(state.boardFEN == "8/2P5/7K/8/8/8/8/8");
+    BOOST_CHECK(state.isUserTurn && !state.isInMultipleMove);
+
+    // triple move with king
+    ch.fenInitialize("8/2P3K1/5p2/8/3p4/8/3p4/8", "Walter White", false, false);
+    state = ch.makeComputerMove();
+    BOOST_CHECK(state.boardFEN == "8/2P5/8/8/8/8/8/4K3");
+}
+
+BOOST_AUTO_TEST_CASE(upgradeToKingUser) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/4P3/1p6/8/8/8/8/8", "Willy Wonka", true, true);
+    auto state = ch.processUserMove("e7", "d8");
+    BOOST_REQUIRE( state.boardFEN == "3K4/8/1p6/8/8/8/8/8");
+    BOOST_CHECK( !state.isUserTurn );
+    
+    ch.fenInitialize("8/4p3/1p3P2/8/8/8/8/8", "Barte", true, true);
+    state = ch.processUserMove("f6", "d8");
+    BOOST_REQUIRE( state.boardFEN == "3K4/8/1p6/8/8/8/8/8");
+    BOOST_CHECK( state.isUserTurn && state.isInMultipleMove );
+    state = ch.processUserMove("d8", "a5");
+    BOOST_REQUIRE( state.boardFEN == "8/8/8/K7/8/8/8/8");
+    BOOST_CHECK( !state.isUserTurn );
+}
+
+BOOST_AUTO_TEST_CASE(upgradeToKingComputer) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/8/8/8/5p2/P7/1p6/8", "Mark", false, false);
+    auto state = ch.makeComputerMove();
+    BOOST_REQUIRE( state.boardFEN == "8/8/8/6K1/8/8/8/8" || state.boardFEN == "8/8/7K/8/8/8/8/8");
+}
 
 
 BOOST_AUTO_TEST_SUITE_END()

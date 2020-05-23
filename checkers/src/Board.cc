@@ -43,7 +43,6 @@ Board::Board(std::string fen){
                 for (; k < max; ++k) {
                     board_[row][j + k] = EMPTY;
                 }
-                std::cout << *this << std::endl;
                 --k;
             }
             else {
@@ -51,7 +50,6 @@ Board::Board(std::string fen){
                     return pair.second == fenSlashed[alreadyVisitedIds + j];
                 });
                 board_[row][j + k] = piecePair->first;
-                std::cout << *this << std::endl;
             }
             ++j;
         }

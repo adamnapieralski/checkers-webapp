@@ -52,13 +52,18 @@ int main() {
     // checkers.processUserMove("c3", "d4");
     std::cout << checkers.getBoard() << std::endl;
 
-    std::string fen = "8/3P4/8/4p3/5P2/2k5/1P6/8";
-    checkers.fenInitialize(fen, "Adam", true, true);
-    std::cout << checkers.getBoard() << std::endl;
-    checkers.processUserMove("b2", "d4");
+    // std::string fen = "8/3P4/8/4p3/5P2/2k5/1P6/8";
+    // checkers.fenInitialize(fen, "Adam", true, true);
+    // std::cout << checkers.getBoard() << std::endl;
+    // checkers.processUserMove("b2", "d4");
 
 
-
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/4P3/1p6/8/8/8/8/8", "Willy Wonka", true, true);
+    auto state = ch.processUserMove("e7", "d8");
+    std::cout << ch.getBoard() << std::endl;
+    state = ch.processUserMove("d8", "a5");
+    std::cout << ch.getBoard() << std::endl;
 
 
     return 0;
