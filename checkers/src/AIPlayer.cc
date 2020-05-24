@@ -18,7 +18,7 @@ AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {
 }
 
 void AIPlayer::initializePieces(Board& board){
-    if(!pieces_.empty()){
+    if( this -> pieces_.size() > 0 ){
         for (auto& piece : pieces_){
             erasePiece(piece);
         }

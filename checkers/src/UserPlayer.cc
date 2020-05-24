@@ -17,7 +17,7 @@ UserPlayer::UserPlayer(bool isWhite, std::string name) : Player(isWhite) {
 }
 
 void UserPlayer::initializePieces(Board& board){
-    if(!pieces_.empty()){
+    if( this -> pieces_.size() > 0 ){
         for (auto& piece : pieces_){
             erasePiece(piece);
         }

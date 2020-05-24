@@ -40,12 +40,21 @@ myAppControllers.controller('gameController',
 					$scope.currentFEN = data.data.fen;
 					$scope.isUserTurn = data.data.isUserTurn
 					$scope.isInMultipleMove = data.data.isInMultipleMove
-
 					console.log($scope.currentFEN)
 					$scope.boardConfig.position = $scope.currentFEN;
 					$scope.board = Chessboard('board', $scope.boardConfig);
+					$scope.uAP = data.data.uAP;
+					$scope.cAP = data.data.cAP;
+					$scope.uAK = data.data.uAK;
+					$scope.cAK = data.data.cAK;
+					$scope.ifEnd = data.data.isEnd;
 				}
 			)
+			console.log($scope.uAP);
+			console.log($scope.cAP);
+			console.log($scope.uAK);
+			console.log($scope.cAK);
+
 			if (!$scope.isInMultipleMove) {
 				$timeout(function() {
 					$scope.makeComputerMove();
@@ -67,6 +76,7 @@ myAppControllers.controller('gameController',
 				function(data) {
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
+					$scope.compColorView = data.data.comp_name;
 					console.log("got user data");
 					console.log(data.data.user_name);
 				}
@@ -81,8 +91,17 @@ myAppControllers.controller('gameController',
 					$scope.isInMultipleMove = data.data.isInMultipleMove
 					$scope.boardConfig.position = $scope.currentFEN;
 					$scope.board = Chessboard('board', $scope.boardConfig);
+					$scope.uAP = data.data.uAP;
+					$scope.cAP = data.data.cAP;
+					$scope.uAK = data.data.uAK;
+					$scope.cAK = data.data.cAK;
+					$scope.ifEnd = data.data.isEnd;
 				}
 			)
+			console.log($scope.uAP);
+			console.log($scope.cAP);
+			console.log($scope.uAK);
+			console.log($scope.cAK);
 		}
 
 		$scope.makeComputerMove = function() {
@@ -91,8 +110,17 @@ myAppControllers.controller('gameController',
 					$scope.currentFEN = data.data.fen;
 					$scope.boardConfig.position = $scope.currentFEN;
 					$scope.board = Chessboard('board', $scope.boardConfig);
+					$scope.uAP = data.data.uAP;
+					$scope.cAP = data.data.cAP;
+					$scope.uAK = data.data.uAK;
+					$scope.cAK = data.data.cAK;
+					$scope.ifEnd = data.data.isEnd;
 				}
 			)
+			console.log($scope.uAP);
+			console.log($scope.cAP);
+			console.log($scope.uAK);
+			console.log($scope.cAK);
 		}
 }]);
 	
@@ -116,10 +144,10 @@ angular.module('myAppServices', [])
 				 this.processUserMove = function(data, callback) {
 					return $http.get('/ajax/checkerspy/process_user_move/?source='
 					+ data.source + '&destination=' + data.destination).then(callback); 
-				 }
+				 };
 				 this.makeComputerMove = function(callback) {
 					return $http.get('/ajax/checkerspy/make_computer_move/').then(callback); 
-				 }
+				 };
 
              });
 

@@ -79,7 +79,7 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 					return state_;
 				}
 			}
-			auto isMoveMultiple = userPlayer_.isMoveMultiple(triedMove, board_);
+			bool isMoveMultiple = userPlayer_.isMoveMultiple(triedMove, board_);
 			userPlayer_.movePiece(board_, compPlayer_, triedMove);
 			updateState(triedMove, isMoveMultiple);
 		}

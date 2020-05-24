@@ -18,13 +18,16 @@ def initialize(params):
 def get_user_data(params):
     color = ""
     if game.getIsUserWhite() == True:
-        color = "white"
+        color = "bialy"
+        color_comp = 'czarny'
     else:
-        color = "black"
+        color = "czarny"
+        color_comp = "bialy"
 
     return {
         'user_name': game.getUserName(),
-        'user_color': color
+        'user_color': color,
+        'comp_name' : color_comp
     }
 
 def get_game_state(params):
@@ -33,6 +36,11 @@ def get_game_state(params):
         'fen': game_state.boardFEN,
         'isUserTurn' : game_state.isUserTurn,
         'isInMultipleMove' : game_state.isInMultipleMove,
+        'uAP' : game_state.uAP, 
+	    'cAP' : game_state.cAP, 
+	    'uAK' : game_state.uAK,
+	    'cAK' : game_state.cAK ,
+	    'isEnd' : game_state.hasGameEnded
     }
 
 def process_user_move(params):
@@ -41,6 +49,11 @@ def process_user_move(params):
         'fen': game_state.boardFEN,
         'isUserTurn' : game_state.isUserTurn,
         'isInMultipleMove' : game_state.isInMultipleMove,
+        'uAP' : game_state.uAP, 
+	    'cAP' : game_state.cAP, 
+	    'uAK' : game_state.uAK,
+	    'cAK' : game_state.cAK ,
+	    'isEnd' : game_state.hasGameEnded
     }
 
 def make_computer_move(params):
@@ -49,4 +62,9 @@ def make_computer_move(params):
         'fen' : game_state.boardFEN,
         'isUserTurn' : game_state.isUserTurn,
         'isInMultipleMove' : game_state.isInMultipleMove,
+        'uAP' : game_state.uAP, 
+	    'cAP' : game_state.cAP, 
+	    'uAK' : game_state.uAK,
+	    'cAK' : game_state.cAK ,
+	    'isEnd' : game_state.hasGameEnded
     }

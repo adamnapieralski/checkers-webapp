@@ -29,15 +29,19 @@
 	<br>
 	<div class="row own-div" style="width: 95%; margin: 0px 2.5%" ng-controller="gameController">
 		<div class="column left" >
-			Gracz info <br><br>
-			<span id="userNameView"></span><br>
-			<span id="userColorView"></span>
+			<span id="userNameView"></span><br><br>
+			<span id="userColorView"></span><br>
+			Liczba pionkow: <span id="uAP" ng-bind="uAP"></span><br>
+			Liczba damek: <span id="uAK" ng-bind="uAK"></span><br>
 		</div>
 		<div class="column middle">
 			<div id="board" style="width: 70%; margin: 0 auto" ng-init="loadBoard()"></div>
 		</div>
 		<div class="column right">
-			Komputer info
+			Komputer<br><br>
+			<span id="compColorView" ng-bind = "compColorView"></span><br>
+			Liczba pionkow: <span id="cAP" ng-bind="cAP" ></span><br>
+			Liczba damek: <span id="cAK" ng-bind="cAK" ></span><br>
 		</div>
 
 	</div>
