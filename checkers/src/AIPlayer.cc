@@ -18,6 +18,11 @@ AIPlayer::AIPlayer(bool isWhite) : Player(isWhite) {
 }
 
 void AIPlayer::initializePieces(Board& board){
+    if(!pieces_.empty()){
+        for (auto& piece : pieces_){
+            erasePiece(piece);
+        }
+    }
     for (int i = BOARD_SIZE - 1; i > INIT_ROW + 1; --i){
         for (int j = 0; j < BOARD_SIZE; ++j){
             if ((i + j) % 2 == 0){
