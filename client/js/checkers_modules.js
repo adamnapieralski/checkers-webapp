@@ -25,6 +25,8 @@ myAppControllers.controller('gameController',
 			$scope.loadBoard();
 			$scope.printUserData();
 			if (!$scope.isUserTurn) {
+				$scope.turn = 'komputera';
+				console.log($scope.turn);
 				$timeout(function() {
 					$scope.makeComputerMove();
 				}, 1200)
@@ -35,6 +37,7 @@ myAppControllers.controller('gameController',
 			console.log('Source: ' + source)
 			console.log('Target: ' + target)
 			move = { 'source' : source, 'destination' : target }
+
 			srvInfo.processUserMove(move,
 				function(data) {
 					$scope.currentFEN = data.data.fen;
@@ -56,6 +59,8 @@ myAppControllers.controller('gameController',
 			console.log($scope.cAK);
 
 			if (!$scope.isInMultipleMove) {
+				$scope.turn = 'komputera';
+				console.log($scope.turn);
 				$timeout(function() {
 					$scope.makeComputerMove();
 				}, 1200)
@@ -102,9 +107,21 @@ myAppControllers.controller('gameController',
 			console.log($scope.cAP);
 			console.log($scope.uAK);
 			console.log($scope.cAK);
+			if($scope.isUserTurn){
+				$scope.turn = 'gracza';
+			}
+			else{
+				$scope.turn = 'komputera';
+			}
 		}
 
 		$scope.makeComputerMove = function() {
+			if($scope.isUserTurn){
+				$scope.turn = 'gracza';
+			}
+			else{
+				$scope.turn = 'komputera';
+			}
 			srvInfo.makeComputerMove(
 				function(data) {
 					$scope.currentFEN = data.data.fen;
@@ -122,6 +139,7 @@ myAppControllers.controller('gameController',
 			console.log($scope.uAK);
 			console.log($scope.cAK);
 		}
+
 }]);
 	
 
