@@ -18,12 +18,17 @@ myAppControllers.controller('entryController',
 }]);
 
 myAppControllers.controller('gameController',
-	['$scope', 'srvInfo',
-		function ($scope, srvInfo) {
+	['$scope', 'srvInfo', '$timeout',
+		function ($scope, srvInfo, $timeout) {
 
 		angular.element(function() {
 			$scope.loadBoard();
 			$scope.printUserData();
+			if (!$scope.isUserTurn) {
+				$timeout(function() {
+					$scope.makeComputerMove();
+				}, 1200)
+			}
 		});
 		
 		$scope.onPieceDrop = function(source, target) {
@@ -33,11 +38,19 @@ myAppControllers.controller('gameController',
 			srvInfo.processUserMove(move,
 				function(data) {
 					$scope.currentFEN = data.data.fen;
+					$scope.isUserTurn = data.data.isUserTurn
+					$scope.isInMultipleMove = data.data.isInMultipleMove
+
 					console.log($scope.currentFEN)
 					$scope.boardConfig.position = $scope.currentFEN;
 					$scope.board = Chessboard('board', $scope.boardConfig);
 				}
 			)
+			if (!$scope.isInMultipleMove) {
+				$timeout(function() {
+					$scope.makeComputerMove();
+				}, 1200)
+			}
 		}
 
 		$scope.boardConfig = {
@@ -64,6 +77,8 @@ myAppControllers.controller('gameController',
 			srvInfo.getGameState (
 				function(data) {
 					$scope.currentFEN = data.data.fen;
+					$scope.isUserTurn = data.data.isUserTurn
+					$scope.isInMultipleMove = data.data.isInMultipleMove
 					$scope.boardConfig.position = $scope.currentFEN;
 					$scope.board = Chessboard('board', $scope.boardConfig);
 				}
