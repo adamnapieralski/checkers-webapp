@@ -18,7 +18,7 @@ myAppControllers.controller('entryController',
 }]);
 
 myAppControllers.controller('gameController',
-	['$scope', 'srvInfo', '$timeout',
+	['$scope', 'srvInfo', '$timeout', '$window',
 		function ($scope, srvInfo, $timeout) {
 
 		angular.element(function() {
@@ -32,8 +32,16 @@ myAppControllers.controller('gameController',
 				}, 1200)
 			}
 		});
+
+		$scope.reloadPage = function() {
+			srvInfo.initializeGame($scope.isUserWhite);
+			$windnow.location.reload();
+		}
 		
 		$scope.onPieceDrop = function(source, target) {
+			$scope.turn = 'gracza';
+			console.log($scope.turn)
+
 			console.log('Source: ' + source)
 			console.log('Target: ' + target)
 			move = { 'source' : source, 'destination' : target }
@@ -57,6 +65,7 @@ myAppControllers.controller('gameController',
 			console.log($scope.cAP);
 			console.log($scope.uAK);
 			console.log($scope.cAK);
+			console.log($scope.ifEnd);
 
 			if (!$scope.isInMultipleMove) {
 				$scope.turn = 'komputera';
@@ -101,12 +110,16 @@ myAppControllers.controller('gameController',
 					$scope.uAK = data.data.uAK;
 					$scope.cAK = data.data.cAK;
 					$scope.ifEnd = data.data.isEnd;
+					/*$scope.$apply(function(){
+						$scope.ifEnd = data.data.isEnd;
+					});*/
 				}
 			)
 			console.log($scope.uAP);
 			console.log($scope.cAP);
 			console.log($scope.uAK);
 			console.log($scope.cAK);
+			console.log($scope.ifEnd);
 			if($scope.isUserTurn){
 				$scope.turn = 'gracza';
 			}
@@ -132,13 +145,18 @@ myAppControllers.controller('gameController',
 					$scope.uAK = data.data.uAK;
 					$scope.cAK = data.data.cAK;
 					$scope.ifEnd = data.data.isEnd;
+
 				}
 			)
 			console.log($scope.uAP);
 			console.log($scope.cAP);
 			console.log($scope.uAK);
 			console.log($scope.cAK);
+			console.log($scope.ifEnd);
+			$scope.turn = 'gracza';
+			console.log($scope.turn)
 		}
+
 
 }]);
 	

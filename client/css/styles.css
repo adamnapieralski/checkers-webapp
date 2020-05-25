@@ -12,7 +12,6 @@ body {
 	border-radius: 5px;
 	background-color: #d7cec7;
 	padding: 15px;
-	box-sizing: border-box;
 	position: relative;
 }
 
@@ -123,6 +122,7 @@ div.coded_error{
 
 .left, .right {
 	width: 25%;
+	height: 600px;
 }
 
 .middle {
