@@ -22,6 +22,7 @@ myAppControllers.controller('gameController',
 		function ($scope, srvInfo, $timeout) {
 
 		angular.element(function() {
+			$scope.ifEnd = false; //moze apply?
 			$scope.loadBoard();
 			$scope.printUserData();
 			if (!$scope.isUserTurn) {
