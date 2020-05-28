@@ -11,7 +11,11 @@ myAppControllers.controller('entryController',
 					document.getElementById('userNameText').style.borderColor = 'red';
 				}
 				else {
-					srvInfo.initializeGame($scope.isUserWhite);
+					userData = {
+						"name" : document.getElementById('userNameText').value,
+						"isWhite" : !document.getElementById('userColorSwitch').checked,
+					}
+					srvInfo.initializeGame(userData);
 					window.location = "/play";
 				}
 			};
@@ -19,7 +23,7 @@ myAppControllers.controller('entryController',
 
 myAppControllers.controller('gameController',
 	['$scope', 'srvInfo', '$timeout', '$window',
-		function ($scope, srvInfo, $timeout) {
+		function ($scope, srvInfo, $timeout, $window) {
 
 		angular.element(function() {
 			$scope.ifEnd = false; //moze apply?
@@ -35,8 +39,14 @@ myAppControllers.controller('gameController',
 		});
 
 		$scope.reloadPage = function() {
-			srvInfo.initializeGame($scope.isUserWhite);
-			$windnow.location.reload();
+			let isWhite = true;
+			if ($scope.userColor == "black") isWhite = false;
+			let userData = {
+				"name" : $scope.userName,
+				"isWhite" : isWhite,
+			}
+			srvInfo.initializeGame(userData);
+			$window.location.reload();
 		}
 		
 		$scope.onPieceDrop = function(source, target) {
@@ -89,6 +99,8 @@ myAppControllers.controller('gameController',
 			console.log("Printing user data");
 			srvInfo.getUserData(
 				function(data) {
+					$scope.userName = data.data.user_name;
+					$scope.userColor = data.data.user_color;
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
 					$scope.compColorView = data.data.comp_name;
@@ -169,8 +181,8 @@ angular.module('myAppServices', [])
 
 				 this.initializeGame = function(data) {
 					return $http.get('/ajax/checkerspy/initialize/?user_name='
-					+ document.getElementById('userNameText').value + '&is_user_white='
-					+ !document.getElementById('userColorSwitch').checked); 
+					+ data.name + '&is_user_white='
+					+ data.isWhite); 
 				 };
 				 this.getUserData = function(callback) {
 					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
