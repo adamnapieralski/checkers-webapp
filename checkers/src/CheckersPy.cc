@@ -34,6 +34,7 @@ BOOST_PYTHON_MODULE(checkers)
         .def_readonly("cAP", &GameState::cAP)
         .def_readonly("cAK", &GameState::cAK)
         .def_readonly("hasGameEnded", &GameState::hasGameEnded)
+        .def_readonly("hasUserWon", &GameState::hasGameEnded)
     ;
 
 }
