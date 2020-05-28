@@ -47,6 +47,8 @@
 		</div><br>
 		<div class ="endGame" ng-show= "ifEnd" style ="width: 95%; margin: 0px 2.5%; text-align: center;">
 			Koniec gry <br>
+			<span id ='won' ng-show='!userWon'>Wygrales!</span>
+			<span id ='nowon' ng-show='userWon'>Przegrales!</span>
 			<button type = "button" ng-click="reloadPage()">Zagraj jeszcze raz!</button>
 		</div>
 	</div>

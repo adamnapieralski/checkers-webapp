@@ -40,7 +40,8 @@ def get_game_state(params):
 	    'cAP' : game_state.cAP, 
 	    'uAK' : game_state.uAK,
 	    'cAK' : game_state.cAK ,
-	    'isEnd' : game_state.hasGameEnded
+	    'isEnd' : game_state.hasGameEnded,
+        'userWon' : game_state.hasUserWon
     }
 
 def process_user_move(params):
@@ -53,7 +54,8 @@ def process_user_move(params):
 	    'cAP' : game_state.cAP, 
 	    'uAK' : game_state.uAK,
 	    'cAK' : game_state.cAK ,
-	    'isEnd' : game_state.hasGameEnded
+	    'isEnd' : game_state.hasGameEnded,
+        'userWon' : game_state.hasUserWon
     }
 
 def make_computer_move(params):
@@ -66,5 +68,6 @@ def make_computer_move(params):
 	    'cAP' : game_state.cAP, 
 	    'uAK' : game_state.uAK,
 	    'cAK' : game_state.cAK ,
-	    'isEnd' : game_state.hasGameEnded
+	    'isEnd' : game_state.hasGameEnded,
+        'userWon' : game_state.hasUserWon
     }
