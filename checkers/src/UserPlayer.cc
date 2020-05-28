@@ -17,6 +17,11 @@ UserPlayer::UserPlayer(bool isWhite, std::string name) : Player(isWhite) {
 }
 
 void UserPlayer::initializePieces(Board& board){
+    if( this -> pieces_.size() > 0 ){
+        for (auto& piece : pieces_){
+            erasePiece(piece);
+        }
+    }
     for (int i = 0; i < INIT_ROW; ++i){
         for(int j = 0; j < BOARD_SIZE; ++j) {
             if ((i + j) % 2 == 0) {
