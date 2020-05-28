@@ -16,7 +16,13 @@
 #include "AIPlayer.h"
 #include "Board.h"
 
+enum Score {
+	IN_PROGRESS, USER_WON, USER_LOST, DRAW
+};
+
 struct GameState {
+	std::string userName;
+	bool isUserWhite;
 	std::string boardFEN;
 	bool isUserTurn;
 	int uAP=12, uAK=0, uBP=0, uBK=0; // user's/copmuter's Alive/Beaten Pawns/Kings
@@ -25,6 +31,8 @@ struct GameState {
 	bool hasUserWon;
 	Move lastMove;
 	bool isInMultipleMove;
+	int nonCaptureSequence;
+	Score score;
 };
 
 class Checkers {
@@ -40,6 +48,7 @@ public:
 	GameState getGameState() const;
 
 	void updateState(const Move& lastMove, bool hasMoreMoves=false);
+	void updateScore();
 
 	// GameState processUserMove(GameState state);
 	GameState processUserMove(std::string origin, std::string destination);

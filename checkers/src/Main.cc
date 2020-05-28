@@ -6,7 +6,6 @@
 #include "Board.h"
 #include "King.h"
 #include "Pawn.h"
-#include "GameTree.h"
 
 int main() {
  
@@ -59,11 +58,12 @@ int main() {
 
 
     auto ch = Checkers::getInstance();
-    ch.fenInitialize("8/4P3/1p6/8/8/8/8/8", "Willy Wonka", true, true);
-    auto state = ch.processUserMove("e7", "d8");
-    std::cout << ch.getBoard() << std::endl;
-    state = ch.processUserMove("d8", "a5");
-    std::cout << ch.getBoard() << std::endl;
+    // ch.fenInitialize("8/4P3/1p6/8/8/8/8/8", "Willy Wonka", true, true);
+    ch.initialize("Maciej", true);
+    auto state = ch.processUserMove("c3", "c4");
+    std::cout << state.boardFEN << std::endl;
+    state = ch.processUserMove("e3", "f4");
+    std::cout << state.boardFEN << std::endl;
 
 
     return 0;

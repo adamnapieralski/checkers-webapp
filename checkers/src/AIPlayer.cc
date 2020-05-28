@@ -134,35 +134,3 @@ Move AIPlayer::makeMinmaxMove(UserPlayer& user, Board& board){
     movePiece(board, user, t);
     return t;
 }
-
-// GameTree AIPlayer::getGameTree(const UserPlayer &user, const Board &board) {
-//     GameTree tree = GameTree(board);
-//     AIPlayer computer = (*this); //konstruktor kopiujacy dla AIPlayer
-//     fillTree(computer,user, tree, 0, board, false);    
-//     return tree;
-// }
-
-// void AIPlayer::fillTree(AIPlayer computer,UserPlayer user, GameTree &tree, int depth, Board board, bool ifUser){
-//     std::vector<std::vector<Move>> valid_moves;
-//     Board temp = board;
-//     AIPlayer temp_comp = computer;
-//     UserPlayer temp_user = user;
-//     if(depth == 3){
-//         tree.changeCurrentHeadToParent();
-//         return;
-//     }
-
-//     if (!ifUser){
-//         valid_moves = computer.getValidMoves(board);
-//         for (auto& row : valid_moves){
-//             for (auto& column : row){
-//                 computer.movePiece(board, user, column);
-//                 tree.addChildren(column, board);
-//                 fillTree(computer, user, tree, depth + 1, board, !ifUser);
-//                 board = temp;
-//                 computer = temp_comp;
-//                 user = temp_user;
-//             }
-//         }
-//     }
-// }

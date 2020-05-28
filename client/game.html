@@ -28,27 +28,27 @@
 		<br>
 		<div class="row own-div" style="width: 95%; margin: 0px 2.5%" ng-controller="gameController">
 		<div class ="game" style ="width: 95%; margin: 0px 2.5%">
-			<div class="turn_info" style="text-align: center" >Ruch <span id="turn" ng-bind="turn"></span></div><br>
+			<div class="turn_info" style="text-align: center" >Ruch <span id="turn" ng-bind="turnOwnerName"></span></div><br>
 			<div class="column left" style ="height: 600px" >
-				<span id="userNameView"></span><br><br>
-				<span id="userColorView"></span><br>
-				Liczba pionkow: <span id="uAP" ng-bind="uAP"></span><br>
-				Liczba damek: <span id="uAK" ng-bind="uAK"></span><br>
+				<span id="userNameView" ng-bind="gameData.userName"></span><br><br>
+				Kolor: <span id="userColorView" ng-bind="gameData.userColorString"></span><br>
+				Liczba pionkow: <span id="uAP" ng-bind="gameData.uAP"></span><br>
+				Liczba damek: <span id="uAK" ng-bind="gameData.uAK"></span><br>
 			</div>
 			<div class="column middle">
 				<div id="board" style="width: 70%; margin: 0 auto" ng-init="loadBoard()"></div>
 			</div>
 			<div class="column right" style ="height: 600px">
 				Komputer<br><br>
-				<span id="compColorView" ng-bind = "compColorView"></span><br>
-				Liczba pionkow: <span id="cAP" ng-bind="cAP" ></span><br>
-				Liczba damek: <span id="cAK" ng-bind="cAK" ></span><br>
+				Kolor: <span id="compColorView" ng-bind="gameData.compColorString"></span><br>
+				Liczba pionkow: <span id="cAP" ng-bind="gameData.cAP" ></span><br>
+				Liczba damek: <span id="cAK" ng-bind="gameData.cAK" ></span><br>
 			</div><br>
 		</div><br>
-		<div class ="endGame" ng-show= "ifEnd" style ="width: 95%; margin: 0px 2.5%; text-align: center;">
+		<!-- <div class ="endGame" ng-show= "gameData.isFinished" style ="width: 95%; margin: 0px 2.5%; text-align: center;">
 			Koniec gry <br>
 			<button type = "button" ng-click="reloadPage()">Zagraj jeszcze raz!</button>
-		</div>
+		</div> -->
 	</div>
     </body>
 </html>
