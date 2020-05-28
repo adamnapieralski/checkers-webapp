@@ -1,0 +1,9 @@
+<map id="checkers/src/AIPlayer.h" name="checkers/src/AIPlayer.h">
+<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="219,155,290,181"/>
+<area shape="rect" id="node13" href="$_game_tree_8h.html" title="Source file for GameTree class, representing the game tree for minimax alfa beta algorithm. " alt="" coords="363,229,458,256"/>
+<area shape="rect" id="node14" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing AI player. " alt="" coords="205,80,304,107"/>
+<area shape="rect" id="node5" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="221,229,288,256"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="151,304,217,331"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="239,453,319,480"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="282,379,347,405"/>
+</map>

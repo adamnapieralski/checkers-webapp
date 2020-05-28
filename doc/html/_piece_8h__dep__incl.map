@@ -1,0 +1,17 @@
+<map id="checkers/src/Piece.h" name="checkers/src/Piece.h">
+<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="797,80,946,107"/>
+<area shape="rect" id="node12" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="928,155,1073,181"/>
+<area shape="rect" id="node14" href="$_piece_8cc.html" title="Source file for abstract Piece class, representing piece. " alt="" coords="1279,229,1431,256"/>
+<area shape="rect" id="node15" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="1127,155,1266,181"/>
+<area shape="rect" id="node3" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="426,229,589,256"/>
+<area shape="rect" id="node9" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing AI player. " alt="" coords="419,155,596,181"/>
+<area shape="rect" id="node11" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="923,229,1079,256"/>
+<area shape="rect" id="node4" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="664,304,833,331"/>
+<area shape="rect" id="node5" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="210,304,378,331"/>
+<area shape="rect" id="node8" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="433,379,582,405"/>
+<area shape="rect" id="node6" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="220,379,395,405"/>
+<area shape="rect" id="node7" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="5,379,196,405"/>
+<area shape="rect" id="node10" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="714,229,898,256"/>
+<area shape="rect" id="node13" href="$_pawn_8cc.html" title="Source file for Pawn class, representing pawn piece. " alt="" coords="1103,229,1255,256"/>
+<area shape="rect" id="node16" href="$_king_8cc.html" title="Source file for King class, representing king piece. " alt="" coords="1557,229,1703,256"/>
+</map>

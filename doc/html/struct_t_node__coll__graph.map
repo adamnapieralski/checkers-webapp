@@ -1,0 +1,4 @@
+<map id="TNode" name="TNode">
+<area shape="rect" id="node2" href="$class_move.html" title="Move" alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node3" href="$class_board.html" title="Board" alt="" coords="85,5,141,32"/>
+</map>
