@@ -82,17 +82,6 @@ myAppControllers.controller('gameController',
 				}, 1200)
 			}
 		});
-
-		$scope.reloadPage = function() {
-			let isWhite = true;
-			if ($scope.userColor == "black") isWhite = false;
-			let userData = {
-				"name" : $scope.userName,
-				"isWhite" : isWhite,
-			}
-			srvInfo.initializeGame(userData);
-			$window.location.reload();
-		};
 		
 		$scope.onPieceDrop = function(source, target) {
 			move = { 'source' : source, 'destination' : target }
