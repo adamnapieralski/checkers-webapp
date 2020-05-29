@@ -6,6 +6,7 @@ game = checkers.Checkers.getInstance()
 
 # initialize_fen = "8/4P3/8/4p3/5P2/2k5/1P6/8"
 # initialize_fen = "8/4P3/8/3p4/3k1P2/8/1P6/8"
+# initialize_fen = "1p5p/p7/3p1p2/8/3p4/4P3/8/2P1P1P1"
 
 def initialize(params):
     user_name = str(params['user_name'])
@@ -14,21 +15,6 @@ def initialize(params):
         is_user_white = False
     game.initialize(user_name, is_user_white)
     # game.fenInitialize(initialize_fen, user_name, is_user_white, True)
-
-def get_user_data(params):
-    color = ""
-    if game.getIsUserWhite() == True:
-        color = "bialy"
-        color_comp = 'czarny'
-    else:
-        color = "czarny"
-        color_comp = "bialy"
-
-    return {
-        'user_name': game.getUserName(),
-        'user_color': color,
-        'comp_name' : color_comp
-    }
 
 def get_game_state(params):
     game_state = game.getGameState()

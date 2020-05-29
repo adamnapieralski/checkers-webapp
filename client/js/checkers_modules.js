@@ -172,9 +172,6 @@ angular.module('myAppServices', [])
 					+ data.name + '&is_user_white='
 					+ data.isWhite); 
 				 };
-				 this.getUserData = function(callback) {
-					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
-				 };
 				 this.getGameState = function(callback) {
 					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 
 				 };

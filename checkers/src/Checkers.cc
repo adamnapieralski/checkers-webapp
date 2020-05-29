@@ -50,6 +50,17 @@ void Checkers::fenInitialize(std::string fen, std::string userName, bool isUserW
 	state_.boardFEN = fen;
 	state_.isUserTurn = isUserTurn;
 
+	state_.userName = userName;
+	state_.isUserWhite = isUserWhite;
+	state_.boardFEN = board_.getFEN();
+	state_.nonCaptureSequence = 0;
+	state_.score = Score::IN_PROGRESS;
+	state_.hasGameEnded = false;
+	state_.isInMultipleMove = false;
+	state_.uAP = userPlayer_.getNumberOfPawns(board_);
+	state_.cAP = compPlayer_.getNumberOfPawns(board_);
+	state_.uAK = userPlayer_.getNumberOfKings(board_);
+	state_.cAK = compPlayer_.getNumberOfKings(board_);
 }
 
 
@@ -60,7 +71,6 @@ void Checkers::updateState(const Move& lastMove, bool hasMoreMoves) {
 	state_.uAK = userPlayer_.getNumberOfKings(board_);
 	state_.cAK = compPlayer_.getNumberOfKings(board_);
 	state_.lastMove = lastMove;
-	state_.hasGameEnded = checkIfEndGame();
 	state_.isInMultipleMove = hasMoreMoves;
 
 	if (lastMove.getCapturedPositions().empty()) {
@@ -118,42 +128,9 @@ GameState Checkers::makeComputerMove() {
 	return state_;
 }
 
-bool Checkers::getIsUserWhite() { return userPlayer_.isWhite(); }
-
-std::string Checkers::getUserName() { return userPlayer_.getName(); }
-
-bool Checkers::checkIfEndGame(){
-	if(userPlayer_.getPieces().size() == 0) {
-		state_.hasUserWon = false;
-		return true;
-	}
-
-	else if(compPlayer_.getPieces().size() == 0) {
-		state_.hasUserWon = true;
-		return true;
-	}
-
-	else if(state_.isUserTurn){
-		std::vector<std::vector<Move>> moves = userPlayer_.getValidMoves(board_);
-		if(moves.empty()){
-			state_.hasUserWon = false;
-			return true;
-		}
-	}
-
-	else if(!state_.isUserTurn){
-		std::vector<std::vector<Move>> moves = compPlayer_.getValidMoves(board_);
-		if(moves.empty()){
-			state_.hasUserWon = true;
-			return true;
-		}
-	}
-	
-	return false;
-}
-
 void Checkers::updateScore() {
 	// both users made 15 moves with no capture
+	state_.hasGameEnded = true;
 	if (state_.nonCaptureSequence == 30) {
 		state_.score = Score::DRAW;
 	}
@@ -169,5 +146,8 @@ void Checkers::updateScore() {
 
 	else if(!state_.isUserTurn && compPlayer_.getValidMoves(board_).empty()){
 		state_.score = Score::USER_WON;
+	}
+	else {
+		state_.hasGameEnded = false;
 	}
 }

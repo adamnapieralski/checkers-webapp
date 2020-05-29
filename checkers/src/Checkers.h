@@ -41,25 +41,19 @@ public:
 	
 	void initialize(std::string userName, bool isUserWhite);
 	void fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn);
-	bool getIsUserWhite();
-	std::string getUserName();
-	bool checkIfEndGame();
 
 	GameState getGameState() const;
 
 	void updateState(const Move& lastMove, bool hasMoreMoves=false);
 	void updateScore();
 
-	// GameState processUserMove(GameState state);
 	GameState processUserMove(std::string origin, std::string destination);
 	GameState makeComputerMove();
-	//GameState processUserMove(std::string org, std::string dest);
+
 	Board getBoard() const;
 
 private:
 	Checkers();
-	// Checkers(const Checkers&) = delete;
-	// Checkers& operator=(const Checkers&) = delete;
 
 	UserPlayer userPlayer_;
 	AIPlayer compPlayer_;
