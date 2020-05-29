@@ -67,7 +67,6 @@ myAppControllers.controller('gameController',
 			else {
 				$scope.gameData.turnOwnerName = "komputera";
 			}
-			console.log($scope.gameData.isEnded);
 		};
 
 		angular.element(function() {
@@ -75,7 +74,7 @@ myAppControllers.controller('gameController',
 			$scope.gameData.isEnded = false;
 			$scope.turnOwnerName = "gracza";
 			$scope.loadBoard();
-			if (!$scope.isUserTurn) {
+			if ($scope.isUserTurn === false) {
 				$scope.turnOwnerName = "komputera";
 				$timeout(function() {
 					$scope.makeComputerMove();
@@ -92,7 +91,8 @@ myAppControllers.controller('gameController',
 				}
 			)
 			$scope.$digest();
-			if (!$scope.isInMultipleMove) {
+
+			if ($scope.gameData.isInMultipleMove === false || $scope.gameData.isEnded === false) {
 				$timeout(function() {
 					$scope.makeComputerMove();
 				}, 1200)
@@ -116,11 +116,13 @@ myAppControllers.controller('gameController',
 		}
 
 		$scope.makeComputerMove = function() {
-			srvInfo.makeComputerMove(
-				function(data) {
-					$scope.updateGameData(data);
-				}
-			)
+			if (!$scope.gameData.isEnded) {
+				srvInfo.makeComputerMove(
+					function(data) {
+						$scope.updateGameData(data);
+					}
+				)
+			}
 			$scope.$digest();
 		}
 
