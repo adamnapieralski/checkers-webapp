@@ -10,7 +10,6 @@
 #define AIPLAYER_H
 
 #include "Player.h"
-#include "GameTree.h"
 #include "UserPlayer.h"
 
 class AIPlayer : public Player {
@@ -21,8 +20,6 @@ public:
     void initializePiecesFromBoard(Board& board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
 
-    // GameTree getGameTree(const UserPlayer &user, const Board &board);
-    // void fillTree(AIPlayer computer, UserPlayer user, GameTree &tree, int depth, Board board, bool ifUser);
     Move minmax(AIPlayer computer, UserPlayer user, Board board);
     Move makeMinmaxMove(UserPlayer& user, Board& board);
 

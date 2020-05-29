@@ -439,23 +439,12 @@ BOOST_AUTO_TEST_CASE(checkersInit) {
     auto ch = Checkers::getInstance();
     ch.initialize("Adam", false);
     BOOST_REQUIRE(ch.getGameState().boardFEN == initBlack);
-    BOOST_CHECK(ch.getUserName() == "Adam" );
+    BOOST_CHECK(ch.getGameState().userName == "Adam" );
     ch.initialize("Bartek", true);
     BOOST_REQUIRE(ch.getGameState().boardFEN == initWhite);
 
     ch.fenInitialize("8/2k5/8/4p3/8/2P3P1/8/4K3", "Jim", true, true);
     BOOST_CHECK(ch.getGameState().boardFEN == "8/2k5/8/4p3/8/2P3P1/8/4K3");
-    // checkers.processUserMove("c3", "d4");
-    // std::cout << checkers.getBoard() << std::endl;
-    // checkers.makeComputerMove();
-    // std::cout << checkers.getBoard() << std::endl;
-    // checkers.processUserMove("d4", "e5");
-    // checkers.processUserMove("d2", "c3");
-    // checkers.makeComputerMove();
-    // checkers.processUserMove("c3", "b4");
-    // checkers.makeComputerMove();
-    // checkers.processUserMove("b2", "c3");   
-    // checkers.processUserMove("c3", "d4");
 }
 
 BOOST_AUTO_TEST_CASE(checkersGame) {
