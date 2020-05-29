@@ -74,7 +74,7 @@ myAppControllers.controller('gameController',
 			$scope.gameData.isEnded = false;
 			$scope.turnOwnerName = "gracza";
 			$scope.loadBoard();
-			if ($scope.isUserTurn === false) {
+			if ($scope.gameData.isUserTurn === false) {
 				$scope.turnOwnerName = "komputera";
 				$timeout(function() {
 					$scope.makeComputerMove();
