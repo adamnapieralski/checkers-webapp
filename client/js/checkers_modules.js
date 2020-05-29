@@ -11,11 +11,7 @@ myAppControllers.controller('entryController',
 					document.getElementById('userNameText').style.borderColor = 'red';
 				}
 				else {
-					userData = {
-						"name" : document.getElementById('userNameText').value,
-						"isWhite" : !document.getElementById('userColorSwitch').checked,
-					}
-					srvInfo.initializeGame(userData);
+					srvInfo.initializeGame($scope.isUserWhite);
 					window.location = "/play";
 				}
 			};
@@ -39,13 +35,8 @@ myAppControllers.controller('gameController',
 		});
 
 		$scope.reloadPage = function() {
-			let isWhite = true;
-			if ($scope.userColor == "black") isWhite = false;
-			let userData = {
-				"name" : $scope.userName,
-				"isWhite" : isWhite,
-			}
-			srvInfo.initializeGame(userData);
+			srvInfo.initializeGame($scope.isUserWhite);
+			$scope.loadBoard();
 			$window.location.reload();
 		}
 		
@@ -70,6 +61,7 @@ myAppControllers.controller('gameController',
 					$scope.uAK = data.data.uAK;
 					$scope.cAK = data.data.cAK;
 					$scope.ifEnd = data.data.isEnd;
+					$scope.userWon = data.data.userWon;
 				}
 			)
 			console.log($scope.uAP);
@@ -99,8 +91,6 @@ myAppControllers.controller('gameController',
 			console.log("Printing user data");
 			srvInfo.getUserData(
 				function(data) {
-					$scope.userName = data.data.user_name;
-					$scope.userColor = data.data.user_color;
 					document.getElementById('userNameView').textContent = data.data.user_name;
 					document.getElementById('userColorView').textContent = data.data.user_color;
 					$scope.compColorView = data.data.comp_name;
@@ -123,6 +113,7 @@ myAppControllers.controller('gameController',
 					$scope.uAK = data.data.uAK;
 					$scope.cAK = data.data.cAK;
 					$scope.ifEnd = data.data.isEnd;
+					$scope.userWon = data.data.userWon;
 					/*$scope.$apply(function(){
 						$scope.ifEnd = data.data.isEnd;
 					});*/
@@ -158,6 +149,7 @@ myAppControllers.controller('gameController',
 					$scope.uAK = data.data.uAK;
 					$scope.cAK = data.data.cAK;
 					$scope.ifEnd = data.data.isEnd;
+					$scope.userWon = data.data.userWon;
 
 				}
 			)
@@ -181,8 +173,8 @@ angular.module('myAppServices', [])
 
 				 this.initializeGame = function(data) {
 					return $http.get('/ajax/checkerspy/initialize/?user_name='
-					+ data.name + '&is_user_white='
-					+ data.isWhite); 
+					+ document.getElementById('userNameText').value + '&is_user_white='
+					+ !document.getElementById('userColorSwitch').checked); 
 				 };
 				 this.getUserData = function(callback) {
 					return $http.get('/ajax/checkerspy/get_user_data/').then(callback); 
