@@ -7,6 +7,8 @@ game = checkers.Checkers.getInstance()
 # initialize_fen = "8/4P3/8/4p3/5P2/2k5/1P6/8"
 # initialize_fen = "8/4P3/8/3p4/3k1P2/8/1P6/8"
 # initialize_fen = "1p5p/p7/3p1p2/8/3p4/4P3/8/2P1P1P1"
+# initialize_fen = "8/8/5p2/2p5/1P1P1P2/8/8/8" # wygrana
+# initialize_fen = "8/4k3/8/8/8/8/1K6/8" # remis
 
 def initialize(params):
     user_name = str(params['user_name'])
