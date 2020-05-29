@@ -33,13 +33,15 @@ myAppControllers.controller('gameController',
 			compColorString : "czarny",
 			fen : "",
 			isUserTurn : true,
+			turnOwnerName: "gracza",
 			isInMultipleMove : false,
 			uAP : 12,
 			cAP : 12,
 			uAK : 0,
 			cAK : 0,
-		 	isFinished : false,
+		 	isEnded : false,
 			score : $scope.scoreStates[0],
+			endText : "",
 		};
 
 		$scope.updateGameData = function(data) {
@@ -52,28 +54,28 @@ myAppControllers.controller('gameController',
 			$scope.gameData.cAP = data.data.cAP;
 			$scope.gameData.uAK = data.data.uAK;
 			$scope.gameData.cAK = data.data.cAK;
-			$scope.gameData.isFinished = data.data.isEnd;
+			$scope.gameData.isEnded = data.data.isEnd;
 			$scope.gameData.score = $scope.scoreStates[data.data.score];
 
 			$scope.boardConfig.position = $scope.gameData.fen;
 			$scope.board = Chessboard('board', $scope.boardConfig);
-			// console.log("user turn");
-			// console.log($scope.gameData.isUserTurn)
-			// console.log($scope.gameData.isFinished)
-			// console.log($scope.gameData.score)
 
 			$scope.checkIfFinished();
+			if ($scope.gameData.isUserTurn) {
+				$scope.gameData.turnOwnerName = "gracza";
+			}
+			else {
+				$scope.gameData.turnOwnerName = "komputera";
+			}
+			console.log($scope.gameData.isEnded);
 		};
 
 		angular.element(function() {
 			$scope.boardConfig.draggable = true;
-			$scope.gameData.isFinished = false;
+			$scope.gameData.isEnded = false;
 			$scope.turnOwnerName = "gracza";
-			// $scope.ifEnd = false; //moze apply?
 			$scope.loadBoard();
-			// $scope.printUserData();
 			if (!$scope.isUserTurn) {
-				// $scope.turn = 'komputera';
 				$scope.turnOwnerName = "komputera";
 				$timeout(function() {
 					$scope.makeComputerMove();
@@ -93,29 +95,15 @@ myAppControllers.controller('gameController',
 		};
 		
 		$scope.onPieceDrop = function(source, target) {
-			// $scope.turn = 'gracza';
-
 			move = { 'source' : source, 'destination' : target }
 
 			srvInfo.processUserMove(move,
 				function(data) {
 					$scope.updateGameData(data);
-					// console.log($scope.gameData.fen)
-					// $scope.currentFEN = data.data.fen;
-					// $scope.isUserTurn = data.data.isUserTurn
-					// $scope.isInMultipleMove = data.data.isInMultipleMove
-					// $scope.boardConfig.position = $scope.currentFEN;
-					// $scope.board = Chessboard('board', $scope.boardConfig);
-					// $scope.uAP = data.data.uAP;
-					// $scope.cAP = data.data.cAP;
-					// $scope.uAK = data.data.uAK;
-					// $scope.cAK = data.data.cAK;
-					// $scope.ifEnd = data.data.isEnd;
 				}
 			)
 			$scope.$digest();
 			if (!$scope.isInMultipleMove) {
-				$scope.turn = 'komputera';
 				$timeout(function() {
 					$scope.makeComputerMove();
 				}, 1200)
@@ -130,157 +118,47 @@ myAppControllers.controller('gameController',
 
 		$scope.board = Chessboard('board', $scope.boardConfig);
 
-		// $scope.printUserData = function() {
-		// 	console.log("Printing user data");
-		// 	srvInfo.getUserData(
-		// 		function(data) {
-		// 			$scope.userName = data.data.user_name;
-		// 			$scope.userColor = data.data.user_color;
-		// 			document.getElementById('userNameView').textContent = data.data.user_name;
-		// 			document.getElementById('userColorView').textContent = data.data.user_color;
-		// 			$scope.compColorView = data.data.comp_name;
-		// 		}
-		// 	)
-		// }
-
 		$scope.loadBoard = function() {
-			$scope.gameData.isFinished = false;
 			srvInfo.getGameState (
 				function(data) {
 					$scope.updateGameData(data);
-					// $scope.gameData.fen = data.data.fen;
-					// $scope.gameData.isUserTurn = data.data.isUserTurn;
-					// $scope.gameData.isInMultipleMove = data.data.isInMultipleMove;
-					// $scope.gameData.uAP = data.data.uAP;
-					// $scope.gameData.cAP = data.data.cAP;
-					// $scope.gameData.uAK = data.data.uAK;
-					// $scope.gameData.cAK = data.data.cAK;
-					// $scope.isFinished = data.data.isEnd;
-
-
-					// $scope.boardConfig.position = $scope.currentFEN;
-					// $scope.board = Chessboard('board', $scope.boardConfig);
-
-
-
-					// $scope.currentFEN = data.data.fen;
-					// $scope.isUserTurn = data.data.isUserTurn
-					// $scope.isInMultipleMove = data.data.isInMultipleMove
-					// $scope.boardConfig.position = $scope.currentFEN;
-					// $scope.board = Chessboard('board', $scope.boardConfig);
-					// $scope.uAP = data.data.uAP;
-					// $scope.cAP = data.data.cAP;
-					// $scope.uAK = data.data.uAK;
-					// $scope.cAK = data.data.cAK;
-					// $scope.ifEnd = data.data.isEnd;
-
-					/*$scope.$apply(function(){
-						$scope.ifEnd = data.data.isEnd;
-					});*/
 				}
 			)
-			// if($scope.isUserTurn){
-			// 	$scope.turn = 'gracza';
-			// }
-			// else{
-			// 	$scope.turn = 'komputera';
-			// }
 		}
 
 		$scope.makeComputerMove = function() {
-			// if($scope.isUserTurn){
-			// 	$scope.turn = 'gracza';
-			// }
-			// else{
-			// 	$scope.turn = 'komputera';
-			// }
 			srvInfo.makeComputerMove(
 				function(data) {
 					$scope.updateGameData(data);
-					// $scope.currentFEN = data.data.fen;
-					// $scope.boardConfig.position = $scope.currentFEN;
-					// $scope.board = Chessboard('board', $scope.boardConfig);
-					// $scope.uAP = data.data.uAP;
-					// $scope.cAP = data.data.cAP;
-					// $scope.uAK = data.data.uAK;
-					// $scope.cAK = data.data.cAK;
-					// $scope.ifEnd = data.data.isEnd;
-
 				}
 			)
 			$scope.$digest();
-			// $scope.turn = 'gracza';
-			// $scope.$digest();
 		}
 
 		$scope.checkIfFinished = function() {
-			if ($scope.gameData.isFinished && $scope.gameData.score != "IN_PROGRESS") {
-				$scope.gameData.isFinished = false;
+			if ($scope.gameData.isEnded && $scope.gameData.score != "IN_PROGRESS") {
+				// $scope.gameData.isEnded = false;
 				$scope.boardConfig.draggable = false;
 				$scope.board = Chessboard('board', $scope.boardConfig);
 				let confirmText = "";
 				let isConfirmed = false;
 				switch ($scope.gameData.score) {
 				case "USER_WON":
-					confirmText = "Wygrana! Gratulacje!"
+					$scope.gameData.endText = "Wygrana! Gratulacje!"
 					break;
 				case "USER_LOST":
-					confirmText = "Przegrana. Następnym razem pójdzie lepiej!"
+					$scope.gameData.endText = "Przegrana. Następnym razem pójdzie lepiej!"
 					break;
 				case "DRAW":
-					confirmText = "Remis! To była zacięta gra!"
+					$scope.gameData.endText = "Remis! To była zacięta gra!"
 					break;
-				}
-				confirmText += "\nCzy chcesz zagrać ponownie?"
-				if (confirm(confirmText)) {
-					window.location = "/entry";
 				}
 			}
 		}
 
-		// $scope.$watch('$scope.gameData.isFinished', function(newVal,oldVal) {
-			
-		// 	$scope.boardConfig.draggable = !newVal;
-		// 	if (newVal) {
-		// 		let confirmText = "";
-		// 		let isConfirmed = false;
-		// 		switch ($scope.gameData.score) {
-		// 		case "USER_WON":
-		// 			confirmText = "Wygrana! Gratulacje!"
-		// 			break;
-		// 		case "USER_LOST":
-		// 			confirmText = "Przegrana. Następnym razem pójdzie lepiej!"
-		// 			break;
-		// 		case "DRAW":
-		// 			confirmText = "Remis! To była zacięta gra!"
-		// 			break;
-		// 		}
-		// 		confirmText += "\nCzy chcesz zagrać ponownie?"
-		// 		if (confirm(confirmText)) {
-		// 			window.location = "/entry";
-		// 		}
-		// 	}
-		// });
-
-		// $scope.$watch('$scope.gameData.isUserTurn', function(newVal, oldVal) {
-		// 	if (newVal) {
-		// 		$scope.turnOwnerName = "gracza";
-		// 	}
-		// 	else {
-		// 		$scope.turnOwnerName = "komputera";
-		// 	}
-		// });
-
-		// $scope.$watch('$scope.gameData.isUserWhite', function(newVal, oldVal) {
-		// 	if (newVal) {
-		// 		$scope.gameData.userColorString = "biały";
-		// 		$scope.gameData.compColorString = "czarny";
-		// 	}
-		// 	else {
-		// 		$scope.gameData.colorString = "czarny";
-		// 		$scope.gameData.compColorString = "biały";
-		// 	}
-		// });
+		$scope.playAgain = function() {
+			window.location = "/entry";
+		}
 }]);
 	
 

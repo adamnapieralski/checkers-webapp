@@ -30,6 +30,12 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	state_.isUserTurn = isUserWhite;
 	state_.nonCaptureSequence = 0;
 	state_.score = Score::IN_PROGRESS;
+	state_.hasGameEnded = false;
+	state_.isInMultipleMove = false;
+	state_.uAP = userPlayer_.getNumberOfPawns(board_);
+	state_.cAP = compPlayer_.getNumberOfPawns(board_);
+	state_.uAK = userPlayer_.getNumberOfKings(board_);
+	state_.cAK = compPlayer_.getNumberOfKings(board_);
 }
 
 void Checkers::fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn) {

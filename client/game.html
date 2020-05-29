@@ -28,7 +28,7 @@
 		<br>
 		<div class="row own-div" style="width: 95%; margin: 0px 2.5%" ng-controller="gameController">
 		<div class ="game" style ="width: 95%; margin: 0px 2.5%">
-			<div class="turn_info" style="text-align: center" >Ruch <span id="turn" ng-bind="turnOwnerName"></span></div><br>
+			<div class="turn_info" style="text-align: center" >Ruch <span id="turn" ng-bind="gameData.turnOwnerName"></span></div><br>
 			<div class="column left" style ="height: 600px" >
 				<span id="userNameView" ng-bind="gameData.userName"></span><br><br>
 				Kolor: <span id="userColorView" ng-bind="gameData.userColorString"></span><br>
@@ -45,10 +45,10 @@
 				Liczba damek: <span id="cAK" ng-bind="gameData.cAK" ></span><br>
 			</div><br>
 		</div><br>
-		<!-- <div class ="endGame" ng-show= "gameData.isFinished" style ="width: 95%; margin: 0px 2.5%; text-align: center;">
-			Koniec gry <br>
-			<button type = "button" ng-click="reloadPage()">Zagraj jeszcze raz!</button>
-		</div> -->
+		<div class ="endGame" ng-show= "gameData.isEnded" style ="width: 95%; margin: 0px 2.5%; text-align: center;">
+			<span id="endGameText" ng-bind="gameData.endText"></span><br>
+			<button type = "button" ng-click="playAgain()">Zagraj jeszcze raz!</button>
+		</div>
 	</div>
     </body>
 </html>
