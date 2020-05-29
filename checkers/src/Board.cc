@@ -23,11 +23,6 @@ std::ostream& operator<<(std::ostream& os, const PieceName& p) {
 }
 
 Board::Board() {
-    // for(auto i = board_.begin(); i != board_.end(); ++i ){
-    //     for(auto j = i->begin(); j != i->end(); ++j ){
-    //         *j = EMPTY;
-    //     }
-    // }
     clear();
     initializePositionNames();
 }

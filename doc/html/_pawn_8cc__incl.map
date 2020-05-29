@@ -1,8 +1,8 @@
-<map id="checkers/src/Pawn.cc" name="checkers/src/Pawn.cc">
-<area shape="rect" id="node2" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="227,80,293,107"/>
-<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="227,304,293,331"/>
-<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="419,229,485,256"/>
-<area shape="rect" id="node13" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="144,80,203,107"/>
-<area shape="rect" id="node3" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="225,155,292,181"/>
-<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="345,379,425,405"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.cc" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.cc">
+<area shape="rect" id="node2" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="227,109,293,136"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="227,333,293,360"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="419,259,485,285"/>
+<area shape="rect" id="node13" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="144,109,203,136"/>
+<area shape="rect" id="node3" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="225,184,292,211"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="345,408,425,435"/>
 </map>

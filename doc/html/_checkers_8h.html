@@ -5,13 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Checkers: checkers/src/Checkers.h File Reference</title>
+<title>Checkers: /home/patrycja/Desktop/Repositories/checkers-webapp/checkers/src/Checkers.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -23,7 +33,23 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Checkers
    </div>
+   <div id="projectbrief">Project for Advanced Programming course on EITI-WUT</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -33,15 +59,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('_checkers_8h.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,14 +88,10 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">Checkers.h File Reference</div>  </div>
 </div><!--header-->
@@ -79,26 +107,26 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Checkers.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="_checkers_8h__incl.png" border="0" usemap="#checkers_2src_2_checkers_8h" alt=""/></div>
-<map name="checkers_2src_2_checkers_8h" id="checkers_2src_2_checkers_8h">
-<area shape="rect" id="node4" href="_user_player_8h.html" title="Header file for UserPlayer class, representing AI player. " alt="" coords="242,155,341,181"/>
-<area shape="rect" id="node12" href="_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="401,379,467,405"/>
-<area shape="rect" id="node14" href="_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="337,80,419,107"/>
-<area shape="rect" id="node5" href="_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="256,229,327,256"/>
-<area shape="rect" id="node8" href="_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="189,304,255,331"/>
-<area shape="rect" id="node9" href="_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="295,528,375,555"/>
-<area shape="rect" id="node11" href="_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="187,453,252,480"/>
-<area shape="rect" id="node15" href="_game_tree_8h.html" title="Source file for GameTree class, representing the game tree for minimax alfa beta algorithm. " alt="" coords="381,304,476,331"/>
+<div class="center"><img src="_checkers_8h__incl.png" border="0" usemap="#_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8h" alt=""/></div>
+<map name="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8h" id="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8h">
+<area shape="rect" id="node4" href="_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="244,184,343,211"/>
+<area shape="rect" id="node12" href="_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="137,408,204,435"/>
+<area shape="rect" id="node14" href="_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="173,109,256,136"/>
+<area shape="rect" id="node5" href="_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="257,259,327,285"/>
+<area shape="rect" id="node8" href="_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="259,333,325,360"/>
+<area shape="rect" id="node9" href="_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="167,557,247,584"/>
+<area shape="rect" id="node11" href="_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="321,483,386,509"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_checkers_8h__dep__incl.png" border="0" usemap="#checkers_2src_2_checkers_8hdep" alt=""/></div>
-<map name="checkers_2src_2_checkers_8hdep" id="checkers_2src_2_checkers_8hdep">
-<area shape="rect" id="node2" href="_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,80,180,107"/>
-<area shape="rect" id="node3" href="_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="204,80,395,107"/>
-<area shape="rect" id="node4" href="_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="419,80,569,107"/>
+<div class="center"><img src="_checkers_8h__dep__incl.png" border="0" usemap="#_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8hdep" alt=""/></div>
+<map name="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8hdep" id="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_checkers_8hdep">
+<area shape="rect" id="node2" href="_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,109,233,165"/>
+<area shape="rect" id="node3" href="_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="257,109,501,165"/>
+<area shape="rect" id="node4" href="_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="526,109,726,165"/>
+<area shape="rect" id="node5" href="_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="750,109,953,165"/>
 </map>
 </div>
 </div>
@@ -110,18 +138,53 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_checkers.html">Checkers</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a2f574cc3a73c29e138acb38d1bfc07a3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3">Score</a> { <a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3a643cea6438bbca00e218a0b1c05e1012">IN_PROGRESS</a>, 
+<a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3a005a21e3ade9dbd0d61850626a5387ea">USER_WON</a>, 
+<a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3a2817e295adaa46cfcf1166396388c75f">USER_LOST</a>, 
+<a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3a61f3c57b6943c85413975507aede78cd">DRAW</a>
+ }</td></tr>
+<tr class="separator:a2f574cc3a73c29e138acb38d1bfc07a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for <a class="el" href="class_checkers.html">Checkers</a> class, handling game mechanics. </p>
 <dl class="section author"><dt>Author</dt><dd>Patrycja Cieplicka </dd>
 <dd>
 Adam Napieralski </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2f574cc3a73c29e138acb38d1bfc07a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f574cc3a73c29e138acb38d1bfc07a3">&#9670;&nbsp;</a></span>Score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3">Score</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Describes the game status </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2f574cc3a73c29e138acb38d1bfc07a3a643cea6438bbca00e218a0b1c05e1012"></a>IN_PROGRESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f574cc3a73c29e138acb38d1bfc07a3a005a21e3ade9dbd0d61850626a5387ea"></a>USER_WON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f574cc3a73c29e138acb38d1bfc07a3a2817e295adaa46cfcf1166396388c75f"></a>USER_LOST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2f574cc3a73c29e138acb38d1bfc07a3a61f3c57b6943c85413975507aede78cd"></a>DRAW&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li><li class="navelem"><a class="el" href="_checkers_8h.html">Checkers.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

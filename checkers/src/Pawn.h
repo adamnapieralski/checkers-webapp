@@ -11,13 +11,16 @@
 
 #include "Piece.h"
 
+/**
+ * Class representing pawn Piece
+ * */
 class Pawn : public Piece {
     using Piece::Piece;
     
 public:
     Pawn(Position pos, bool isWhite, bool isUser, Board& board);
 
-    std::shared_ptr<Pawn> clone() const;
+    //std::shared_ptr<Pawn> clone() const;
 
     Pawn(const Pawn& p) : Piece(p) {}
 

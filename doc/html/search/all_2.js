@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['capturemoves',['captureMoves',['../class_king.html#aa7aaa584c9368bc4fd16457e1f84952e',1,'King::captureMoves()'],['../class_pawn.html#a6a9ca7384f7442845196e35d476fcead',1,'Pawn::captureMoves()'],['../class_piece.html#aec24d53e12181bc5fce8bbd39eac77d0',1,'Piece::captureMoves()']]],
-  ['checkers',['Checkers',['../class_checkers.html',1,'']]],
-  ['checkers_2ecc',['Checkers.cc',['../_checkers_8cc.html',1,'']]],
-  ['checkers_2eh',['Checkers.h',['../_checkers_8h.html',1,'']]],
-  ['checkerspy_2ecc',['CheckersPy.cc',['../_checkers_py_8cc.html',1,'']]],
-  ['chessboard_2ejs_20change_20log',['chessboard.js Change Log',['../md_client_node_modules__0Dchrisoakman_chessboardjs__c_h_a_n_g_e_l_o_g.html',1,'']]],
-  ['chessboard_2ejs',['chessboard.js',['../md_client_node_modules__0Dchrisoakman_chessboardjs__r_e_a_d_m_e.html',1,'']]],
-  ['checkers_2dwebapp',['checkers-webapp',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['base_5fdir',['BASE_DIR',['../namespaceweb_1_1settings.html#acdecae5f40833850bd5c205fe0e10a1d',1,'web::settings']]],
+  ['black_5fking',['BLACK_KING',['../_board_8h.html#a4b59e8302984ffeffaa0d3dda6429756a44282a49c331b33497c297c7fb99d23d',1,'Board.h']]],
+  ['black_5fpawn',['BLACK_PAWN',['../_board_8h.html#a4b59e8302984ffeffaa0d3dda6429756ae8de78f6afd29eca329f6e526242a77d',1,'Board.h']]],
+  ['board',['Board',['../class_board.html',1,'Board'],['../class_board.html#a9ee491d4fea680cf69b033374a9fdfcb',1,'Board::Board()'],['../class_board.html#a4dadab5e2bf07fe51851aefd1fe2887b',1,'Board::Board(std::string fen)']]],
+  ['board_2ecc',['Board.cc',['../_board_8cc.html',1,'']]],
+  ['board_2eh',['Board.h',['../_board_8h.html',1,'']]],
+  ['board_5fsize',['BOARD_SIZE',['../_board_8h.html#a1db39eb31d1315ce982608fe25587b6d',1,'BOARD_SIZE():&#160;Board.h'],['../_position_8h.html#a1db39eb31d1315ce982608fe25587b6d',1,'BOARD_SIZE():&#160;Position.h']]],
+  ['boardfen',['boardFEN',['../struct_game_state.html#a71966528fb171c9bb620e0ab3bb605b7',1,'GameState']]],
+  ['boost_5fauto_5ftest_5fcase',['BOOST_AUTO_TEST_CASE',['../_test_8cc.html#ab72c75b1678b0d871648a34c09cb3bbc',1,'BOOST_AUTO_TEST_CASE(move_merge):&#160;Test.cc'],['../_test_8cc.html#ac1a850858f7641f6dc9ce4ff4079a85d',1,'BOOST_AUTO_TEST_CASE(board_fen):&#160;Test.cc'],['../_test_8cc.html#ac7b049a56f90abe14796776fe6e857c7',1,'BOOST_AUTO_TEST_CASE(board_make_move):&#160;Test.cc'],['../_test_8cc.html#abc4d3bae5e22877319fb2c621ad5f1eb',1,'BOOST_AUTO_TEST_CASE(capture_moves_pawn_simple):&#160;Test.cc'],['../_test_8cc.html#ad8e804c745f36cd9626ba352baa07996',1,'BOOST_AUTO_TEST_CASE(capture_moves_king_simple):&#160;Test.cc'],['../_test_8cc.html#a4d1070de3856e015d72f9ba9d69c80e2',1,'BOOST_AUTO_TEST_CASE(capture_moves_pawn):&#160;Test.cc'],['../_test_8cc.html#a36077f0b4dc9de4797c9fa732684e589',1,'BOOST_AUTO_TEST_CASE(capture_moves_king):&#160;Test.cc'],['../_test_8cc.html#a197bf6acb36100f38f3598a70542aaf8',1,'BOOST_AUTO_TEST_CASE(capture_change_pawn_king):&#160;Test.cc'],['../_test_8cc.html#af2e91f364f1d85442f9efd4bbe9ac504',1,'BOOST_AUTO_TEST_CASE(no_capture_moves_pawn):&#160;Test.cc'],['../_test_8cc.html#a6d06ea69a4b11f42f6940af1388e638b',1,'BOOST_AUTO_TEST_CASE(no_capture_moves_king):&#160;Test.cc'],['../_test_8cc.html#a160d5baf14733e0be5f4deaf6e6bfca7',1,'BOOST_AUTO_TEST_CASE(initilizePieces):&#160;Test.cc'],['../_test_8cc.html#a2d36c79a24b5c73ed73da0354bc7cc1d',1,'BOOST_AUTO_TEST_CASE(getValidMoves):&#160;Test.cc'],['../_test_8cc.html#a464d690356dea8b0041c972e24189752',1,'BOOST_AUTO_TEST_CASE(movePiece):&#160;Test.cc'],['../_test_8cc.html#ad1f956484c481edf6850c73a3254f1f0',1,'BOOST_AUTO_TEST_CASE(checkersInit):&#160;Test.cc'],['../_test_8cc.html#a3fe072ceb0bb676ea5408a50cbe3e133',1,'BOOST_AUTO_TEST_CASE(checkersGame):&#160;Test.cc'],['../_test_8cc.html#ae1b97a1de66815594cf6d6645407c55a',1,'BOOST_AUTO_TEST_CASE(multipleCaptureUser):&#160;Test.cc'],['../_test_8cc.html#a4a9426910aa6ff3c6b8cce674e9ff893',1,'BOOST_AUTO_TEST_CASE(multipleCaptureComputer):&#160;Test.cc'],['../_test_8cc.html#a762a1437507a7fc3e3268b71e1c562f1',1,'BOOST_AUTO_TEST_CASE(upgradeToKingUser):&#160;Test.cc'],['../_test_8cc.html#aa9309a71d46a8633b45aef04cbd86c5c',1,'BOOST_AUTO_TEST_CASE(upgradeToKingComputer):&#160;Test.cc']]],
+  ['boost_5fpython_5fmodule',['BOOST_PYTHON_MODULE',['../_checkers_py_8cc.html#a321f7597a43dda557490520520974aee',1,'CheckersPy.cc']]],
+  ['boost_5ftest_5fdyn_5flink',['BOOST_TEST_DYN_LINK',['../_test_8cc.html#a139f00d2466d591f60b8d6a73c8273f1',1,'Test.cc']]],
+  ['boost_5ftest_5fmodule',['BOOST_TEST_MODULE',['../_test_8cc.html#a6b2a3852db8bb19ab6909bac01859985',1,'Test.cc']]]
 ];

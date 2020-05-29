@@ -1,7 +1,8 @@
-<map id="checkers/src/AIPlayer.h" name="checkers/src/AIPlayer.h">
-<area shape="rect" id="node2" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="40,80,209,107"/>
-<area shape="rect" id="node3" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="234,80,402,107"/>
-<area shape="rect" id="node6" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="419,155,569,181"/>
-<area shape="rect" id="node4" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,155,180,181"/>
-<area shape="rect" id="node5" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="204,155,395,181"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/AIPlayer.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/AIPlayer.h">
+<area shape="rect" id="node2" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="164,109,387,165"/>
+<area shape="rect" id="node3" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="411,109,633,165"/>
+<area shape="rect" id="node6" href="$_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="526,213,726,269"/>
+<area shape="rect" id="node7" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="750,213,953,269"/>
+<area shape="rect" id="node4" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,213,233,269"/>
+<area shape="rect" id="node5" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="257,213,501,269"/>
 </map>

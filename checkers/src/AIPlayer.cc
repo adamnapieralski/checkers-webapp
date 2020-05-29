@@ -62,7 +62,7 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     for (auto& row : getValidMoves(board)){
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
-            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 2, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
+            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 2, alpha, beta, true)));
             board = temp;
             computer = temp_comp;
             user = temp_user;

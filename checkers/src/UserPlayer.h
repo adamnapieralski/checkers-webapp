@@ -1,6 +1,6 @@
 /**
  * @file UserPlayer.h
- * @brief Header file for UserPlayer class, representing AI player.
+ * @brief Header file for UserPlayer class, representing User player.
  * 
  * @author Adam Napieralski
  * @author Patrycja Cieplicka
@@ -10,6 +10,10 @@
 #define USERPLAYER_H
 
 #include "Player.h"
+
+/**
+ * Class represeting User player
+ * */
 class UserPlayer : public Player {
 public:
     UserPlayer(bool isWhite);

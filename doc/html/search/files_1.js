@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['board_2ecc',['Board.cc',['../_board_8cc.html',1,'']]],
-  ['board_2eh',['Board.h',['../_board_8h.html',1,'']]]
+  ['aiplayer_2ecc',['AIPlayer.cc',['../_a_i_player_8cc.html',1,'']]],
+  ['aiplayer_2eh',['AIPlayer.h',['../_a_i_player_8h.html',1,'']]]
 ];

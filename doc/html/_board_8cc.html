@@ -5,13 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Checkers: checkers/src/Board.cc File Reference</title>
+<title>Checkers: /home/patrycja/Desktop/Repositories/checkers-webapp/checkers/src/Board.cc File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -23,7 +33,23 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Checkers
    </div>
+   <div id="projectbrief">Project for Advanced Programming course on EITI-WUT</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -33,15 +59,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('_board_8cc.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,11 +88,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -78,24 +105,21 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Board.cc:</div>
 <div class="dyncontent">
-<div class="center"><img src="_board_8cc__incl.png" border="0" usemap="#checkers_2src_2_board_8cc" alt=""/></div>
-<map name="checkers_2src_2_board_8cc" id="checkers_2src_2_board_8cc">
-<area shape="rect" id="node5" href="_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="150,80,217,107"/>
-<area shape="rect" id="node8" href="_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="30,229,110,256"/>
-<area shape="rect" id="node9" href="_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="80,155,145,181"/>
+<div class="center"><img src="_board_8cc__incl.png" border="0" usemap="#_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_board_8cc" alt=""/></div>
+<map name="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_board_8cc" id="_2home_2patrycja_2_desktop_2_repositories_2checkers-webapp_2checkers_2src_2_board_8cc">
+<area shape="rect" id="node5" href="_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="150,109,217,136"/>
+<area shape="rect" id="node8" href="_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="30,259,110,285"/>
+<area shape="rect" id="node9" href="_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="80,184,145,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6bf64e18e6b7ac6ed84d6932f4ae8517"><td class="memItemLeft" align="right" valign="top"><a id="a6bf64e18e6b7ac6ed84d6932f4ae8517"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const PieceName &amp;p)</td></tr>
+<tr class="memitem:a6bf64e18e6b7ac6ed84d6932f4ae8517"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_board_8cc.html#a6bf64e18e6b7ac6ed84d6932f4ae8517">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="_board_8h.html#a4b59e8302984ffeffaa0d3dda6429756">PieceName</a> &amp;p)</td></tr>
 <tr class="separator:a6bf64e18e6b7ac6ed84d6932f4ae8517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa45abc56ade7ca27e1a665852b5530a3"><td class="memItemLeft" align="right" valign="top"><a id="aa45abc56ade7ca27e1a665852b5530a3"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const <a class="el" href="class_board.html">Board</a> &amp;b)</td></tr>
+<tr class="memitem:aa45abc56ade7ca27e1a665852b5530a3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_board_8cc.html#aa45abc56ade7ca27e1a665852b5530a3">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="class_board.html">Board</a> &amp;b)</td></tr>
 <tr class="separator:aa45abc56ade7ca27e1a665852b5530a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68600e5df80ebe7cc26d69e204a7de46"><td class="memItemLeft" align="right" valign="top"><a id="a68600e5df80ebe7cc26d69e204a7de46"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="class_board.html">Board</a> &amp;b1, <a class="el" href="class_board.html">Board</a> &amp;b2)</td></tr>
+<tr class="memitem:a68600e5df80ebe7cc26d69e204a7de46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_board_8cc.html#a68600e5df80ebe7cc26d69e204a7de46">swap</a> (<a class="el" href="class_board.html">Board</a> &amp;b1, <a class="el" href="class_board.html">Board</a> &amp;b2)</td></tr>
 <tr class="separator:a68600e5df80ebe7cc26d69e204a7de46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -103,12 +127,101 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 <dl class="section author"><dt>Author</dt><dd>Patrycja Cieplicka </dd>
 <dd>
 Adam Napieralski </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a6bf64e18e6b7ac6ed84d6932f4ae8517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf64e18e6b7ac6ed84d6932f4ae8517">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="_board_8h.html#a4b59e8302984ffeffaa0d3dda6429756">PieceName</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa45abc56ade7ca27e1a665852b5530a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45abc56ade7ca27e1a665852b5530a3">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68600e5df80ebe7cc26d69e204a7de46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68600e5df80ebe7cc26d69e204a7de46">&#9670;&nbsp;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>b1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>b2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li><li class="navelem"><a class="el" href="_board_8cc.html">Board.cc</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

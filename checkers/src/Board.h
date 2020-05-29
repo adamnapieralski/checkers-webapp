@@ -18,10 +18,16 @@
 
 #define BOARD_SIZE 8
 
+/**
+ * Describes Pieces on Board
+ * */
 enum PieceName {
     EMPTY, WHITE_KING, WHITE_PAWN, BLACK_KING, BLACK_PAWN
 };
 
+/**
+ * Class representing checkers board
+ * */
 class Board {
 public:
     Board();
