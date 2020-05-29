@@ -11,11 +11,7 @@ myAppControllers.controller('entryController',
 					document.getElementById('userNameText').style.borderColor = 'red';
 				}
 				else {
-					userData = {
-						"name" : document.getElementById('userNameText').value,
-						"isWhite" : !document.getElementById('userColorSwitch').checked,
-					}
-					srvInfo.initializeGame(userData);
+					srvInfo.initializeGame($scope.isUserWhite);
 					window.location = "/play";
 				}
 			};
@@ -158,8 +154,8 @@ angular.module('myAppServices', [])
 
 				 this.initializeGame = function(data) {
 					return $http.get('/ajax/checkerspy/initialize/?user_name='
-					+ data.name + '&is_user_white='
-					+ data.isWhite); 
+					+ document.getElementById('userNameText').value + '&is_user_white='
+					+ !document.getElementById('userColorSwitch').checked); 
 				 };
 				 this.getGameState = function(callback) {
 					return $http.get('/ajax/checkerspy/get_game_state/').then(callback); 

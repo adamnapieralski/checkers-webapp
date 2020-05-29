@@ -1,0 +1,7 @@
+<map id="checkers/src/UserPlayer.h" name="checkers/src/UserPlayer.h">
+<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="138,80,209,107"/>
+<area shape="rect" id="node5" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="179,155,245,181"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="371,229,437,256"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="311,379,391,405"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="230,304,295,331"/>
+</map>

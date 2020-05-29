@@ -22,8 +22,6 @@ def get_game_state(params):
 
 def process_user_move(params):
     game_state = game.processUserMove(params['source'], params['destination'])
-    print(params['source'], params['destination'])
-    print(game_state.boardFEN, game_state.score, game_state.isUserTurn, game_state.hasGameEnded)
     return make_game_state_obj(game_state)
 
 def make_computer_move(params):

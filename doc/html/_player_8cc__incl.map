@@ -1,0 +1,9 @@
+<map id="checkers/src/Player.cc" name="checkers/src/Player.cc">
+<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="225,80,296,107"/>
+<area shape="rect" id="node13" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="51,80,118,107"/>
+<area shape="rect" id="node14" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="142,80,201,107"/>
+<area shape="rect" id="node5" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="111,155,178,181"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="182,229,249,256"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="75,379,155,405"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="21,304,87,331"/>
+</map>
