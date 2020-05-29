@@ -28,7 +28,6 @@ struct GameState {
 	int uAP=12, uAK=0, uBP=0, uBK=0; // user's/copmuter's Alive/Beaten Pawns/Kings
 	int cAP=12, cAK=0, cBP=0, cBK=0;
 	bool hasGameEnded;
-	bool hasUserWon;
 	Move lastMove;
 	bool isInMultipleMove;
 	int nonCaptureSequence;
