@@ -11,13 +11,16 @@
 
 #include "Piece.h"
 
+/**
+ * Class representing King Piece
+ * */
 class King : public Piece {
     using Piece::Piece;
 
 public:
     King(Position pos, bool isWhite, bool isUser, Board& board);
 
-    std::shared_ptr<King> clone() const;
+    //std::shared_ptr<King> clone() const;
 
     King(const King& k) : Piece(k) {}
 

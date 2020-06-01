@@ -14,6 +14,9 @@
 #include "Piece.h"
 #include "Board.h"
 
+/**
+ * Class representing Player
+ * */
 class Player {
 public:
 
@@ -36,6 +39,10 @@ public:
     int getNumberOfKings(Board& board);
 
     // functions connected with movment of pieces at board
+    
+    /**
+     * Initialize Pieces on Board and add owned Pieces for new Game
+     * */
     virtual void initializePieces(Board &board) = 0;
     virtual void initializePiecesFromBoard(Board& board) = 0;
     virtual void addPiece(bool isKing, Position pos, Board &board) = 0; 

@@ -17,10 +17,12 @@
 #include "Move.h"
 #include "Board.h"
 
-// to resolve: class Piece has virtual funcs and accessible non-virtual destructor
+/**
+ * Class representing Piece
+ * */
 class Piece {
 public:
-    // Piece(Position pos, bool isWhite, Board* board);
+
     Piece(Position pos, bool isWhite, bool isUser);
     virtual ~Piece() {};
 
@@ -45,7 +47,13 @@ public:
      */
     virtual void captureMoves(std::vector<Move> &moves, Board board, Move current) const  = 0;
     
+    /**
+     * @return vector of Non Capture Moves 
+     * */
     virtual std::vector<Move> getNonCaptureMoves(Board& board) const = 0;
+     /**
+     * @return vector of Capture Moves
+     * */
     virtual std::vector<Move> getCaptureMoves(Board& board) const = 0;
 
     virtual std::ostream& print(std::ostream& os) const = 0;

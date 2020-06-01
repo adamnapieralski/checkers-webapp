@@ -5,13 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Checkers: checkers/src/Move.h Source File</title>
+<title>Checkers: /home/patrycja/Desktop/Repositories/checkers-webapp/checkers/src/Move.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -23,7 +33,23 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Checkers
    </div>
+   <div id="projectbrief">Project for Advanced Programming course on EITI-WUT</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -33,15 +59,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('_move_8h_source.html','');});
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,25 +88,36 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Move.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_move_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef MOVE_H</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define MOVE_H</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_move.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_move.html">Move</a> {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_move.html">Move</a>(){};</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_move.html">Move</a>(<a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_move.html">Move</a>(<a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> addUpgradePosition(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a>&amp; pos);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> addCapturedPosition(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a>&amp; pos);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> isInitial() <span class="keyword">const</span>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_move.html">Move</a> merge(<a class="code" href="class_move.html">Move</a>&amp; next) <span class="keyword">const</span>;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_position.html">Position</a> getStartPosition() <span class="keyword">const</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_position.html">Position</a> getEndPosition() <span class="keyword">const</span>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt;Position&gt; getUpgradePositions() <span class="keyword">const</span>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::vector&lt;Position&gt; getCapturedPositions() <span class="keyword">const</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;Move&gt; getStepMoves() <span class="keyword">const</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> containsAsStep(<span class="keyword">const</span> <a class="code" href="class_move.html">Move</a>&amp; move) <span class="keyword">const</span>;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="class_move.html">Move</a>&amp; move) <span class="keyword">const</span>;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_position.html">Position</a> startPos_, endPos_;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;Position&gt; capturedPos_;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;Move&gt; stepMoves_;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::vector&lt;Position&gt; upgradePos_;        <span class="comment">//Postion where Pawn change to King</span></div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif  // MOVE_H</span></div><div class="ttc" id="class_move_html"><div class="ttname"><a href="class_move.html">Move</a></div><div class="ttdef"><b>Definition:</b> Move.h:17</div></div>
-<div class="ttc" id="class_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdef"><b>Definition:</b> Position.h:17</div></div>
+<a href="_move_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef MOVE_H</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define MOVE_H</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_move.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_move.html">Move</a> {</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_move.html#a4b1acc3a67d30c385ad9a6000526393a">   22</a></span>&#160;    <a class="code" href="class_move.html#a4b1acc3a67d30c385ad9a6000526393a">Move</a>(){};</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_move.html#a4b1acc3a67d30c385ad9a6000526393a">Move</a>(<a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_move.html#a4b1acc3a67d30c385ad9a6000526393a">Move</a>(<a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>, <a class="code" href="class_position.html">Position</a>);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_move.html#ac3c537cc173333a5502554d876db896a">addUpgradePosition</a>(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a>&amp; pos);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_move.html#ab86acf11c99d2fb2b89f6fefbb47a4ec">addCapturedPosition</a>(<span class="keyword">const</span> <a class="code" href="class_position.html">Position</a>&amp; pos);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_move.html#a2ba4464cdc09d886fe0758f5d8342da8">isInitial</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_move.html">Move</a> <a class="code" href="class_move.html#a68f56d3f8fb3701eb9792941b0bb581c">merge</a>(<a class="code" href="class_move.html">Move</a>&amp; next) <span class="keyword">const</span>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_position.html">Position</a> <a class="code" href="class_move.html#a796bf6cf91323a7ed22c2db77d356bfe">getStartPosition</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_position.html">Position</a> <a class="code" href="class_move.html#a1b702b65e68ed4cc18bab9d35b85154a">getEndPosition</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt;Position&gt; <a class="code" href="class_move.html#aad4bd3a8b9b874da7925e78a42dbc4ed">getUpgradePositions</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    std::vector&lt;Position&gt; <a class="code" href="class_move.html#a6f63378ac2ae680b0048d39fd3064355">getCapturedPositions</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;Move&gt; <a class="code" href="class_move.html#a66353168de7b2ca25a2c3e046d46556a">getStepMoves</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_move.html#aebf1832257533c1c67cb0aab9dd8c44a">containsAsStep</a>(<span class="keyword">const</span> <a class="code" href="class_move.html">Move</a>&amp; move) <span class="keyword">const</span>;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_move.html#ac498b6a71c11d5b788fae6b81864e288">operator==</a>(<span class="keyword">const</span> <a class="code" href="class_move.html">Move</a>&amp; move) <span class="keyword">const</span>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="class_position.html">Position</a> startPos_, endPos_;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::vector&lt;Position&gt; capturedPos_;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::vector&lt;Move&gt; stepMoves_;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;Position&gt; upgradePos_;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif  // MOVE_H</span></div><div class="ttc" id="class_move_html_a796bf6cf91323a7ed22c2db77d356bfe"><div class="ttname"><a href="class_move.html#a796bf6cf91323a7ed22c2db77d356bfe">Move::getStartPosition</a></div><div class="ttdeci">Position getStartPosition() const</div><div class="ttdef"><b>Definition:</b> Move.cc:67</div></div>
+<div class="ttc" id="class_move_html_aad4bd3a8b9b874da7925e78a42dbc4ed"><div class="ttname"><a href="class_move.html#aad4bd3a8b9b874da7925e78a42dbc4ed">Move::getUpgradePositions</a></div><div class="ttdeci">std::vector&lt; Position &gt; getUpgradePositions() const</div><div class="ttdef"><b>Definition:</b> Move.cc:65</div></div>
+<div class="ttc" id="class_move_html"><div class="ttname"><a href="class_move.html">Move</a></div><div class="ttdef"><b>Definition:</b> Move.h:20</div></div>
+<div class="ttc" id="class_move_html_ab86acf11c99d2fb2b89f6fefbb47a4ec"><div class="ttname"><a href="class_move.html#ab86acf11c99d2fb2b89f6fefbb47a4ec">Move::addCapturedPosition</a></div><div class="ttdeci">void addCapturedPosition(const Position &amp;pos)</div><div class="ttdef"><b>Definition:</b> Move.cc:60</div></div>
+<div class="ttc" id="class_move_html_a68f56d3f8fb3701eb9792941b0bb581c"><div class="ttname"><a href="class_move.html#a68f56d3f8fb3701eb9792941b0bb581c">Move::merge</a></div><div class="ttdeci">Move merge(Move &amp;next) const</div><div class="ttdef"><b>Definition:</b> Move.cc:31</div></div>
+<div class="ttc" id="class_move_html_a1b702b65e68ed4cc18bab9d35b85154a"><div class="ttname"><a href="class_move.html#a1b702b65e68ed4cc18bab9d35b85154a">Move::getEndPosition</a></div><div class="ttdeci">Position getEndPosition() const</div><div class="ttdef"><b>Definition:</b> Move.cc:69</div></div>
+<div class="ttc" id="class_move_html_a6f63378ac2ae680b0048d39fd3064355"><div class="ttname"><a href="class_move.html#a6f63378ac2ae680b0048d39fd3064355">Move::getCapturedPositions</a></div><div class="ttdeci">std::vector&lt; Position &gt; getCapturedPositions() const</div><div class="ttdef"><b>Definition:</b> Move.cc:71</div></div>
+<div class="ttc" id="class_move_html_a2ba4464cdc09d886fe0758f5d8342da8"><div class="ttname"><a href="class_move.html#a2ba4464cdc09d886fe0758f5d8342da8">Move::isInitial</a></div><div class="ttdeci">bool isInitial() const</div><div class="ttdef"><b>Definition:</b> Move.cc:18</div></div>
+<div class="ttc" id="class_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdef"><b>Definition:</b> Position.h:20</div></div>
+<div class="ttc" id="class_move_html_aebf1832257533c1c67cb0aab9dd8c44a"><div class="ttname"><a href="class_move.html#aebf1832257533c1c67cb0aab9dd8c44a">Move::containsAsStep</a></div><div class="ttdeci">bool containsAsStep(const Move &amp;move) const</div><div class="ttdef"><b>Definition:</b> Move.cc:75</div></div>
 <div class="ttc" id="_position_8h_html"><div class="ttname"><a href="_position_8h.html">Position.h</a></div><div class="ttdoc">Header file for Position structure, representing piece&amp;#39;s position on the board. </div></div>
+<div class="ttc" id="class_move_html_ac3c537cc173333a5502554d876db896a"><div class="ttname"><a href="class_move.html#ac3c537cc173333a5502554d876db896a">Move::addUpgradePosition</a></div><div class="ttdeci">void addUpgradePosition(const Position &amp;pos)</div><div class="ttdef"><b>Definition:</b> Move.cc:56</div></div>
+<div class="ttc" id="class_move_html_a4b1acc3a67d30c385ad9a6000526393a"><div class="ttname"><a href="class_move.html#a4b1acc3a67d30c385ad9a6000526393a">Move::Move</a></div><div class="ttdeci">Move()</div><div class="ttdef"><b>Definition:</b> Move.h:22</div></div>
+<div class="ttc" id="class_move_html_ac498b6a71c11d5b788fae6b81864e288"><div class="ttname"><a href="class_move.html#ac498b6a71c11d5b788fae6b81864e288">Move::operator==</a></div><div class="ttdeci">bool operator==(const Move &amp;move) const</div><div class="ttdef"><b>Definition:</b> Move.cc:24</div></div>
+<div class="ttc" id="class_move_html_a66353168de7b2ca25a2c3e046d46556a"><div class="ttname"><a href="class_move.html#a66353168de7b2ca25a2c3e046d46556a">Move::getStepMoves</a></div><div class="ttdeci">std::vector&lt; Move &gt; getStepMoves() const</div><div class="ttdef"><b>Definition:</b> Move.cc:73</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_b11be1ebaec9f729d608832c778176a3.html">checkers</a></li><li class="navelem"><a class="el" href="dir_f9cf8e8c56ae2d5aab6a9f83e6f86718.html">src</a></li><li class="navelem"><a class="el" href="_move_8h.html">Move.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

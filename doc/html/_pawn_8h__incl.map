@@ -1,6 +1,6 @@
-<map id="checkers/src/Pawn.h" name="checkers/src/Pawn.h">
-<area shape="rect" id="node2" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="170,80,237,107"/>
-<area shape="rect" id="node6" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="261,304,341,331"/>
-<area shape="rect" id="node9" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="136,229,201,256"/>
-<area shape="rect" id="node10" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="231,155,298,181"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.h">
+<area shape="rect" id="node2" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="170,109,237,136"/>
+<area shape="rect" id="node6" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="261,333,341,360"/>
+<area shape="rect" id="node9" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="136,259,201,285"/>
+<area shape="rect" id="node10" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="231,184,298,211"/>
 </map>

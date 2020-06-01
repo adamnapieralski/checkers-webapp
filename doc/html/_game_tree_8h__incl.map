@@ -1,5 +1,0 @@
-<map id="checkers/src/GameTree.h" name="checkers/src/GameTree.h">
-<area shape="rect" id="node3" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="111,80,177,107"/>
-<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="213,229,293,256"/>
-<area shape="rect" id="node9" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="182,155,247,181"/>
-</map>

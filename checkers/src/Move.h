@@ -14,6 +14,9 @@
 
 #include "Position.h"
 
+/**
+ * Class representing Move of Piece
+ * */
 class Move {
 public:
     Move(){};
@@ -40,7 +43,10 @@ private:
     Position startPos_, endPos_;
     std::vector<Position> capturedPos_;
     std::vector<Move> stepMoves_;
-    std::vector<Position> upgradePos_;        //Postion where Pawn change to King
+    /**
+     * Position where Pawn change to King
+     * */
+    std::vector<Position> upgradePos_;
 
 };
 

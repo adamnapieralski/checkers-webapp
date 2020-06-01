@@ -16,17 +16,28 @@
 #include "AIPlayer.h"
 #include "Board.h"
 
+/**
+ * Describes the game status
+ * */
 enum Score {
 	IN_PROGRESS, USER_WON, USER_LOST, DRAW
 };
 
+/**
+ * Struct representing Game State
+ * @param uAP user's alive Pawns
+ * @param uAK user's alive King
+ * @param cAP computer's alive Pawns
+ * @param cAK computer's alive Kings
+ * @param boardFEN string describing current board state
+ * */
 struct GameState {
 	std::string userName;
 	bool isUserWhite;
 	std::string boardFEN;
 	bool isUserTurn;
-	int uAP=12, uAK=0, uBP=0, uBK=0; // user's/copmuter's Alive/Beaten Pawns/Kings
-	int cAP=12, cAK=0, cBP=0, cBK=0;
+	int uAP=12, uAK=0;
+	int cAP=12, cAK=0;
 	bool hasGameEnded;
 	Move lastMove;
 	bool isInMultipleMove;
@@ -34,6 +45,9 @@ struct GameState {
 	Score score;
 };
 
+/**
+ * Class handling game mechanics
+ * */
 class Checkers {
 public:
 	static Checkers& getInstance();
@@ -46,6 +60,9 @@ public:
 	void updateState(const Move& lastMove, bool hasMoreMoves=false);
 	void updateScore();
 
+	/**
+	 * @brief Method checking if UserPlayer made right Move and update GameState
+	 * */
 	GameState processUserMove(std::string origin, std::string destination);
 	GameState makeComputerMove();
 
