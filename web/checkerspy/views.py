@@ -9,14 +9,15 @@ game = checkers.Checkers.getInstance()
 # initialize_fen = "1p5p/p7/3p1p2/8/3p4/4P3/8/2P1P1P1"
 # initialize_fen = "8/8/5p2/2p5/1P1P1P2/8/8/8" # wygrana
 # initialize_fen = "8/4k3/8/8/8/8/1K6/8" # remis
+initialize_fen = "8/8/3P4/4p3/8/8/8/8"
 
 def initialize(params):
     user_name = str(params['user_name'])
     is_user_white = True
     if (params['is_user_white'] == 'false'):
         is_user_white = False
-    game.initialize(user_name, is_user_white)
-    # game.fenInitialize(initialize_fen, user_name, is_user_white, True)
+    # game.initialize(user_name, is_user_white)
+    game.fenInitialize(initialize_fen, user_name, is_user_white, True)
 
 def get_game_state(params):
     game_state = game.getGameState()

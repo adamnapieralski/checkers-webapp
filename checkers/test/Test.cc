@@ -474,6 +474,7 @@ BOOST_AUTO_TEST_CASE(multipleCaptureUser) {
     auto state = ch.processUserMove("c3", "e5");
     BOOST_CHECK(state.boardFEN == "8/8/3p3K/4P3/8/8/8/8");
     BOOST_REQUIRE( state.isUserTurn && state.isInMultipleMove);
+    BOOST_REQUIRE( state.score == Score::IN_PROGRESS);
     state = ch.processUserMove("e5", "c7");
     BOOST_CHECK( state.boardFEN == "8/2P5/7K/8/8/8/8/8");
     BOOST_CHECK( !state.isUserTurn && !state.isInMultipleMove);
@@ -513,6 +514,32 @@ BOOST_AUTO_TEST_CASE(upgradeToKingComputer) {
     ch.fenInitialize("8/8/8/8/5p2/P7/1p6/8", "Mark", false, false);
     auto state = ch.makeComputerMove();
     BOOST_REQUIRE( state.boardFEN == "8/8/8/6K1/8/8/8/8" || state.boardFEN == "8/8/7K/8/8/8/8/8");
+}
+
+BOOST_AUTO_TEST_CASE(drawEnd) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("5k2/8/8/8/8/8/8/2K5", "Waldek", true, true);
+    std::vector<std::string> userSpots = {"c1", "d2"};
+    for (int i = 0; i < 15; ++i) {
+        ch.processUserMove(userSpots.at(i % 2), userSpots.at(std::abs(i % 2 - 1)));
+        ch.makeComputerMove();
+    }
+    auto state = ch.getGameState();
+    BOOST_REQUIRE( state.hasGameEnded && state.score == Score::DRAW);
+}
+
+BOOST_AUTO_TEST_CASE(userWonEnd) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("8/8/3P4/4p3/8/8/8/8", "asdf", true, true);
+    auto state = ch.processUserMove("d6", "f4");
+    BOOST_REQUIRE( state.hasGameEnded && state.score == Score::USER_WON);
+}
+
+BOOST_AUTO_TEST_CASE(userLostEnd) {
+    auto ch = Checkers::getInstance();
+    ch.fenInitialize("3p4/4K3/8/4P3/8/8/8/8", "asdfghjk", true, false);
+    auto state = ch.makeComputerMove();
+    BOOST_REQUIRE( state.hasGameEnded && state.score == Score::USER_LOST);
 }
 
 
