@@ -2,7 +2,8 @@ build_web/
 client/chessboardjs-1.0.0/img/chesspieces/wikipedia/checkerspieces/
 checkers/build/
 client/node_modules/
-
+*.gcda
+*.gcno
 
 .sconsign.dblite
 
