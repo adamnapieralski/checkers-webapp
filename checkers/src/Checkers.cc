@@ -15,6 +15,9 @@ Checkers& Checkers::getInstance() {
 
 Checkers::Checkers() : userPlayer_(true), compPlayer_(false) {}
 
+/**
+ * Function initializing start game
+ * */
 void Checkers::initialize(std::string userName, bool isUserWhite) {
 	userPlayer_.setName(userName);
 	userPlayer_.setIsWhite(isUserWhite);
@@ -38,6 +41,9 @@ void Checkers::initialize(std::string userName, bool isUserWhite) {
 	state_.cAK = compPlayer_.getNumberOfKings(board_);
 }
 
+/**
+ * Function used for test to initialize game based on fen string
+ * */
 void Checkers::fenInitialize(std::string fen, std::string userName, bool isUserWhite, bool isUserTurn) {
 	board_ = Board(fen);
 
@@ -94,6 +100,9 @@ Board Checkers::getBoard() const {
 	return board_;
 }
 
+/**
+* @brief Method checking if UserPlayer made right Move and update GameState 
+* */
 GameState Checkers::processUserMove(std::string origin, std::string destination) {
 	try {
 		if (!state_.isUserTurn) {
@@ -118,6 +127,10 @@ GameState Checkers::processUserMove(std::string origin, std::string destination)
 		return state_;
 	}
 }
+
+/**
+* @brief Method processing computer move based on minimax alpha-beta algorithm and update game state
+* */
 GameState Checkers::makeComputerMove() {
 	if (state_.isUserTurn) {
 		return state_;
@@ -128,6 +141,9 @@ GameState Checkers::makeComputerMove() {
 	return state_;
 }
 
+/**
+ * Function updating Game Score
+ * */
 void Checkers::updateScore() {
 	// both users made 15 moves with no capture
 	state_.hasGameEnded = true;

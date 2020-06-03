@@ -27,9 +27,6 @@ public:
     bool isLastRow(bool isUser) const;
     bool isZero() const;
 
-    /**
-     * @return Position made of 1/-1 when abs of x and y are equal else return zero Position
-     */
     Position getUnitPosition() const;
 
     bool operator==(const Position& p) const;

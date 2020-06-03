@@ -60,9 +60,7 @@ public:
 	void updateState(const Move& lastMove, bool hasMoreMoves=false);
 	void updateScore();
 
-	/**
-	 * @brief Method checking if UserPlayer made right Move and update GameState
-	 * */
+	//Functions making moves on board
 	GameState processUserMove(std::string origin, std::string destination);
 	GameState makeComputerMove();
 

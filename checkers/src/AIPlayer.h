@@ -23,9 +23,6 @@ public:
     void initializePiecesFromBoard(Board& board) override;
     void addPiece(bool isKing, Position pos, Board &board) override; 
 
-    /**
-     * @brief Method calling recursive method for minmax alpha-beta algorithm
-     * */
     Move minmax(AIPlayer computer, UserPlayer user, Board board);
     Move makeMinmaxMove(UserPlayer& user, Board& board);
 

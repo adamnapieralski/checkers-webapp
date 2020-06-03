@@ -50,10 +50,6 @@ public:
     bool isPositionNameValid(std::string pos) const;
     Position getPositionByName(std::string pos) const;
 
-    /**
-     * @brief Get string describing current board state with 1. field of FEN record
-     * <https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation>
-     */
     std::string getFEN() const;
 
     Board& operator=(Board other);
@@ -65,9 +61,9 @@ public:
 private:
     void initializePositionNames();
 
-    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> board_ ;
+    std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> board_ ; // <! array representing board
     
-    std::map<std::string, Position> positionNames_;
+    std::map<std::string, Position> positionNames_; // <! Map position names to easier representation
 
     std::string positionLetters_ = "abcdefgh";
     std::string positionNumbers_ = "12345678";

@@ -20,8 +20,6 @@ class Pawn : public Piece {
 public:
     Pawn(Position pos, bool isWhite, bool isUser, Board& board);
 
-    //std::shared_ptr<Pawn> clone() const;
-
     Pawn(const Pawn& p) : Piece(p) {}
 
     void captureMoves(std::vector<Move>& moves, Board board, Move current) const override;

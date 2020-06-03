@@ -62,6 +62,9 @@ std::vector<std::shared_ptr<Piece>> Player::getPieces() const{
     return pieces_;
 }
 
+/**
+* Get all valid moves for owned pieces on board, respecting the rule of capture obligation.
+*/
 std::vector<std::vector<Move>> Player::getValidMoves(Board& board) const{
     std::vector<std::vector<Move>> valid_moves;
     for (auto pc : pieces_){
@@ -77,15 +80,30 @@ std::vector<std::vector<Move>> Player::getValidMoves(Board& board) const{
     return valid_moves;
 }
 
+/**
+ * This function delete piece from owned Pieces
+ * @param piece shared pointer to piece which should be deleted
+ * */
 void Player::erasePiece(std::shared_ptr<Piece> piece){
     pieces_.erase(std::remove_if(pieces_.begin(), pieces_.end(), 
                                             [&piece](const std::shared_ptr<Piece> &p) {return p && p == piece ; }));
 }
 
+/**
+ * This function change position of the Piece
+ * @param piece shared pointer to piece which position should be changed
+ * @param pos where piece should be placed
+ * */
 void Player::changePiece(std::shared_ptr<Piece> piece, const Position& pos){
     piece->changePosition(pos);
 }
 
+/**
+ * This function makes Move on board. It changes the state of board and two players.
+ * @param board game board
+ * @param opponent opponent player
+ * @param move move to make
+ * */
 void Player::movePiece(Board& board, Player& opponent, const Move& move) {
     auto start = move.getStartPosition();
     auto tmp = findPiece(start);
@@ -102,7 +120,10 @@ void Player::movePiece(Board& board, Player& opponent, const Move& move) {
     board.makeMove(move);
 }
 
-
+/**
+ * @param pos given position
+ * @return shared to pointer to piece on given position or nullptr if there is no piece on this position
+ * */
 std::shared_ptr<Piece> Player::findPiece(const Position& pos) const {
     for (auto& piece : pieces_){
         if (piece->getPosition() == pos) return piece;
@@ -151,6 +172,9 @@ bool Player::canCapture(Board& board) const {
     return false;
 }
 
+/**
+ * This function checks if given move is valid
+ * */
 bool Player::isMoveValid(const Move& move, Board& board) const {
     auto movedPiece = findPiece(move.getStartPosition());
     if (!movedPiece) return false;
@@ -169,6 +193,9 @@ bool Player::isMoveValid(const Move& move, Board& board) const {
     return false;
 }
 
+/**
+ * This function checks if next captured move exist
+ * */
 bool Player::isMoveMultiple(const Move& move, Board& board) const {
     auto movedPiece = findPiece(move.getStartPosition());
     if (!movedPiece) return false;

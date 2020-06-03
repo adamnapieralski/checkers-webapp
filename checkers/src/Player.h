@@ -44,15 +44,19 @@ public:
      * Initialize Pieces on Board and add owned Pieces for new Game
      * */
     virtual void initializePieces(Board &board) = 0;
+    /**
+     * This function add owned Pieces based on board
+     * @param board Board with pieces
+     * */
     virtual void initializePiecesFromBoard(Board& board) = 0;
+    /**
+     * This function add piece to Player and place at Board
+     * */
     virtual void addPiece(bool isKing, Position pos, Board &board) = 0; 
     void movePiece(Board& board, Player& opponent, const Move& move);
     void erasePiece(std::shared_ptr<Piece> piece);
     void changePiece(std::shared_ptr<Piece> piece, const Position& pos);
 
-    /**
-     * Get all valid moves for owned pieces on board, respecting the rule of capture obligation.
-     */
     std::vector<std::vector<Move>> getValidMoves(Board& board) const;
     std::vector<std::shared_ptr<Piece>> getPieces() const; 
     std::shared_ptr<Piece> findPiece(const Position& pos) const;
@@ -66,7 +70,7 @@ protected:
 
     const int INIT_ROW = 3;
 
-    std::vector<std::shared_ptr<Piece>> pieces_;
+    std::vector<std::shared_ptr<Piece>> pieces_; //<! owned Pieces
     bool hasTurn_;
     bool isWhite_;
     std::string name_;

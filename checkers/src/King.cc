@@ -15,10 +15,6 @@ King::King(Position pos, bool isWhite, bool isUser, Board& board) : Piece(pos, i
         board.placePiece(pos, BLACK_KING);
 }
 
-/*std::shared_ptr<King> King::clone() const {
-    return std::static_pointer_cast<King>(cloneImplementation());
-}*/
-
 std::shared_ptr<Piece> King::cloneImplementation() const {
     return std::shared_ptr<King>(new King(*this));
 }
