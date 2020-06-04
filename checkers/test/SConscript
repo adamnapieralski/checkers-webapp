@@ -4,7 +4,9 @@ Import('env')
 env_test = env.Clone()
 
 if(platform.system() == "Linux"):
-   env_test.Replace( LIBS = [ 'boost_unit_test_framework' ] )
+    env_test.Replace( LIBS = [ 'boost_unit_test_framework' ] )
+    env_test.Append( CPPFLAGS = ' --coverage ' )
+    env_test.Append( LINKFLAGS = ' --coverage' )
 else:
    print(platform.system() + " not supported")
    
