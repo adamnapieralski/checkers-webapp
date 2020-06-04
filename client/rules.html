@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html ng-app="Checkers">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<title>Warcaby</title>
+
+		<link rel="stylesheet" href="{% static "css/styles.css" %}" />
+
+		<script src="{% static "node_modules/angular/angular.min.js" %}"></script>
+		<script src="{% static "node_modules/jquery/dist/jquery.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "js/checkers_modules.js" %}" data-cover></script>
+
+		<link rel="icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
+		<link rel="shortcut icon" href="{% static "media/icon.ico" %}" type="image/x-icon" />
+
+	</head>
+
+
+    <body>
+		<div style="width: 90%; margin: 0px 2.5%" class="own-div vertical-center" ng-controller="rulesController">
+            <div class="own-div">
+                Zasady gry:
+                <ol>
+                    <li>Każdy gracz rozpoczyna grę z dwunastoma pionami (białe i czerwone/ciemne) ustawionymi na ciemniejszych polach planszy 8x8.</li>
+                    <li>Jako pierwszy ruch wykonuje grający pionami białymi, po czym gracze wykonują na zmianę kolejne ruchy.</li>
+                    <li>Celem gry jest zbicie wszystkich pionów przeciwnika (w tym damek) albo zablokowanie wszystkich, które pozostają na planszy, pozbawiając przeciwnika możliwości wykonania ruchu. Jeśli żaden z graczy nie jest w stanie tego osiągnąć (każdy z graczy wykona po 15 ruchów damkami bez zmniejszania liczby pionów pozostających na planszy), następuje remis.</li>
+                    <li>Piony mogą poruszać się o jedno pole do przodu po przekątnej (na ukos) na wolne pola.</li>
+                    <li>Bicie pionem następuje przez przeskoczenie sąsiedniego pionu (lub damki) przeciwnika na pole znajdujące się tuż za nim po przekątnej (pole to musi być wolne). Zbite piony są usuwane z planszy po zakończeniu ruchu.</li>
+                    <li>Piony mogą bić zarówno do przodu, jak i do tyłu.</li>
+                    <li>W jednym ruchu wolno wykonać więcej niż jedno bicie tym samym pionem, przeskakując przez kolejne piony (damki) przeciwnika.</li>
+                    <li>Bicia są obowiązkowe.</li>
+                    <li>Pion, który dojdzie do ostatniego rzędu planszy, staje się damką.</li>
+                    <li>Kiedy pion staje się damką, kolej ruchu przypada dla przeciwnika.</li>
+                    <li>Damki mogą poruszać się w jednym ruchu o dowolną liczbę pól do przodu lub do tyłu po przekątnej, zatrzymując się na wolnych polach.</li>
+                    <li>Bicie damką jest możliwe z dowolnej odległości po linii przekątnej i następuje przez przeskoczenie pionu (lub damki) przeciwnika, za którym musi znajdować się co najmniej jedno wolne pole - damka przeskakuje na dowolne z tych pól i może kontynuować bicie (na tej samej lub prostopadłej linii).</li>
+                    <li>Podczas bicia nie można przeskakiwać więcej niż raz przez ten sam pion (damkę).</li>
+                    <li>Pion staje się damką od razu po znalezieniu się w ostatnim rzędzie przeciwnika, jeśli znajdzie się tam w wyniku bicia, może w tym samym ruchu kontynuować bicie.</li>
+                    <li>Kiedy istnieje kilka możliwości bić, można wykonać dowolne (niekoniecznie maksymalne).</li>
+                </ol>
+            </div>
+            <div style ="text-align: center;">
+                <button class="button-rules" ng-click="goBackToEntry()">Powrót</button>
+            </div>
+		</div>
+	</div>
+    </body>
+</html>

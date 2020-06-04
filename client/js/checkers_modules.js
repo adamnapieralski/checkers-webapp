@@ -5,7 +5,7 @@ var myAppControllers = angular.module('myAppControllers', []);
 myAppControllers.controller('entryController',
 	['$scope', 'srvInfo',
 		function($scope, srvInfo) {
-			$scope.loadGame = function(data) {
+			$scope.loadGame = function() {
 				if (document.getElementById('userNameText').value == "") {
 					document.getElementById('userNameText').placeholder = "Podaj nazwę gracza!";
 					document.getElementById('userNameText').style.borderColor = 'red';
@@ -15,7 +15,20 @@ myAppControllers.controller('entryController',
 					window.location = "/play";
 				}
 			};
+
+			$scope.showRules = function() {
+				window.location = "/rules";
+			}
 }]);
+
+myAppControllers.controller('rulesController',
+	['$scope', '$window',
+		function ($scope, $window) {
+			$scope.goBackToEntry = function() {
+				window.location = "/entry";
+			};
+}]);
+
 
 myAppControllers.controller('gameController',
 	['$scope', 'srvInfo', '$timeout', '$window',
@@ -169,7 +182,4 @@ angular.module('myAppServices', [])
 				 this.makeComputerMove = function(callback) {
 					return $http.get('/ajax/checkerspy/make_computer_move/').then(callback); 
 				 };
-
              });
-
-
