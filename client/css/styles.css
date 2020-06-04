@@ -85,6 +85,25 @@ button:hover {
 	background-color: #a78a6f;
 }
 
+.button-rules {
+	background-color: #565656;
+	color: white;
+	padding: 14px 20px;
+	margin: 0 auto;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-align: center;
+	display: block;
+	font-weight: bold;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+
+.button-rules:hover {
+	background-color: #414141;
+}
+
 input.usernameInput {
 	width: 20%;
 }
