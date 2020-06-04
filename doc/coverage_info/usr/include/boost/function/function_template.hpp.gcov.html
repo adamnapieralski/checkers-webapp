@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -171,13 +171,13 @@
 <a name="109"><span class="lineNum">     109 </span>            :       struct BOOST_FUNCTION_VOID_FUNCTION_INVOKER</a>
 <a name="110"><span class="lineNum">     110 </span>            :       {</a>
 <a name="111"><span class="lineNum">     111 </span>            :         static BOOST_FUNCTION_VOID_RETURN_TYPE</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         19 :         invoke(function_buffer&amp; function_ptr BOOST_FUNCTION_COMMA</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         22 :         invoke(function_buffer&amp; function_ptr BOOST_FUNCTION_COMMA</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :                BOOST_FUNCTION_PARMS)</a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            :         {</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         19 :           FunctionPtr f = reinterpret_cast&lt;FunctionPtr&gt;(function_ptr.members.func_ptr);</span></a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         19 :           BOOST_FUNCTION_RETURN(f(BOOST_FUNCTION_ARGS));</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         19 :         }</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         22 :           FunctionPtr f = reinterpret_cast&lt;FunctionPtr&gt;(function_ptr.members.func_ptr);</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         22 :           BOOST_FUNCTION_RETURN(f(BOOST_FUNCTION_ARGS));</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">         22 :         }</span></a>
 <a name="119"><span class="lineNum">     119 </span>            :       };</a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
 <a name="121"><span class="lineNum">     121 </span>            :       template&lt;</a>
@@ -549,10 +549,10 @@
 <a name="487"><span class="lineNum">     487 </span>            :                                             BOOST_FUNCTION_TEMPLATE_ARGS);</a>
 <a name="488"><span class="lineNum">     488 </span>            : </a>
 <a name="489"><span class="lineNum">     489 </span>            :         template&lt;typename F&gt;</a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         19 :         bool assign_to(F f, function_buffer&amp; functor) const</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         22 :         bool assign_to(F f, function_buffer&amp; functor) const</span></a>
 <a name="491"><span class="lineNum">     491 </span>            :         {</a>
 <a name="492"><span class="lineNum">     492 </span>            :           typedef typename get_function_tag&lt;F&gt;::type tag;</a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         19 :           return assign_to(f, functor, tag());</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         22 :           return assign_to(f, functor, tag());</span></a>
 <a name="494"><span class="lineNum">     494 </span>            :         }</a>
 <a name="495"><span class="lineNum">     495 </span>            :         template&lt;typename F,typename Allocator&gt;</a>
 <a name="496"><span class="lineNum">     496 </span>            :         bool assign_to_a(F f, function_buffer&amp; functor, Allocator a) const</a>
@@ -561,24 +561,24 @@
 <a name="499"><span class="lineNum">     499 </span>            :           return assign_to_a(f, functor, a, tag());</a>
 <a name="500"><span class="lineNum">     500 </span>            :         }</a>
 <a name="501"><span class="lineNum">     501 </span>            : </a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">         19 :         void clear(function_buffer&amp; functor) const</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">         22 :         void clear(function_buffer&amp; functor) const</span></a>
 <a name="503"><span class="lineNum">     503 </span>            :         {</a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         19 :           if (base.manager)</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         19 :             base.manager(functor, functor, destroy_functor_tag);</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         19 :         }</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">         22 :           if (base.manager)</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">         22 :             base.manager(functor, functor, destroy_functor_tag);</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">         22 :         }</span></a>
 <a name="507"><span class="lineNum">     507 </span>            : </a>
 <a name="508"><span class="lineNum">     508 </span>            :       private:</a>
 <a name="509"><span class="lineNum">     509 </span>            :         // Function pointers</a>
 <a name="510"><span class="lineNum">     510 </span>            :         template&lt;typename FunctionPtr&gt;</a>
 <a name="511"><span class="lineNum">     511 </span>            :         bool</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         19 :         assign_to(FunctionPtr f, function_buffer&amp; functor, function_ptr_tag) const</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         22 :         assign_to(FunctionPtr f, function_buffer&amp; functor, function_ptr_tag) const</span></a>
 <a name="513"><span class="lineNum">     513 </span>            :         {</a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">         19 :           this-&gt;clear(functor);</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">         19 :           if (f) {</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">         22 :           this-&gt;clear(functor);</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">         22 :           if (f) {</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :             // should be a reinterpret cast, but some compilers insist</a>
 <a name="517"><span class="lineNum">     517 </span>            :             // on giving cv-qualifiers to free functions</a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         19 :             functor.members.func_ptr = reinterpret_cast&lt;void (*)()&gt;(f);</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         19 :             return true;</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">         22 :             functor.members.func_ptr = reinterpret_cast&lt;void (*)()&gt;(f);</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         22 :             return true;</span></a>
 <a name="520"><span class="lineNum">     520 </span>            :           } else {</a>
 <a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :             return false;</span></a>
 <a name="522"><span class="lineNum">     522 </span>            :           }</a>
@@ -770,17 +770,17 @@
 <a name="708"><span class="lineNum">     708 </span>            :     // MSVC chokes if the following two constructors are collapsed into</a>
 <a name="709"><span class="lineNum">     709 </span>            :     // one with a default parameter.</a>
 <a name="710"><span class="lineNum">     710 </span>            :     template&lt;typename Functor&gt;</a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">         19 :     BOOST_FUNCTION_FUNCTION(Functor BOOST_FUNCTION_TARGET_FIX(const &amp;) f</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">         22 :     BOOST_FUNCTION_FUNCTION(Functor BOOST_FUNCTION_TARGET_FIX(const &amp;) f</span></a>
 <a name="712"><span class="lineNum">     712 </span>            : #ifndef BOOST_NO_SFINAE</a>
 <a name="713"><span class="lineNum">     713 </span>            :                             ,typename boost::enable_if_&lt;</a>
 <a name="714"><span class="lineNum">     714 </span>            :                              !(is_integral&lt;Functor&gt;::value),</a>
 <a name="715"><span class="lineNum">     715 </span>            :                                         int&gt;::type = 0</a>
 <a name="716"><span class="lineNum">     716 </span>            : #endif // BOOST_NO_SFINAE</a>
 <a name="717"><span class="lineNum">     717 </span>            :                             ) :</a>
-<a name="718"><span class="lineNum">     718 </span><span class="lineCov">         19 :       function_base()</span></a>
+<a name="718"><span class="lineNum">     718 </span><span class="lineCov">         22 :       function_base()</span></a>
 <a name="719"><span class="lineNum">     719 </span>            :     {</a>
-<a name="720"><span class="lineNum">     720 </span><span class="lineCov">         19 :       this-&gt;assign_to(f);</span></a>
-<a name="721"><span class="lineNum">     721 </span><span class="lineCov">         19 :     }</span></a>
+<a name="720"><span class="lineNum">     720 </span><span class="lineCov">         22 :       this-&gt;assign_to(f);</span></a>
+<a name="721"><span class="lineNum">     721 </span><span class="lineCov">         22 :     }</span></a>
 <a name="722"><span class="lineNum">     722 </span>            :     template&lt;typename Functor,typename Allocator&gt;</a>
 <a name="723"><span class="lineNum">     723 </span>            :     BOOST_FUNCTION_FUNCTION(Functor BOOST_FUNCTION_TARGET_FIX(const &amp;) f, Allocator a</a>
 <a name="724"><span class="lineNum">     724 </span>            : #ifndef BOOST_NO_SFINAE</a>
@@ -815,7 +815,7 @@
 <a name="753"><span class="lineNum">     753 </span>            :     }</a>
 <a name="754"><span class="lineNum">     754 </span>            : #endif</a>
 <a name="755"><span class="lineNum">     755 </span>            : </a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">         19 :     ~BOOST_FUNCTION_FUNCTION() { clear(); }</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">         22 :     ~BOOST_FUNCTION_FUNCTION() { clear(); }</span></a>
 <a name="757"><span class="lineNum">     757 </span>            : </a>
 <a name="758"><span class="lineNum">     758 </span>            :     result_type operator()(BOOST_FUNCTION_PARMS) const</a>
 <a name="759"><span class="lineNum">     759 </span>            :     {</a>
@@ -927,14 +927,14 @@
 <a name="865"><span class="lineNum">     865 </span>            :     }</a>
 <a name="866"><span class="lineNum">     866 </span>            : </a>
 <a name="867"><span class="lineNum">     867 </span>            :     // Clear out a target, if there is one</a>
-<a name="868"><span class="lineNum">     868 </span><span class="lineCov">         19 :     void clear()</span></a>
+<a name="868"><span class="lineNum">     868 </span><span class="lineCov">         22 :     void clear()</span></a>
 <a name="869"><span class="lineNum">     869 </span>            :     {</a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         19 :       if (vtable) {</span></a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         19 :         if (!this-&gt;has_trivial_copy_and_destroy())</span></a>
+<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         22 :       if (vtable) {</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         22 :         if (!this-&gt;has_trivial_copy_and_destroy())</span></a>
 <a name="872"><span class="lineNum">     872 </span><span class="lineNoCov">          0 :           get_vtable()-&gt;clear(this-&gt;functor);</span></a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         19 :         vtable = 0;</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         22 :         vtable = 0;</span></a>
 <a name="874"><span class="lineNum">     874 </span>            :       }</a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">         19 :     }</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">         22 :     }</span></a>
 <a name="876"><span class="lineNum">     876 </span>            : </a>
 <a name="877"><span class="lineNum">     877 </span>            : #if (defined __SUNPRO_CC) &amp;&amp; (__SUNPRO_CC &lt;= 0x530) &amp;&amp; !(defined BOOST_NO_COMPILER_CONFIG)</a>
 <a name="878"><span class="lineNum">     878 </span>            :     // Sun C++ 5.3 can't handle the safe_bool idiom, so don't use it</a>
@@ -971,7 +971,7 @@
 <a name="909"><span class="lineNum">     909 </span>            :     }</a>
 <a name="910"><span class="lineNum">     910 </span>            : </a>
 <a name="911"><span class="lineNum">     911 </span>            :     template&lt;typename Functor&gt;</a>
-<a name="912"><span class="lineNum">     912 </span><span class="lineCov">         19 :     void assign_to(Functor f)</span></a>
+<a name="912"><span class="lineNum">     912 </span><span class="lineCov">         22 :     void assign_to(Functor f)</span></a>
 <a name="913"><span class="lineNum">     913 </span>            :     {</a>
 <a name="914"><span class="lineNum">     914 </span>            :       using boost::detail::function::vtable_base;</a>
 <a name="915"><span class="lineNum">     915 </span>            : </a>
@@ -992,17 +992,17 @@
 <a name="930"><span class="lineNum">     930 </span>            :       static const vtable_type stored_vtable =</a>
 <a name="931"><span class="lineNum">     931 </span>            :         { { &amp;manager_type::manage }, &amp;invoker_type::invoke };</a>
 <a name="932"><span class="lineNum">     932 </span>            : </a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">         19 :       if (stored_vtable.assign_to(f, functor)) {</span></a>
-<a name="934"><span class="lineNum">     934 </span><span class="lineCov">         19 :         std::size_t value = reinterpret_cast&lt;std::size_t&gt;(&amp;stored_vtable.base);</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">         22 :       if (stored_vtable.assign_to(f, functor)) {</span></a>
+<a name="934"><span class="lineNum">     934 </span><span class="lineCov">         22 :         std::size_t value = reinterpret_cast&lt;std::size_t&gt;(&amp;stored_vtable.base);</span></a>
 <a name="935"><span class="lineNum">     935 </span>            :         // coverity[pointless_expression]: suppress coverity warnings on apparant if(const).</a>
 <a name="936"><span class="lineNum">     936 </span>            :         if (boost::has_trivial_copy_constructor&lt;Functor&gt;::value &amp;&amp;</a>
 <a name="937"><span class="lineNum">     937 </span>            :             boost::has_trivial_destructor&lt;Functor&gt;::value &amp;&amp;</a>
 <a name="938"><span class="lineNum">     938 </span>            :             boost::detail::function::function_allows_small_object_optimization&lt;Functor&gt;::value)</a>
-<a name="939"><span class="lineNum">     939 </span><span class="lineCov">         19 :           value |= static_cast&lt;std::size_t&gt;(0x01);</span></a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineCov">         19 :         vtable = reinterpret_cast&lt;boost::detail::function::vtable_base *&gt;(value);</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">         22 :           value |= static_cast&lt;std::size_t&gt;(0x01);</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">         22 :         vtable = reinterpret_cast&lt;boost::detail::function::vtable_base *&gt;(value);</span></a>
 <a name="941"><span class="lineNum">     941 </span>            :       } else</a>
 <a name="942"><span class="lineNum">     942 </span><span class="lineNoCov">          0 :         vtable = 0;</span></a>
-<a name="943"><span class="lineNum">     943 </span><span class="lineCov">         19 :     }</span></a>
+<a name="943"><span class="lineNum">     943 </span><span class="lineCov">         22 :     }</span></a>
 <a name="944"><span class="lineNum">     944 </span>            : </a>
 <a name="945"><span class="lineNum">     945 </span>            :     template&lt;typename Functor,typename Allocator&gt;</a>
 <a name="946"><span class="lineNum">     946 </span>            :     void assign_to_a(Functor f,Allocator a)</a>
@@ -1120,16 +1120,16 @@
 <a name="1058"><span class="lineNum">    1058 </span>            :   BOOST_DEFAULTED_FUNCTION(function(), : base_type() {})</a>
 <a name="1059"><span class="lineNum">    1059 </span>            : </a>
 <a name="1060"><span class="lineNum">    1060 </span>            :   template&lt;typename Functor&gt;</a>
-<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">         19 :   function(Functor f</span></a>
+<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">         22 :   function(Functor f</span></a>
 <a name="1062"><span class="lineNum">    1062 </span>            : #ifndef BOOST_NO_SFINAE</a>
 <a name="1063"><span class="lineNum">    1063 </span>            :            ,typename boost::enable_if_&lt;</a>
 <a name="1064"><span class="lineNum">    1064 </span>            :                           !(is_integral&lt;Functor&gt;::value),</a>
 <a name="1065"><span class="lineNum">    1065 </span>            :                        int&gt;::type = 0</a>
 <a name="1066"><span class="lineNum">    1066 </span>            : #endif</a>
 <a name="1067"><span class="lineNum">    1067 </span>            :            ) :</a>
-<a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">         19 :     base_type(f)</span></a>
+<a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">         22 :     base_type(f)</span></a>
 <a name="1069"><span class="lineNum">    1069 </span>            :   {</a>
-<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">         19 :   }</span></a>
+<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">         22 :   }</span></a>
 <a name="1071"><span class="lineNum">    1071 </span>            :   template&lt;typename Functor,typename Allocator&gt;</a>
 <a name="1072"><span class="lineNum">    1072 </span>            :   function(Functor f, Allocator a</a>
 <a name="1073"><span class="lineNum">    1073 </span>            : #ifndef BOOST_NO_SFINAE</a>

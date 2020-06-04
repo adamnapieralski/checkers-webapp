@@ -31,17 +31,17 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">362</td>
-            <td class="headerCovTableEntry">362</td>
+            <td class="headerCovTableEntry">385</td>
+            <td class="headerCovTableEntry">385</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">38</td>
-            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntry">44</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
@@ -536,49 +536,76 @@
 <a name="474"><span class="lineNum">     474 </span><span class="lineCov">          3 :     auto state = ch.processUserMove(&quot;c3&quot;, &quot;e5&quot;);</span></a>
 <a name="475"><span class="lineNum">     475 </span><span class="lineCov">          1 :     BOOST_CHECK(state.boardFEN == &quot;8/8/3p3K/4P3/8/8/8/8&quot;);</span></a>
 <a name="476"><span class="lineNum">     476 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.isUserTurn &amp;&amp; state.isInMultipleMove);</span></a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;e5&quot;, &quot;c7&quot;);</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">          1 :     BOOST_CHECK( state.boardFEN == &quot;8/2P5/7K/8/8/8/8/8&quot;);</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn &amp;&amp; !state.isInMultipleMove);</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">          1 : }</span></a>
-<a name="481"><span class="lineNum">     481 </span>            : </a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(multipleCaptureComputer) {</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/8/3p3K/8/3p4/2P5/8/8&quot;, &quot;Adam&quot;, false, false);</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">          2 :     auto state = ch.makeComputerMove();</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">          1 :     BOOST_CHECK(state.boardFEN == &quot;8/2P5/7K/8/8/8/8/8&quot;);</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          1 :     BOOST_CHECK(state.isUserTurn &amp;&amp; !state.isInMultipleMove);</span></a>
-<a name="488"><span class="lineNum">     488 </span>            : </a>
-<a name="489"><span class="lineNum">     489 </span>            :     // triple move with king</a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/2P3K1/5p2/8/3p4/8/3p4/8&quot;, &quot;Walter White&quot;, false, false);</span></a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">          1 :     state = ch.makeComputerMove();</span></a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">          1 :     BOOST_CHECK(state.boardFEN == &quot;8/2P5/8/8/8/8/8/4K3&quot;);</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">          1 : }</span></a>
-<a name="494"><span class="lineNum">     494 </span>            : </a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(upgradeToKingUser) {</span></a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/4P3/1p6/8/8/8/8/8&quot;, &quot;Willy Wonka&quot;, true, true);</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">          3 :     auto state = ch.processUserMove(&quot;e7&quot;, &quot;d8&quot;);</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;3K4/8/1p6/8/8/8/8/8&quot;);</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn );</span></a>
-<a name="501"><span class="lineNum">     501 </span>            :     </a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/4p3/1p3P2/8/8/8/8/8&quot;, &quot;Barte&quot;, true, true);</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;f6&quot;, &quot;d8&quot;);</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;3K4/8/1p6/8/8/8/8/8&quot;);</span></a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">          1 :     BOOST_CHECK( state.isUserTurn &amp;&amp; state.isInMultipleMove );</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;d8&quot;, &quot;a5&quot;);</span></a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;8/8/8/K7/8/8/8/8&quot;);</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn );</span></a>
-<a name="509"><span class="lineNum">     509 </span><span class="lineCov">          1 : }</span></a>
-<a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(upgradeToKingComputer) {</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/8/8/8/5p2/P7/1p6/8&quot;, &quot;Mark&quot;, false, false);</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">          2 :     auto state = ch.makeComputerMove();</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;8/8/8/6K1/8/8/8/8&quot; || state.boardFEN == &quot;8/8/7K/8/8/8/8/8&quot;);</span></a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          1 : }</span></a>
-<a name="517"><span class="lineNum">     517 </span>            : </a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.score == Score::IN_PROGRESS);</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;e5&quot;, &quot;c7&quot;);</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">          1 :     BOOST_CHECK( state.boardFEN == &quot;8/2P5/7K/8/8/8/8/8&quot;);</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn &amp;&amp; !state.isInMultipleMove);</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          1 : }</span></a>
+<a name="482"><span class="lineNum">     482 </span>            : </a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(multipleCaptureComputer) {</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/8/3p3K/8/3p4/2P5/8/8&quot;, &quot;Adam&quot;, false, false);</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">          2 :     auto state = ch.makeComputerMove();</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          1 :     BOOST_CHECK(state.boardFEN == &quot;8/2P5/7K/8/8/8/8/8&quot;);</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">          1 :     BOOST_CHECK(state.isUserTurn &amp;&amp; !state.isInMultipleMove);</span></a>
+<a name="489"><span class="lineNum">     489 </span>            : </a>
+<a name="490"><span class="lineNum">     490 </span>            :     // triple move with king</a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/2P3K1/5p2/8/3p4/8/3p4/8&quot;, &quot;Walter White&quot;, false, false);</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">          1 :     state = ch.makeComputerMove();</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">          1 :     BOOST_CHECK(state.boardFEN == &quot;8/2P5/8/8/8/8/8/4K3&quot;);</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">          1 : }</span></a>
+<a name="495"><span class="lineNum">     495 </span>            : </a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(upgradeToKingUser) {</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/4P3/1p6/8/8/8/8/8&quot;, &quot;Willy Wonka&quot;, true, true);</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          3 :     auto state = ch.processUserMove(&quot;e7&quot;, &quot;d8&quot;);</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;3K4/8/1p6/8/8/8/8/8&quot;);</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn );</span></a>
+<a name="502"><span class="lineNum">     502 </span>            :     </a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/4p3/1p3P2/8/8/8/8/8&quot;, &quot;Barte&quot;, true, true);</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;f6&quot;, &quot;d8&quot;);</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;3K4/8/1p6/8/8/8/8/8&quot;);</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">          1 :     BOOST_CHECK( state.isUserTurn &amp;&amp; state.isInMultipleMove );</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">          1 :     state = ch.processUserMove(&quot;d8&quot;, &quot;a5&quot;);</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;8/8/8/K7/8/8/8/8&quot;);</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineCov">          1 :     BOOST_CHECK( !state.isUserTurn );</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">          1 : }</span></a>
+<a name="511"><span class="lineNum">     511 </span>            : </a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(upgradeToKingComputer) {</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/8/8/8/5p2/P7/1p6/8&quot;, &quot;Mark&quot;, false, false);</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          2 :     auto state = ch.makeComputerMove();</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.boardFEN == &quot;8/8/8/6K1/8/8/8/8&quot; || state.boardFEN == &quot;8/8/7K/8/8/8/8/8&quot;);</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">          1 : }</span></a>
 <a name="518"><span class="lineNum">     518 </span>            : </a>
-<a name="519"><span class="lineNum">     519 </span>            : BOOST_AUTO_TEST_SUITE_END()</a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(drawEnd) {</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;5k2/8/8/8/8/8/8/2K5&quot;, &quot;Waldek&quot;, true, true);</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          6 :     std::vector&lt;std::string&gt; userSpots = {&quot;c1&quot;, &quot;d2&quot;};</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         16 :     for (int i = 0; i &lt; 15; ++i) {</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         15 :         ch.processUserMove(userSpots.at(i % 2), userSpots.at(std::abs(i % 2 - 1)));</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         15 :         ch.makeComputerMove();</span></a>
+<a name="526"><span class="lineNum">     526 </span>            :     }</a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          2 :     auto state = ch.getGameState();</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.hasGameEnded &amp;&amp; state.score == Score::DRAW);</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">          1 : }</span></a>
+<a name="530"><span class="lineNum">     530 </span>            : </a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(userWonEnd) {</span></a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;8/8/3P4/4p3/8/8/8/8&quot;, &quot;asdf&quot;, true, true);</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">          3 :     auto state = ch.processUserMove(&quot;d6&quot;, &quot;f4&quot;);</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.hasGameEnded &amp;&amp; state.score == Score::USER_WON);</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">          1 : }</span></a>
+<a name="537"><span class="lineNum">     537 </span>            : </a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">          2 : BOOST_AUTO_TEST_CASE(userLostEnd) {</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">          2 :     auto ch = Checkers::getInstance();</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">          1 :     ch.fenInitialize(&quot;3p4/4K3/8/4P3/8/8/8/8&quot;, &quot;asdfghjk&quot;, true, false);</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">          2 :     auto state = ch.makeComputerMove();</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">          1 :     BOOST_REQUIRE( state.hasGameEnded &amp;&amp; state.score == Score::USER_LOST);</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">          1 : }</span></a>
+<a name="544"><span class="lineNum">     544 </span>            : </a>
+<a name="545"><span class="lineNum">     545 </span>            : </a>
+<a name="546"><span class="lineNum">     546 </span>            : BOOST_AUTO_TEST_SUITE_END()</a>
 </pre>
       </td>
     </tr>

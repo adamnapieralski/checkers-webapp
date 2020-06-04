@@ -37,11 +37,11 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">6</td>
-            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -130,15 +130,15 @@
 <a name="68"><span class="lineNum">      68 </span>            : </a>
 <a name="69"><span class="lineNum">      69 </span>            :       // Number of elements.</a>
 <a name="70"><span class="lineNum">      70 </span>            :       constexpr size_type</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">         89 :       size() const noexcept { return _M_len; }</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">        129 :       size() const noexcept { return _M_len; }</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span>            :       // First element.</a>
 <a name="74"><span class="lineNum">      74 </span>            :       constexpr const_iterator</a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        178 :       begin() const noexcept { return _M_array; }</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        258 :       begin() const noexcept { return _M_array; }</span></a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span>            :       // One past the last element.</a>
 <a name="78"><span class="lineNum">      78 </span>            :       constexpr const_iterator</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         89 :       end() const noexcept { return begin() + size(); }</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        129 :       end() const noexcept { return begin() + size(); }</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :     };</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span>            :   /**</a>

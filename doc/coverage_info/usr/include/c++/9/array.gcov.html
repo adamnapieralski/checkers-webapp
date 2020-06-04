@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -114,12 +114,12 @@
 <a name="52"><span class="lineNum">      52 </span>            :       typedef __is_nothrow_swappable&lt;_Tp&gt; _Is_nothrow_swappable;</a>
 <a name="53"><span class="lineNum">      53 </span>            : </a>
 <a name="54"><span class="lineNum">      54 </span>            :       static constexpr _Tp&amp;</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">      75192 :       _S_ref(const _Type&amp; __t, std::size_t __n) noexcept</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      75192 :       { return const_cast&lt;_Tp&amp;&gt;(__t[__n]); }</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">    1004034 :       _S_ref(const _Type&amp; __t, std::size_t __n) noexcept</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">    1004034 :       { return const_cast&lt;_Tp&amp;&gt;(__t[__n]); }</span></a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>
 <a name="58"><span class="lineNum">      58 </span>            :       static constexpr _Tp*</a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">       6948 :       _S_ptr(const _Type&amp; __t) noexcept</span></a>
-<a name="60"><span class="lineNum">      60 </span><span class="lineCov">       6948 :       { return const_cast&lt;_Tp*&gt;(__t); }</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">      66240 :       _S_ptr(const _Type&amp; __t) noexcept</span></a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">      66240 :       { return const_cast&lt;_Tp*&gt;(__t); }</span></a>
 <a name="61"><span class="lineNum">      61 </span>            :     };</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
 <a name="63"><span class="lineNum">      63 </span>            :  template&lt;typename _Tp&gt;</a>
@@ -179,22 +179,22 @@
 <a name="117"><span class="lineNum">     117 </span>            :       { std::fill_n(begin(), size(), __u); }</a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
 <a name="119"><span class="lineNum">     119 </span>            :       void</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2214 :       swap(array&amp; __other)</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">      21978 :       swap(array&amp; __other)</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :       noexcept(_AT_Type::_Is_nothrow_swappable::value)</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       2214 :       { std::swap_ranges(begin(), end(), __other.begin()); }</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">      21978 :       { std::swap_ranges(begin(), end(), __other.begin()); }</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span>            :       // Iterators.</a>
 <a name="125"><span class="lineNum">     125 </span>            :       _GLIBCXX17_CONSTEXPR iterator</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       4581 :       begin() noexcept</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       4581 :       { return iterator(data()); }</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      44109 :       begin() noexcept</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      44109 :       { return iterator(data()); }</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
 <a name="129"><span class="lineNum">     129 </span>            :       _GLIBCXX17_CONSTEXPR const_iterator</a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :       begin() const noexcept</span></a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :       { return const_iterator(data()); }</span></a>
 <a name="132"><span class="lineNum">     132 </span>            : </a>
 <a name="133"><span class="lineNum">     133 </span>            :       _GLIBCXX17_CONSTEXPR iterator</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       2367 :       end() noexcept</span></a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       2367 :       { return iterator(data() + _Nm); }</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">      22131 :       end() noexcept</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">      22131 :       { return iterator(data() + _Nm); }</span></a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            :       _GLIBCXX17_CONSTEXPR const_iterator</a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :       end() const noexcept</span></a>
@@ -244,12 +244,12 @@
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            :       // Element access.</a>
 <a name="184"><span class="lineNum">     184 </span>            :       _GLIBCXX17_CONSTEXPR reference</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       3054 :       operator[](size_type __n) noexcept</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       3054 :       { return _AT_Type::_S_ref(_M_elems, __n); }</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">      16592 :       operator[](size_type __n) noexcept</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      16592 :       { return _AT_Type::_S_ref(_M_elems, __n); }</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span>            :       constexpr const_reference</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      72138 :       operator[](size_type __n) const noexcept</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">      72138 :       { return _AT_Type::_S_ref(_M_elems, __n); }</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     987442 :       operator[](size_type __n) const noexcept</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     987442 :       { return _AT_Type::_S_ref(_M_elems, __n); }</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            :       _GLIBCXX17_CONSTEXPR reference</a>
 <a name="193"><span class="lineNum">     193 </span>            :       at(size_type __n)</a>
@@ -293,8 +293,8 @@
 <a name="231"><span class="lineNum">     231 </span>            :       }</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
 <a name="233"><span class="lineNum">     233 </span>            :       _GLIBCXX17_CONSTEXPR pointer</a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">       6948 :       data() noexcept</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">       6948 :       { return _AT_Type::_S_ptr(_M_elems); }</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">      66240 :       data() noexcept</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">      66240 :       { return _AT_Type::_S_ptr(_M_elems); }</span></a>
 <a name="236"><span class="lineNum">     236 </span>            : </a>
 <a name="237"><span class="lineNum">     237 </span>            :       _GLIBCXX17_CONSTEXPR const_pointer</a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :       data() const noexcept</span></a>
@@ -353,9 +353,9 @@
 <a name="291"><span class="lineNum">     291 </span>            : #else</a>
 <a name="292"><span class="lineNum">     292 </span>            :     void</a>
 <a name="293"><span class="lineNum">     293 </span>            : #endif</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">       2214 :     swap(array&lt;_Tp, _Nm&gt;&amp; __one, array&lt;_Tp, _Nm&gt;&amp; __two)</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">      21978 :     swap(array&lt;_Tp, _Nm&gt;&amp; __one, array&lt;_Tp, _Nm&gt;&amp; __two)</span></a>
 <a name="295"><span class="lineNum">     295 </span>            :     noexcept(noexcept(__one.swap(__two)))</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">       2214 :     { __one.swap(__two); }</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      21978 :     { __one.swap(__two); }</span></a>
 <a name="297"><span class="lineNum">     297 </span>            : </a>
 <a name="298"><span class="lineNum">     298 </span>            : #if __cplusplus &gt; 201402L || !defined(__STRICT_ANSI__) // c++1z or gnu++11</a>
 <a name="299"><span class="lineNum">     299 </span>            :   template&lt;typename _Tp, std::size_t _Nm&gt;</a>

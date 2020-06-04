@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -214,10 +214,10 @@
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <a name="153"><span class="lineNum">     153 </span>            :   template&lt;typename _Tp&gt;</a>
 <a name="154"><span class="lineNum">     154 </span>            :     constexpr _Tp*</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        164 :     __to_address(_Tp* __ptr) noexcept</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        171 :     __to_address(_Tp* __ptr) noexcept</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :     {</a>
 <a name="157"><span class="lineNum">     157 </span>            :       static_assert(!std::is_function&lt;_Tp&gt;::value, &quot;not a function pointer&quot;);</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">        164 :       return __ptr;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">        171 :       return __ptr;</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :     }</a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
 <a name="161"><span class="lineNum">     161 </span>            : #if __cplusplus &lt;= 201703L</a>

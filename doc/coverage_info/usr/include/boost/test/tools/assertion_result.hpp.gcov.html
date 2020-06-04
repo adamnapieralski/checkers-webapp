@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -111,9 +111,9 @@
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            : public:</a>
 <a name="51"><span class="lineNum">      51 </span>            :     // Constructor</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        168 :     assertion_result( bool pv_ )</span></a>
-<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        168 :     : p_predicate_value( pv_ )</span></a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        168 :     {}</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">        172 :     assertion_result( bool pv_ )</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineCov">        172 :     : p_predicate_value( pv_ )</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">        172 :     {}</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            :     template&lt;typename BoolConvertable&gt;</a>
 <a name="57"><span class="lineNum">      57 </span>            :     assertion_result( BoolConvertable const&amp; pv_ ) : p_predicate_value( !!pv_ ) {}</a>
@@ -124,7 +124,7 @@
 <a name="62"><span class="lineNum">      62 </span>            :     operator            safe_bool() const           { return !!p_predicate_value ? &amp;dummy::nonnull : 0; }</a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
 <a name="64"><span class="lineNum">      64 </span>            :     // Public properties</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        168 :     BOOST_READONLY_PROPERTY( bool, (assertion_result) ) p_predicate_value;</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">        172 :     BOOST_READONLY_PROPERTY( bool, (assertion_result) ) p_predicate_value;</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            :     // Access methods</a>
 <a name="68"><span class="lineNum">      68 </span>            :     bool                has_empty_message() const   { return !m_message; }</a>

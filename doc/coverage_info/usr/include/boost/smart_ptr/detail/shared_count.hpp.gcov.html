@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -181,12 +181,12 @@
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            : public:</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        168 :     BOOST_CONSTEXPR shared_count() BOOST_SP_NOEXCEPT: pi_(0)</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        172 :     BOOST_CONSTEXPR shared_count() BOOST_SP_NOEXCEPT: pi_(0)</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)</a>
 <a name="124"><span class="lineNum">     124 </span>            :         , id_(shared_count_id)</a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
 <a name="126"><span class="lineNum">     126 </span>            :     {</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        168 :     }</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        172 :     }</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
 <a name="129"><span class="lineNum">     129 </span>            :     BOOST_CONSTEXPR explicit shared_count( sp_counted_base * pi ) BOOST_SP_NOEXCEPT: pi_( pi )</a>
 <a name="130"><span class="lineNum">     130 </span>            : #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)</a>
@@ -484,13 +484,13 @@
 <a name="422"><span class="lineNum">     422 </span>            :         r.release();</a>
 <a name="423"><span class="lineNum">     423 </span>            :     }</a>
 <a name="424"><span class="lineNum">     424 </span>            : </a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        168 :     ~shared_count() /*BOOST_SP_NOEXCEPT*/</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">        168 :     {</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        168 :         if( pi_ != 0 ) pi_-&gt;release();</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        172 :     ~shared_count() /*BOOST_SP_NOEXCEPT*/</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">        172 :     {</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        172 :         if( pi_ != 0 ) pi_-&gt;release();</span></a>
 <a name="428"><span class="lineNum">     428 </span>            : #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)</a>
 <a name="429"><span class="lineNum">     429 </span>            :         id_ = 0;</a>
 <a name="430"><span class="lineNum">     430 </span>            : #endif</a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        168 :     }</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        172 :     }</span></a>
 <a name="432"><span class="lineNum">     432 </span>            : </a>
 <a name="433"><span class="lineNum">     433 </span>            :     shared_count(shared_count const &amp; r) BOOST_SP_NOEXCEPT: pi_(r.pi_)</a>
 <a name="434"><span class="lineNum">     434 </span>            : #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)</a>

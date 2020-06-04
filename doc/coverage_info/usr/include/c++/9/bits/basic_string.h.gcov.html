@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-06-02 14:02:49</td>
+            <td class="headerValue">2020-06-04 06:22:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -302,12 +302,12 @@
 <a name="240"><span class="lineNum">     240 </span>            :       // requires special behaviour if _InIterator is an integral type</a>
 <a name="241"><span class="lineNum">     241 </span>            :       template&lt;typename _InIterator&gt;</a>
 <a name="242"><span class="lineNum">     242 </span>            :         void</a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        338 :         _M_construct_aux(_InIterator __beg, _InIterator __end,</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">        687 :         _M_construct_aux(_InIterator __beg, _InIterator __end,</span></a>
 <a name="244"><span class="lineNum">     244 </span>            :                          std::__false_type)</a>
 <a name="245"><span class="lineNum">     245 </span>            :         {</a>
 <a name="246"><span class="lineNum">     246 </span>            :           typedef typename iterator_traits&lt;_InIterator&gt;::iterator_category _Tag;</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        338 :           _M_construct(__beg, __end, _Tag());</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        338 :         }</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        687 :           _M_construct(__beg, __end, _Tag());</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        687 :         }</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
 <a name="250"><span class="lineNum">     250 </span>            :       // _GLIBCXX_RESOLVE_LIB_DEFECTS</a>
 <a name="251"><span class="lineNum">     251 </span>            :       // 438. Ambiguity in the &quot;do the right thing&quot; clause</a>
@@ -322,11 +322,11 @@
 <a name="260"><span class="lineNum">     260 </span>            : </a>
 <a name="261"><span class="lineNum">     261 </span>            :       template&lt;typename _InIterator&gt;</a>
 <a name="262"><span class="lineNum">     262 </span>            :         void</a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">        338 :         _M_construct(_InIterator __beg, _InIterator __end)</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">        687 :         _M_construct(_InIterator __beg, _InIterator __end)</span></a>
 <a name="264"><span class="lineNum">     264 </span>            :         {</a>
 <a name="265"><span class="lineNum">     265 </span>            :           typedef typename std::__is_integer&lt;_InIterator&gt;::__type _Integral;</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        338 :           _M_construct_aux(__beg, __end, _Integral());</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        338 :         }</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        687 :           _M_construct_aux(__beg, __end, _Integral());</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        687 :         }</span></a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
 <a name="269"><span class="lineNum">     269 </span>            :       // For Input Iterators, used in istreambuf_iterators, etc.</a>
 <a name="270"><span class="lineNum">     270 </span>            :       template&lt;typename _InIterator&gt;</a>
@@ -684,10 +684,10 @@
 <a name="622"><span class="lineNum">     622 </span>            : #else</a>
 <a name="623"><span class="lineNum">     623 </span>            :       template&lt;typename _InputIterator&gt;</a>
 <a name="624"><span class="lineNum">     624 </span>            : #endif</a>
-<a name="625"><span class="lineNum">     625 </span><span class="lineCov">        338 :         basic_string(_InputIterator __beg, _InputIterator __end,</span></a>
+<a name="625"><span class="lineNum">     625 </span><span class="lineCov">        687 :         basic_string(_InputIterator __beg, _InputIterator __end,</span></a>
 <a name="626"><span class="lineNum">     626 </span>            :                      const _Alloc&amp; __a = _Alloc())</a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        338 :         : _M_dataplus(_M_local_data(), __a)</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        338 :         { _M_construct(__beg, __end); }</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">        687 :         : _M_dataplus(_M_local_data(), __a)</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        687 :         { _M_construct(__beg, __end); }</span></a>
 <a name="629"><span class="lineNum">     629 </span>            : </a>
 <a name="630"><span class="lineNum">     630 </span>            : #if __cplusplus &gt;= 201703L</a>
 <a name="631"><span class="lineNum">     631 </span>            :       /**</a>
@@ -6132,13 +6132,13 @@
 <a name="6070"><span class="lineNum">    6070 </span>            :    */</a>
 <a name="6071"><span class="lineNum">    6071 </span>            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <a name="6072"><span class="lineNum">    6072 </span>            :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;</a>
-<a name="6073"><span class="lineNum">    6073 </span><span class="lineCov">          7 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs, _CharT __rhs)</span></a>
+<a name="6073"><span class="lineNum">    6073 </span><span class="lineCov">         10 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs, _CharT __rhs)</span></a>
 <a name="6074"><span class="lineNum">    6074 </span>            :     {</a>
 <a name="6075"><span class="lineNum">    6075 </span>            :       typedef basic_string&lt;_CharT, _Traits, _Alloc&gt;       __string_type;</a>
 <a name="6076"><span class="lineNum">    6076 </span>            :       typedef typename __string_type::size_type         __size_type;</a>
-<a name="6077"><span class="lineNum">    6077 </span><span class="lineCov">          7 :       __string_type __str(__lhs);</span></a>
-<a name="6078"><span class="lineNum">    6078 </span><span class="lineCov">          7 :       __str.append(__size_type(1), __rhs);</span></a>
-<a name="6079"><span class="lineNum">    6079 </span><span class="lineCov">          7 :       return __str;</span></a>
+<a name="6077"><span class="lineNum">    6077 </span><span class="lineCov">         10 :       __string_type __str(__lhs);</span></a>
+<a name="6078"><span class="lineNum">    6078 </span><span class="lineCov">         10 :       __str.append(__size_type(1), __rhs);</span></a>
+<a name="6079"><span class="lineNum">    6079 </span><span class="lineCov">         10 :       return __str;</span></a>
 <a name="6080"><span class="lineNum">    6080 </span>            :     }</a>
 <a name="6081"><span class="lineNum">    6081 </span>            : </a>
 <a name="6082"><span class="lineNum">    6082 </span>            : #if __cplusplus &gt;= 201103L</a>
@@ -6285,10 +6285,10 @@
 <a name="6223"><span class="lineNum">    6223 </span>            :    */</a>
 <a name="6224"><span class="lineNum">    6224 </span>            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <a name="6225"><span class="lineNum">    6225 </span>            :     inline bool</a>
-<a name="6226"><span class="lineNum">    6226 </span><span class="lineCov">       8076 :     operator&lt;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></a>
+<a name="6226"><span class="lineNum">    6226 </span><span class="lineCov">       8301 :     operator&lt;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></a>
 <a name="6227"><span class="lineNum">    6227 </span>            :               const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __rhs)</a>
 <a name="6228"><span class="lineNum">    6228 </span>            :     _GLIBCXX_NOEXCEPT</a>
-<a name="6229"><span class="lineNum">    6229 </span><span class="lineCov">       8076 :     { return __lhs.compare(__rhs) &lt; 0; }</span></a>
+<a name="6229"><span class="lineNum">    6229 </span><span class="lineCov">       8301 :     { return __lhs.compare(__rhs) &lt; 0; }</span></a>
 <a name="6230"><span class="lineNum">    6230 </span>            : </a>
 <a name="6231"><span class="lineNum">    6231 </span>            :   /**</a>
 <a name="6232"><span class="lineNum">    6232 </span>            :    *  @brief  Test if string precedes C string.</a>
@@ -6562,9 +6562,9 @@
 <a name="6500"><span class="lineNum">    6500 </span>            : #if _GLIBCXX_USE_C99_STDLIB</a>
 <a name="6501"><span class="lineNum">    6501 </span>            :   // 21.4 Numeric Conversions [string.conversions].</a>
 <a name="6502"><span class="lineNum">    6502 </span>            :   inline int</a>
-<a name="6503"><span class="lineNum">    6503 </span><span class="lineCov">         79 :   stoi(const string&amp; __str, size_t* __idx = 0, int __base = 10)</span></a>
-<a name="6504"><span class="lineNum">    6504 </span><span class="lineCov">         79 :   { return __gnu_cxx::__stoa&lt;long, int&gt;(&amp;std::strtol, &quot;stoi&quot;, __str.c_str(),</span></a>
-<a name="6505"><span class="lineNum">    6505 </span><span class="lineCov">         79 :                                         __idx, __base); }</span></a>
+<a name="6503"><span class="lineNum">    6503 </span><span class="lineCov">        110 :   stoi(const string&amp; __str, size_t* __idx = 0, int __base = 10)</span></a>
+<a name="6504"><span class="lineNum">    6504 </span><span class="lineCov">        110 :   { return __gnu_cxx::__stoa&lt;long, int&gt;(&amp;std::strtol, &quot;stoi&quot;, __str.c_str(),</span></a>
+<a name="6505"><span class="lineNum">    6505 </span><span class="lineCov">        110 :                                         __idx, __base); }</span></a>
 <a name="6506"><span class="lineNum">    6506 </span>            : </a>
 <a name="6507"><span class="lineNum">    6507 </span>            :   inline long</a>
 <a name="6508"><span class="lineNum">    6508 </span>            :   stol(const string&amp; __str, size_t* __idx = 0, int __base = 10)</a>
@@ -6621,10 +6621,10 @@
 <a name="6559"><span class="lineNum">    6559 </span>            :                                            &quot;%ld&quot;, __val); }</a>
 <a name="6560"><span class="lineNum">    6560 </span>            : </a>
 <a name="6561"><span class="lineNum">    6561 </span>            :   inline string</a>
-<a name="6562"><span class="lineNum">    6562 </span><span class="lineCov">        338 :   to_string(unsigned long __val)</span></a>
+<a name="6562"><span class="lineNum">    6562 </span><span class="lineCov">        687 :   to_string(unsigned long __val)</span></a>
 <a name="6563"><span class="lineNum">    6563 </span>            :   { return __gnu_cxx::__to_xstring&lt;string&gt;(&amp;std::vsnprintf,</a>
 <a name="6564"><span class="lineNum">    6564 </span>            :                                            4 * sizeof(unsigned long),</a>
-<a name="6565"><span class="lineNum">    6565 </span><span class="lineCov">        338 :                                            &quot;%lu&quot;, __val); }</span></a>
+<a name="6565"><span class="lineNum">    6565 </span><span class="lineCov">        687 :                                            &quot;%lu&quot;, __val); }</span></a>
 <a name="6566"><span class="lineNum">    6566 </span>            : </a>
 <a name="6567"><span class="lineNum">    6567 </span>            :   inline string</a>
 <a name="6568"><span class="lineNum">    6568 </span>            :   to_string(long long __val)</a>
