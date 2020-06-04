@@ -27,7 +27,10 @@ bool Move::operator==(const Move& move) const {
     return false;
 }
 
-
+/**
+ * This function merge two moves into one move
+ * @return merged move
+ * */
 Move Move::merge(Move& next) const {
     if (endPos_ != next.startPos_)
         throw std::out_of_range("Start and end positions of moves to merge do not match.");
@@ -72,6 +75,9 @@ std::vector<Position> Move::getCapturedPositions() const {  return capturedPos_;
 
 std::vector<Move> Move::getStepMoves() const { return stepMoves_;  }
 
+/**
+ * This function checks if multiple move consist of given basic move
+ * */
 bool Move::containsAsStep(const Move& move) const {
     auto it = std::find(stepMoves_.begin(), stepMoves_.end(), move);
     if (it != stepMoves_.end()) {

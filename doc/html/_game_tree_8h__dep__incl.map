@@ -1,8 +1,0 @@
-<map id="checkers/src/GameTree.h" name="checkers/src/GameTree.h">
-<area shape="rect" id="node2" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="237,80,399,107"/>
-<area shape="rect" id="node3" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="40,155,209,181"/>
-<area shape="rect" id="node4" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="234,155,402,181"/>
-<area shape="rect" id="node7" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="419,229,569,256"/>
-<area shape="rect" id="node5" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,229,180,256"/>
-<area shape="rect" id="node6" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="204,229,395,256"/>
-</map>

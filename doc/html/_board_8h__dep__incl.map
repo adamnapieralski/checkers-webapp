@@ -1,20 +1,20 @@
-<map id="checkers/src/Board.h" name="checkers/src/Board.h">
-<area shape="rect" id="node2" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="538,80,683,107"/>
-<area shape="rect" id="node3" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="704,155,853,181"/>
-<area shape="rect" id="node6" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="1129,379,1297,405"/>
-<area shape="rect" id="node9" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="576,453,725,480"/>
-<area shape="rect" id="node14" href="$_pawn_8cc.html" title="Source file for Pawn class, representing pawn piece. " alt="" coords="320,229,472,256"/>
-<area shape="rect" id="node15" href="$_piece_8cc.html" title="Source file for abstract Piece class, representing piece. " alt="" coords="43,229,195,256"/>
-<area shape="rect" id="node18" href="$_game_tree_8h.html" title="Source file for GameTree class, representing the game tree for minimax alfa beta algorithm. " alt="" coords="972,80,1145,107"/>
-<area shape="rect" id="node19" href="$_board_8cc.html" title="Source file for Board class, representing checkers board. " alt="" coords="1405,80,1558,107"/>
-<area shape="rect" id="node13" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="371,155,517,181"/>
-<area shape="rect" id="node16" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="541,155,680,181"/>
-<area shape="rect" id="node4" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="1033,304,1196,331"/>
-<area shape="rect" id="node10" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing AI player. " alt="" coords="1050,229,1227,256"/>
-<area shape="rect" id="node12" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="649,229,805,256"/>
-<area shape="rect" id="node5" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="598,379,767,405"/>
-<area shape="rect" id="node7" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="1229,453,1403,480"/>
-<area shape="rect" id="node8" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="1014,453,1205,480"/>
-<area shape="rect" id="node11" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="751,304,935,331"/>
-<area shape="rect" id="node17" href="$_king_8cc.html" title="Source file for King class, representing king piece. " alt="" coords="881,229,1026,256"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Board.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Board.h">
+<area shape="rect" id="node2" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="1348,109,1547,165"/>
+<area shape="rect" id="node3" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="1149,213,1351,269"/>
+<area shape="rect" id="node6" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="293,525,514,581"/>
+<area shape="rect" id="node9" href="$_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="526,629,726,685"/>
+<area shape="rect" id="node10" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="1194,629,1397,685"/>
+<area shape="rect" id="node15" href="$_pawn_8cc.html" title="Source file for Pawn class, representing pawn piece. " alt="" coords="1481,421,1686,477"/>
+<area shape="rect" id="node16" href="$_piece_8cc.html" title="Source file for abstract Piece class, representing piece. " alt="" coords="2083,421,2289,477"/>
+<area shape="rect" id="node19" href="$_board_8cc.html" title="Source file for Board class, representing checkers board. " alt="" coords="2364,109,2571,165"/>
+<area shape="rect" id="node14" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="1319,317,1517,373"/>
+<area shape="rect" id="node17" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="1628,317,1819,373"/>
+<area shape="rect" id="node4" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="593,421,808,477"/>
+<area shape="rect" id="node11" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="513,317,744,373"/>
+<area shape="rect" id="node13" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="1145,421,1355,477"/>
+<area shape="rect" id="node5" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="1184,525,1407,581"/>
+<area shape="rect" id="node7" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,629,233,685"/>
+<area shape="rect" id="node8" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="257,629,501,685"/>
+<area shape="rect" id="node12" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="833,421,1070,477"/>
+<area shape="rect" id="node18" href="$_king_8cc.html" title="Source file for King class, representing king piece. " alt="" coords="1811,421,2009,477"/>
 </map>

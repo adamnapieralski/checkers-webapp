@@ -51,6 +51,10 @@ double AIPlayer::evaluationFunction(AIPlayer computer, UserPlayer user, Board bo
     return pieces_difference;
 }
 
+/**
+* @brief Method calling recursive method for minmax alpha-beta algorithm
+* @return The best move for computer player
+* */
 Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     std::vector<std::pair<Move, double>> heuristics;
     Board temp = board;
@@ -62,7 +66,7 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     for (auto& row : getValidMoves(board)){
         for (auto& mv : row){
             computer.movePiece(board, user, mv);
-            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 2, alpha, beta, true))); //chyba powinnismy przekazywac nowa alfe po kazdym zbadanym ruchu
+            heuristics.push_back(std::pair<Move,double>(mv, minmaxAlphaBeta(computer, user, board, 2, alpha, beta, true)));
             board = temp;
             computer = temp_comp;
             user = temp_user;
@@ -77,6 +81,17 @@ Move AIPlayer::minmax(AIPlayer computer, UserPlayer user, Board board) {
     return max->first;
 }
 
+/**
+* @brief Recursive method for minmax alpha-beta algorithm
+* @param computer Computer Player
+* @param user User Player
+* @param board current Board
+* @param depth how much to expected depth of game tree
+* @param alpha alpha parameter for minimax alpha-beta algorithm
+* @param beta beta parameter for minimax alpha-beta algorithm
+* @param isUser true if user turn
+* @return minmax value
+* */
 double AIPlayer::minmaxAlphaBeta(AIPlayer computer, UserPlayer user, Board board, int depth, double alpha, double beta, bool isUser) {
     //end state
     std::vector<std::vector<Move>> valid_moves;

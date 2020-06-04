@@ -23,15 +23,14 @@ std::ostream& operator<<(std::ostream& os, const PieceName& p) {
 }
 
 Board::Board() {
-    // for(auto i = board_.begin(); i != board_.end(); ++i ){
-    //     for(auto j = i->begin(); j != i->end(); ++j ){
-    //         *j = EMPTY;
-    //     }
-    // }
     clear();
     initializePositionNames();
 }
 
+/**
+ * Constructor. This function initialize board given fen string
+ * @param fen FEN string, which describes the state of the board
+ * */
 Board::Board(std::string fen) {
     std::string fenSlashed = fen + '/';
     int alreadyVisitedIds = 0;
@@ -99,6 +98,7 @@ std::array<std::array<PieceName,BOARD_SIZE>,BOARD_SIZE> Board::getBoard() const 
     return board_;
 }
 
+
 void Board::clearPosition(const Position& pos) {
     if (!pos.isValid()) {
         throw std::out_of_range("Invalid position.");
@@ -107,6 +107,11 @@ void Board::clearPosition(const Position& pos) {
     board_[static_cast<size_t>(pos.y)][static_cast<size_t>(pos.x)] = EMPTY;
 }
 
+/**
+ * This function place piece in given position
+ * @param pos posistion where piece should be placed
+ * @param piece value which given position should take
+ * */
 void Board::placePiece(const Position& pos, PieceName piece) {
     if (!pos.isValid()) {
         throw std::out_of_range("Invalid position.");
@@ -147,6 +152,9 @@ bool Board::arePiecesDifferentColor(PieceName p1, PieceName p2) {
     return false;
 }
 
+/**
+ * This function make move on board
+ * */
 void Board::makeMove(const Move& m) {
     auto st = m.getStartPosition();
     if (!st.isValid()) {
@@ -159,6 +167,12 @@ void Board::makeMove(const Move& m) {
     placePiece(m.getEndPosition(), pc);
 }
 
+/**
+ * This function recreates player's move.
+ * @param origin Start position of user move
+ * @param destinantion End position of user move
+ * @return Move made by user 
+ * */
 Move Board::findUserMove(const Position& origin, const Position& destination) {
     if (getPieceName(destination) != EMPTY || getPieceName(origin) == EMPTY) return Move();
     auto diffUnit = (destination - origin).getUnitPosition();
@@ -185,6 +199,10 @@ Board& Board::operator=(Board other) {
     return *this;
 }
 
+/**
+* @brief Get string describing current board state with 1. field of FEN record
+* <https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation>
+*/
 std::string Board::getFEN() const {
     std::map<enum PieceName, char>  fenPiecesNames_ = {
         { EMPTY, 'e' }, { WHITE_PAWN , 'P' }, { WHITE_KING, 'K' }, { BLACK_PAWN, 'p' }, { BLACK_KING, 'k' }

@@ -14,6 +14,9 @@
 
 #define BOARD_SIZE 8
 
+/**
+ * Class representing piece's position on the board
+ * */
 class Position {
 public:
     int x, y;
@@ -24,10 +27,6 @@ public:
     bool isLastRow(bool isUser) const;
     bool isZero() const;
 
-    /**
-     * return position made of 1/-1 when abs of x and y are equal
-     * else return zero position
-     */
     Position getUnitPosition() const;
 
     bool operator==(const Position& p) const;

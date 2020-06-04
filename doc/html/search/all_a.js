@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['userplayer',['UserPlayer',['../class_user_player.html',1,'']]],
-  ['userplayer_2ecc',['UserPlayer.cc',['../_user_player_8cc.html',1,'']]],
-  ['userplayer_2eh',['UserPlayer.h',['../_user_player_8h.html',1,'']]]
+  ['jquery',['jQuery',['../md__home_patrycja__desktop__repositories_checkers-webapp_client_node_modules_jquery__r_e_a_d_m_e.html',1,'']]]
 ];

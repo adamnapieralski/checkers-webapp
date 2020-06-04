@@ -12,6 +12,9 @@
 #include "Player.h"
 #include "UserPlayer.h"
 
+/**
+ * Class representing AI Player
+ * */
 class AIPlayer : public Player {
 public:
     AIPlayer(bool isWhite);

@@ -1,7 +1,7 @@
-<map id="checkers/src/King.cc" name="checkers/src/King.cc">
-<area shape="rect" id="node2" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="174,80,233,107"/>
-<area shape="rect" id="node3" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="170,155,237,181"/>
-<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="261,379,341,405"/>
-<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="136,304,201,331"/>
-<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="231,229,298,256"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/King.cc" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/King.cc">
+<area shape="rect" id="node2" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="174,109,233,136"/>
+<area shape="rect" id="node3" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="170,184,237,211"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="261,408,341,435"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="136,333,201,360"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="231,259,298,285"/>
 </map>

@@ -12,16 +12,26 @@ Position::Position() : x(0), y(0) {}
 
 Position::Position(int setX, int setY) : x(setX), y(setY) {}
 
+/**
+ * @brief This function checks if Position is valid
+ * */
 bool Position::isValid() const {
     if (x >= 0 && x < BOARD_SIZE && y >=0 && y < BOARD_SIZE) return true;
     else return false;
 }
 
+/**
+ * @brief This function checks if Position is on the last row for Player and Piece can be upgraded
+ * */
 bool Position::isLastRow(bool isUser) const {
     if ((isUser && y == BOARD_SIZE - 1) || (!isUser && y == 0)) return true;
     else return false;
 }
 
+
+/**
+ * @brief This function checks if Position is (0,0) - left bottom corner
+ * */
 bool Position::isZero() const {
     if (x == 0 && y == 0) {
         return true;
@@ -29,6 +39,10 @@ bool Position::isZero() const {
     return false;
 }
 
+
+/**
+* @return Position made of 1/-1 when abs of x and y are equal else return zero Position
+*/
 Position Position::getUnitPosition() const {
     int ux, uy;
     if (abs(x) != abs(y)) return Position(0, 0);

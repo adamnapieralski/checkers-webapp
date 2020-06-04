@@ -1,8 +1,9 @@
-<map id="checkers/src/Pawn.h" name="checkers/src/Pawn.h">
-<area shape="rect" id="node2" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="5,80,175,107"/>
-<area shape="rect" id="node3" href="$_pawn_8cc.html" title="Source file for Pawn class, representing pawn piece. " alt="" coords="199,80,351,107"/>
-<area shape="rect" id="node4" href="$_piece_8cc.html" title="Source file for abstract Piece class, representing piece. " alt="" coords="375,80,527,107"/>
-<area shape="rect" id="node5" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="552,80,708,107"/>
-<area shape="rect" id="node6" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="733,80,917,107"/>
-<area shape="rect" id="node7" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="941,80,1090,107"/>
+<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Pawn.h">
+<area shape="rect" id="node2" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="5,109,228,165"/>
+<area shape="rect" id="node3" href="$_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="251,109,451,165"/>
+<area shape="rect" id="node4" href="$_pawn_8cc.html" title="Source file for Pawn class, representing pawn piece. " alt="" coords="475,109,681,165"/>
+<area shape="rect" id="node5" href="$_piece_8cc.html" title="Source file for abstract Piece class, representing piece. " alt="" coords="705,109,910,165"/>
+<area shape="rect" id="node6" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="935,109,1144,165"/>
+<area shape="rect" id="node7" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="1169,109,1406,165"/>
+<area shape="rect" id="node8" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="1430,109,1633,165"/>
 </map>

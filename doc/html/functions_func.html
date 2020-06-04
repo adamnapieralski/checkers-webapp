@@ -9,9 +9,19 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -23,7 +33,23 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Checkers
    </div>
+   <div id="projectbrief">Project for Advanced Programming course on EITI-WUT</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -33,16 +59,21 @@
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_func.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,28 +89,339 @@ $(function() {
 </div>
 
 <div class="contents">
-&#160;<ul>
+&#160;
+
+<h3><a id="index_a"></a>- a -</h3><ul>
+<li>addCapturedPosition()
+: <a class="el" href="class_move.html#ab86acf11c99d2fb2b89f6fefbb47a4ec">Move</a>
+</li>
+<li>addPiece()
+: <a class="el" href="class_a_i_player.html#a0359fcdad5dae3657a04df7fc3303f4c">AIPlayer</a>
+, <a class="el" href="class_player.html#a199bc98039f207043d7efd031af152f5">Player</a>
+, <a class="el" href="class_user_player.html#a5ea1a15fb2b6533263c59e7b6b79cb8f">UserPlayer</a>
+</li>
+<li>addUpgradePosition()
+: <a class="el" href="class_move.html#ac3c537cc173333a5502554d876db896a">Move</a>
+</li>
+<li>AIPlayer()
+: <a class="el" href="class_a_i_player.html#af45ad70b1ae483c34d53a1dcf97cbdab">AIPlayer</a>
+</li>
+<li>arePiecesDifferentColor()
+: <a class="el" href="class_board.html#ad766d4a4b4d607e7341ef3813775e035">Board</a>
+</li>
+<li>arePiecesSameColor()
+: <a class="el" href="class_board.html#a2479c8f9452bf8a8c178e8132d0867e5">Board</a>
+</li>
+</ul>
+
+
+<h3><a id="index_b"></a>- b -</h3><ul>
+<li>Board()
+: <a class="el" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a>
+</li>
+</ul>
+
+
+<h3><a id="index_c"></a>- c -</h3><ul>
+<li>canCapture()
+: <a class="el" href="class_player.html#ab3e2319d6246f629b386a1d9541446ad">Player</a>
+</li>
 <li>captureMoves()
 : <a class="el" href="class_king.html#aa7aaa584c9368bc4fd16457e1f84952e">King</a>
 , <a class="el" href="class_pawn.html#a6a9ca7384f7442845196e35d476fcead">Pawn</a>
 , <a class="el" href="class_piece.html#aec24d53e12181bc5fce8bbd39eac77d0">Piece</a>
 </li>
+<li>changePiece()
+: <a class="el" href="class_player.html#aa2d65588c6b9785a71541490b4d115dc">Player</a>
+</li>
+<li>changePosition()
+: <a class="el" href="class_piece.html#a1b47fb61f7501cb903d9af4493773a56">Piece</a>
+</li>
+<li>clear()
+: <a class="el" href="class_board.html#af74f0d4b43e5aa3faea16d7c6407b05e">Board</a>
+</li>
+<li>clearPosition()
+: <a class="el" href="class_board.html#a3caa730f6826aa5481cde758fd1cd644">Board</a>
+</li>
+<li>clone()
+: <a class="el" href="class_piece.html#a807c8e5dbc2a6add6eecb3546ce3e49e">Piece</a>
+</li>
+<li>cloneImplementation()
+: <a class="el" href="class_piece.html#a10e6f10a5d0a739020158025e83f349d">Piece</a>
+</li>
+<li>containsAsStep()
+: <a class="el" href="class_move.html#aebf1832257533c1c67cb0aab9dd8c44a">Move</a>
+</li>
+</ul>
+
+
+<h3><a id="index_e"></a>- e -</h3><ul>
+<li>erasePiece()
+: <a class="el" href="class_player.html#a1f42f016ae60033688b022f9b636ef1b">Player</a>
+</li>
+</ul>
+
+
+<h3><a id="index_f"></a>- f -</h3><ul>
+<li>fenInitialize()
+: <a class="el" href="class_checkers.html#a702a190c4be82c9fd7513c792278d780">Checkers</a>
+</li>
+<li>findPiece()
+: <a class="el" href="class_player.html#a7015f6fdc0826bf56a5142159c556df1">Player</a>
+</li>
+<li>findUserMove()
+: <a class="el" href="class_board.html#a26a2232a150f3bc9a7cf110bb4cff776">Board</a>
+</li>
+</ul>
+
+
+<h3><a id="index_g"></a>- g -</h3><ul>
+<li>getBoard()
+: <a class="el" href="class_board.html#a20ac0f4c4202f6d5ef8e5a4d17b0bc08">Board</a>
+, <a class="el" href="class_checkers.html#aa519116ee82b91be541bc877fc0e6a4e">Checkers</a>
+</li>
+<li>getCapturedPositions()
+: <a class="el" href="class_move.html#a6f63378ac2ae680b0048d39fd3064355">Move</a>
+</li>
+<li>getCaptureMoves()
+: <a class="el" href="class_king.html#a80751ad07ba159fed106903733fb7967">King</a>
+, <a class="el" href="class_pawn.html#add894db50f8f08ba97c672d64fdb6942">Pawn</a>
+, <a class="el" href="class_piece.html#a599dc496c77f7114e5d399004389544e">Piece</a>
+</li>
+<li>getEndPosition()
+: <a class="el" href="class_move.html#a1b702b65e68ed4cc18bab9d35b85154a">Move</a>
+</li>
 <li>getFEN()
 : <a class="el" href="class_board.html#a82a27f13aa92c82f222a7af3c08350ac">Board</a>
 </li>
+<li>getGameState()
+: <a class="el" href="class_checkers.html#ae9a868d08ee52cf7a416f9a5283b69c4">Checkers</a>
+</li>
+<li>getInstance()
+: <a class="el" href="class_checkers.html#a4fe734fd906fce68e5c5e69b136b813f">Checkers</a>
+</li>
+<li>getName()
+: <a class="el" href="class_player.html#a73e4ff2d70e62ca7e3be1d9b4ad9de85">Player</a>
+</li>
+<li>getNonCaptureMoves()
+: <a class="el" href="class_king.html#a24bacc46b61231875154ede3b8180845">King</a>
+, <a class="el" href="class_pawn.html#afe98c77cd947c108de2065d13025192e">Pawn</a>
+, <a class="el" href="class_piece.html#a68ad72de08a1291caf1e14b247e0453e">Piece</a>
+</li>
+<li>getNumberOfKings()
+: <a class="el" href="class_player.html#ab24fabbdbbf721d4dfe41103cb43e83f">Player</a>
+</li>
+<li>getNumberOfPawns()
+: <a class="el" href="class_player.html#adcd4023753d2aeeac5c8320cf0cea2fa">Player</a>
+</li>
+<li>getPieceName()
+: <a class="el" href="class_board.html#a88c120cb0871876f7c832e78218ac237">Board</a>
+</li>
+<li>getPieces()
+: <a class="el" href="class_player.html#a8a191966e0e7bd9b8ad3c009827e6f68">Player</a>
+</li>
+<li>getPosition()
+: <a class="el" href="class_piece.html#a83969a816f9ae8607e2483ca55765576">Piece</a>
+</li>
+<li>getPositionByName()
+: <a class="el" href="class_board.html#abf0bbf0717724d0cb8ec5a1ae984abd5">Board</a>
+</li>
+<li>getStartPosition()
+: <a class="el" href="class_move.html#a796bf6cf91323a7ed22c2db77d356bfe">Move</a>
+</li>
+<li>getStepMoves()
+: <a class="el" href="class_move.html#a66353168de7b2ca25a2c3e046d46556a">Move</a>
+</li>
 <li>getUnitPosition()
 : <a class="el" href="class_position.html#a6e779ccf5c8e6bdf9f129a663f35db19">Position</a>
+</li>
+<li>getUpgradePositions()
+: <a class="el" href="class_move.html#aad4bd3a8b9b874da7925e78a42dbc4ed">Move</a>
 </li>
 <li>getValidMoves()
 : <a class="el" href="class_player.html#a8b47614f7a8b552122d616cb994be32d">Player</a>
 </li>
 </ul>
+
+
+<h3><a id="index_i"></a>- i -</h3><ul>
+<li>initialize()
+: <a class="el" href="class_checkers.html#a8137ee3880c3bedc8efd9c97162527af">Checkers</a>
+</li>
+<li>initializePieces()
+: <a class="el" href="class_a_i_player.html#a7e9e728e0133cdd560805c7b69334f2b">AIPlayer</a>
+, <a class="el" href="class_player.html#a82daaddea91b3daaa19883cd06586c60">Player</a>
+, <a class="el" href="class_user_player.html#af4182e1afcf8f3bef8b3491feda22098">UserPlayer</a>
+</li>
+<li>initializePiecesFromBoard()
+: <a class="el" href="class_a_i_player.html#a056b67ba26e193c619363dc65950045b">AIPlayer</a>
+, <a class="el" href="class_player.html#a4c338c340153d043b08777374a21cd75">Player</a>
+, <a class="el" href="class_user_player.html#a6a4019ef55c9967485156f21c7b4bf17">UserPlayer</a>
+</li>
+<li>initializePiecesFromBoardPerUser()
+: <a class="el" href="class_player.html#a06ee1b9eee4856755b66f40b39d94eb9">Player</a>
+</li>
+<li>isDiffColor()
+: <a class="el" href="class_piece.html#a179977e964d0e49a444784da96d3664d">Piece</a>
+</li>
+<li>isInitial()
+: <a class="el" href="class_move.html#a2ba4464cdc09d886fe0758f5d8342da8">Move</a>
+</li>
+<li>isLastRow()
+: <a class="el" href="class_position.html#ab9ea77411ba63d23de3041a8aa132e6e">Position</a>
+</li>
+<li>isMoveMultiple()
+: <a class="el" href="class_player.html#a744d92a8c775b39b693043d6df71452d">Player</a>
+</li>
+<li>isMoveValid()
+: <a class="el" href="class_player.html#a0faf5f40ca36111cd70595bd3e5a7186">Player</a>
+</li>
+<li>isPositionNameValid()
+: <a class="el" href="class_board.html#a2f6392180cb54b00ec5b19b1506f84b0">Board</a>
+</li>
+<li>isSameColor()
+: <a class="el" href="class_piece.html#ab0eb1afc4ddba8f33c841ea0d84ad352">Piece</a>
+</li>
+<li>isUser()
+: <a class="el" href="class_piece.html#a6a8df637be59e9e460b92efcccde82d2">Piece</a>
+</li>
+<li>isValid()
+: <a class="el" href="class_position.html#a40375e5e7c9d311d5a6c4f94b3be5ab0">Position</a>
+</li>
+<li>isWhite()
+: <a class="el" href="class_piece.html#a890d9a42397ca3c9e30e4a6dfb5568e9">Piece</a>
+, <a class="el" href="class_player.html#a53c382a0107e103ad257eddbad1bf38b">Player</a>
+</li>
+<li>isZero()
+: <a class="el" href="class_position.html#a5215cc1c38b5518441098196d7719b00">Position</a>
+</li>
+</ul>
+
+
+<h3><a id="index_k"></a>- k -</h3><ul>
+<li>King()
+: <a class="el" href="class_king.html#a3a35d80e59fb5336f3d24cdcfb28920f">King</a>
+</li>
+</ul>
+
+
+<h3><a id="index_m"></a>- m -</h3><ul>
+<li>makeComputerMove()
+: <a class="el" href="class_checkers.html#aac9caca2fb1c4f39c19446bc92433745">Checkers</a>
+</li>
+<li>makeMinmaxMove()
+: <a class="el" href="class_a_i_player.html#a532425163047e64cf5b7219e0a188d86">AIPlayer</a>
+</li>
+<li>makeMove()
+: <a class="el" href="class_board.html#a8d998c500497febdf87e0730615669c2">Board</a>
+</li>
+<li>merge()
+: <a class="el" href="class_move.html#a68f56d3f8fb3701eb9792941b0bb581c">Move</a>
+</li>
+<li>minmax()
+: <a class="el" href="class_a_i_player.html#a9f37d5e06553b1f5a2a84e638bc2b376">AIPlayer</a>
+</li>
+<li>Move()
+: <a class="el" href="class_move.html#a8dd163ea61339d1e075013853de9790d">Move</a>
+</li>
+<li>movePiece()
+: <a class="el" href="class_board.html#a9227a8c063054c93998110673c7b4b94">Board</a>
+, <a class="el" href="class_player.html#ae35477ae3dd0f6639523a384669a9c02">Player</a>
+</li>
+</ul>
+
+
+<h3><a id="index_o"></a>- o -</h3><ul>
+<li>operator!=()
+: <a class="el" href="class_position.html#a6358e7bd1a99e5f033f08bc0d364d790">Position</a>
+</li>
+<li>operator+=()
+: <a class="el" href="class_position.html#a8792fc510c72aac49f6947b42619a889">Position</a>
+</li>
+<li>operator-=()
+: <a class="el" href="class_position.html#a9ca1047b14efe0d32123431d73d176ac">Position</a>
+</li>
+<li>operator=()
+: <a class="el" href="class_board.html#aa94e8088bd24a9cc4abf9c73ea9dac45">Board</a>
+, <a class="el" href="class_player.html#a104a89a5228f4d0b87b6e182fc5cb268">Player</a>
+</li>
+<li>operator==()
+: <a class="el" href="class_move.html#ac498b6a71c11d5b788fae6b81864e288">Move</a>
+, <a class="el" href="class_position.html#a2853571fea1d2591ffb1a74cd352c67f">Position</a>
+</li>
+</ul>
+
+
+<h3><a id="index_p"></a>- p -</h3><ul>
+<li>Pawn()
+: <a class="el" href="class_pawn.html#aae6ac511b65cd1deead3e7f9e2ad818c">Pawn</a>
+</li>
+<li>Piece()
+: <a class="el" href="class_piece.html#a3fedb143a0ba63829a12963a032e1149">Piece</a>
+</li>
+<li>placePiece()
+: <a class="el" href="class_board.html#a95d8e39a00d96f33322e173a1a12dc07">Board</a>
+</li>
+<li>Player()
+: <a class="el" href="class_player.html#a702702fdbef1374df79aff08d35746e5">Player</a>
+</li>
+<li>Position()
+: <a class="el" href="class_position.html#a369a577425f8ba02e8750d04b6a088db">Position</a>
+</li>
+<li>print()
+: <a class="el" href="class_king.html#a4434c500bdf82ac444e67bc408c578e8">King</a>
+, <a class="el" href="class_pawn.html#a358779cf02fddd14805508ef721f3053">Pawn</a>
+, <a class="el" href="class_piece.html#ad67c6ec0d6676ba23b0fb4bbd23c1f6b">Piece</a>
+</li>
+<li>processUserMove()
+: <a class="el" href="class_checkers.html#ae811de79689997dbb6e8e86db88cf682">Checkers</a>
+</li>
+</ul>
+
+
+<h3><a id="index_s"></a>- s -</h3><ul>
+<li>setHasTurn()
+: <a class="el" href="class_player.html#a05b3fe3e7cf7e43822878ab8bd98ddc0">Player</a>
+</li>
+<li>setIsWhite()
+: <a class="el" href="class_player.html#ac16d4f1d426bd31735e294b46ba81f5f">Player</a>
+</li>
+<li>setName()
+: <a class="el" href="class_player.html#a95d2b46eee230ad3e31612ff2bc681da">Player</a>
+</li>
+</ul>
+
+
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>updateScore()
+: <a class="el" href="class_checkers.html#a1465118bcf1fb157ec34fabf39bc2733">Checkers</a>
+</li>
+<li>updateState()
+: <a class="el" href="class_checkers.html#ae22ad9dba424eb45d3a3d618b22d5e9f">Checkers</a>
+</li>
+<li>UserPlayer()
+: <a class="el" href="class_user_player.html#a59b326bab127e56f6f19233bebf2581e">UserPlayer</a>
+</li>
+</ul>
+
+
+<h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Piece()
+: <a class="el" href="class_piece.html#a1fa10b0883b6cd5f0862216a4c202e36">Piece</a>
+</li>
+<li>~Player()
+: <a class="el" href="class_player.html#a8981c201ffb2270c0b6dbd467b627376">Player</a>
+</li>
+</ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

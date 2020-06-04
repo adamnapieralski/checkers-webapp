@@ -5,7 +5,6 @@ client/node_modules/
 *.gcno
 *.gcda
 
-
 .sconsign.dblite
 
 # Compiled source #
