@@ -20,5 +20,8 @@ var _test_8cc =
     [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#ae1b97a1de66815594cf6d6645407c55a", null ],
     [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#a4a9426910aa6ff3c6b8cce674e9ff893", null ],
     [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#a762a1437507a7fc3e3268b71e1c562f1", null ],
-    [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#aa9309a71d46a8633b45aef04cbd86c5c", null ]
+    [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#aa9309a71d46a8633b45aef04cbd86c5c", null ],
+    [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#a8e2f5688e93b8ee95c1c8e92fe3feb96", null ],
+    [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#ab1b600c0022a5fd027f31dd8581c212f", null ],
+    [ "BOOST_AUTO_TEST_CASE", "_test_8cc.html#ad0501a3742fed2832e0ed03b63120ce9", null ]
 ];

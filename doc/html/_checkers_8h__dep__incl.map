@@ -1,6 +1,5 @@
-<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Checkers.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Checkers.h">
-<area shape="rect" id="node2" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,109,233,165"/>
-<area shape="rect" id="node3" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="257,109,501,165"/>
-<area shape="rect" id="node4" href="$_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="526,109,726,165"/>
-<area shape="rect" id="node5" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="750,109,953,165"/>
+<map id="checkers/src/Checkers.h" name="checkers/src/Checkers.h">
+<area shape="rect" id="node2" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node3" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="204,80,395,107"/>
+<area shape="rect" id="node4" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="419,80,569,107"/>
 </map>

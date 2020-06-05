@@ -1,8 +1,8 @@
-<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/AIPlayer.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/AIPlayer.h">
-<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="138,184,209,211"/>
-<area shape="rect" id="node13" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="168,109,267,136"/>
-<area shape="rect" id="node5" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="179,259,245,285"/>
-<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="371,333,437,360"/>
-<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="316,483,396,509"/>
-<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="230,408,295,435"/>
+<map id="checkers/src/AIPlayer.h" name="checkers/src/AIPlayer.h">
+<area shape="rect" id="node2" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="138,155,209,181"/>
+<area shape="rect" id="node13" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="168,80,267,107"/>
+<area shape="rect" id="node5" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="179,229,245,256"/>
+<area shape="rect" id="node11" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="371,304,437,331"/>
+<area shape="rect" id="node7" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="316,453,396,480"/>
+<area shape="rect" id="node10" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="230,379,295,405"/>
 </map>

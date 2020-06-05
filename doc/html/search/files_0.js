@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_2epy',['__init__.py',['../____init_____8py.html',1,'(Global Namespace)'],['../checkerspy_2____init_____8py.html',1,'(Global Namespace)']]]
+  ['aiplayer_2ecc',['AIPlayer.cc',['../_a_i_player_8cc.html',1,'']]],
+  ['aiplayer_2eh',['AIPlayer.h',['../_a_i_player_8h.html',1,'']]]
 ];

@@ -1,6 +1,8 @@
 var annotated_dup =
 [
-    [ "web", "namespaceweb.html", "namespaceweb" ],
+    [ "web", null, [
+      [ "checkerspy", null, null ]
+    ] ],
     [ "AIPlayer", "class_a_i_player.html", "class_a_i_player" ],
     [ "Board", "class_board.html", "class_board" ],
     [ "Checkers", "class_checkers.html", "class_checkers" ],

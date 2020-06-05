@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jquery',['jQuery',['../md__home_patrycja__desktop__repositories_checkers-webapp_client_node_modules_jquery__r_e_a_d_m_e.html',1,'']]]
+  ['score',['Score',['../_checkers_8h.html#a2f574cc3a73c29e138acb38d1bfc07a3',1,'Checkers.h']]]
 ];

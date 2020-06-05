@@ -13,7 +13,6 @@ var dir_f9cf8e8c56ae2d5aab6a9f83e6f86718 =
     [ "King.h", "_king_8h.html", [
       [ "King", "class_king.html", "class_king" ]
     ] ],
-    [ "Main.cc", "_main_8cc.html", "_main_8cc" ],
     [ "Move.cc", "_move_8cc.html", null ],
     [ "Move.h", "_move_8h.html", [
       [ "Move", "class_move.html", "class_move" ]

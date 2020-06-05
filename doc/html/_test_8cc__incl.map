@@ -1,12 +1,12 @@
-<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/test/Test.cc" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/test/Test.cc">
-<area shape="rect" id="node3" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="337,109,459,136"/>
-<area shape="rect" id="node6" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="597,259,695,285"/>
-<area shape="rect" id="node14" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="285,483,351,509"/>
-<area shape="rect" id="node16" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="585,184,667,211"/>
-<area shape="rect" id="node17" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="467,184,561,211"/>
-<area shape="rect" id="node18" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="720,259,820,285"/>
-<area shape="rect" id="node7" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="579,333,649,360"/>
-<area shape="rect" id="node10" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="486,408,553,435"/>
-<area shape="rect" id="node11" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="301,632,381,659"/>
-<area shape="rect" id="node13" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="416,557,481,584"/>
+<map id="checkers/test/Test.cc" name="checkers/test/Test.cc">
+<area shape="rect" id="node3" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="337,80,459,107"/>
+<area shape="rect" id="node6" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="597,229,695,256"/>
+<area shape="rect" id="node14" href="$_board_8h.html" title="Header file for Board class, representing checkers board. " alt="" coords="285,453,351,480"/>
+<area shape="rect" id="node16" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="585,155,667,181"/>
+<area shape="rect" id="node17" href="$_king_8h.html" title="Header file for King class, representing king piece. " alt="" coords="467,155,561,181"/>
+<area shape="rect" id="node18" href="$_pawn_8h.html" title="Header file for Pawn class, representing pawn piece. " alt="" coords="720,229,820,256"/>
+<area shape="rect" id="node7" href="$_player_8h.html" title="Header file for Player class, representing player. " alt="" coords="579,304,649,331"/>
+<area shape="rect" id="node10" href="$_piece_8h.html" title="Header file for abstract Piece class, representing piece. " alt="" coords="486,379,553,405"/>
+<area shape="rect" id="node11" href="$_position_8h.html" title="Header file for Position structure, representing piece&#39;s position on the board. " alt="" coords="301,603,381,629"/>
+<area shape="rect" id="node13" href="$_move_8h.html" title="Source file for Move class, representing move of pieces. " alt="" coords="416,528,481,555"/>
 </map>

@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['king',['King',['../class_king.html#a3a35d80e59fb5336f3d24cdcfb28920f',1,'King::King(Position pos, bool isWhite, bool isUser, Board &amp;board)'],['../class_king.html#a03cef498ee0c2885c74e0a5921a7ee3d',1,'King::King(const King &amp;k)']]]
+  ['makecomputermove',['makeComputerMove',['../class_checkers.html#aac9caca2fb1c4f39c19446bc92433745',1,'Checkers']]],
+  ['makemove',['makeMove',['../class_board.html#a8d998c500497febdf87e0730615669c2',1,'Board']]],
+  ['merge',['merge',['../class_move.html#a68f56d3f8fb3701eb9792941b0bb581c',1,'Move']]],
+  ['minmax',['minmax',['../class_a_i_player.html#a9f37d5e06553b1f5a2a84e638bc2b376',1,'AIPlayer']]],
+  ['movepiece',['movePiece',['../class_player.html#ae35477ae3dd0f6639523a384669a9c02',1,'Player']]]
 ];

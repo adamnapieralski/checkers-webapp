@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_2epy',['__init__.py',['../____init_____8py.html',1,'(Global Namespace)'],['../checkerspy_2____init_____8py.html',1,'(Global Namespace)']]]
+  ['addpiece',['addPiece',['../class_a_i_player.html#a0359fcdad5dae3657a04df7fc3303f4c',1,'AIPlayer::addPiece()'],['../class_player.html#a199bc98039f207043d7efd031af152f5',1,'Player::addPiece()'],['../class_user_player.html#a5ea1a15fb2b6533263c59e7b6b79cb8f',1,'UserPlayer::addPiece()']]],
+  ['aiplayer',['AIPlayer',['../class_a_i_player.html',1,'']]],
+  ['aiplayer_2ecc',['AIPlayer.cc',['../_a_i_player_8cc.html',1,'']]],
+  ['aiplayer_2eh',['AIPlayer.h',['../_a_i_player_8h.html',1,'']]]
 ];

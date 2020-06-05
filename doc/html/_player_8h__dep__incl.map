@@ -1,12 +1,11 @@
-<map id="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Player.h" name="/home/patrycja/Desktop/Repositories/checkers&#45;webapp/checkers/src/Player.h">
-<area shape="rect" id="node2" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="287,213,502,269"/>
-<area shape="rect" id="node9" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="505,109,735,165"/>
-<area shape="rect" id="node11" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="759,109,969,165"/>
-<area shape="rect" id="node3" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="142,317,365,373"/>
-<area shape="rect" id="node4" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="471,317,692,373"/>
-<area shape="rect" id="node7" href="$_main_8cc.html" title="/home/patrycja/Desktop\l/Repositories/checkers\l&#45;webapp/checkers/src/Main.cc" alt="" coords="5,421,205,477"/>
-<area shape="rect" id="node8" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="751,421,953,477"/>
-<area shape="rect" id="node5" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="498,421,726,477"/>
-<area shape="rect" id="node6" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="230,421,474,477"/>
-<area shape="rect" id="node10" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="527,213,764,269"/>
+<map id="checkers/src/Player.h" name="checkers/src/Player.h">
+<area shape="rect" id="node2" href="$_a_i_player_8h.html" title="Header file for AIPlayer class, representing AI player. " alt="" coords="467,155,630,181"/>
+<area shape="rect" id="node8" href="$_user_player_8h.html" title="Header file for UserPlayer class, representing User player. " alt="" coords="333,80,511,107"/>
+<area shape="rect" id="node10" href="$_player_8cc.html" title="Source file for Player class, representing player. " alt="" coords="587,80,743,107"/>
+<area shape="rect" id="node3" href="$_a_i_player_8cc.html" title="Source file for AI class, representing AI player. " alt="" coords="467,229,636,256"/>
+<area shape="rect" id="node4" href="$_checkers_8h.html" title="Header file for Checkers class, handling game mechanics. " alt="" coords="223,229,391,256"/>
+<area shape="rect" id="node7" href="$_test_8cc.html" title="Source file for unit tests using Boost.Test. " alt="" coords="419,304,569,331"/>
+<area shape="rect" id="node5" href="$_checkers_8cc.html" title="Source file for Checkers class, handling game mechanics. " alt="" coords="220,304,395,331"/>
+<area shape="rect" id="node6" href="$_checkers_py_8cc.html" title="Implementation of python module for C++ using Boost.Python. " alt="" coords="5,304,196,331"/>
+<area shape="rect" id="node9" href="$_user_player_8cc.html" title="Source file for UserPlayer class, representing user player. " alt="" coords="157,155,341,181"/>
 </map>

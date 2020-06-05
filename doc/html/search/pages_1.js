@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jquery',['jQuery',['../md__home_patrycja__desktop__repositories_checkers-webapp_client_node_modules_jquery__r_e_a_d_m_e.html',1,'']]]
+  ['warcaby_20_2d_20aplikacja_20webowa',['Warcaby - aplikacja webowa',['../md__r_e_a_d_m_e_8pl.html',1,'']]]
 ];
