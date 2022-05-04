@@ -17,6 +17,6 @@
   "homepage": "https://github.com/adamnapieralski/checkers-webapp#readme",
   "dependencies": {
     "@chrisoakman/chessboardjs": "^1.0.0",
-    "angular": "^1.7.9"
+    "angular": "^1.8.3"
   }
 }
